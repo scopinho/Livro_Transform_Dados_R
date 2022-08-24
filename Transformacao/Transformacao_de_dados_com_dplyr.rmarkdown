@@ -1,0 +1,1678 @@
+---
+title: "Transformação de Dados com DPLYR"
+author: "Eric Scopinho"
+format: html
+toc: true
+toc-location: right
+toc-depth: 4
+editor: visual
+lang: pt
+execute: 
+  warning: false
+---
+
+
+## Introdução
+
+A seguir temos vários exemplos de transformação de dados utilizando o pacote DYPLR do R. Para saber mais sobre este pacote, acesse:
+
+<https://cran.r-project.org/package=dplyr>.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos à seguir, iremos usar os seguintes pacotes:
+
+-   **tidyverse**
+
+<!-- -->
+
+-   **gt**
+
+
+```{r}
+#| echo: true
+library(tidyverse)
+library (gt)
+```
+
+
+### Exemplos da Folha de Referência
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf) do dyplr disponível no site do [RStudio](rstudio.com).
+
+Para a maioria dos exemplos utilizaremos as bases de dados **mtcars** e **starwars** provenientes do pacote **datasets e dplyr**.
+
+::: callout-note
+*Em geral, ao final de cada comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+:::
+
+------------------------------------------------------------------------
+
+**MTCARS**: Dados de consumo de combustível, performance e design de 32 automóveis ( *1974 Motor Trend US magazine*)
+
+
+```{r}
+#| output: true
+
+mtcars |> 
+  head () |> 
+  gt()
+
+```
+
+
+------------------------------------------------------------------------
+
+**STARWARS**: Dados dos personagens de STAR WARS
+
+
+```{r}
+starwars |> 
+  select(1:8) |> 
+  head() |> 
+  gt()
+
+```
+
+
+::: callout-note
+*O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
+:::
+
+### Dados Organizados e Canalização
+
+Dados organizados (*tidy*) são estruturados onde:
+
+Cada **variável** está em sua própria **coluna** e cada **observação** está em sua própria **linha**.
+
+![](images/tidy_data01.png)
+
+Canalização (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto. O símbolo **\|\>** ou **%\>%** podem ser utilizados para esta finalidade.
+
+**Exemplo**: x \|\> f(y), é o mesmo que f(x,y)
+
+## Resumindo Observações
+
+**Funções de resumo** recebem vetores como entrada e retornam um único valor.
+
+#### summarise
+
+
+```{r}
+summarise (mtcars, media=mean(mpg)) |> 
+  gt()
+```
+
+
+Cria um novo data-frame. Ele gera uma linha para cada combinação de grupos de variáveis. Se não houver grupos, a saída será uma única linha resumindo todas as observações da entrada.
+
+No exemplo acima, não especificamos nenhum grupo (mais na seção [Agrupando Observações]), por isso, ele retorna apenas uma linha resumindo todas as observações de mtcars. Como também especificamos a função de **mean(**), o valor retornado será a média da coluna **mpg** para todas as observações do data frame em uma única variável (coluna) chamada **média**.
+
+Outra format de se escrever o comando acima, utilizando a canalização ("pinping") descrita acima, seria:
+
+
+```{r, results= FALSE}
+mtcars |> 
+  summarise(média = mean(mpg))
+```
+
+
+Ver a seção de [Funções de Resumo] para mais detalhes.
+
+#### count
+
+Conta valores únicos de uma ou mais variáveis.
+
+
+```{r}
+mtcars |> 
+  count (cyl) |> 
+  gt()
+
+```
+
+
+No exemplo acima, contamos os valores únicos da variável **cyl** e mostramos na variável **n**. Um equivalente seria utilizar o summarise com o grupo criado na variável cyl: *mtcars \|\> group_by(cyl) \|\> summarise(n = n())*.
+
+Mais sobre a função group_by na seção [Agrupando Observações].
+
+## Agrupando Observações
+
+#### group_by
+
+Use **group_by** (.data, ..., .add = FALSE, .drop = TRUE) para criar uma cópia da tabela agrupada por colunas. As funções do dplyr irão manipular cada grupo separadamente e combinar os resultados.
+
+::: callout-important
+Se compararmos o resultado de uma tabela antes e depois do agrupamento (group_by), apenas uma informação sobre o grupo será visível.
+
+Isto significa que o agrupamento só afetará o resultado de saída se utilizado em conjunto com funções que entendam esta mudança de contexto, como as funções do dyplr.
+:::
+
+Por exemplo, **ANTES** de agruparmos pela variável **cyl** (group_by(cyl)) temos:
+
+
+```{r}
+mtcars |> 
+  as_tibble()
+```
+
+
+**DEPOIS** do group_by:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) 
+```
+
+
+Veja que, exceto pela informação :
+
+**'\# Groups: cyl \[3\]**
+
+Todo o restante da saída é o mesmo. Por isso, é importante que utilizemos o contexto do grupo, junto com outra função.
+
+Exemplo: Se quiser criar uma tabela com a função **summarise()** com apenas o grupo de cilindradas, podemos usar:
+
+
+```{r}
+#| message: false
+mtcars |> 
+  group_by(cyl) |> 
+  summarise() |> 
+  gt()
+```
+
+
+Supondo que quiséssemos agora, saber o número de carros, agrupados pela variável cyl, podemos utilizar a função summarise, após o agrupamento, criando uma coluna através da função n().
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(num_automoveis = n()) |> 
+  gt()
+```
+
+
+Em outro exemplo, podemos extrair o consumo médio (miles/gallon) dos veículos agrupado pelo número de cilindros destes veículos.
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(consumo_medio = mean(mpg)) |> 
+  gt()
+```
+
+
+O agrupamento pode ser feito por mais de uma variável também. Por exemplo, se quisermos obter o consumo médio (miles/gallon) dos veículos agrupado pelo número de cilindros destes veículos e também por número de marchas, podemos ter:
+
+::: callout-note
+A saída da função summarise, dependendo do caso, irá ser agrupada também automaticamente, se quiser que isto não aconteça, utiliza a opção **.groups="drop"**.
+:::
+
+
+```{r}
+#| message: false
+
+mtcars |> 
+  group_by(cyl, gear) |> 
+  summarise(consumo_médio = mean(mpg), .groups = "drop") |> 
+  gt()
+```
+
+
+A função **un_group()** remove os grupos definidos em uma tabela. É uma boa prática, remover os grupos após efetuar uma sumarização, por exemplo, afim de evitar resultados indesejáveis em sumarizações futuras. Por exemplo:
+
+
+```{r}
+#| message: false
+mtcars |> 
+  group_by(cyl, gear) |> 
+  summarise(numero_marchas = n()) |> 
+  ungroup() |> 
+  gt()
+```
+
+
+No caso acima, se não tivessemos utilizado o desagrupamento (**un_group**), o resultado ainda teria os grupos demarcados.
+
+#### rowwise
+
+Use rowwise(.data, ...) para agrupar dados em linhas individuais. Funções do dyplr irão computar os resultados para cada linha.
+
+No exemplo abaixo, a tabela de dados startwars, possui uma variável (films) que é o tipo lista, ou seja, a coluna contém uma lista de filmes para cada personagem (observação).
+
+Supondo que quiséssemos saber em quantos filmes cada personagem aparece:
+
+
+```{r}
+starwars |> 
+  select(name, films) |>
+  rowwise() |>
+  mutate(quantos_filmes = length(films)) |> 
+  head () |> 
+  gt()
+
+```
+
+
+Em geral, utilizamos a função **rowwise** quando [não temos uma função vetorizada]{.underline}, isto é, que não retorna um vetor e precisamos aplicá-la em cada linha da tabela.
+
+::: callout-note
+*Aqui utilizamos também a função **head ()** que retorna apenas as primeiras linhas de uma tablea e não todo seu conteúdo.*
+:::
+
+Veja a seção de [Funções Vetorizadas]para maiores informações.
+
+## Manipulando Observações
+
+### Extração de Observações
+
+O dplyr possui uma série de funções que nos ajudam a extrair observações (linhas) de uma tabela, dentre estas, temos:
+
+#### filter
+
+Extrai linhas de uma tablea que satisfazem o critério lógico.
+
+filter(.data, ..., .preserve = FALSE)
+
+Exemplo: Para extrair apenas os veículos que possuem consumo (miles/galon) acima de 20, podemos usar:
+
+
+```{r}
+filter(mtcars, mpg > 20) |> 
+  gt()
+```
+
+
+Podemos utilizar operadores lógicos para ajustar os critérios do filtro, como por exemplo, os operadores abaixo:
+
+**==, \>, \>=, &, \|, !, xor(), is.na(), between(), near()**, entre outros
+
+Por exemplo, para filtrar os veículos com consumo acima de 20 **E** com apenas 3 marchas, temos:
+
+
+```{r}
+mtcars |> 
+  filter(mpg > 20 & gear == 3) |> 
+  gt()
+
+```
+
+
+#### distinct
+
+Remove linhas com valores duplicados, retornando apenas os valores únicos da variável (coluna).
+
+distinct(.data, ..., .keep_all = FALSE) .
+
+Por exemplo, se precisarmos saber quais os valores da variável gear (marcha), podemos utilizar:
+
+
+```{r}
+mtcars |> 
+  distinct(gear) |> 
+  gt()
+```
+
+
+::: callout-note
+Se utilizar o código acima, sem utilizar a função gt(), verá que o R possui um "nome" para as linhas. É importante ressaltar que este nome NÃO é uma variável da tabela, ou seja, não temos uma coluna com o "nome" do veículo, é por isso que você vê nomes de veículos, mesmo pedindo os valores únicos das marchas. Para maiores informações sobre isso, veja a seção [Nome de Linhas].
+:::
+
+#### slice
+
+Seleciona linhas pelas suas respectivas posições nda tabela.
+
+slice(.data, ..., .preserve = FALSE)
+
+Por exemplo, para selecionarmos apenas da linha 10 até a linha 15 da tabela usamos:
+
+
+```{r}
+ mtcars |> 
+   slice(10:15) |> 
+   gt()
+
+```
+
+
+Veja que em alguns casos, podemos utilizar um equivalente filtro para obter o mesmo resultado:
+
+
+```{r}
+mtcars |> 
+  filter(between(row_number(), 10, 15)) |>  
+  gt()
+```
+
+
+#### slice_sample
+
+Para randomicamente selecionar linhas da tabela. Use **n** para selecionar o número de linhas ou **prop** para selecionar um percentual das linhas.
+
+slice_sample(.data, ..., n, prop, weight_by = NULL, replace = FALSE) .
+
+Para selecionar **5** linhas randomicas da tabela usamos:
+
+
+```{r}
+mtcars |> 
+  slice_sample(n = 5, replace = TRUE) |>  
+  gt()
+```
+
+
+Para selecionar **25%** do total de linhas da tabela de forma dandomica usamos:
+
+
+```{r}
+mtcars |> 
+  slice_sample(prop = 0.25, replace = TRUE) |>  
+  gt()
+```
+
+
+#### slice_min
+
+Seleciona linhas com valores minímo (slice_min) ou máximo (slice_max) de uma variável.
+
+slice_min(.data, order_by, ..., n, prop, with_ties = TRUE) and slice_max() .
+
+Por exemplo, com base no menor valor da variável de consumo do veículo (mpg), retorne 25% da tabela.
+
+
+```{r}
+mtcars |> 
+  slice_min(mpg, prop = 0.25) |> 
+  gt()
+```
+
+
+Outro exemplo, poderia ser que você precise retornar os 5 veículos de maior consumo:
+
+
+```{r}
+mtcars |> 
+  slice_max(mpg, n = 5) |> 
+  gt()
+```
+
+
+#### slice_head
+
+Seleciona as primeiras (slice_head) or últimas (slide_tail) linhas de uma tabela.
+
+slice_head(.data, ..., n, prop) and slice_tail() .
+
+Por exemplo, vamos selecionar as 5 primeiras linhas de mtcars:
+
+::: callout-note
+*Apenas para exemplificar, no código abaixo, deixamos a função gt "mostrar" os nomes das linhas em sua saída. Para maiores informações sobre isso, veja a seção [Nome de Linhas].*
+:::
+
+
+```{r}
+mtcars |> 
+  slice_head(n = 5) |> 
+  gt(rownames_to_stub = TRUE)
+```
+
+
+### Arranjar Observações
+
+#### arrange
+
+A função arrange ordena linhas por valores de uma coluna(s) (menor para maior), use com a função **desc()** para ordenar de maior para menor.
+
+arrange(.data, ..., .by_group = FALSE) arrange(mtcars, mpg) ou arrange(mtcars, desc(mpg))
+
+No exemplo abaixo, vamos ordenar a variável mpg, de forma a mostrar primeiro os veículos com menor consumo de combustível até o de maior consumo:
+
+
+```{r}
+mtcars |> 
+  arrange(mpg) |> 
+  gt(rownames_to_stub = TRUE)
+```
+
+
+### Adicionar Observações
+
+Algumas vezes precisamos adicionar observações (linhas) em uma tabela já existente, neste caso podemos utilizar a função add_row().
+
+#### add_row
+
+add_row(cars, speed = 1, dist = 1).
+
+Neste caso, iremos adicionar uma nova linha na tables cars (não mtcars), que possui apenas duas variáveis (speed e dist).
+
+
+```{r}
+cars |> 
+  add_row(speed = 1, dist = 1) |> 
+  tail() |> 
+  gt()
+```
+
+
+## Manipulando Variáveis
+
+### Extração de Variáveis
+
+O dplyr possui uma série de funções que nos ajudam a obter um conjunto de variáveis (colunas) como um novo vetor ou nova tabela:
+
+#### pull
+
+Extrai valores da coluna como um vetor, por nome ou índice.
+
+pull(.data, var = -1, name = NULL, ...)
+
+
+```{r}
+mtcars |> 
+  pull (wt) 
+```
+
+
+No exemplo acima, a coluna peso (wt), é extraída da tabela e um obeto do tipo vetor é retornado na saída.
+
+Podemos extrair um vator de uma colunas também utilizando o número da coluna. Se utilizarmos valores negativos, podemos extrair um vetor das colunas contando a partir do lado direto.
+
+Por exemplo, se quisermos extratir um vetor da penúltima coluna de uma tabela, podemos usar:
+
+
+```{r}
+mtcars |> 
+  pull (-2)
+```
+
+
+#### select
+
+Extrai valores de uma ou mais variáveis (colunas) e retorna uma nova tabela, por nome ou índice.
+
+select(.data, ...)
+
+Por exemplo, podemos obter uma nova tabela contendo apenas as variáveis mpg e wt usando:
+
+
+```{r}
+mtcars |> 
+  select (mpg, wt) |> 
+  gt()
+```
+
+
+A função select possui um série de opções que tornam a seleção das counas mais fáceis. A seguir temos algumas delas. Consulte a ajuda do select usando "?select" para obter a lista completa.
+
+-   : para selecionar um range consecutivo de colunas
+
+-   ! para pegar o complemento de uma conjunto de colunas
+
+-   & e \| para selecionar a intersecção ou união (E OU) de um conjunto de colunas
+
+-   c() para combinar seleções
+
+Além disso, possui também algumas funções que ajudam na seleção como:
+
+-   eveything(), last_col(), starts_with(), ends_with(), contains(), matches(), num_range()
+
+Por exemplo, se quisermos selecionar toda a base mtcars, exceto as colunas wt e mpg, podemos usar:
+
+
+```{r}
+mtcars |> 
+  select(!c(mpg, wt)) |> 
+  gt()
+```
+
+
+Se quisermos selecionar apenas as 4 primeiras colunas e também a coluna wt, podemos usar:
+
+
+```{r}
+mtcars |> 
+  select ((1:4) | wt) |> 
+  gt()
+
+```
+
+
+#### relocate
+
+Move colunas para uma nova posição e retonar uma tabela com esta nova order de colunas.
+
+relocate(.data, ..., .before = NULL, .after = NULL)
+
+
+```{r}
+mtcars |> 
+  relocate (mpg, cyl, .after = last_col()) |> 
+  gt()
+```
+
+
+No exemplo acima, escolhermos mover as colunas mpg e cyl para depois (à direita) da última coluna (last_col()).
+
+### Manipular Várias Variáveis de Uma Vez
+
+Em algumas situações, desejamos manipular várias variáveis (colunas) de uma só vez ou invés de cada coluna de cada vez. Para estes casos ,podemos usar as funções across e c_across.
+
+#### across
+
+Resume ou alterar múltiplas colunas da mesma maneira. across(.cols, .funs, ..., .names = NULL)
+
+
+```{r}
+mtcars |> 
+  summarise(across(everything(), mean)) |> 
+  gt()
+```
+
+
+No exemplo acima, varremos todas (everything) as colunas da tabela e resumimos aplicando a função de média (mean) nestas colunas.
+
+No exemplo a seguir, iremos "varrer" as colunas 5 até 7 e arredondar seus valores com apenas um digito usando a função round().
+
+
+```{r}
+mtcars |> 
+  mutate(across(5:7, ~ round(.x, digits = 1) )) |> 
+  gt()
+```
+
+
+#### c_across
+
+Computa através das colunas os dados linha a linha. Em geral, esta função é utilizado em conjunto com a função rowwise().
+
+c_across(.cols)
+
+
+```{r}
+mtcars |> 
+  rowwise() |> 
+  transmute (total = sum(c_across(4:6))) |> 
+  gt()
+
+
+```
+
+
+No exemplo acima, "varremos" linha a linha da tabela e depois fazemos a soma da coluna 4 até a coluna 6.
+
+### Criando novas variáveis
+
+O dyplr possui a habilidade de criar novas variáveis (colunas) ou alterar variáveis já existentes. Estes comandos, aplicam funções que são de um tipo especial chamadas "funções vetorizadas. Elas recebem vetores como entradas e retornam vetores do mesmo tamanho como. Para maiores detalhes veja a seção [Funções Vetorizadas].
+
+#### mutate
+
+Altera ou cria uma nova variável.
+
+mutate(.data, ..., .keep = "all", .before = NULL, .after = NULL).
+
+Por exemplo, se quisermos utilizar a variável **mpg** (milhas por galão) e criar uma nova variável chamada **gpm** (galões por milha), usamos:
+
+
+```{r}
+mtcars |> 
+  mutate (gpm = 1 / mpg) |> 
+  gt()
+```
+
+
+::: callout-caution
+É importante observar que a função mutate() considera o agrupamento da tabela, caso houver. Em casos de funções de agregação e ranqueamento (ex. média, ranque, etc), os valores de mutate serão considerados a partir do agrupamento.
+:::
+
+Por exemplo, para criar uma coluna que mostra a diferença entre o consumo do veículo e o consumo médio de todos os veículos, podemos usar:
+
+
+```{r}
+mtcars |> 
+  mutate (diferenca = mpg - mean(mpg)) |> 
+  gt()
+```
+
+
+Mas se quisermos saber a diferença de consumo com a média dos veículos que possuem o mesmo número de cilindros, podemos fazer:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (diferenca = mpg - mean(mpg)) |> 
+  gt()
+```
+
+
+\*Veja também add_column(), add_count(), e add_tally().
+
+#### transmutate
+
+A função **transmutate** funciona de forma similar a função **mutate**, porém ela cria/altera uma ou mais colunas e ignora todas as demais em suas saída.
+
+#### rename
+
+Renomeia variáveis (colunas).
+
+Há também a função rename_with() para chamar uma função para renomear a coluna.
+
+A função rename(.data, ...)
+
+
+```{r}
+cars |> 
+  rename (distancia = dist) |> 
+  head () |> 
+  gt()
+```
+
+
+## Funções Vetorizadas
+
+As funções **mutate()** e **transmute()** aplicam **funções vetorizadas** em colunas para criar novas colunas.
+
+::: callout-note
+Funções vetorizadas, são chamadas também de funções de janela (**window functions**) e **recebem** **vetores** como argumento de entrada e **retornar** **vetores** de mesmo tamanho como saída.
+:::
+
+A seguir temos algumas funções vetorizadas que auxiliam na manipulação de dados e, em geral, são utilizadas com mutate() ou filter().
+
+### Deslocamento
+
+O dplyr possui funções para ajuste de deslocamento (offset). Estas funções são muito úteis para "encontrar" valores antes ou depois em relação aos valores atuais.
+
+#### lag
+
+Desloca elementos em *n* posições positivas. Usado para "encontrar o valor **anterior** em *n* posições".
+
+Supondo que precisarmos criar uma coluna contendo o consumo do veiculo que aparece na linha anterior da tabela, podemos fazer:
+
+
+```{r}
+mtcars |> 
+  mutate (mpg_anterior = lag(mpg)) |> 
+  gt()
+```
+
+
+Caso os dados não estejam ordenados,
+
+#### lead
+
+Desloca elementos em *n* posições negativas. Usado para "encontrar o valor **posterior** em *n* posições".
+
+Supondo que precisarmos criar uma coluna contendo o consumo do veiculo que aparece duas linhas posteriores da tabela, podemos fazer:
+
+
+```{r}
+mtcars |> 
+  mutate (duas_linhas_posteriores = lead(mpg, n = 2)) |> 
+  gt()
+```
+
+
+### Agregação Acumulada
+
+O dplyr possui funções de agregações acumuladas. São versões vetorizadas de all, any e mean, enquanto outras são de soma e produtos acumulados e extremos (min/max).
+
+::: callout-tip
+As funções cumall() e cumany() são muito úteis quando usadas com **filter()**, pois avaliam uma expressão retornando um **vetor lógico** a partir do valor avaliado pela expressão:
+:::
+
+#### cumall
+
+Retorna todas as observações (linhas) até que o primeiro caso da expressão a ser avaliada seja falso.
+
+No exemplo a seguir, iremos retornar todos os veículos até que encontre um veículo onde sua potência (**hp**) seja maior ou igual à **110**. Quando encontrar esta linha, todas as demais à partir dela na tabela serão ignoradas, mesmo que atendam a expressão. Ou seja, mesmo que houver um veículo com potencia 110 na última linha, nexte exemplo ela será ignorada.
+
+
+```{r}
+mtcars |> 
+  filter(cumall(hp <= 110)) |> 
+  gt()
+
+```
+
+
+Se quisermos 'varrer" a tabela até encontrarmos um veículo que tenha a potência (hp) menor que 90 e ignorar todas as linhas depois dela, podemos usar:
+
+
+```{r}
+mtcars |> 
+  filter(cumall(!hp <= 90)) |> 
+  gt()
+```
+
+
+#### cumany
+
+Retorna todas as observações (linhas) após o primeiro caso da expressão a ser avaliada seja verdadeiro.
+
+Por exemplo: Se quisermos "varrer" a tabela em busca do veículo com potência menor que 70 e obter esta e todas as demais linhas após, usamos:
+
+
+```{r}
+mtcars |> 
+  filter (cumany(hp <70)) |> 
+  gt()
+```
+
+
+#### cummean
+
+A função cummean() é similar a função cumall ou cumany, porém retorna um **vetor numérico** contento as médias do vetor de entrada.
+
+Por exemplo, se quisermos criar uma coluna com o valor da média de potência conforme "varremos" a tabela, ou seja, conforme a potência de cada veículo é listada, usamos:
+
+
+```{r}
+mtcars |> 
+  mutate (media_acumulada = cummean(hp)) |> 
+  gt()
+  
+```
+
+
+#### cummax
+
+Use para saber o valor máximo acumulado até aquela linha.
+
+Por exemplo, se agruparmos os veículos de mtcars de acordo com a coluna de número de cilindros (cyl), podemos saber qual o maior valor acumulado da coluna potência (hp) por grupo de veículos conforme "varremos" a tabela:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (cummax = cummax(hp)) |> 
+  gt()
+
+```
+
+
+#### cummin
+
+Use para saber o valor mínimo acumulado até aquela linha.
+
+Por exemplo, se agruparmos os veículos de mtcars de acordo com a coluna de número de cilindros (cyl), podemos saber qual o menor valor acumulado da coluna potência (hp) por grupo de veículos conforme "varremos" a tabela:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (cummin = cummin (hp)) |> 
+  gt()
+```
+
+
+#### cumprod
+
+Similar a cummin() ou cummax(). Use para saber o valor multiplicado acumulado até aquela linha.
+
+Por exemplo, para acumularmos a multiplicação dos pesos (wt) de cada veículo até a linha, usamos:
+
+
+```{r}
+mtcars |> 
+  mutate (cumprod = cumprod (wt)) |> 
+  gt()
+```
+
+
+#### cumsum
+
+Similar a cummin() ou cummax(). Use para saber o valor da soma acumulada até aquela linha.
+
+Por exemplo, para acumularmos a soma dos pesos (wt) de cada veículo até a linha, usamos:
+
+
+```{r}
+mtcars |> 
+  mutate (cumsum = cumsum(wt)) |> 
+  gt()
+```
+
+
+### Ranqueamento
+
+#### row_number
+
+Use para adicionar o número da linha. Como as demais funções do dplyr, ela respeita os grupos da tabela quando houver.
+
+Por exemplo, para enumerar as linhas dos veículos agrupados por número de cilindros, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (num_linha = row_number()) |> 
+  gt()
+```
+
+
+#### rank
+
+Use para criar um ranqueamento de uma variável.
+
+Por exemplo, para fazer um ranqueamento dos veículos mais leves entre grupos de mesma cilindragem, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by (cyl) |> 
+  mutate (rank = rank(wt)) |> 
+  gt()
+```
+
+
+Observe que para veículos de 8 cilindros, a segunda e última linha possuem o mesmo peso e portanto tiveram o mesmo ranqueamento (5.5).
+
+#### dense_rank
+
+Use para ajustar o ranqueamento sem pular lacunas em casos de empate.
+
+Vejo abaixo como ele se compara ao ranqueamento da função rank().
+
+
+```{r}
+mtcars |> 
+  group_by (cyl) |> 
+  mutate (rank = rank(wt), dense_rank = dense_rank(wt)) |> 
+  gt()
+```
+
+
+Observe que na segunda e última linha de 8 cilindros, empatam em 5.5 na função rank() e a posição 6 é pulada, sendo o próximo do ranqueamento o número 7. Já na função dense_rank(), o empate fica na posição 5 e o próximo na posição 6.
+
+#### percent_rank
+
+Use para retornar um número entre 0 e 1 (percentual) do ranqueamento mínimo.
+
+Veja abaixo como ela se compara com as funções rank e dense_rank:
+
+
+```{r}
+mtcars |> 
+  group_by (cyl) |> 
+  mutate (rank = rank(wt), dense_rank = dense_rank(wt), percent_rank = percent_rank(wt)) |> 
+  gt()
+```
+
+
+#### cume_dist
+
+Use para saber a distribuição acumulada de acordo com o ranqueamento atribuído.
+
+Por exemplo, se agruparmos por número de cilindros (cyl), criarmos uma coluna de ranqueamento (**rank**) e outra coluna com a distribuição, podemos saber como o ranqueamento acumulado está distribuído.
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (rank = rank(wt), cume_dist = cume_dist(wt)) |> 
+  arrange (cume_dist) |> 
+  gt()
+```
+
+
+#### ntile
+
+Use para retornar um quantil (percentil, quartil, etc) de um vetor.
+
+Por exemplo, para segregarmos os veículos em quartis (quatro partes) (0-0.25-.50-.75-1), podemos usar:
+
+
+```{r}
+mtcars |> 
+  mutate (quartil = ntile(wt, 4)) |> 
+  gt()
+```
+
+
+### Matemática
+
+#### operações e logs:
+
+São símbolos para funções matemáticas mais comuns como:
+
+**+, - , \*, /, \^, %/%, %%** - Usados para as oper. aritiméticas
+
+**log(), log2(), log10()** - Usados para logaritmos
+
+#### between
+
+Use para retornar os valores do vetor entre dois valores. É o equivalente a escrever: x \>= valor_esquerda & x \<= valor_direita.
+
+Por exemplo, se quisermos obter os veículos com o peso entre 3 a 4 mil libras, podemos usar a função **between()** juntamente com a função **filter()**.
+
+
+```{r}
+mtcars |>
+  filter (between(wt, 3, 4)) |> 
+  gt()
+```
+
+
+#### near
+
+Use para verificar se dois vetores de ponto fultuante são iguais:
+
+O exemplo abaixo, duplica a coluna de peso (wt --\> wt2) dos veículos e altera o primeiro valor de **2.620** para **2.600**, salvando em um novo data frame (*mtcars_novo*) que será usado em seguida;
+
+
+```{r}
+mtcars_novo <- mtcars |> 
+  mutate(wt2 = wt) |> 
+  mutate (wt2 = ifelse(row_number() == 1, 2.600, wt2))
+```
+
+
+Se usarmos o igual ( == ) para validar ambas colunas, devido às diferenças nas casa decimais, teríamos **FALSO**:
+
+
+```{r}
+mtcars_novo$wt == mtcars_novo$wt2
+```
+
+
+Se usarmos a função **near**, por esta ter um parâmetro de **tolerância** que iremos definiar como acima de 0.020 (0.021 por exemplo), teríamos **VERDADEIRO** para todos os items do vetor:
+
+
+```{r}
+near (mtcars_novo$wt, mtcars_novo$wt2, tol = 0.021)
+
+```
+
+
+### Miscelânea
+
+#### if_else
+
+Use para fazer um "SE" (IF) vetorizado, ou seja, elemento por elemento.
+
+Por exemplo, se quisermos saber quais veículos percorrem 1/4 de milha em menos de 20 segundos, podemos usar a coluna **qsec** com a função **if_else** para criar uma nova coluna marcando como "**MAIX VELOZ**" os veículos que percorrem com menos de 20 segundos e "**MENOS VELOZ**" os que não atendem a este critério:
+
+
+```{r}
+mtcars |> 
+  mutate (categoria_arranque = 
+            ifelse(qsec < 20, "MAIS VELOZ", "MENOS VELOZ")) |> 
+  gt() 
+```
+
+
+#### case_when
+
+Use quando quiser fazer um if_else com mais de dois casos, ou seja, ao invés de aninhá-los(nested if).
+
+Usando o mesmo exemplo da função [if_else] , porém gostaríamos de criar um terceira classificação chamada de "SUPER VELOZ" para os veículos com tempo abaixo de 16 segundos, teríamos:
+
+
+```{r}
+mtcars |> 
+  mutate (categoria_arranque = case_when(
+    qsec < 17 ~ "SUPER VELOZ",
+    qsec < 20 ~ "MAIS VELOZ", 
+    TRUE ~ "MENOS VELOZ")) |> 
+  gt()
+```
+
+
+A função **case_when**, também permite que você utilize diferentes colunas, e operações lógicas também.
+
+Por exemplo, se quisermos colocar a categoria "**INVÁLIDO**" para os veículos com 8 cilindros (cyl) **OU** consumo acima de 30 galões/milha (mpg), usamos:
+
+
+```{r}
+mtcars |> 
+  mutate (categoria_arranque = 
+            case_when(
+              cyl == 8 | mpg > 30 ~ "INVALIDO",
+              qsec < 17 ~ "SUPER VELOZ",
+              qsec < 20 ~ "MAIS VELOZ",
+              TRUE ~ "MENOS VELOZ")) |> 
+  gt()
+
+```
+
+
+#### coalesce
+
+Use para sobrescrever os valores de NA em um vetor.
+
+O exemplo abaixo, sobrescreve com zeros os valores faltantes (missing) do vetor x:
+
+
+```{r}
+x <- sample(c(1:5, NA, NA, NA))
+coalesce(x, 0L)
+
+```
+
+
+::: callout-tip
+Use **na_if()** para sobrescrever um valor específico com NA e **tidyr::replace_na()** para sobrescrever os NAs com um valor.
+:::
+
+#### na_if
+
+Use para sobrescrever um valor específico com NA.
+
+Por exemplo, se quisermos colocar NAs na coluna de consumo (mpg) para os veículos com 8 cilindros (cyl), podemos usar a na_if() juntamente com a mutate():
+
+
+```{r}
+mtcars |> 
+  mutate(mpg = na_if(cyl, 8)) |> 
+  gt()
+```
+
+
+#### pmax - max
+
+Use max() para retornar o **máximo** valor de um vetor ou pmax() para retornar o valor máximo entre elementos de vetores em paralelo.
+
+Por exemplo, se tiver um vetor dois vetores (x e y) com 5 elementos cada, a função **max()** irá retornar o maior vetor contido no vetor escolhido:
+
+
+```{r}
+x <- c(1, 2, 3, 4, 5)
+y <- c(1, 2, 10, 1, 20)
+max(x)
+max(y)
+```
+
+
+Já se usarmos o pmax(), ele irá comparar cada elemento de x com seu respectivo elemento de y e retornar o máximo valor.
+
+
+```{r}
+x <- c(1, 2, 3, 4, 5)
+y <- c(1, 1, 10, 1, 20)
+pmax(x, y)
+```
+
+
+#### pmin - min
+
+É idêntico às funções [pmax - max] (), porém ao invés de retornar o valor máximo ou o máximo do elemento em paralelo, estas funções retornam seus respectivos valores **mínimos**.
+
+## Funções de Resumo
+
+summarise() aplica funções de resumo em colunas para criar uma nova tabela. Funções de resumo **recebem** vetores como entrada e **retornam um valor único** na saída.
+
+::: callout-caution
+Estas funções retornam informações sobre o grupo ou variável corrente, portanto só funcionam dentro de um **contexto** específico como **summarise()** ou **mutate()**.
+:::
+
+### Contagem
+
+#### n
+
+Use para retornar o tamanhio do grupo corrente.
+
+Por exemplo, para contar quantos veículos temos em cada grupo de cilindors, podemos usar a summarise() com o n() depois de agrupar pela coluna de cilindors (cyl).
+
+
+```{r}
+
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(numero_veículos = n()) |> 
+  gt()
+  
+```
+
+
+#### 
+
+#### n_distinct
+
+Use para contar os valores unicos em um vetor.
+
+Por exemplo, para saber **QUANTAS** categorias de cilindros temos na tabela mtcars, podemos usar:
+
+
+```{r}
+
+mtcars |> 
+  summarise (cat_cilindros = n_distinct(cyl)) |> 
+  gt()
+```
+
+
+Se quisessemos saber **QUAIS** categoris de cilindros temos, podemos fazer usando a [distinct]:
+
+mtcars \|\> unique (cyl) \### Posição
+
+
+```{r}
+mtcars |>
+  distinct(cyl) |> 
+  gt()
+```
+
+
+#### sum
+
+Use para retornar a soma de todos os valores presentes em seu argumento.
+
+Por exemplo, para sabermos a soma dos pesos (wt) dos veículos agrupados pelo número de cilindros (cyl), podemos usar a função sum, juntamente com o summarise() e group_by().
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(soma_pesos = sum(wt)) |> 
+  gt()
+```
+
+
+Veja que se houver NA na variável (coluna), a função sum irá retornar NA. Para ignorar os NAs e fazer a soma, use o argumento na.rm = TRUE.
+
+### Posição
+
+#### mean
+
+Use para obter a média dos elementos do vetor. Por exemplo, se quisermos saber a média de peso de todos os veículos, podemos usar:
+
+
+```{r}
+mtcars |> 
+  summarise (media_peso =mean(wt)) |> 
+  gt()
+```
+
+
+#### median
+
+Use para obter a **mediana** dos elementos de um vetor. è similar à função [mean](), porém retorna a mediana ou invés da média.
+
+### Ordem
+
+#### first
+
+Use para obter o **primeiro** elemento de um vetor.
+
+Por exemplo, se quisermos obter o peso do primeiro veículo de cada grupo de cilindros, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(primeiro_veiculo_do_grupo = first(wt)) |> 
+  gt()
+```
+
+
+::: callout-tip
+Usando o parametro order_by = , podemos passar um vetor para determinar uma ordem.
+:::
+
+Por exemplo, se criarmos um agrupamento pelo numero de cilindros e criarmos um ranqueamento pelo consumo do veículo, podemos obter o peso do veículo de menor consumo usando:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  mutate (rank_peso = rank(mpg)) |> 
+  summarise(primeiro_veiculo_ordenado_pelo_cosumo = 
+      first(wt, order_by = rank_peso)) |> 
+  gt()
+```
+
+
+#### last
+
+Use para obter o **último** elemento. É similar a função [first](), porém ao invés de retornar o primeiro elemento, irá retornar o último.
+
+#### nth
+
+Use para obter o **n-ésimo** elemento. É similar a função [first](), porém ao invés de retornar o primeiro elemento, irá retornar o n-ésimo elemento.
+
+Por exemplo, se quisermos obter o peso do **segundo** veículo de cada grupo de cilindros, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(segundo_veiculo_do_grupo = nth(wt,2)) |> 
+  gt()
+```
+
+
+Use valor negativo para contar a partir do último elemento.
+
+Por exemplo, se quisermos obter o peso do **penúltimo** veículo de cada grupo de cilindros, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(penultimo_veiculo_do_grupo = nth(wt,-2)) |> 
+  gt()
+```
+
+
+### Ranqueamento
+
+#### quantile
+
+Use para obter os quantils de um vetor. Por padrão retorna os quartis (0, 0.25, .5, .75 e 1) de um vetor.
+
+Por exemplo, se quisermos saber os quartis dos pesos dos grupos de cilindors dos veículos, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(q = quantile(mpg)) |> 
+  ungroup() |> 
+  gt()
+
+```
+
+
+Usando o parâmeto probs = , podemos definir quanquer quantil.
+
+Por exemplo, se quisermos obter apenas o segundo (média) quartil e o último (valor máximo) do cosumo de grupo de cilindors dos veículos, podemos usar:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(q = quantile(mpg, probs = c(.5, 1))) |> 
+  ungroup() |> 
+  gt()
+```
+
+
+#### min
+
+Use para obter o valor **mínimo**. Similar a [quantile](x,%20probs%20=%20**0**).
+
+#### max
+
+Use para obter o valor **máximo**. Similar a [quantile](x,%20probs%20=%20**1**).
+
+### Dispersão
+
+O dyplr possuem algumas funções para avaliar o espalhamento dos dados (dispersão) em torno da média central. Estas funções vem do campo da estatística.
+
+#### var
+
+Use para calcular a variância dos dados.
+
+Por exemplo, par calcular a **variância** total dos pesos (wt) dos veículos de tabela mtcars agrupada pelo número de cilindros (cyl), podemos usa-la junto com a função summarise:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(varianca = var(wt)) |> 
+  gt()
+```
+
+
+No exemplo acima, observamos que os veículos com 6cilindros possuem seus pesos mais próximos da média que os veículos com 4 ou 8 cilindros.
+
+#### sd
+
+Use para calcular o **desvio padrão**. É similar a função [var], porém retorna o desvio padrão ao invés da variância.
+
+Usando o mesmo exemplo da função var, o código ficaria:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(desvio_padrao = sd(wt)) |> 
+  gt()
+```
+
+
+#### IQR
+
+Use para calcular a **distância inter-quartil**. É similar a função [var], porém retorna o range entre os quartis ao invés da variância.
+
+Usando o mesmo exemplo da função var, o código ficaria:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(distancia_interquartil = IQR(wt)) |> 
+  gt()
+```
+
+
+#### mad
+
+Use para calcular a **desvio absoluto da mediana**. É similar a função [var], porém o desvio absoluto da mediana ao invés da variância.
+
+Usando o mesmo exemplo da função var, o código ficaria:
+
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(Desv_absolto_mediana = mad(wt)) |> 
+  gt()
+```
+
+
+## Combinando Tabelas
+
+### Juntando Variáveis
+
+Quando você tem uma ou mais variáveis de um dataframe com o **mesmo número de observações** de outra(s) variável(eis), você pode uní-las diretamente atraveś da função **bind_cols**(), porém se o **número de observações forem diferentes**, é necessário utilizar funções de união transformadoras (mutating joins). Ver a seção [Relacionando Dados] para maiores detalhes sobre as uniões transformadoras.
+
+#### bind_cols
+
+Use para unir variáveis de mesmo número de observações.
+
+Por exemplo, no pacotes datasets, temos um dataframe (tabela), chamado **state.names,** que possui o nomes de todos os estados dos EUA. Há também o **state.abb**, que possui uma lista das abreviações dos estados americanos. Se quiser unir ambas variáveis, podemos usar:
+
+
+```{r}
+bind_cols(state.abb, state.name) |> 
+  gt()
+```
+
+
+### Relacionando Dados
+
+Quando temos **dois dataframes** (tabelas) e queremos adicionar colunas de um à outro, usamos funções chamadas de **uniões transformadoras** ("mutating joins"). Estas funções transformam um tabela, adicionando coluna(s) de outra tabela de acordo com as linhas baseado em chaves ("keys") definidas ao usar a função.
+
+**Preprarando as tabelas de Exemplo:**
+
+Para os exemplos a seguir, utilizaremos o dataframe **state.x77**, que possui 8 variáveis dos estados americanos com expectativa de vida, renda per capita, população, etc. Chamaremos esta tabela de **X**.
+
+Chamaremos de **Y,** uma tabela states.abb e state.name, que possui as abreviações e nomes dos estados americanos respectivamente. Iremos unir estas variáveis com a função bind_cols, já que elas possuem o mesmo número de observações.
+
+Porém para exemplificar casos onde a tabela Y, não possui extamente o mesmo número de observações da tabela X, iremos excluir as abreviações que começam com as letras C, M, I e V. Com isto, nossa table **Y** final, irá contar apenas **37** observações, enquanto a tabela **X** irá conter todos os **50** estados americados.
+
+Observe que ambas as tabelas (X e Y) contém ao menos uma coluna em comum (coluna "Estado"). Esta coluna será utilizada como chave (key) para fazermos as uniões.
+
+Para criar as tabelas X e Y, usaremos:
+
+
+```{r}
+X <- state.x77 |> 
+  as_tibble() |> 
+  bind_cols(state.name) |> 
+  rename("Estado" = "...9")
+gt(X)
+
+```
+
+```{r}
+Y <- bind_cols(state.abb, state.name) |> 
+  as_tibble() |> 
+  rename("Abreviacao" = "...1", "Estado" = "...2") |> 
+  filter(!str_detect(Abreviacao, "^[CMIV]"))  
+  gt(Y)
+```
+
+
+#### left_join
+
+Use para unir valores iguais de X em Y.
+
+Por exemplo, usando as tabelas **X** e **Y** preparadas no início da seção [Relacionando Dados], podemos unir a variável população (population) que está na tabela X na tabela Y.
+
+::: callout-important
+A coluna que será usada como chave (key) na união e as variáveis que você quer unir devem ser selecionadas (função **select**()). Se não houver uma seleção explícita, todas as colunas da tabela X serão unídas.
+:::
+
+
+```{r}
+left_join(Y, select(X, Estado, Population)) |> 
+  gt()
+```
+
+
+Veja que no exemplo acima, foram retornadas apenas **37** observações. Isto porque definimos como tabela "base" a tabela Y. Se fizermos o inverso, ou seja, left_join (X, Y), a saída irá conter todos os **50** registros de X e os que ele encontrar na tabela Y. Os que não forem encontrados de acordo com a chave escolhida (neste caso a coluna Estado), será preenchido com N/A. Veja exemplo abaixo:
+
+
+```{r}
+left_join(X, Y, by = "Estado") |> 
+  gt()
+```
+
+
+As colunas unidas da tabela Y, são adicionadas ao lado direito da tabela X.
+
+::: callout-note
+Se não for definido o parâmetro "**by =**", a função irá automaticamente selecionar todas as colunas com o mesmo nome para definir uma chave. Veja mais detalhes na seção [Combinando colunas para uniões].
+:::
+
+#### right_join
+
+Use para unir valores iguais de Y em X. Veja que right_join(Y, X) , é o mesmo que escrever left_join(X, Y). Veja a função [left_join]() para mais informações.
+
+#### inner_join
+
+Use para unir todos os dados de X em Y e retornar somente as linhas em comum.
+
+Por exemplo, se quisermos obter todas as linhas da tabela X (com 50 registros) unindo-as com as linhas correspondentes em Y (com 37 registros), fazemos:
+
+
+```{r}
+inner_join(X, Y) |> 
+  gt()
+```
+
+
+#### full_join
+
+Use para unir os dados de X e Y, mantendo todas as linhas e todas as variáveis.
+
+Para este exemplo, iremos incluir uma linha ([add_row]()) na tabela Y, que não possui um valores correspondente em X.
+
+
+```{r}
+Y <- add_row(Y, Abreviacao = "XX", Estado = "Estado inexistente")
+full_join(X, Y) |> 
+  gt()
+```
+
+
+Veja que no exemplo acima, temos agora 51 registros, já que uma linha adicional foi criada com o novo registro de Y que não existia em X.
+
+#### Combinando colunas para uniões
+
+Se não for definido o parâmetro "**by =**", a função irá automaticamente selecionar todas as colunas com o mesmo nome para definir uma chave.
+
+Se usarmos by = vetor, por exemplo, by = c("Estado"), estamos definindo a chave de maneira explícita. Podemos definir uma chave contendo mais que uma colunas usando c("coluna1", "coluna2"), com isto, a união será feita encontrando os valores comuns em ambas as colunas das duas tabelas.
+
+Se quisermos definir uma chave que não possui o mesmo nome nas duas tabelas, podemos ainda usar o parametro by = c("coluna de X" = "aa", "coluna de Y" = "bb").
+
+Para exemplificar este caso, vamos renomear a coluna "Estado" da tabela Y para "State" e salvarmos numa tabela Z. Depois iremos usar o parametro by = para definir esta coluna como chave e então podermos efetuar uma união (ex, left_join()).
+
+
+```{r}
+Z <- rename(Y, State = Estado)
+left_join (Z, X, by = c("State" = "Estado"))  
+gt(Z)
+```
+
+
+::: callout-tip
+Caso tenhamos colunas com o mesmo nome que não seja a chave, as uniões irão colocar automaticamento um sufixo (.x e .y). Se quiser alterar este sufixo, use o parametro suffix = (ex: suffix c("Tabela_1", "Tabela_2")).
+:::
+
+### Juntando Observações
+
+Quando tivermos linhas em tabelas diferentes para serem unidas, podemos fazê-lo usndo a função bind_rows(). Em alguns casos, desejamos filtrar linhas de uma tabela, baseada em linhas em comum de outra tabela, para estes casos, iremos usar as uniões de filtro (filtering joins).
+
+::: callout-note
+As tabelas usadas nos exemplos a seguir são as mesmas utilizadas na seção [Relacionando Dados].
+:::
+
+#### bind_rows
+
+Use para unir observações (linhas) que possuem o mesmo número de colunas.
+
+Por exemplo, usando as tabelas **X** e **Y** preparadas no início da seção [Relacionando Dados], podemos criar uma tabela Z, com mais 3 observações e uní-la na tabela Y.
+
+Tabela Z
+
+
+```{r}
+Z <- tibble(
+  Abreviacao = c("01", "02", "03"), 
+  Estado = c("Estado01", "Estado02", "Estado03"))
+gt(Z)
+```
+
+
+Agora, podemos unir as tabela Y com a tabela Z usando bind_rows():
+
+
+```{r}
+bind_rows(Y, Z) |> 
+  gt()
+```
+
+
+::: callout-important
+Observe que, se tivermos alguma coluna que não é comum entre as tabelas, esta coluna será criada automaticamente. Por exemplo:
+:::
+
+
+```{r}
+Z <- mutate (Z, Coluna_Extra = c("Valor01", "Valor02", "Valor03"))
+bind_rows(Y, Z) |> 
+  gt()
+```
+
+
+#### semi_join
+
+Use para retornar todas as linhas da tabela X que são **comuns** na tabela Y.
+
+Por exemplo, para filtrar a tabela Y com apenas os valores presentes na tabela X, usamos:
+
+
+```{r}
+semi_join(Y, X) |> 
+  gt()
+```
+
+
+#### anti_join
+
+Use para retornar todas as linhas da tabela X que são **NÃO** **comuns** na tabela Y.
+
+Por exemplo, para filtrar a tabela Y com apenas os valores NÃO presentes na tabela X, usamos:
+
+
+```{r}
+anti_join(Y, X) |> 
+  gt()
+```
+
+
+#### nest_join
+
+Use para retornar todas as linhas e colunas de X em uma nova coluna contendo todos os valores encontrados em Y.
+
+Por exemplo, para criar uma colunas na tabela Y, contendo os registros encontrados na tabela X que são comuns entre elas, ou seja, que possuem a coluna Estado com valores comuns entre elas:
+
+
+```{r}
+nest_join(Y, X, by = "Estado", name = "Dados de X") 
+```
+
+
+::: callout-tip
+Podemos usar a função tidyr::**unnest**() para desaninhar a coluna.
+:::
+
+#### Operações de Definição
+
+O pacote generics, possui também algumas funções que ajudam a identificar uniões (union), intersecções (intersect) e diferenças entre dois vetores. Esta funções podem ser úteis para obter estão operações em dois data-frames.
+
+#### intersect
+
+Use para obter a intersecção de dois conjuntos de dados.
+
+Por exemplo, se quisermos saber quais linhas estão presentes no vetor v (1,2,3,4,5) e w(2,4) , podemos fazer:
+
+
+```{r}
+v <- c(1:5)
+w <- c(2,4)
+
+intersect(v,w) 
+```
+
+
+#### setdiff
+
+Use para saber quais elementos de v NÃO estão presentes em w.
+
+
+```{r}
+v <- c(1:5)
+w <- c(2,4)
+
+setdiff(v,w)
+```
+
+
+#### union
+
+Use para fazer a união de dois conjuntos de dados.
+
+
+```{r}
+v <- c(1:5)
+w <- c(2,4,"a","b")
+union (v,w)
+```
+
+
+## Nome de Linhas
+
+Dados organizados (tidy) não usam **nomes** de linhas (que contém uma variável fora das colunas). Para trabalhar com este nomes, mova para uma coluna.
+
+Por exemplo, quando usamos a função **head**() para obter as primeiras linhas da tabela mtcars, obtemos a seguinte resposta:
+
+
+```{r}
+mtcars |> 
+  head()
+```
+
+
+Observe que na lista acima, o nome de cada veículo aparece na saída.
+
+Porém, se pedirmos para mostrar os nomes as variáveis da table usando a função **names**(), não há nenhuma coluna que comporta o nome dos veículos.
+
+Isto acontece porque o nomes dos veículos está associado ao nomes das linhas e não a coluna.
+
+#### rownames_to_column
+
+Se quisermos mover os nomes das linha para uma coluna, usamos a função rownames_to_column do pacote tibble:
+
+
+```{r}
+tibble::rownames_to_column(mtcars, var = "Nomes_Veiculos") |> 
+  gt()
+```
+
+
+#### column_to_rownames
+
+Use para nomear as linhas de acordo com uma variável já existente. Digamos que esta função faz o oposto da rownames_to_column, pois ao invés de pegar os nomes das linhas e colocar em uma variável, ela pega uma variável e a transforma em nomes para as linha.
+

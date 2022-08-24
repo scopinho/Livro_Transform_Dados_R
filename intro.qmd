@@ -1,9 +1,33 @@
-# Introduction
+---
+lang: pt
+---
 
-This is a book created from markdown and executable code.
+# Introdução
 
-See @knuth84 for additional discussion of literate programming.
+Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamada **tidyverse**. Ele é uma espécie de "super pacote" para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.
+
+Para saber mais sobre este pacote, acesse:
+
+[https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos, iremos carregar os seguintes pacotes:
+
+-   **tidyverse**
+
+-   **gt**
 
 ```{r}
-1 + 1
+#| echo: true
+library (tidyverse)
+library (gt)
 ```
+
+### Folhas de Referências
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://www.rstudio.com/resources/cheatsheets/) dos pacotes (cheatsheets) disponível no site do [RStudio](rstudio.com).

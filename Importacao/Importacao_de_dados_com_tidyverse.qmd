@@ -1,0 +1,626 @@
+---
+title: "Importação de Dados com TIDYVERSE"
+format: html
+toc: true
+toc-location: right
+toc-depth: 4
+editor: visual
+lang: pt
+execute: 
+  warning: false
+---
+
+# Introdução
+
+A seguir temos vários exemplos de importação de dados utilizando o pacote TIDYVERSE do R. O pacote tidyverse possui vários pacotes de importação de dados, aqui iremos cobrir três deles (readr, readxl e googlesheets4). Para saber mais sobre estes pacotes, acesse:
+
+[https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}.
+
+[https://cran.r-project.org/package=readr](https://cran.r-project.org/package=tidyr){.uri}.
+
+[https://cran.r-project.org/package=readxl](https://cran.r-project.org/package=tidyr){.uri}.
+
+[https://cran.r-project.org/package=googlesheets4](https://cran.r-project.org/package=tidyr){.uri}.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Caso você precise trabalhar com outras formatos de arquivos que não sejam os vistos neste documento, pode buscar maiores informações sobre os pacotes a seguir:
+
+| Pacote              | Formato                    |
+|---------------------|----------------------------|
+| haven               | Arquivos SPSS, Stata e SAS |
+| DBI                 | Bancos de Dados            |
+| jsonlite            | JSON                       |
+| xml2                | XML                        |
+| httr                | Web APIs                   |
+| rvest               | HTML (Web scraping)        |
+| readr::read_lines() | dados texto                |
+
+Para os exemplos, iremos carregar os seguintes pacotes:
+
+-   **tidyverse**
+
+-   **readxl**
+
+-   **googlesheets4**
+
+-   **gt**
+
+-   **openxlsx**
+
+```{r}
+#| echo: true
+library (tidyverse)
+library (readxl)
+library (googlesheets4)
+library (gt)
+library (openxlsx)
+```
+
+### Exemplos da Folha de Referência
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf) de importação de dados com tidyverse disponível no site do [RStudio](rstudio.com).
+
+::: callout-note
+*Em geral, ao final de cada comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+:::
+
+### Arquivos
+
+Para a maioria dos exemplos utilizaremos os seguintes arquivos de dados:
+
+Alguns desses arquivos são baseados nas tabelas **mtcars, storms** e **starwars** provenientes do pacote **datasets e dplyr e** também algumas tabelas (**Table1**, **2, 3, 4a, 4b e 5**) que vem com o pacote **tidyr**.
+
+------------------------------------------------------------------------
+
+**ARQUIVOS TABULADOS: (TXT, CSV, TSV e FWF)**:
+
+Iremos criar os arquivos tabulados para que possamos usá-los posteriormente. Para isso, execute o código abaixo:
+
+```{r}
+write_file("A|B|C\n1|2|3\n4|5|NA", file = "file.txt")
+write_file("A,B,C\n1,2,3\n4,5,NA", file = "file.csv")
+write_file("A;B;C\n1,5;2;3\n4,5;5;NA", file = "file2.csv")
+write_file("A\tB\tC\n1\t2\t3\n4\t5\tNA\n", file = "file.tsv")
+```
+
+------------------------------------------------------------------------
+
+**EXCEL_FILE.XLSX**:
+
+A seguir, você tem um link para o arquivo Excel utilizado nos exemplos.
+
+É um arquivo com três planilhas (S1, S2 e S3) e em cada uma delas um pequeno conjunto de dados.
+
+![](images/excel-workbooks.png)
+
+E a primeira planilha (S1) possui algo como:
+
+![](images/excel-worksheet.png)
+
+------------------------------------------------------------------------
+
+**GOOGLE_SHEET**: TBD
+
+------------------------------------------------------------------------
+
+# READR
+
+O pacote readr possui diversas funções para ler dados tabulados (ex: .csv, .tsv, .txt, etc). Estas funções começam com read\_\*().
+
+**read\_\*** *(file, col_names = TRUE, col_types = NULL, col_select = NULL, id = NULL, locale, n_max = Inf, skip = 0, na = c("","NA"), guess_max = min(1000, n_max), show_col_types = TRUE)*
+
+Os parametros acima, são comuns à estas funções. Veja a seguir algumas delas. Digite **?read_delim** para obter maiores detalhes de como utilzá-las.
+
+## Ler dados tabulados com readr
+
+#### read_delim
+
+Use para ler um arquivo tabulado com qualquer delimitador. Se nenhum delimitador é especificado, a função tentará advinhar automaticamente.
+
+Por exemplo, para ler um arquivo .TXT tabulado com o caractere "\|" como delimitador, fazemos:
+
+```{r}
+read_delim("file.txt", delim = "|") |> 
+  gt()
+```
+
+::: callout-tip
+Para armazenar a leitura do arquivo em um objeto no R, podemos usar o operador \<-.
+:::
+
+```{r}
+meu_arquivo_csv <-read_delim("file.txt", delim = "|")
+gt(meu_arquivo_csv)
+```
+
+#### read_cvs
+
+Use para ler um arquivo tabulado **separado por vírgula**. Esta função entende que casas decimais que usam o **ponto** (ex 1.00) como separador de **casas decimais**.
+
+```{r}
+read_csv("file.csv") |> 
+  gt()
+```
+
+#### read_cvs2
+
+Use para ler um arquivo tabulado **separado por ponto-e-vírgula**. Esta função entende que casas decimais que usam a **vírgula** (ex: 1,00) como separador de **casas decimais**.
+
+```{r}
+read_csv2("file2.csv") |> 
+  gt()
+```
+
+#### read_tsv
+
+Use para ler um arquivo tabulado **separado por tab**.
+
+```{r}
+read_tsv("file.tsv") |> 
+  gt()
+```
+
+#### read_fwf
+
+Use para ler um arquivo tabulado **com tamanhos fixos de colunas**.
+
+::: callout-note
+Veja que a largura das colunas deve ser passada como um vetor para a parametro col_positions = usando a função fwf_width().
+:::
+
+```{r}
+read_fwf("file.tsv", fwf_widths(c(2,2,NA))) |> 
+  gt()
+```
+
+### Parâmetros Úteis
+
+Alguns parametros das funções read\_\*() são muito úteis durante o processo de leitura pois permitem controlar melhor o que iremos obter como resultado da leitura.
+
+#### Sem cabeçalho
+
+Use o parâmetro **COL_NAMES** para não trazer a primeira linha como nome das colunas.
+
+```{r}
+read_csv2("file2.csv", col_names = FALSE) |> 
+  gt()
+```
+
+#### Definir cabeçalho
+
+Use o parâmetro **COL_NAMES** para definir manualmente os nomes das colunas.
+
+```{r}
+read_csv("file.csv", col_names = c("X", "Y", "Z")) |> 
+  gt()
+```
+
+#### Ler vários arquivos
+
+Use o parametro **ID** para ler multiplos arquivos e armazená-los em uma mesma tabela.
+
+```{r}
+write_file("A,B,C\n1,2,3\n4,5,NA", file = "f1.csv")
+write_file("A,B,C\n6,7,8\n9,10,11", file = "f2.csv")
+read_csv(c("f1.csv", "f2.csv"), id = "arq_origem") |> 
+  gt()
+
+```
+
+::: callout-important
+Observe que as colunas dos diversos arquivos devem corresponder, ou seja, ter o mesmo nome de colunas.
+:::
+
+#### Pular linhas
+
+Use o prâmetro SKIP para pular as primeiras n linhas.
+
+```{r}
+read_csv("file.csv", skip = 1) |> 
+  gt()
+```
+
+#### Ler um número máximo de linhas
+
+Use o prâmetro **N_MAX** para ler um número máximo de linhas.
+
+```{r}
+read_csv("file.csv", n_max = 1) |> 
+  gt()
+```
+
+#### Ler valores como NA
+
+Use o prâmetro **NA** para definir um ou mais valores como NA.
+
+```{r}
+read_csv("file.csv", na = c("1")) |> 
+  gt()
+```
+
+#### Especificar caractere decimal
+
+Use o prâmetro **LOCALE** para definir o caractere de casa decimais.
+
+```{r}
+read_delim("file2.csv", locale = locale(decimal_mark = ",")) |> 
+  gt()
+```
+
+## Salvar dados com readr
+
+Similar às funções descritas na seção "[Ler dados tabulados com readr]" usadas para ler os aqruivos de texto tabulados, temos o conjunto de funções **write\_\***() para gravar os arquivos correspondentes. Estas funções seguem o seguinte padrão:
+
+write\_\*(x, file, na = "NA", append, col_names, quote, escape, eol, num_threads, progress)
+
+As principais funções são:
+
+#### write_delim
+
+Use para gravar um arquivo delimitado por algum caractere específico. O parametro delim= permite definir este caractere. O caracteres padrão é o espaço (" ").
+
+Por exemplo, se quisermos gravar uma tabela (tibble) em um arquivo .txt delimitado por ponto-e-vírgula";", podemos usar:
+
+```{r}
+conteudo <- tribble(~col_A, ~col_B,
+                   1, "A",
+                   2, "B", 
+                   3, "C")
+write_delim(conteudo, file = "arquivo_exemplo1.txt", delim=";")
+```
+
+#### write_csv
+
+Use para gravar uma tabela em uma arquivo delimitado por "vírgula".
+
+::: callout-tip
+Podemos usar o arqumento **na =** para definirmos qual valor será usando para os valore ausentes, por padrão é utilizado "NA". No exemplo a seguir, iremos trocar por "NULL".
+:::
+
+```{r}
+conteudo <- tribble(~col_A, ~col_B,
+                   1, "A",
+                   2, "B", 
+                   3, NA,
+                   4, "D")
+write_csv(conteudo, file = "arquivo_exemplo2.csv", na = "NULL")
+```
+
+#### write_csv2
+
+Use para gravar uma tabela em um arquivo delimitado por "ponto-e-vírgula".
+
+::: callout-tip
+Pode usar o parametro "**col_names =**" para incluir ou não os nomes das colunas no arquivo de saída. No exemplo a seguir, não iremos incluir os nomes das colunas:
+:::
+
+```{r}
+conteudo <- tribble(~col_A, ~col_B,
+                   1, "A",
+                   2, "B", 
+                   3, "C")
+write_csv2(conteudo, file = "arquivo_exemplo3.csv", col_names = FALSE)
+```
+
+#### write_tsv
+
+Use para gravar uma tabela em um arquivo delimitado por "TAB":
+
+```{r}
+conteudo <- tribble(~col_A, ~col_B,
+                   1, "A",
+                   2, "B", 
+                   3, "C")
+write_tsv(conteudo, file = "arquivo_exemplo4.tsv")
+```
+
+## Especificação de colunas com readr
+
+Ao importar um arquivo com readr, podemos definir qual o tipo de coluna que determinado dado será importado. Por padrão, o readr irá gerar a especificação de cada coluna quando o arquivo form lido e gerará um resumo na saída.
+
+Podemos usar o argumento **spec()** para extrair as especificações das colunas de um arquivo importato para um data frame.
+
+Por exemplo:
+
+```{r}
+arq <- read_csv2("file2.csv") 
+spec(arq)
+```
+
+Observe que as colunas "A", "B" e "C" são do formato **double**.
+
+Há também uma mensagem de resumo ao importar um arquivo. Observe que ele informa o delimitador utilzado, mas também a especificação das colunas, neste caso, tipo double (**dbl**) para as colunas **A**, **B** e **C** conforme confirmamos com a função **spec()**.
+
+------------------------------------------------------------------------
+
+*ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control. Rows: 2 Columns: 3── Column specification ────────────────────────────────────────────────────────────────── Delimiter: ";" dbl (3): A, B, C ℹ Use `spec()` to retrieve the full column specification for this data. ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message. \# READXL*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+Se quisermos omitir as especificações das colunas da mensagem de saída, usamos o parametro **show_col_types** = FALSE
+:::
+
+#### **col_types**
+
+Se utilizarmos o parametro **col_types =** podemos definir, por exemplo, a coluna "B" como inteiro (integer). Veja:
+
+```{r}
+arq <- read_csv2("file2.csv", col_types = "did") 
+spec(arq)
+```
+
+Há uma letra definida para cada tipo de coluna que quisermos especificar, veja a lista abaixo:
+
+*• col_logical() - "l"*
+
+*• col_integer() - "i"*
+
+*• col_double() - "d"*
+
+*• col_number() - "n"*
+
+*• col_character() - "c"*
+
+*• col_factor(levels, ordered = FALSE) - "f"*
+
+*• col_datetime(format = "") -"T"*
+
+*• col_date(format = "") -"D"*
+
+*• col_time(format = "") -"t"*
+
+*• col_skip() - "-", "\_"*
+
+*• col_guess() - "?"*
+
+Por isso, usamos string **"did"** para definir um **double**, um **inteiro** e outro **double** para as colunas que importamos.
+
+Podemos também passar a especificação das colunas como uma lista mesclando as funções e os caracteres correspondentes na lista acima.
+
+Por exemplo:
+
+```{r}
+arq <- read_csv2("file2.csv", 
+          col_types = list(A = col_double(), B = "i", C= "d")
+          )
+spec(arq)
+```
+
+::: callout-tip
+Use "**.default =**" na lista de especificações para definir o tipo padrão para as colunas, caso as mesmas não sejam explicitamente definidas.
+:::
+
+#### col_select
+
+Para selecionarmos apenas algumas colunas para importar do arquivo, utilzamos o parametro **col_select** = passanto um vetor com o nomes das colunas.
+
+Por exemplo, para importar apenas as colunas "A" e "C", podemos fazer:
+
+```{r}
+read_csv("file.csv", col_select = c("A", "C"))
+```
+
+#### guess_max
+
+Para definirmos o número máximo de linhas do arquivo para advinhar o tipo da coluna (guess), utilizamos o parametro **guess_max** =. O padrão são as primeiras 1000 linhas.
+
+```{r}
+read_csv("file.csv",guess_max = 2)
+```
+
+### READXL
+
+Para lermos arquivos do Microsoft Excel, podemos usar o pacote **readxl**.
+
+## Ler arquivos do Excel
+
+Apesar do pacote readxl ser instalado quando instalamos o pacote tidyverse, ele não é carregado quando carregamos o tidyverse. É por isso, que tivemos o código "library (readxl) na seção [Introdução]
+
+#### read_excel
+
+Use para ler um arquivo do Excel (.xls ou .xlsx) baseado na extensão do arquivo.
+
+Se preferir, pode utilizar as funções read_xls() e read_xlsx() para ler um arquivo com .xls ou .xlsx independente da extensão do arquivo.
+
+```{r}
+read_excel("excel_file.xlsx")
+```
+
+## Ler planilhas
+
+Sabemos que um arquivo Excel (*workbook*), pode conter uma ou mais planilhas (*worksheets*). Para definirmos as planilhas que precisamos importar, podemos utilizar o parametros **sheet =** da função read_excel(). Podemos passar uma string com o nome a planilha (ex: "S1") ou um índice númerico pela ordem de criação da planilha (ex: 1). Se nada for especificado, padrão é trazer a primeira planilha.
+
+```{r}
+read_excel("excel_file.xlsx", sheet = "S1")
+```
+
+Para obter os nomes das planilhas presentes no arquivo, utilizamos a função **excel_sheets**()
+
+```{r}
+excel_sheets("excel_file.xlsx")
+```
+
+::: callout-tip
+Para lermos **múltiplas planilhas** podemos obter os nomes das planilhas usando a função excel_sheets(), pois definimos os nomes do vetor iguais aos nomes das planilhas e finalmente utilizamos a função purrr::map_dfr() para importar os arquivos no data frame.
+:::
+
+```{r}
+arq <- "excel_file.xlsx"
+arq |> 
+  excel_sheets() |> 
+  set_names() |> 
+  map_dfr(read_excel, path = arq)
+```
+
+## Especificação de colunas
+
+Para especificar os tipos das colunas no data frame após a importação do arquivo, usamos o parametro col_types =, similar ao que fizemos para arquivos tabulados na seção [Especificação de colunas com readr].
+
+Os tipos de colunas podemos ser:
+
+**"skip", "guess", "logical", "numeric", "date", "text" ou "list".**
+
+::: callout-tip
+Use uma coluna de lista (list-column) descrita no pacote **tidyr** para trabalhar com colunas com vários tipos.
+:::
+
+## Outros pacotes
+
+Além do pacote readxl, há outros pacotes muito úteis para criar arquivos do MS Excel, tais como:
+
+-   **openxlsx**
+
+-   **writexl**
+
+Para trabalhar com dados do Excel de forma não tabular, veja o pacote:
+
+-   **tidyxl**
+
+## Especificação de celulas
+
+Use os argumentos **range =** para a função read_excel() ou googlesheets4::read_sheet() no caso de planilhas do Google para ler um subconjunto de células de uma planilha.
+
+Por exemplo, se quiser ler **apenas o range** de células de "**A1**" até "**B3**" da planilha "S2" do arquivo excel de exemplo, por fazer:
+
+```{r}
+read_excel("excel_file.xlsx", range = "S2!A1:B3")
+```
+
+O parametro range = , possui alguns argumentos que ajudam a melhor definir o range a ser importado. Veja ?\`cell-specification\` para maiores detalhes de como **cell_cols**(), **cell_rows**(), **cell_limits**() e **anchored**(). Por exemplo, usando cell_cols, podemos definir que iremos importar apenas as celulas que das colunas "B" até "D":
+
+```{r}
+read_excel("excel_file.xlsx", sheet = "S1", 
+          range = cell_cols("B:D"))
+```
+
+# GOOGLESHEETS4
+
+## Ler planilhas
+
+#### read_sheet
+
+Use para ler **planilhas do Google** a partir de uma **URL**, um IDde planilha ou um objeto do tipo "**dribble**" que é retornado pelo pacote googledrive. Esta função é um "apelido" para a função **range_read**() que é mais utilizada no contexto do pacote googlesheets4.
+
+Diversos argumtos vistos para as funções read\_\* são aplicadas aqui também, como col_types = , sheet =, range = , guess_max = . Veja mais detalhes na seção do **readr** descrita anteriormente.
+
+No exemplo a seguir iremos ler uma planilha do Google de exemplo. Para isso, recebemos o seguinte URL. Veja que a partes em negrito corresponde ao I**D do arquivo** e o **ID da planilha** respectivamente:
+
+[*https://docs.google.com/spreadsheets/d/**1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8/**edit#gid=**0***](https://docs.google.com/spreadsheets/d/1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8/edit#gid=0)
+
+Usamos então a função read_sheet():
+
+```{r}
+googlesheets4::read_sheet("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8", sheet = "Sheet1")
+```
+
+::: callout-caution
+A primeira vez que executar este comendo, haverá um processo de autenticação da sua conta do Google e seeão do R. Reponda "**Yes**" para a pergunta "**Is it OK to cache OAuth access credentials in the folder \~/.cache/gargle between R sessions?**"
+
+1: Yes
+
+2: No
+
+Depois o navegador será aberto solicitando o acesso aos arquivo do Google. Selecoine o checkbox e click em "Continue".
+:::
+
+## Metadados das planilhas
+
+#### gs4_gets
+
+Use para obter os metadados do arquivo:
+
+```{r}
+gs4_get("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8")
+```
+
+#### gs4_find
+
+Use para localizar suas planilhas do Google no drive. Ela retorna um objeto dibble, que é um "tibble" com uma linha por arquivo. E informa o ID dos arquivos.
+
+```{r}
+my_dribble <- gs4_find(pattern = "tydiverse_sample")
+my_dribble
+```
+
+sheet_properties
+
+Use para obter uma tabela (tibble) com as propriedades de cada planilha.
+
+```{r}
+sheet_properties("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8")
+```
+
+::: callout-tip
+Você pode usar a função **sheet_names**() para obter os nomes da planilha dentro do arquivo.
+:::
+
+## Gravar planilhar
+
+O pacote googlesheets4 tem várias maneiras de gravar dados em uma planilha.
+
+#### **write_sheet**
+
+Use esta função para salvar um data frame em uma planilha no arquivo do Google Sheets. Se a planilha não existir, ele cria uma planilha co mum nome aleatório através da função gs4_create().
+
+```{r}
+df <- tribble(~x, ~y,
+              1, "A",
+              2, "B",
+              3, "C")
+write_sheet(df, "1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8")
+read_sheet("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8", sheet = "df")
+
+```
+
+#### **gs4_create**
+
+Use para criar uma nova planilha do Google. Você pode fornecer o nome, mas caso não o faça o Google irá atribuir um nome aleatorio ao seu arquivo.
+
+```{r}
+minha_planilha <- gs4_create(name = "meu_novo_arquivo_google_sheet", sheets = "Sheet1")
+sheet_properties(minha_planilha)
+```
+
+## Especificação de colunas
+
+Para especificar os tipos das colunas no data frame após a importação da planilha do Google, usamos o parametro **col_types =** como argumento da função **read_sheet/range_read()**, similar ao que fizemos para arquivos tabulados na seção [Especificação de colunas com readr].
+
+Os tipos de colunas aceitos são:
+
+• skip - "\_" ou "-"
+
+• guess - "?"
+
+• logical - "l"
+
+• integer - "i"
+
+• double - "d"
+
+• numeric - "n"
+
+• date - "D"
+
+• datetime - "T"
+
+• character - "c"
+
+• list-column - "L"
+
+• cell - "C" Retorna uma lista bruta dos dados das células.
+
+## Especificação de celulas {#especificação-de-celulas-1}
+
+Ver seção [Especificação de celulas](#especificação-de-celulas-1)
+
+## Operadores de arquivos
+
+O pacote googlesheets4 oferece várias forma de manipular os aspectos da planilha como congelar linhas, definir largura das colunas, etc. Acesse [googlesheets4.tydeverse.org](googlesheets4.tydeverse.org) para mais informações.
+
+Para operções de arquivos (ex: renomear, compartilhar, mover para outra pasta, etc), veja o pacote googledrive no link: [googledrive.tidyverse.org](googledrive.tidyverse.org).

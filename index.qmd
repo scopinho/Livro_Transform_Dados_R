@@ -1,9 +1,21 @@
-# Preface {.unnumbered}
+---
+lang: pt
+---
 
-This is a Quarto book.
+# Prefacio {.unnumbered}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Este livro contém uma série de informações sobre transformação e manipulação de dados utilziando a linguagem R, mais especificamente o pacote tidyverse.
 
-```{r}
-1 + 1
-```
+Ele é indicado para pessoas que já possuem conhecimento básico da linguagem de programação R.
+
+**Os temas abordados neste livro são:**
+
+-   [Importação de Dados com tidyverse](./Importacao/Importacao_de_dados_com_tidyverse.html): Documentação sobre **importação de dados** com o pacote **tidyverse (readr, readxl and googlesheets4),** baseada na folha de resumo ([data-import cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf)).
+
+-   [Organização de Dados com tidyr](./Organizacao/Organizacao_de_dados_com_tidyr.html): Documentação sobre **organização de dados** com o pacote **tidyr** baseada na folha de resumo ([tidyr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf)).
+
+-   [Transformação de dados com dplyr](./Transformacao/Transformacao_de_dados_com_dplyr.html) : Documentação sobre **transformação de dados** com o pacote **dplyr** baseada na folha de resumo ([dyplr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf))
+
+-   [Manipulação de strings com stringr](./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html): Documentação sobre **manipulação de strings** com o pacote **stringr** baseada na folha de resumo ([stringr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf)). Há um bom conteúdo sobre expressões regulares (**regex**)
+
+-   [Datas e horas com lubridate](./DataHora/Datas_e_horas_com_lubridate.html): Documentação sobre formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate,** baseada na folha de resumo ([lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf)).

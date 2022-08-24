@@ -1,0 +1,810 @@
+---
+title: "Datas e horas com LUBRIDATE"
+format: html
+toc: true
+toc-depth: 4
+editor: visual
+lang: pt
+execute: 
+  warning: false
+---
+
+## Introdução
+
+A seguir temos vários exemplos de manipulação de **variáveis** **data e hora** utilizando o pacote LUBRIDATE do R. Para saber mais sobre este pacote, acesse:
+
+<https://cran.r-project.org/package=lubridate>.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos, iremos carregar os seguintes pacotes:
+
+-   **tidyverse**
+
+-   **gt**
+
+-   **lubridate**
+
+```{r}
+#| echo: true
+library (tidyverse)
+library (gt)
+library (lubridate)
+```
+
+## Tipos de objetos de data e hora
+
+#### Datetime
+
+Uma variável do tipo "**datetime**" (*data e hora*) representa um ponto na linha do tempo armazenado em um número que representa o número de **segundos** desde **01-01-1970 00:00:00 (UTC)**.
+
+::: callout-note
+Universal Time Coordinated (**UTC**), é uma escala coordenada de tempo, mantida pelo "Bureau International des Poids et Mesures (BIPM)". Até 1972, era chamado de (**GTM** ou *Greenwich Mean Time*). É também conhecida como "Z time" ou "Zulu Time".
+:::
+
+#### Date
+
+Quando nos referimos à uma variável "**date**"(*data*), significa que ela armazena um número inteiro que representa o número de **dias** **desde 01-01-1970.**
+
+#### **Time**
+
+Quando nos referimos à uma variável "**time**" (tempo em segundos), ela armazena um número inteiro que representa o número de **segundos** **desde às** **00:00:00** (hms).
+
+Para os vários exemplos a seguir, utilizaremos os seguintes objetos data e hora:
+
+```{r}
+dt <-  as_datetime(1511870400)
+d <- as_date(17498)
+t <-hms::as_hms(85)
+dt; d; t
+```
+
+::: callout-tip
+Os objetos gerados pela maioria das funções do lubridate usam os padrões POSIXct, POSIXlt, Date, Period ou objetos que podem ser convertidos para o POSIXlt. Para maiores informações sobre estas classes, digite:
+
+?DateTimeClasses
+
+POSIXct: armazena segundos desde 01-01-1970 00:00:00 (Unix epoch) POSIXlt: armazena uma lista de dia, mês, ano, hora, min, segundos, etc.
+:::
+
+### Exemplos da Folha de Referência
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf) do lubridate disponível no site do [RStudio](rstudio.com).
+
+------------------------------------------------------------------------
+
+::: callout-note
+*Em geral, ao final de cada comando, as vezes você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+
+Em alguns casos usaremos funções de manipulação de dados do pacote **dplyr,** como **mutate** () ou **count**()**.**
+:::
+
+::: callout-note
+*O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
+:::
+
+## Validando Data e Hora
+
+O pacote lubridate possui uma série de funções para obter e definir os elementos de ano, mês, dia, hora, minuto e segundos de um objeto data e hora.
+
+Use as funções a seguir servem para identificar estes elementos em seus dados a partir de uma string. Cada uma delas aceita o argumento "tz" para definir o fuso-horário (*timezone*), se este não for definido, UTC é utilizado.
+
+Estas funções são nomeadas conforme a tabela abaixo e sua ordem obedece tal nomenclatura:
+
+| Elemento | Letra                |
+|----------|----------------------|
+| y        | ano (*year*)         |
+| m        | mês (*month*)        |
+| d        | dia (*day*)          |
+| h        | hora (*hour*)        |
+| m        | minuto (*minute*)    |
+| s        | segundos (*seconds*) |
+
+Por exemplo, para criar um objeto **datetime** passando a string "**2017-11-28T14:02:00**", utilzamos a função **ymd_hms**(). Isto porque ao montar a string de data e hora, colocamos como ordem o ano, mês, dia, hora, minuto e segundo.
+
+```{r}
+ymd_hms("2017-11-28T14:02:00")
+```
+
+Se passarmos a string trocando o ano pela dia, devemos usar a função dmy_hms():
+
+```{r}
+dmy_hms("28-11-2017T14:02:00")
+```
+
+::: callout-note
+Veja que tanto a função ymd_hms() quanto a dmy_hms(), geraram o mesmo objeto datetime. Se quisermos obter o valor inteiro que representa este objeto desde 01-01-1970 00:00:00, podemos usar a função **decimal_date**()
+:::
+
+Veja o código abaixo com mais alguns exemplos das funções validando os elementos da string passada para a função:
+
+```{r}
+# ymd_hms(), ymd_hm(), ymd_h().
+ymd_hms("2017-11-28T14:02:00") |> print()
+
+# ydm_hms(), ydm_hm(), ydm_h().
+ydm_hms("2017-22-12 10:00:00") |>  print()
+
+# mdy_hms(), mdy_hm(), mdy_h(). 
+mdy_hms("11/28/2017 1:02:03") |>  print()
+
+# dmy_hms(), dmy_hm(), dmy_h().
+dmy_hms("1 Jan 2017 23:59:59")|>  print()
+
+# ymd(), ydm(). 
+ymd(20170131)|>  print()
+
+# mdy(), myd(). 
+mdy("July 4th, 2000")|>  print()
+
+# dmy(), dym(). 
+dmy("4th of July '99")|>  print()
+
+# yq() Q para quartil. 
+yq("2001: Q3")|>  print()
+
+# my(), ym(). 
+my("07-2020")|>  print()
+
+#hms::hms() ou lubridate::hms(), ms() ou hm() para períodos.
+hms::hms(sec = 0, min = 1, hours = 2)
+```
+
+### Outras funções úteis
+
+#### date_decimal
+
+Use para converter um número decimala para data e hora:
+
+```{r}
+date_decimal(2017.5)
+```
+
+#### now
+
+Use para obter um objeto data e hora do instante:
+
+```{r}
+now(tzone = "America/Sao_Paulo")
+```
+
+::: callout-important
+Se o fuso-horário (tzone =) não for informado, a função utilizará aquele utilzado pelo sitema operacional em execução.
+:::
+
+#### today
+
+Use para obter a data atual.
+
+```{r}
+today()
+```
+
+#### fast_strptime
+
+Use para converter vetores de caracteres para objetos data e hora (POSIXlt) de forma rápida.
+
+```{r}
+fast_strptime('9/1/01', '%y/%m/%d')
+```
+
+#### parse_date_time
+
+Use para converter vetores de caracteres para objetos data e hora (POSIXct) de forma mais simplificada.
+
+```{r}
+parse_date_time("19/1/1", "ymd")
+```
+
+## Obtendo e Definindo Componentes de Data e Hora
+
+Use as funções abaixo para obter um componente de um objeto data e hora.
+
+```{r}
+
+# Obter o "DIA" de um objeto "datetime"
+day(dt)
+
+# Obter a "DATA"
+date(dt)
+
+# Obter a "ANO".
+# Para obter o "ANO ISO 8610 use isoyear()
+# Para obter o "ANO Epidemiológico use epiyear()
+year(dt)
+
+# Obter o "MÊS". 
+# Use argumentos label= e addr= para obter o nome ou abreviação do mês.
+month(dt)
+
+# Obter o "DIA DA SEMANA".
+# Use argumentos label= e addr= para obter o nome ou abreviação do dia.
+wday(dt, label = TRUE) 
+
+# Obter o "DIA DO TRIMESTRE".
+qday(dt) 
+
+
+# Obter a HORA". 
+hour(dt)
+
+# Obter os "MINUTOS". 
+minute(dt)
+
+# Obter os "SEGUNDOS". 
+second(dt)
+
+# Obter o "FUSO-HORÁRIO. 
+tz(dt)
+
+# Obter a "SEMANA DO ANO". 
+week(dt)
+# ara obter a "SEMANA DO ANO" ISO 8160 use isoyear()
+# Para obter a "SEMANA DO ANO" Epidemiológico use epiyear()
+
+# Obter o "TRIMESTRE". 
+quarter(dt)
+
+# Obter o "SEMESTRE". 
+semester(dt)
+
+# Saber se é "MANHÃ (am). 
+am(dt)
+# Saber se é "TARDE" (pm).
+pm(dt)
+
+# Saber se é "HORÁRIO DE VERÃO" 
+dst(d)
+
+# Saber se é "ANO BISEXTO"
+leap_year(d)
+
+```
+
+Para definir um componente de um objeto, podemos utilzar as funções acima, porém com o sinal de atribuição.
+
+Por exemplo, para alterar o dia de "28" do objeto "d", para dia "1", podemos fazer:
+
+```{r}
+day(d) |>  print() 
+day(d) <- 1
+print(d) 
+```
+
+Podemos também atualizar um componente do objeto data e hora:
+
+```{r}
+# Atualizar um componente do objeto
+update(dt, mday = 2, hour = 1)
+
+```
+
+O exemplo acima, altera o dia do mês para 2 e a hora para 01.
+
+## Arredondando Data e Hora
+
+Use as funções a seguir para "arredondar" ou aproximar um objeto data e hora para unidades de ajuste. As unidades válidas são:
+
+-   *second, minute, hour, day, week, month, bimonth, quarter, season, halfyear e year.*
+
+#### floor_date
+
+Use para "**arredondar para baixo**" a data e hora para a unidade mais próxima.
+
+Por exemplo, digamos que temos um objeto data = "2017-11-28" e queremos arredondar para baixo, sendo que a unidade é mês, ou seja, arredondar para o início do mês:
+
+```{r}
+floor_date(dt, unit="month")
+```
+
+round_date
+
+Use para "**arredondar**" a data para a unidade mais próxima.
+
+```{r}
+round_date(dt, unit="month")
+```
+
+Veja que no exemplo acima, como tínhamos dia 28/11 e pedimos para arredondar na unidade "month", ele arredondou para o mês 01/12.
+
+Se o dia fosse 14/11, a função arredondaria para 01/11.
+
+#### ceiling_date
+
+Use para "**arredondar para cima**" a data e hora para a unidade mais próxima.
+
+```{r}
+ceiling_date(dt, unit="month")
+```
+
+## Imprimindo data e hora
+
+Em alguns casos, desejamos imprimir um objeto data e hora de uma maneira específica e/ou mais amigável. O pacote lubridate tem a capacidade de utilizar "templates" e ainda permite modificá-los para customizar como a impressão do objeto será feita.
+
+#### stamp
+
+Use para criar um "template" mais amigável à partir de uma string de exemplo. Veja também as função stamp_date() e stamp_time() que são funções específicas para lidar com datas e horas respectivamente.
+
+Em geral criamos uma função que utiliza a função stamp() e depois a utilizamos em nosso script passando o objeto data e hora. Veja este exemplo:
+
+```{r}
+sf <- stamp("Criado terça-feira, 17 de janeiro de 2022 às 3:34") 
+sf(ymd("2020-04-05"))
+```
+
+::: callout-tip
+Procure usar o **dia maior que 12** na hora de criar o template. Isto facilita para função distinguir que parte do template é o mês e qual parte é o dia.
+:::
+
+## Fuso-Horários
+
+O R reconhece \~600 fuso-horários. Cada um deles, tem iformações sobre o fuso-horário, horário de verão e variações de calendário históricas de uma área. O R define apenas um fuso-horário por vetor.
+
+Use o fuso=horário "UTC" para evitar horários-de-verão nos objetos.
+
+Para obter uma lista dos fuso-horários disponíveis, use:
+
+```{r}
+OlsonNames()
+```
+
+#### Sys.timezone
+
+Use para obter o fuso-horário atual, use:
+
+```{r}
+Sys.timezone()
+```
+
+#### with_tz
+
+Use para obter **o mesmo objeto** data e hora em um novo fuso-horário (**novo relógio**).
+
+```{r}
+with_tz(dt, tzone = "US/Alaska")
+```
+
+#### local_time
+
+Para saber a diferença entre fuso-horários, podemos usar a função local_time e definir a unidade. Por exemplo:
+
+```{r}
+local_time(dt, tz = "US/Alaska", units = "hours")
+```
+
+#### force_tz
+
+Use para obter **o mesmo objeto** data e hora em um novo fuso-horário (**novo data e hora**).
+
+```{r}
+force_tz(dt, "US/Pacific")
+```
+
+## Matemática com Data e Hora
+
+### Introdução
+
+O pacote lubridate fornece três classes de intervalo de tempo para fazer cálculos com data e hora.
+
+-   **Períodos**: Acompanham mudanças no horário do relógio, isto ignora irregularidades na "linha do tempo".
+
+-   **Durações**: Acompanham a passagem do "tempo físico", o que diverge do horário do relógio quando irregularidades na "linha do tempo" acontecem.
+
+-   **Intervalos**: Representam um intervalo específico da "linha do tempo", limitado pelo início e fim da data e hora.
+
+Este três formas de enchergam a "linha do tempo" é necessário pois cálculos de data e hora usando a "linha do tempo" são inconsistentes.
+
+Sabemos que nem todos os anos têm 365 dias, com no caso do ano bi-sexto. Ou no caso de minutos de um retorno do horário de verão tem 60 segundos.
+
+Pense nos seguintes cenários:
+
+Se tivermos um dia normal, a "linha do tempo" ficaria algo como:
+
+![](images/timeline01.png)
+
+```{r}
+nor <- ymd_hms("2018-01-01 01:30:00",tz="US/Eastern") 
+print(nor)
+```
+
+Já, quando o horário de verão se inicia, termos o seguinte cenário na linha do tempo:
+
+![](images/timeline02.png)
+
+```{r}
+gap <- ymd_hms("2018-03-11 01:30:00",tz="US/Eastern")
+```
+
+Quando o horário então se encerra, temos na linha do tempo este cenário:
+
+![](images/timeline03.png)
+
+```{r}
+lap <- ymd_hms("2018-11-04 00:30:00",tz="US/Eastern")
+```
+
+E ainda temos o "ano-bisexto", que também causa inconsistência na linha do tempo:
+
+![](images/timeline04.png)
+
+```{r}
+leap <- ymd("2019-03-01")
+```
+
+Para os casos acima, criamos quarto objetos data e hora: **nor**, **gap**, **lap** e **leap** para representar cada cenário de inconsistência na linha do tempo.
+
+Agora veremos com as três classes do lubridate citadas anteriormente reagem em cada situação:
+
+### **Períodos**
+
+Vimos que os períodos acompanham as mudanças no horário do relógio, isto ignora irregularidades na "linha do tempo".
+
+Por exemplo, se quisermos adicionar 90 minutos ao objeto nor criado anteriormente, teremos:
+
+```{r}
+nor + minutes(90)
+```
+
+![](images/period01.png)
+
+Já, se quisermos adicionar 90 minutos no dia do início do horário de verão (objeto gap), teremos:
+
+```{r}
+gap + minutes(90)
+```
+
+![](images/period02.png)
+
+Veja que o período ignorou a inconsistência na linha do linha e trouxe o resultado como ela não existisse.
+
+O mesmo aconteceria com a data e hora do objeto lap criado no fim do horário de verão:
+
+```{r}
+lap + minutes(90)
+```
+
+![](images/period03.png)
+
+Situação identica aconteceria para o objeto leap criado em ano bisexto. Por exemplo, digamos que queremos somar um período de 1 ano.
+
+```{r}
+leap + years(1)
+```
+
+![](images/period04.png)
+
+As funções de períodos para adicionar ou subtrair data e hora, tem o nome da unidade seguido de um "s". Nos exemplos anterior somamos minutos usando minutes() e anos usando years().
+
+A lista abaixo traz as funções que criam objetos períodos, ou sejam, que modelam eventos que acontecem em horário específico do relógio.
+
+Podemos utilzar estes objetos para somar ou subtrair de objetos data ae hora.
+
+| Função              | Objeto Período  |
+|---------------------|-----------------|
+| years(x = 1)        | x anos          |
+| months(x)           | x meses         |
+| weeks(x = 1)        | x semanas       |
+| days(x = 1)         | x dias          |
+| hours(x = 1)        | x horas         |
+| minutes(x = 1)      | x minutos       |
+| seconds(x = 1)      | x segundos      |
+| milliseconds(x = 1) | x milisegundos  |
+| microseconds(x = 1) | x microsegundos |
+| nanoseconds(x = 1)  | x nanosegundos  |
+| picoseconds(x = 1)  | x picosegundos  |
+
+Por exemplo, se quisermos criar um objeto período com 3 meses e 12 dias, fazemos:
+
+```{r}
+p <- months(3) + days(12)
+p
+```
+
+Para subtrair este período de um objeto data e hora, fazemos:
+
+```{r}
+dt - p
+```
+
+Podemos também usar as funções abaixo para criar objetos período:
+
+#### period
+
+Use para automatizar a criação de períodos.
+
+Por exemplo, para criar um objeto com período de 5 anos, podemos usar years(5) ou:
+
+```{r}
+period(5, unit = "years")
+```
+
+#### as.period
+
+Use para transformar objetos de duração, intervalos e números para obejtos do tipo período:
+
+Por exemplos, temos um número 5 e queremos criar um período de 5 dias, podemos fazer:
+
+```{r}
+as.period(5, unit="days")
+```
+
+#### period_to_seconds
+
+Use para transformar um objeto do tipo período no total de número de segundos do período:
+
+```{r}
+period_to_seconds(p)
+```
+
+### **Duração**
+
+Diferentes dos objetos períodos, os objetos do tipo duração (*duration*), Acompanham a passagem do "tempo físico", o que diverge do horário do relógio quando irregularidades na "linha do tempo" acontecem.
+
+Por exemplo, digamos que temos nosso "dia normal" na linha do tempo e adicionarmos 90 minutos de duração:
+
+```{r}
+nor + dminutes(90)
+```
+
+![](images/duration01.png)
+
+Até aqui, o resultado foi similar à adicionarmos um objeto do tipo período de 90 minutes.
+
+Porém, veja o que acontece quando temos uma inconsistência na linha do tempo, como por exemplo nosso início de horário de verão em nosso objeto gap.
+
+```{r}
+gap + dminutes(90)
+```
+
+![](images/duration02.png)
+
+O mesmo acontece com nosso término de horário de verão em nosso objeto lap:
+
+```{r}
+lap + dminutes(90)
+```
+
+![](images/duration03.png)
+
+Ou mesmo com nosso ano bi-sexto:
+
+```{r}
+leap
+leap + dyears(1)
+```
+
+![](images/duration04.png)
+
+Podemos pensar em objetos de duração como um modelo físico, como uma vida útil de uma bateria. As durações são armazenados como segundos, que é a única unidade distância consistente.
+
+Por exemplo, se criarmos um objeto duração equivalente à 14 dias, ele irá armazenar 1209600s.
+
+```{r}
+dd <- ddays(14)
+dd
+```
+
+::: callout-tip
+Há também uma classe chamada "**difftime**", que se encontra no R base, ou seja, fora do pacote lubridate, usada para lidar com durações de tempo.
+:::
+
+As funções para criar objetos de duração, são similares às dos objetos períodos, porém se iniciam com a letra "d", veja:
+
+| Função               | Objeto Duração             |
+|----------------------|----------------------------|
+| dyears(x = 1)        | 31536000x anos             |
+| dmonths(x)           | 2629800x meses             |
+| dweeks(x = 1)        | 604800x semanas            |
+| ddays(x = 1)         | x86400x dias               |
+| dhours(x = 1)        | 3600x horas                |
+| dminutes(x = 1)      | 60x minutos                |
+| dseconds(x = 1)      | x segundos                 |
+| dmilliseconds(x = 1) | x X $10^3$ milisegundos    |
+| dmicroseconds(x = 1) | x X $10^6$ microsegundos   |
+| dnanoseconds(x = 1)  | x X $10^9$ nanosegundos    |
+| dpicoseconds(x = 1)  | x X $10 ^{12}$picosegundos |
+
+: Podemos também usar as funções abaixo para criar objetos duração:
+
+#### duration
+
+Use para automatizar a criação de durações.
+
+Por exemplo, para criar um objeto com duração de 5 anos, podemos usar dyears(5) ou:
+
+```{r}
+duration(5, unit = "years")
+```
+
+#### as.duration
+
+Use para transformar objetos de períodos, intervalos e números para objetos do tipo duração:
+
+Por exemplos, temos um número 10 e queremos criar um período de 10 segundos, podemos fazer:
+
+```{r}
+as.duration(10)
+```
+
+#### make_difftime
+
+Use para criar um objeto difftime (R base) com um número específico de unidades.
+
+```{r}
+make_difftime(3600)
+```
+
+### **Intervalo**
+
+Objeto do tipo intervalo, representam um intervalo específico da "linha do tempo", limitado pelo início e fim da data e hora. Se dividirmor o intervalo, pela pela duração teremos a distância física do tempo. Se dividirmos o intervalo pelo período, termeos a distância relativa ao relógio.
+
+Podemos criar um objeto de intervalo, usando a função interval() ou o símbolo %\--%.
+
+```{r}
+i <- interval(ymd("2017-01-01"), d)
+j <- d %--% ymd("2017-12-31")
+i; j
+```
+
+Observe pelo resultado acima, temos duas data para cada objeto, a da esquerda representa o início do intervalo e a da direito o fim.
+
+Por exemplo, vamos pegar um dia normal na linha do tempo, representado pelo objeto nor e definirmos como o início do intervalo, e para o fim do intervalo usaremos nor mais um período de 90 minutos.
+
+```{r}
+interval(nor, nor + minutes(90))
+```
+
+![](images/interval01.png)
+
+Agora, em uma linha do tempo inconsistente, o intervalo se mantém alinhado com o relógio. Veja como fica quando adicionamos um intervalo de 90 minutos quando temos o início de um horário de verão:
+
+```{r}
+interval(gap, gap+minutes(90))
+```
+
+![](images/interval02.png)
+
+De forma similar, ocorre quando temos um intervalo quando há o término de um horário de verão:
+
+```{r}
+interval(lap, lap+minutes(90))
+```
+
+![](images/interval03.png)
+
+Ou mesmo quando temos um intervalo em um ano bi-sexto:
+
+```{r}
+interval(leap, leap + years(1))
+```
+
+![](images/interval04.png)
+
+O pacote lubridate possui diversas funções para lidar com intervalo.
+
+#### %within%
+
+Use para identificar se um objeto do tipo intervalo ou data e hora "a" cai dentro de um interválo "b"
+
+Por exemplo, se quisermos se a data e hora atual está dentro do intervalo "i".
+
+```{r}
+now () %within% i
+```
+
+#### int_start
+
+Use para obter ou definir o **início** de um **intervalo**:
+
+```{r}
+int_start(i)
+```
+
+```{r}
+int_start(i) <- now()
+```
+
+::: callout-note
+A função int_end() faz o oposto, ou seja, obtem ou define o **fim** de um intervalo.
+:::
+
+int_aligns
+
+Use para identificar se dois objetos do tipo intervalo estão alinhados, ou seja, compartilham de uma mesma data e hora.
+
+```{r}
+int_aligns(i,j)
+```
+
+No exemplo acima, temos "2017-11-28" como início de um objeto e fim de outro, por isso dizemos que eles estão alinhados.
+
+::: callout-note
+Se quisermos saber se estes objetos estão **sobrepostos**, ou seja, tem partes de uma intervá-lo que também fazem parte de outro, utilizamos a função **int_overlaps**().
+:::
+
+#### int_diff
+
+Use para transformar em intervalos, os valores que estão em um vetor de data e hora.
+
+```{r}
+v <- c(dt, dt+100, dt+1000); int_diff(v)
+```
+
+int_flip
+
+Use para colocar em ordem reversa a direção de um intervalo, ou seja, a dat e hora do fim vai para o início do intervalo e a data e hora do início vai para o final.
+
+```{r}
+int_flip(i)
+```
+
+Para colocar em ordem padrão um intervalo de acordo com a linha do tempo, podemos usar a função **int_standardize**().
+
+```{r}
+int_standardize(i)
+```
+
+#### int_length
+
+Use para obter, em segundos, o tempo total de um intervalo:
+
+```{r}
+int_length(i)
+```
+
+#### int_shift
+
+Use para mover um intervalo para mais ou para menos na linha do tempo.
+
+Por exemplo, se mover todo o intervalo (início e fim) em um dia antes da linha do tempo, podemos fazer:
+
+```{r}
+int_shift(i, days(-1))
+```
+
+#### as.interval
+
+Use para criar um objeto intervalo com determinado periodo definindo uma dat e hora de início.
+
+Por exemplo, para criarmos um intervalo de 1 dia, iniciando na data atual, podemos fazer:
+
+```{r}
+as.interval(days(1), start = now())
+```
+
+::: callout-note
+Podemos usar a função **is.interval**() para saber se um objeto é um intervalo válido ou não.
+:::
+
+## Datas Imaginárias
+
+É importante observar que nem todos os anos tem 365 dias (ex: ano bi-sexto) e nem todos os minutos tem 60 segundos (ex: fim de horário de verão).
+
+Isso é importante de ser observado, pois em alguns casos tentamos criar data imaginárias, como por exemplo "Fev 31", adicionando um mês à "Jan 31". As funções do pacote lubridate são inteligentes o suficiente e neste caso retornaria um valor NA:\
+
+```{r}
+jan31 <- ymd(20180131)
+jan31 + months(1)
+```
+
+### Aritmética dos meses
+
+Porém, as vezes, intuitivamente, é isto que desejamos fazer, ou seja, adicionar "um mês" a "Jan 31", mas que a função seja inteligente o suficiente para **rolar** para o **último** **dia** **do** **mês**.
+
+Adicionar ou subtrair **meses** as vezes é uma tarefa difícil, pois temos meses de diferentes tamanhos (ex: 30, 31, 28 dias ou até 29). Por isso, em alguns casos é útil termos a possibildade de fazermos um ajustes automáticos.
+
+Para isso usamos, ao invés do sinal de adição "**+**", utilizamos o símbolo %**m+**% para adicionar meses (ou %**m-**% para subtrair). Veja:
+
+```{r}
+jan31 %m+% months(1)
+```
+
+A função **add_with_rollback**() nos permite rolar a data da soma para o primeiro dia do mês seguinte (e não o último dia do mês anterior) usando o argumento **roll_to_first.**
+
+```{r}
+add_with_rollback(jan31, months(1), roll_to_first = TRUE)
+```
