@@ -1,6 +1,7 @@
 ---
 title: "Datas e horas com LUBRIDATE"
 format: html
+toc-location: right
 toc: true
 toc-depth: 4
 editor: visual

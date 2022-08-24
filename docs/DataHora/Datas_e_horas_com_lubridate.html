@@ -540,7 +540,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"America/Sao_Paulo"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2022-08-24 19:04:13 -03"</code></pre>
+<pre><code>[1] "2022-08-24 19:17:38 -03"</code></pre>
 </div>
 </div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -1582,14 +1582,14 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_flip</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-08-24 22:04:14 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-08-24 22:17:39 UTC</code></pre>
 </div>
 </div>
 <p>Para colocar em ordem padrão um intervalo de acordo com a linha do tempo, podemos usar a função <strong>int_standardize</strong>().</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_standardize</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-08-24 22:04:14 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-08-24 22:17:39 UTC</code></pre>
 </div>
 </div>
 </section>
@@ -1599,7 +1599,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_length</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -151884254</code></pre>
+<pre><code>[1] -151885060</code></pre>
 </div>
 </div>
 </section>
@@ -1610,7 +1610,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_shift</span>(i, <span class="fu">days</span>(<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-08-23 19:04:14 -03--2017-10-30 22:00:00 -02</code></pre>
+<pre><code>[1] 2022-08-23 19:17:39 -03--2017-10-30 22:00:00 -02</code></pre>
 </div>
 </div>
 </section>
@@ -1621,7 +1621,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.interval</span>(<span class="fu">days</span>(<span class="dv">1</span>), <span class="at">start =</span> <span class="fu">now</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-08-24 19:04:14 -03--2022-08-25 19:04:14 -03</code></pre>
+<pre><code>[1] 2022-08-24 19:17:39 -03--2022-08-25 19:17:39 -03</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
