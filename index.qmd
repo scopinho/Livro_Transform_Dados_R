@@ -18,15 +18,15 @@ Aleḿ disso, a escassez de documentação sobre o tema em lingua Portuguesa, fo
 
 **Os temas abordados neste livro são:**
 
--   [Importação de Dados](./Importacao/Importacao_de_dados_com_tidyverse.html): Trata sobre **importação de dados** com o pacote **tidyverse (readr, readxl and googlesheets4),** baseada na folha de resumo ([data-import cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf)).
+-   [Importação de Dados](./Importacao/Importacao_de_dados_com_tidyverse.html): Trata sobre **importação de dados** .csv, excel e Google Sheets, com o pacote **tidyverse (readr, readxl and googlesheets4).** Ver folha de referência: [data-import cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf).
 
--   [Organização de Dados](./Organizacao/Organizacao_de_dados_com_tidyr.html): Sobre **organização de dados** com o pacote **tidyr** baseada na folha de resumo ([tidyr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf)).
+-   [Organização de Dados](./Organizacao/Organizacao_de_dados_com_tidyr.html): Sobre **organização de dados** com o pacote **tidyr**. Ver folha de referência: [tidyr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf).
 
--   [Transformação de dados](./Transformacao/Transformacao_de_dados_com_dplyr.html) : Apresenta a **transformação de dados** com o pacote **dplyr** baseada na folha de resumo ([dyplr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf))
+-   [Transformação de dados](./Transformacao/Transformacao_de_dados_com_dplyr.html) : Apresenta a **transformação de dados** com o pacote **dplyr**. Ver folha de referência: [data transformation cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf)
 
--   [Manipulação de strings](./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html): Fala sobre **manipulação de strings** com o pacote **stringr** baseada na folha de resumo ([stringr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf)). Apresenta um bom conteúdo sobre expressões regulares (**regex**)
+-   [Manipulação de strings](./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html): Fala sobre **manipulação de strings** com o pacote **stringr**. Apresenta também um bom conteúdo sobre **expressões** **regulares** (**regex**). Ver folha de referência: [stringr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf)
 
--   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate,** baseada na folha de resumo ([lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf)).
+-   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folhe da refrência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
 ::: callout-warning
 Para melhor utilizar o conteúdo deste livro, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
