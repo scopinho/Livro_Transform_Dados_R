@@ -28,6 +28,8 @@ Aleḿ disso, a escassez de documentação sobre o tema em lingua Portuguesa, fo
 
 -   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folhe da refrência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
+-   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Sobre a visualização de dados com o pacote **ggplot2**. Ver folhe da refrência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf).
+
 ::: callout-warning
 Para melhor utilizar o conteúdo deste livro, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
 
