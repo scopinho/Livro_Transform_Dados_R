@@ -6,7 +6,8 @@ project:
 book:
   title: "Transformação e Manipulação de Dados com a linguagem R"
   author: "Eric Scopinho"
-  date: "8/24/2022"
+#  date: "8/24/2022"
+  cover-image: images/cover.png
   chapters:
     - index.qmd
     - intro.qmd
