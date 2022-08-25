@@ -859,6 +859,7 @@ Importante
 </section>
 <section id="geom_histogram" class="level4" data-number="10.3.0.5">
 <h4 data-number="10.3.0.5" class="anchored" data-anchor-id="geom_histogram"><span class="header-section-number">10.3.0.5</span> geom_histogram</h4>
+<p>Use para criar histogramas. O argumento binwidth = define o tamanho do agrupamento da variável.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -868,6 +869,7 @@ Importante
 </section>
 <section id="geom_qq" class="level4" data-number="10.3.0.6">
 <h4 data-number="10.3.0.6" class="anchored" data-anchor-id="geom_qq"><span class="header-section-number">10.3.0.6</span> geom_qq</h4>
+<p>Use para criar um gráfico de quantil-quantil. Em geral utilizado para confirmar se uma variável tem uma distribuição gaussiana.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>c2 <span class="sc">+</span> <span class="fu">geom_qq</span>(<span class="fu">aes</span>(<span class="at">sample =</span> hwy))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
