@@ -1,7 +1,11 @@
 ---
 title: "Transformação de Dados com DPLYR"
 author: "Eric Scopinho"
-format: html
+format: 
+  html: 
+    df-print: paged
+    link-external-icon: true
+    link-external-newwindow: true
 toc: true
 toc-location: right
 toc-depth: 4

@@ -1,6 +1,10 @@
 ---
 title: "Visualização de Dados com GGPLOT2"
-format: html
+format: 
+  html: 
+    df-print: paged
+    link-external-icon: true
+    link-external-newwindow: true
 toc: true
 toc-location: right
 toc-depth: 4
@@ -48,45 +52,415 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 ------------------------------------------------------------------------
 
-*Em geral, ao final de cada comando, as vezes você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
-
-Em alguns casos usaremos funções de manipulação de dados do pacote **dplyr,** como **mutate** () ou **count**()**.**
-
-*O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
-
 ## Gramática dos Gráficos
 
-O pacote ggplot2 é uma implementação do livro "Grammar of Graphics", que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões.
+O pacote ggplot2 é uma implementação do livro "***Grammar of Graphics***", que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões. O modelo teórico proposto no livro é que através de camadas definidas qualquer gráfico pode ser construído. Abaixo o modelo, que deve ser interpretado de baixo para cima.
+
+![](images/grammar-01.jpg){width="354"}
 
 De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um **conjunto de dados**, um **sistema de coordenadas** e **geoms**, que seriam marcas visuais que representas os pontos dos dados.
 
+![](images/ggplot-01.jpg)
+
+No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados são **mapeadas** em propriedadas visuais da geometria (geom).
+
+Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor ou tamanho.
+
+![](images/ggplot-02.jpg)
+
 # Modelo para Construção de um Gráfico
 
-# ESTÉTICA
+No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sintaxe de construção de gráficos:
+
+![](images/ggplot_template-01.jpg){width="556"}
+
+------------------------------------------------------------------------
+
+#### ggplot
+
+A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência. Adicione uma geometria (geom) para cada camada.
+
+Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela **mtcars**. Para maiores informação sobre as colunas e dados do mtcars, digite ?mtcars.
+
+```{r}
+
+mtcars
+```
+
+```{r}
+ggplot(data = mtcars) +
+  geom_point (mapping = aes(x = hp, y = mpg ))
+```
+
+::: callout-note
+Observe que mesmo sem definirmos escalas, temas, estatísticas ou outras camadas, o gráfico ainda assim foi gerado. Isto é porque o ggplot tem valores padrões dinâmicos que tentam prover o melhor resultado possível com o mínimo de esforço.
+:::
+
+::: callout-tip
+A definição da estética com seu mapeamento, feito neste exemplo na função de geometria (geom_point) poderá ser feito também na função ggplot().
+:::
+
+Apesar do gráfico final ser similar, a estética mapeamento poderá ser utilizada pelas funções geom\_\*() nas camadas seguintes, sem a necessidade de repetí-la, caso contrário, ela será restrito apenas àquela geom() na qual foi declarada. Veja:
+
+```{r}
+ggplot(data = mtcars, mapping = aes(x = hp, y = mpg))+
+  geom_point()
+```
+
+Por ser comum o uso do argumento data = e mapping =, podemos excluídas do código, deixando-o mais enxuto, porém mais difícil para quem não tem tanta familiaridade, veja:
+
+```{r}
+ggplot(mtcars,aes(x = hp, y = mpg)) +
+  geom_point()
+```
+
+#### last_plot
+
+Use para retornar o último gráfico gerado.
+
+```{r}
+last_plot()
+```
+
+#### ggsave
+
+Use para salvar o gráfico em uma imagem. O tipo de imagem é selecionado pela extensão do arquivo de saída.
+
+Por exemplo, para salvar o diretório atual um arquivo com o gráfico chamado "plot-01.png" com o formato de imagem ".PNG" de tamanho 5x5 centímetros, fazemos:
+
+```{r}
+ggsave("plot-01.png", width = 5, height = 5, units = "cm")
+```
+
+# ESTÉTICA (AES)
+
+Cada estética possui valores padrões que serão usados por determinada função de geometria ou de estatística. Mas existem valores que são comuns a quase todas as geom/stat(), a seguir veremos alguns deles:
+
+#### color e fill
+
+Use para definir a cor (color) ou preenchimento (fill) para a estética.
+
+```{r}
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg), color = "red")
+```
+
+Na string de color =, podemos usar valores de cores em inglês, como "red" ou "blue", ou também códigos RGB, como ""#00ABFF" ou "FF00AA".
+
+::: callout-important
+Observe que o valor definido da cor, está fora dos parênteses da função aes(), ou seja, ela não está fazendo o mapeamento da cor com os dados, mas sim, definindo uma cor para a função da geometria (geom_point).
+:::
+
+Se quiser definir a cor no mapeamento através da estética, podemos fazê-lo de outra maneira através do argumento color dentro da função aes().
+
+Por exemplo, vamos gerar o mesmo gráfico anterior, mas gostaríamos de incluir no mapeamento informações de estética onde a cor dos pontos estivesse mapeada com a coluna "qsec" de nossos dados mtcars:
+
+```{r}
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg, color = qsec))
+```
+
+#### linetype
+
+Use para definir a linha utilizada no gráfico. Podemos utilizar umm número de 0 a 6 ou um nome:
+
+*(0 = "blank", 1 = "solid", 2 = "dashed", 3 = "dotted", 4 = "dotdash", 5 = "longdash",6 = "twodash")*
+
+Por exemplo, ao invés de utilizarmos a geometria de pontos (geom_point), vamos utilzar a geometria de linha (geom_line):
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), linetype = 4)
+```
+
+#### lineend
+
+Use para definir o terminador da linha. Os valores podem ser: *round*, *butt* e *square*.
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), lineend = "round")
+```
+
+#### linejoin
+
+Use para definir a junção da linha. Os valores podem ser: *round*, *mitre* e *bevel*.
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), linejoin = "bevel")
+```
+
+#### size
+
+Use para definir o tamanho, no caso de uma linha em "mm".
+
+Como dito anteriormente, estes valores são comuns para vários geometrias.Por exemplo, podemos utilizar o argumento size também na geometria de pontos (geom_point):
+
+```{r}
+#| layout-ncol: 2
+
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), size = 5)
+
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg), size = 5)
+```
+
+#### shape
+
+Use para definir a forma. Podemos passar um número ou um nome da forma conforme abaixo:
+
+![](images/aes_shape-01.jpg)
+
+```{r}
+#| layout-ncol: 2 
+
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg), shape = "square")
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg), shape = 5)
+```
 
 # GEOMETRIAS (GEOMS)
 
-#### Gráficos Primitivos
+Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.
 
-#### Uma Variável Contínua
+::: callout-warning
+Lembre-se que cada função retornará uma camada, portanto, a ordem de criação das camadas afeta o resultado do gráfico, pois uma será criada sobre a anterior.
+:::
 
-#### Uma Variável Discreta
+## Gráficos Primitivos
 
-#### Duas Variáveis  Contínuas
+Para os exemplos a seguir, utilizaremos duas bases de dados, uma chamada **economics** e outra **chamada** seals.
 
-#### Duas Variáveis Distribuição Bivariada Contínua
+::: panel-tabset
+## Economics
 
-#### Uma Variável Contínua e Outra Discreta
+```{r}
+economics
+```
 
-#### Duas Variáveis Discretas
+## Seals
 
-#### Mapas
+```{r}
+seals
+```
+:::
 
-#### Visualizando Erros
+Para simplificar o código dos próximos exemplos, iremos criar dois objetos gráfico do ggplot:
 
-#### Três Variáveis
+O primeiro chamado "**a**", irá conter um objeto ggplot com os dados de **economics**, mapeando a estética de x para a variável "date" e y para a variável "unemployed".
 
-# ESTATÍSTICAS (STATS)
+O segundo chamado "**b**", irá conter um objeto ggplot com os dados de **seals**, mapeando a estética de x para a variável "long" e y para a variável "lat".
+
+Desta forma trabalharemos com os mesmos objetos base e adicionaremos apenas novas camadas afim de identificar os detalhes das diversas funções de geometria.
+
+```{r}
+a <- ggplot(economics, aes(date, unemploy))
+b <- ggplot(seals, aes(x = long, y = lat))
+```
+
+::: callout-note
+Para simplificar o código, em algum momentos podemos omitir o argumento, como data=, mapping = , x = , y = . Isto porque já estamos os valores na ordem da função.
+:::
+
+Agora com os objetos inicialmente criados, iremos adicionar novas camadas afim de obtermos os gráficos e entendermos algumas das funções de geometria para gráficos primitivos.
+
+#### geom_blank
+
+Use para garantir limites para todos os gráficos de acordo com os dados.
+
+```{r}
+a + geom_blank()
+```
+
+::: callout-tip
+Use a função **expand_limits**() para expandir os limites do gráfico usando dados. Ver ?expand_limits para mais detalhes.
+:::
+
+#### geom_curve
+
+Use para criar curvas.
+
+```{r}
+b + geom_curve(aes(yend = lat + 1, xend = long + 1), curvature = 1)
+```
+
+#### geom_path
+
+Use para conectar observações.
+
+```{r}
+a + geom_path(lineend = "butt", linejoin = "round", linemitre = 1)
+```
+
+#### geom_polygon
+
+Use para criar poligonos. É similar a geom_path(), porém a parte interna é preenchida com argumento fill =.
+
+```{r}
+a + geom_polygon(aes(alpha = 50))
+```
+
+::: callout-note
+O argumento alpha = , é muito comum na definição de cores. De maneira simplificada, ele indica o nível de transparência de uma cor, sendo 0, nenhuma transparência e 1 transparência total.
+:::
+
+#### geom_rect
+
+Use para criar retângulos.
+
+```{r}
+b + geom_rect(aes(xmin = long, ymin = lat,
+xmax = long + 1, ymax = lat + 1))
+```
+
+::: callout-note
+A função **geom_title()** fazem a mesma coisa, porém são parametrizadas de forma diferente. A geom_rect usa a localização dos 4 cantos do quadrado, enquanto a geom_tile usa o centro e seu tamanho (largura e altura) para dimensionar.
+:::
+
+#### geom_ribbon
+
+Use para criar uma "fita". Para cada valor de x, ela mostra um intervalo y, definido por ymin e ymax. Veja que geom_area() é um caso especial do geom_ribbon(), onde o ymin é fixo em 0 e y é usado no lugar de ymax.
+
+```{r}
+a + geom_ribbon (aes(ymin = unemploy - 900,
+ymax = unemploy + 900))
+```
+
+## Segmentos de Linhas
+
+Estas funções de geometrias, permitem criar diversos tipo de segmentos de linha e são úteis quando precisamos "marcar" ou definir algo no gráfico, com linhas verticais ou horizontais por exemplo.
+
+#### geom_abline
+
+Use para criar uma linha de um ponto "a" até um ponto "b", passando o intercepto e a inclinação da reta.
+
+```{r}
+b +  geom_abline(aes(intercept = 0, slope = 1))
+```
+
+#### geom_hline
+
+Use para criar uma ou mais linhas horizontais.
+
+```{r}
+b + geom_hline(aes(yintercept = lat))
+```
+
+#### geom_vline
+
+Use para criar uma ou mais linhas horizontais.
+
+```{r}
+b + geom_vline(aes(xintercept = long))
+```
+
+geom_segment
+
+É similar ao geom_curve, porém ao invés de criar uma curva, criar um segmento de reta.
+
+```{r}
+b + geom_segment(aes(yend = lat + 1, xend = long + 1))
+```
+
+geom_spoke
+
+Use para criar um segmento, parametrizado pela localização, direção e distância.
+
+```{r}
+b + geom_spoke(aes(angle = 1:1155, radius = 1))
+```
+
+## Uma Variável Contínua
+
+Novamente, iremos preparar nossos objetos básicos para evitar repetição de código. Agora teremos um objeto "**c**" e outro "**c2**", aos quais iremos adicionar novas camadas. Similar ao que fizemos anteriormente, porém agora utilizaremos a base de dados "**mpg**".
+
+```{r}
+mpg
+```
+
+Criando os objetos ggplot:
+
+```{r}
+c <- ggplot(mpg, aes(hwy))
+c2 <- ggplot(mpg)
+```
+
+::: callout-important
+Observe que o objeto "**c**", usa a base "mpg" **já atribuindo a variável "hwy" para x= da estética**. Esta configuração será aplicada para qualquer funções geom\_\*() a não ser que explicitamente tenhamos uma estética redefinindo isso dentro de outra camanda de geometria.
+
+Já para o objeto "**c2**", **não temos a estética** de x definida, portanto, teremos que definí-la em nas próximas camadas com a funções de geometria (geom\_\*()).
+:::
+
+#### geom_area
+
+Use para criar uma geometria de área.
+
+Você verá um argument (stat = "bin") abaixo. Veremos as **estatísticas** na seção [ESTATÍSTICAS (STATS)](#estatísticas-stats). Por hora, pense apenas que é uma forma de definirmos os valores que iremos mostrar para o eixo y. Por padrão o número de agrupamento (bin) é 30.
+
+```{r}
+c + geom_area(stat = "bin")
+```
+
+#### geom_density
+
+Use para fazer um gráfico de **densidade** de um variável contínua.
+
+Há a possibilidade de configurar vários kernels das funções de densidade, como "gaussian", "rectangular", "triangular", "epanechnikov", "biweight", "cosine" ou "optcosine".
+
+```{r}
+c + geom_density(kernel = "gaussian")
+```
+
+#### geom_dotplot
+
+Use para criar uma geometria de pontos, com a largura dos pontos correspondem à largura do agrupamento e os pontos são empilhados. Cada ponto corresponde à uma observação dos dados.
+
+```{r}
+c + geom_dotplot()
+```
+
+#### geom_freqpoly
+
+```{r}
+c + geom_freqpoly()
+```
+
+#### geom_histogram
+
+Use para criar histogramas. O argumento binwidth = define o tamanho do agrupamento da variável.
+
+```{r}
+c + geom_histogram(binwidth = 5)
+```
+
+#### geom_qq
+
+Use para criar um gráfico de quantil-quantil. Em geral utilizado para confirmar se uma variável tem uma distribuição gaussiana.
+
+```{r}
+c2 + geom_qq(aes(sample = hwy))
+```
+
+## Uma Variável Discreta
+
+## Duas Variáveis Contínuas
+
+## Duas Variáveis Distribuição Bivariada Contínua
+
+## Uma Variável Contínua e Outra Discreta
+
+## Duas Variáveis Discretas
+
+## Mapas
+
+## Visualizando Erros
+
+## Três Variáveis
+
+# ESTATÍSTICAS (STATS) {#estatísticas-stats}
 
 # ESCALAS (SCALES)
 
