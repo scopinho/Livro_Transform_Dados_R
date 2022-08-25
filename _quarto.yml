@@ -18,6 +18,7 @@ book:
     - Transformacao/Transformacao_de_dados_com_dplyr.qmd
     - Manipulacao_Strings/Manipulacao de strings com stringr.qmd
     - DataHora/Datas_e_horas_com_lubridate.qmd
+    - Visualizacao/Visualizacao_de_dados_com_ggplot2.qmd
 
 bibliography: references.bib
 

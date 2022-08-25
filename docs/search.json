@@ -362,5 +362,54 @@
     "title": "1  Introdução",
     "section": "",
     "text": "Para saber mais sobre este pacote, acesse:\nhttps://cran.r-project.org/package=tidyverse.\n\n\n\n\n\n\nAviso\n\n\n\nPara melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:\nhttps://education.rstudio.com/learn/beginner/.\n\n\nPara os exemplos, iremos carregar inicialmente os seguintes pacotes:\n\ntidyverse\ngt\n\n\nlibrary (tidyverse)\nlibrary (gt)\n\n\n1.0.1 Folhas de Referências\nA maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na Folha de Referência dos pacotes (cheatsheets) disponível no site do RStudio.\nA seguir, um exemplo de uma “Folha de Referência” do pacote DPLYR:\n\n\n\n\n\n\n\nNota\n\n\n\nEm geral, ao final de cada seção de código, você pderá ver a chamada à função gt().\nIsto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes.\nEm alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função head() para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função select() para selecionar apenas algumas colunas. A função print() também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento."
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#introdução",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#introdução",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "7.2 Introdução",
+    "text": "7.2 Introdução\nA seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.\n\n\n\n\n\n\nNota\n\n\n\nApesar de visualização de dados não ser especificamente parte das etapas de transformação e manipulação de dados, acreditamos ser importante um conhecimento básico sobre o tema, pois muitas vezes, para explicarmos aquilo que estamos transformando ou manipulando, o fazemos de forma gráfica para melhor compreensão.\n\n\nPara saber mais sobre este pacote, acesse:\nhttps://cran.r-project.org/package=ggplot2.\n\n\n\n\n\n\nAviso\n\n\n\nPara melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:\nhttps://education.rstudio.com/learn/beginner/.\n\n\nPara os exemplos, iremos carregar os seguintes pacotes:\n\ntidyverse\ngt\n\n\nlibrary (tidyverse)\nlibrary (gt)\n\n\n7.2.1 Exemplos da Folha de Referência\nA maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na Folha de Referência do stringr disponível no site do RStudio.\n\nEm geral, ao final de cada comando, as vezes você verá a chamada à função gt(). Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função head() para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função select() para selecionar apenas algumas colunas.\nEm alguns casos usaremos funções de manipulação de dados do pacote dplyr, como mutate () ou count().\nO termo data-frame descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes."
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#gramática-dos-gráficos",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#gramática-dos-gráficos",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "7.3 Gramática dos Gráficos",
+    "text": "7.3 Gramática dos Gráficos\nO pacote ggplot2 é uma implementação do livro “Grammar of Graphics”, que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões.\nDe uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um conjunto de dados, um sistema de coordenadas e geoms, que seriam marcas visuais que representas os pontos dos dados."
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-propósito-geral",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-propósito-geral",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "12.1 ESCALAS DE PROPÓSITO GERAL",
+    "text": "12.1 ESCALAS DE PROPÓSITO GERAL"
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-localização-x-y",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-localização-x-y",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "12.2 ESCALAS DE LOCALIZAÇÃO X & Y",
+    "text": "12.2 ESCALAS DE LOCALIZAÇÃO X & Y"
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-cor-e-preenchimento-discretas",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-cor-e-preenchimento-discretas",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "12.3 ESCALAS DE COR E PREENCHIMENTO (DISCRETAS)",
+    "text": "12.3 ESCALAS DE COR E PREENCHIMENTO (DISCRETAS)"
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-cor-e-preenchimento-contínuas",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-cor-e-preenchimento-contínuas",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "12.4 ESCALAS DE COR E PREENCHIMENTO (CONTÍNUAS)",
+    "text": "12.4 ESCALAS DE COR E PREENCHIMENTO (CONTÍNUAS)"
+  },
+  {
+    "objectID": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-forma-e-tamanho",
+    "href": "Visualizacao/Visualizacao_de_dados_com_ggplot2.html#escalas-de-forma-e-tamanho",
+    "title": "7  Visualização de Dados com GGPLOT2",
+    "section": "12.5 ESCALAS DE FORMA E TAMANHO",
+    "text": "12.5 ESCALAS DE FORMA E TAMANHO"
   }
 ]

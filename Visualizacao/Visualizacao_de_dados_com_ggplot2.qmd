@@ -1,0 +1,113 @@
+---
+title: "Visualização de Dados com GGPLOT2"
+format: html
+toc: true
+toc-location: right
+toc-depth: 4
+editor: visual
+lang: pt
+execute: 
+  warning: false
+---
+
+## EM CONSTRUÇÃO!!!!
+
+## Introdução
+
+A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.
+
+::: callout-note
+Apesar de visualização de dados não ser especificamente parte das etapas de transformação e manipulação de dados, acreditamos ser importante um conhecimento básico sobre o tema, pois muitas vezes, para explicarmos aquilo que estamos transformando ou manipulando, o fazemos de forma gráfica para melhor compreensão.
+:::
+
+Para saber mais sobre este pacote, acesse:
+
+[https://cran.r-project.org/package=ggplot2](https://cran.r-project.org/package=stringr){.uri}.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos, iremos carregar os seguintes pacotes:
+
+-   **tidyverse**
+
+-   **gt**
+
+```{r}
+#| echo: true
+library (tidyverse)
+library (gt)
+```
+
+### Exemplos da Folha de Referência
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
+
+------------------------------------------------------------------------
+
+*Em geral, ao final de cada comando, as vezes você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+
+Em alguns casos usaremos funções de manipulação de dados do pacote **dplyr,** como **mutate** () ou **count**()**.**
+
+*O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
+
+## Gramática dos Gráficos
+
+O pacote ggplot2 é uma implementação do livro "Grammar of Graphics", que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões.
+
+De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um **conjunto de dados**, um **sistema de coordenadas** e **geoms**, que seriam marcas visuais que representas os pontos dos dados.
+
+# Modelo para Construção de um Gráfico
+
+# ESTÉTICA
+
+# GEOMETRIAS (GEOMS)
+
+#### Gráficos Primitivos
+
+#### Uma Variável Contínua
+
+#### Uma Variável Discreta
+
+#### Duas Variáveis  Contínuas
+
+#### Duas Variáveis Distribuição Bivariada Contínua
+
+#### Uma Variável Contínua e Outra Discreta
+
+#### Duas Variáveis Discretas
+
+#### Mapas
+
+#### Visualizando Erros
+
+#### Três Variáveis
+
+# ESTATÍSTICAS (STATS)
+
+# ESCALAS (SCALES)
+
+## ESCALAS DE PROPÓSITO GERAL
+
+## ESCALAS DE LOCALIZAÇÃO X & Y
+
+## ESCALAS DE COR E PREENCHIMENTO (DISCRETAS)
+
+## ESCALAS DE COR E PREENCHIMENTO (CONTÍNUAS)
+
+## ESCALAS DE FORMA E TAMANHO
+
+# SISTEMA DE COORDENADAS
+
+# AJUSTE DE POSIÇÃO
+
+# TEMAS
+
+# FACES
+
+# TEXTOS E LEGENDAS
+
+# ZOOM
