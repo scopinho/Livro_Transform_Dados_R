@@ -35,6 +35,10 @@ library (gt)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://www.rstudio.com/resources/cheatsheets/) dos pacotes (cheatsheets) disponível no site do [RStudio](rstudio.com).
 
+A seguir, um exemplo de uma "**Folha de Referência**" do pacote DPLYR:
+
+![](images/data-transformation-cheatsheet01.jpg)
+
 ::: callout-note
 *Em geral, ao final de cada seção de código, você pderá ver a chamada à função **gt()**.*
 
