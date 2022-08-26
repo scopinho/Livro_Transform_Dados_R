@@ -59,7 +59,7 @@ fruit
 ------------------------------------------------------------------------
 
 ::: callout-note
-*Em geral, ao final de cada comando, as vezes você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+*Ao final de algum comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
 
 Em alguns casos usaremos funções de manipulação de dados do pacote **dplyr,** como **mutate** () ou **count**()**.**
 :::
@@ -590,7 +590,7 @@ Str_Teste
 ```
 
 | String Regex no R | Busca por                                               |
-|---------------------|---------------------------------------------------|
+|----------------------|--------------------------------------------------|
 | a                 | a (etc.)                                                |
 | \\\\.             | .                                                       |
 | \\\\!             | \\!                                                     |

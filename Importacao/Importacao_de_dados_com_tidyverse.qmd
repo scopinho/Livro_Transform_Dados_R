@@ -10,7 +10,7 @@ execute:
   warning: false
 ---
 
-# Introdução
+## Introdução
 
 A seguir temos vários exemplos de importação de dados utilizando o pacote TIDYVERSE do R. O pacote tidyverse possui vários pacotes de importação de dados, aqui iremos cobrir três deles (readr, readxl e googlesheets4). Para saber mais sobre estes pacotes, acesse:
 
@@ -65,10 +65,6 @@ library (openxlsx)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf) de importação de dados com tidyverse disponível no site do [RStudio](rstudio.com).
 
-::: callout-note
-*Em geral, ao final de cada comando, você poderá ver a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
-:::
-
 ### Arquivos
 
 Para a maioria dos exemplos utilizaremos os seguintes arquivos de dados:
@@ -108,7 +104,7 @@ E a primeira planilha (S1) possui algo como:
 
 ------------------------------------------------------------------------
 
-# READR
+## READR
 
 O pacote readr possui diversas funções para ler dados tabulados (ex: .csv, .tsv, .txt, etc). Estas funções começam com read\_\*().
 
@@ -116,7 +112,7 @@ O pacote readr possui diversas funções para ler dados tabulados (ex: .csv, .ts
 
 Os parametros acima, são comuns à estas funções. Veja a seguir algumas delas. Digite **?read_delim** para obter maiores detalhes de como utilzá-las.
 
-## Ler dados tabulados com readr
+### Ler dados tabulados com readr
 
 #### read_delim
 
@@ -239,7 +235,7 @@ Use o prâmetro **LOCALE** para definir o caractere de casa decimais.
 read_delim("file2.csv", locale = locale(decimal_mark = ",")) 
 ```
 
-## Salvar dados com readr
+### Salvar dados com readr
 
 Similar às funções descritas na seção "[Ler dados tabulados com readr]" usadas para ler os aqruivos de texto tabulados, temos o conjunto de funções **write\_\***() para gravar os arquivos correspondentes. Estas funções seguem o seguinte padrão:
 
@@ -306,7 +302,7 @@ conteudo <- tribble(~col_A, ~col_B,
 write_tsv(conteudo, file = "arquivo_exemplo4.tsv")
 ```
 
-## Especificação de colunas com readr
+### Especificação de colunas com readr
 
 Ao importar um arquivo com readr, podemos definir qual o tipo de coluna que determinado dado será importado. Por padrão, o readr irá gerar a especificação de cada coluna quando o arquivo form lido e gerará um resumo na saída.
 
@@ -401,11 +397,11 @@ Para definirmos o número máximo de linhas do arquivo para advinhar o tipo da c
 read_csv("file.csv",guess_max = 2)
 ```
 
-# READXL
+## READXL
 
 Para lermos arquivos do Microsoft Excel, podemos usar o pacote **readxl**.
 
-## Ler arquivos do Excel
+### Ler arquivos do Excel
 
 Apesar do pacote readxl ser instalado quando instalamos o pacote tidyverse, ele não é carregado quando carregamos o tidyverse. É por isso, que tivemos o código "library (readxl) na seção [Introdução]
 
@@ -419,7 +415,7 @@ Se preferir, pode utilizar as funções read_xls() e read_xlsx() para ler um arq
 read_excel("excel_file.xlsx")
 ```
 
-## Ler planilhas
+### Ler planilhas
 
 Sabemos que um arquivo Excel (*workbook*), pode conter uma ou mais planilhas (*worksheets*). Para definirmos as planilhas que precisamos importar, podemos utilizar o parametros **sheet =** da função read_excel(). Podemos passar uma string com o nome a planilha (ex: "S1") ou um índice númerico pela ordem de criação da planilha (ex: 1). Se nada for especificado, padrão é trazer a primeira planilha.
 
@@ -445,7 +441,7 @@ arq |>
   map_dfr(read_excel, path = arq)
 ```
 
-## Especificação de colunas
+### Especificação de colunas
 
 Para especificar os tipos das colunas no data frame após a importação do arquivo, usamos o parametro col_types =, similar ao que fizemos para arquivos tabulados na seção [Especificação de colunas com readr].
 
@@ -457,7 +453,7 @@ Os tipos de colunas podemos ser:
 Use uma coluna de lista (list-column) descrita no pacote **tidyr** para trabalhar com colunas com vários tipos.
 :::
 
-## Outros pacotes
+### Outros pacotes
 
 Além do pacote readxl, há outros pacotes muito úteis para criar arquivos do MS Excel, tais como:
 
@@ -469,7 +465,7 @@ Para trabalhar com dados do Excel de forma não tabular, veja o pacote:
 
 -   **tidyxl**
 
-## Especificação de celulas
+### Especificação de celulas
 
 Use os argumentos **range =** para a função read_excel() ou googlesheets4::read_sheet() no caso de planilhas do Google para ler um subconjunto de células de uma planilha.
 
@@ -486,9 +482,9 @@ read_excel("excel_file.xlsx", sheet = "S1",
           range = cell_cols("B:D"))
 ```
 
-# GOOGLESHEETS4
+## GOOGLESHEETS4
 
-## Ler planilhas
+### Ler planilhas
 
 #### read_sheet
 
@@ -516,7 +512,7 @@ A primeira vez que executar este comendo, haverá um processo de autenticação 
 Depois o navegador será aberto solicitando o acesso aos arquivo do Google. Selecoine o checkbox e click em "Continue".
 :::
 
-## Metadados das planilhas
+### Metadados das planilhas
 
 #### gs4_gets
 
@@ -547,7 +543,7 @@ sheet_properties("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8")
 Você pode usar a função **sheet_names**() para obter os nomes da planilha dentro do arquivo.
 :::
 
-## Gravar planilhar
+### Gravar planilhar
 
 O pacote googlesheets4 tem várias maneiras de gravar dados em uma planilha.
 
@@ -574,7 +570,7 @@ minha_planilha <- gs4_create(name = "meu_novo_arquivo_google_sheet", sheets = "S
 sheet_properties(minha_planilha)
 ```
 
-## Especificação de colunas
+### Especificação de colunas
 
 Para especificar os tipos das colunas no data frame após a importação da planilha do Google, usamos o parametro **col_types =** como argumento da função **read_sheet/range_read()**, similar ao que fizemos para arquivos tabulados na seção [Especificação de colunas com readr].
 
@@ -602,11 +598,11 @@ Os tipos de colunas aceitos são:
 
 • cell - "C" Retorna uma lista bruta dos dados das células.
 
-## Especificação de celulas {#especificação-de-celulas-1}
+### Especificação de celulas - Google Sheets {#especificação-de-celulas-1}
 
-Ver seção [Especificação de celulas](#especificação-de-celulas-1)
+Ver seção [Especificação de celulas]
 
-## Operadores de arquivos
+### Operadores de arquivos
 
 O pacote googlesheets4 oferece várias forma de manipular os aspectos da planilha como congelar linhas, definir largura das colunas, etc. Acesse [googlesheets4.tydeverse.org](googlesheets4.tydeverse.org) para mais informações.
 

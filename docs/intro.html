@@ -226,29 +226,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamada <strong>tidyverse</strong>. Ele é uma espécie de “super pacote” para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.</p>
+<p>Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamado <strong>tidyverse</strong>. Ele é uma espécie de “super pacote” para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.</p>
 <p><img src="images/tidyverse-hex-stiker.jpg" class="img-fluid" width="196"></p>
 <p>Para saber mais sobre este pacote, acesse:</p>
-<p><a href="https://cran.r-project.org/package=tidyr" class="uri">https://cran.r-project.org/package=tidyverse</a>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Aviso
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:</p>
-<p><a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a>.</p>
-</div>
-</div>
+<p><a href="https://cran.r-project.org/package=tidyr" class="uri">https://cran.r-project.org/package=tidyverse</a></p>
 <p>Para os exemplos, iremos carregar inicialmente os seguintes pacotes:</p>
 <ul>
-<li><p><strong>tidyverse</strong></p></li>
-<li><p><strong>gt</strong></p></li>
+<li><strong>tidyverse e gt</strong></li>
 </ul>
+<p>O pacote <strong>gt</strong> será utilizado apenas para eventualmente a formatação de tabelas, de modo a deixar a saída de alguns comandos mais clara.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (gt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -256,8 +242,8 @@ Aviso
 <section id="folhas-de-referências" class="level3" data-number="1.0.1">
 <h3 data-number="1.0.1" class="anchored" data-anchor-id="folhas-de-referências"><span class="header-section-number">1.0.1</span> Folhas de Referências</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Folha de Referência</strong></a> dos pacotes (cheatsheets) disponível no site do <a href="rstudio.com">RStudio</a>.</p>
-<p>A seguir, um exemplo de uma “<strong>Folha de Referência</strong>” do pacote DPLYR:</p>
-<p><img src="images/data-transformation-cheatsheet01.jpg" class="img-fluid"></p>
+<p>A seguir, um exemplo de uma “<strong>Folha de Referência</strong>” do pacote <strong>DPLYR</strong>:</p>
+<p><img src="images/data-transformation-cheatsheet01.jpg" class="img-fluid" width="663"></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -268,9 +254,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Em geral, ao final de cada seção de código, você pderá ver a chamada à função <strong>gt()</strong>.</em></p>
-<p><em>Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes.</em></p>
-<p><em>Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função <strong>head()</strong> para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função <strong>select()</strong> para selecionar apenas algumas colunas. A função <strong>print()</strong> também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.</em></p>
+<p><em>Ao final de cada seção de código, você poderá encontrar a chamada à função <strong>gt()</strong>. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função <strong>head()</strong> para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função <strong>select()</strong> para selecionar apenas algumas colunas. A função <strong>print()</strong> também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.</em></p>
 </div>
 </div>
 

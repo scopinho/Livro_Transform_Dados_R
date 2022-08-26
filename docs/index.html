@@ -166,26 +166,15 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p><img src="images/cover.png" title="Transformação e Manipulação de Dados com a linguagem R" class="quarto-cover-image img-fluid"></p>
-<hr>
-<hr>
+
 <section id="bem-vindo" class="level1 unnumbered">
-<h1 class="unnumbered">Bem-Vindo</h1>
+<p><img src="images/cover.png" title="Transformação e Manipulação de Dados com a linguagem R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Bem-Vindo</h1>
 <p>Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a linguagem R, mais especificamente o pacote tidyverse.</p>
-<p>Estas são etapas muito importantes no ciclo de vida de um projeto de ciência de dados ou mesmo para utilização em áreas de negócio das organizações, que estão cada vez mais, buscando tomar decisão com base em dados.</p>
-<p>A comunidade R tem produzido ao longo dos anos uma série <a href="https://www.rstudio.com/resources/cheatsheets/">Folhas de Referências</a>(<em>cheatsheets</em>)que fazem parte também da ferramenta de desenvolvimento <a href="http://localhost:7802/rstudio.com">RStudio</a>.</p>
-<p>Estas <strong>Folhas de Referências</strong>, são anotações de 2 páginas que visam resumir as principais informações sobre determinado tema ou pacote do R.</p>
+<p>Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisão com base em dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.</p>
+<p>A comunidade R tem produzido ao longo dos anos uma série <a href="https://www.rstudio.com/resources/cheatsheets/">Folhas de Referências</a> (<em>cheatsheets</em>) que fazem parte também da ferramenta de desenvolvimento <a href="http://localhost:7802/rstudio.com">RStudio</a>.</p>
+<p>Estas <strong>Folhas de Referências</strong>, são anotações de 2 páginas que visam resumir as principais informações sobre determinado tema ou pacote do R. São uma espécie de “cola” para nos lembrarmos dos comandos e informações mais relevantes.</p>
 <p>Este livro se baseia nestas folhas de referências, que apesar de extremamente úteis, podem ser de difícil interpretação para usuários iniciantes.</p>
-<p>Aleḿ disso, a escassez de documentação sobre o tema em lingua Portuguesa, foi outro motivador para este trabalho.</p>
-<p><strong>Os temas abordados neste livro são:</strong></p>
-<ul>
-<li><p><a href="./Importacao/Importacao_de_dados_com_tidyverse.html">Importação de Dados</a>: Trata sobre <strong>importação de dados</strong> .csv, excel e Google Sheets, com o pacote <strong>tidyverse (readr, readxl and googlesheets4).</strong> Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf">data-import cheatsheet</a>.</p></li>
-<li><p><a href="./Organizacao/Organizacao_de_dados_com_tidyr.html">Organização de Dados</a>: Sobre <strong>organização de dados</strong> com o pacote <strong>tidyr</strong>. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf">tidyr cheatsheet</a>.</p></li>
-<li><p><a href="./Transformacao/Transformacao_de_dados_com_dplyr.html">Transformação de dados</a> : Apresenta a <strong>transformação de dados</strong> com o pacote <strong>dplyr</strong>. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf">data transformation cheatsheet</a></p></li>
-<li><p><a href="./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html">Manipulação de strings</a>: Fala sobre <strong>manipulação de strings</strong> com o pacote <strong>stringr</strong>. Apresenta também um bom conteúdo sobre <strong>expressões</strong> <strong>regulares</strong> (<strong>regex</strong>). Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf">stringr cheatsheet</a></p></li>
-<li><p><a href="./DataHora/Datas_e_horas_com_lubridate.html">Datas e horas</a>: Sobre a formatação e cálculos de <strong>variáveis</strong> com <strong>datas</strong> e <strong>horas</strong> com o pacote <strong>lubridate</strong>. Ver folhe da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf">lubridate cheatsheet</a>.</p></li>
-<li><p><a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html">Visualização de Dados</a>: Sobre a visualização de dados com o pacote <strong>ggplot2</strong>. Ver folhe da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf">data visualization cheatsheet</a>.</p></li>
-</ul>
+<p>Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o indioma inglês.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -196,10 +185,20 @@ Aviso
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Para melhor utilizar o conteúdo deste livro, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:</p>
+<p>Para melhor utilizar o conteúdo deste livro, é importante que você já possua uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Não iremos abortar comandos básicos da linguagem e nem mesmo instalação da ferramenta de desenvolvimento.</p>
+<p>Para mais informações acesse:</p>
 <p><a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a>.</p>
 </div>
 </div>
+<p><strong>Os temas abordados neste livro são:</strong></p>
+<ul>
+<li><p><a href="./Importacao/Importacao_de_dados_com_tidyverse.html">Importação de Dados</a>: Trata sobre <strong>importação de dados</strong> tabulador .csv, .txt, etc, planilhas do Excel e Google Sheets, através do pacote <strong>tidyverse (readr, readxl and googlesheets4).</strong> Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf">data-import cheatsheet</a>.</p></li>
+<li><p><a href="./Organizacao/Organizacao_de_dados_com_tidyr.html">Organização de Dados</a>: Sobre <strong>organização de dados</strong> com o pacote <strong>tidyr</strong>. Mover colunas e linhas de forma a organizar seus dados em tabelas organizadas. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf">tidyr cheatsheet</a>.</p></li>
+<li><p><a href="./Transformacao/Transformacao_de_dados_com_dplyr.html">Transformação de dados</a> : Apresenta a <strong>transformação de dados</strong> com o pacote <strong>dplyr</strong>. Aplicação de filtros, sumarização, criação de colunas calculadas e muitas outras funções de transformação. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf">data transformation cheatsheet</a></p></li>
+<li><p><a href="./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html">Manipulação de strings</a>: Fala sobre <strong>manipulação de strings</strong> (textos) com o pacote <strong>stringr</strong>. Apresenta também um bom conteúdo sobre <strong>expressões</strong> <strong>regulares</strong> (<strong>regex</strong>). Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf">stringr cheatsheet</a></p></li>
+<li><p><a href="./DataHora/Datas_e_horas_com_lubridate.html">Datas e horas</a>: Sobre a formatação e cálculos de <strong>variáveis</strong> com <strong>datas</strong> e <strong>horas</strong> com o pacote <strong>lubridate</strong>. Ver folhe da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf">lubridate cheatsheet</a>.</p></li>
+<li><p><a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html">Visualização de Dados</a>: Traz uma introdução à criação de gráficos através do pacote <strong>ggplot2</strong>. Ver folha da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf">data visualization cheatsheet</a>.</p></li>
+</ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -210,7 +209,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Este livro é de conteúdo público. Para acessar o código-fonte e/ou contribuir com correções ou sugestões acesse:</p>
+<p>Este livro é de conteúdo público e uma pequena contribuição voluntária. Para acessar o código-fonte e/ou contribuir com correções ou sugestões acesse:</p>
 <p><a href="https://github.com/scopinho/Livro_Transform_Dados_R" class="uri">https://github.com/scopinho/Livro_Transform_Dados_R</a></p>
 </div>
 </div>

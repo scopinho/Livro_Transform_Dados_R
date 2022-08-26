@@ -4,25 +4,19 @@ lang: pt
 
 # Introdução
 
-Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamada **tidyverse**. Ele é uma espécie de "super pacote" para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.
+Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamado **tidyverse**. Ele é uma espécie de "super pacote" para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.
 
 ![](images/tidyverse-hex-stiker.jpg){width="196"}
 
 Para saber mais sobre este pacote, acesse:
 
-[https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}.
-
-::: callout-warning
-Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
-
-<https://education.rstudio.com/learn/beginner/>.
-:::
+[https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}
 
 Para os exemplos, iremos carregar inicialmente os seguintes pacotes:
 
--   **tidyverse**
+-   **tidyverse e gt**
 
--   **gt**
+O pacote **gt** será utilizado apenas para eventualmente a formatação de tabelas, de modo a deixar a saída de alguns comandos mais clara.
 
 ```{r}
 #| echo: true
@@ -35,14 +29,10 @@ library (gt)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://www.rstudio.com/resources/cheatsheets/) dos pacotes (cheatsheets) disponível no site do [RStudio](rstudio.com).
 
-A seguir, um exemplo de uma "**Folha de Referência**" do pacote DPLYR:
+A seguir, um exemplo de uma "**Folha de Referência**" do pacote **DPLYR**:
 
-![](images/data-transformation-cheatsheet01.jpg)
+![](images/data-transformation-cheatsheet01.jpg){width="663"}
 
 ::: callout-note
-*Em geral, ao final de cada seção de código, você pderá ver a chamada à função **gt()**.*
-
-*Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes.*
-
-*Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas. A função **print()** também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.*
+*Ao final de cada seção de código, você poderá encontrar a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas. A função **print()** também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.*
 :::

@@ -2,8 +2,6 @@
 title: "Visualização de Dados com GGPLOT2"
 ---
 
-## EM CONSTRUÇÃO!!!!
-
 ## Introdução
 
 A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.
@@ -50,15 +48,15 @@ O pacote ggplot2 é uma implementação do livro "***Grammar of Graphics***", qu
 
 De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um **conjunto de dados**, um **sistema de coordenadas** e **geoms**, que seriam marcas visuais que representas os pontos dos dados.
 
-![](images/ggplot-01.jpg)
+![](images/ggplot-01.jpg){width="475"}
 
 No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados são **mapeadas** em propriedadas visuais da geometria (geom).
 
 Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor ou tamanho.
 
-![](images/ggplot-02.jpg)
+![](images/ggplot-02.jpg){width="475"}
 
-# Modelo para Construção de um Gráfico
+## Modelo para Construção de um Gráfico
 
 No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sintaxe de construção de gráficos:
 
@@ -122,7 +120,7 @@ Por exemplo, para salvar o diretório atual um arquivo com o gráfico chamado "p
 ggsave("plot-01.png", width = 5, height = 5, units = "cm")
 ```
 
-# Estética (aes)
+## Estética (aes)
 
 Cada estética possui valores padrões que serão usados por determinada função de geometria ou de estatística. Mas existem valores que são comuns a quase todas as geom/stat(), a seguir veremos alguns deles:
 
@@ -132,18 +130,23 @@ Use para definir a cor (color) ou preenchimento (fill) para a estética.
 
 ```{r}
 ggplot(mtcars)+
-  geom_point(aes(x = hp, y = mpg), color = "red")
+  geom_point(aes(x = hp, y = mpg, color = "red"))
 ```
 
 Na string de color =, podemos usar valores de cores em inglês, como "red" ou "blue", ou também códigos RGB, como ""#00ABFF" ou "FF00AA".
 
 ::: callout-important
-Observe que o valor definido da cor, está fora dos parênteses da função aes(), ou seja, ela não está fazendo o mapeamento da cor com os dados, mas sim, definindo uma cor para a função da geometria (geom_point).
+Observe que o valor definido da cor, dentro fora dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da cor com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.
 :::
 
-Se quiser definir a cor no mapeamento através da estética, podemos fazê-lo de outra maneira através do argumento color dentro da função aes().
+```{r}
+ggplot(mtcars)+
+  geom_point(aes(x = hp, y = mpg) , color = "red")
+```
 
-Por exemplo, vamos gerar o mesmo gráfico anterior, mas gostaríamos de incluir no mapeamento informações de estética onde a cor dos pontos estivesse mapeada com a coluna "qsec" de nossos dados mtcars:
+Apesar do resultado ser similar, observe que no exemplo anterior tivemos color como um mapeamento da estética, como definimos o valor fixo com a cor "red", seria como tivessemos em nossos dados uma coluna onde todas as linhas tivessem o valor "red". Já no exemplo acima, estamos simplemente dizendo à função da geometria que queremos a cor vermelha para ela.
+
+Vejamos um outro exemplo para que fique claro este ponto. Vamos gerar o mesmo gráfico onde colocamos "red" como parte da estética, porém agora, iremos mapeá-la com a coluna "qsec" de nossos dados mtcars:
 
 ```{r}
 ggplot(mtcars)+
@@ -152,7 +155,7 @@ ggplot(mtcars)+
 
 #### linetype
 
-Use para definir a linha utilizada no gráfico. Podemos utilizar umm número de 0 a 6 ou um nome:
+Use para definir a linha utilizada no gráfico. Podemos utilizar um número de 0 a 6 ou um nome:
 
 *(0 = "blank", 1 = "solid", 2 = "dashed", 3 = "dotted", 4 = "dotdash", 5 = "longdash",6 = "twodash")*
 
@@ -160,32 +163,14 @@ Por exemplo, ao invés de utilizarmos a geometria de pontos (geom_point), vamos 
 
 ```{r}
 ggplot(mtcars)+
-  geom_line(aes(x = hp, y = mpg), linetype = 4)
-```
-
-#### lineend
-
-Use para definir o terminador da linha. Os valores podem ser: *round*, *butt* e *square*.
-
-```{r}
-ggplot(mtcars)+
-  geom_line(aes(x = hp, y = mpg), lineend = "round")
-```
-
-#### linejoin
-
-Use para definir a junção da linha. Os valores podem ser: *round*, *mitre* e *bevel*.
-
-```{r}
-ggplot(mtcars)+
-  geom_line(aes(x = hp, y = mpg), linejoin = "bevel")
+  geom_line(aes(x = hp, y = mpg) , linetype = "dotted")
 ```
 
 #### size
 
 Use para definir o tamanho, no caso de uma linha em "mm".
 
-Como dito anteriormente, estes valores são comuns para vários geometrias.Por exemplo, podemos utilizar o argumento size também na geometria de pontos (geom_point):
+Como dito anteriormente, estes valores são comuns para vários geometrias. Por exemplo, podemos utilizar o argumento size também na geometria de pontos (geom_point):
 
 ```{r}
 #| layout-ncol: 2
@@ -197,9 +182,63 @@ ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg), size = 5)
 ```
 
+#### lineend
+
+Use para definir o terminador da linha. Os valores podem ser: *round*, *butt* e *square*.
+
+::: panel-tabset
+## squared
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), lineend = "square", size = 4)
+```
+
+## butt
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), lineend = "butt", size = 4)
+```
+
+## round
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), lineend = "round", size = 4)
+```
+:::
+
+#### linejoin
+
+Use para definir a junção da linha. Os valores podem ser: *round*, *mitre* e *bevel*.
+
+::: panel-tabset
+## round
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), linejoin = "round", size = 4)
+```
+
+## mitre
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), linejoin = "mitre", size = 4)
+```
+
+## bevel
+
+```{r}
+ggplot(mtcars)+
+  geom_line(aes(x = hp, y = mpg), linejoin = "bevel", size = 4)
+```
+:::
+
 #### shape
 
-Use para definir a forma. Podemos passar um número ou um nome da forma conforme abaixo:
+Use para definir a forma. Podemos passar um número ou um nome em inglês da forma conforme abaixo:
 
 ![](images/aes_shape-01.jpg)
 
@@ -207,12 +246,12 @@ Use para definir a forma. Podemos passar um número ou um nome da forma conforme
 #| layout-ncol: 2 
 
 ggplot(mtcars)+
-  geom_point(aes(x = hp, y = mpg), shape = "square")
+  geom_point(aes(x = hp, y = mpg), shape = "square cross",  size = 3)
 ggplot(mtcars)+
-  geom_point(aes(x = hp, y = mpg), shape = 5)
+  geom_point(aes(x = hp, y = mpg), shape = 5, size = 3)
 ```
 
-# Geometrias (geoms)
+## Geometrias (geoms)
 
 Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.
 
@@ -220,7 +259,7 @@ Use as funções de geometria para representar os pontos de dados. Use as estét
 Lembre-se que cada função retornará uma camada, portanto, a ordem de criação das camadas afeta o resultado do gráfico, pois uma será criada sobre a anterior.
 :::
 
-## Gráficos Primitivos
+### Gráficos Primitivos
 
 Para os exemplos a seguir, utilizaremos duas bases de dados, uma chamada **economics** e outra **chamada** seals.
 
@@ -319,7 +358,7 @@ a + geom_ribbon (aes(ymin = unemploy - 900,
 ymax = unemploy + 900))
 ```
 
-## Segmentos de Linhas
+### Segmentos de Linhas
 
 Estas funções de geometrias, permitem criar diversos tipo de segmentos de linha e são úteis quando precisamos "marcar" ou definir algo no gráfico, com linhas verticais ou horizontais por exemplo.
 
@@ -339,6 +378,14 @@ Use para criar uma ou mais linhas horizontais.
 b + geom_hline(aes(yintercept = lat))
 ```
 
+Veja que no exemplo anterior, fizemos o mapeamento do argumento yintercept como parte da estética (aes), mapeando este argumento com a variável "lat" de nossos dados.
+
+Se quisermos simplesmente traçar uma linha com o intercepto do eixo y, correspondendo ao valor 40 (por exemplo, se fosse um tipo de meta), podemos definir este valor fora do mapeamento:
+
+```{r}
+b + geom_hline(yintercept = 40)
+```
+
 #### geom_vline
 
 Use para criar uma ou mais linhas horizontais.
@@ -347,7 +394,7 @@ Use para criar uma ou mais linhas horizontais.
 b + geom_vline(aes(xintercept = long))
 ```
 
-geom_segment
+#### geom_segment
 
 É similar ao geom_curve, porém ao invés de criar uma curva, criar um segmento de reta.
 
@@ -355,7 +402,7 @@ geom_segment
 b + geom_segment(aes(yend = lat + 1, xend = long + 1))
 ```
 
-geom_spoke
+#### geom_spoke
 
 Use para criar um segmento, parametrizado pela localização, direção e distância.
 
@@ -363,7 +410,7 @@ Use para criar um segmento, parametrizado pela localização, direção e distâ
 b + geom_spoke(aes(angle = 1:1155, radius = 1))
 ```
 
-## Uma Variável Contínua
+### Uma Variável Contínua
 
 Novamente, iremos preparar nossos objetos básicos para evitar repetição de código. Agora teremos um objeto "**c**" e outro "**c2**", aos quais iremos adicionar novas camadas. Similar ao que fizemos anteriormente, porém agora utilizaremos a base de dados "**mpg**".
 
@@ -388,7 +435,9 @@ Já para o objeto "**c2**", **não temos a estética** de x definida, portanto, 
 
 Use para criar uma geometria de área.
 
+::: callout-note
 Você verá um argument (stat = "bin") abaixo. Veremos as **estatísticas** na seção [ESTATÍSTICAS (STATS)](#estatísticas-stats). Por hora, pense apenas que é uma forma de definirmos os valores que iremos mostrar para o eixo y. Por padrão o número de agrupamento (bin) é 30.
+:::
 
 ```{r}
 c + geom_area(stat = "bin")
@@ -434,46 +483,46 @@ Use para criar um gráfico de quantil-quantil. Em geral utilizado para confirmar
 c2 + geom_qq(aes(sample = hwy))
 ```
 
-## Uma Variável Discreta
+### Uma Variável Discreta
 
-## Duas Variáveis Contínuas
+### Duas Variáveis Contínuas
 
-## Duas Variáveis Distribuição Bivariada Contínua
+### Duas Variáveis Distribuição Bivariada Contínua
 
-## Uma Variável Contínua e Outra Discreta
+### Uma Variável Contínua e Outra Discreta
 
-## Duas Variáveis Discretas
+### Duas Variáveis Discretas
 
-## Mapas
+### Mapas
 
-## Visualizando Erros
+### Visualizando Erros
 
-## Três Variáveis
+### Três Variáveis
 
-# Estatísticas (stats) {#estatísticas-stats}
+## Estatísticas (stats) {#estatísticas-stats}
 
-# Escalas (scales)
+## Escalas (scales)
 
-## Escalas de Propósito Geral
+### Escalas de Propósito Geral
 
-## Escalas de Localização X & Y
+### Escalas de Localização X & Y
 
-## Escalas de Cor e Preenchimento
+### Escalas de Cor e Preenchimento
 
 ### Variáveis Discretas
 
 ### Variáveis Contínuas
 
-## Escalas de Forma e Tamanho
+### Escalas de Forma e Tamanho
 
-# Sistema de Coordenadas
+## Sistema de Coordenadas
 
-# Ajuste de Posição
+## Ajuste de Posição
 
-# Temas
+## Temas
 
-# Facetas
+## Facetas
 
-# Texto e Legendas
+## Texto e Legendas
 
-# Zoom
+## Zoom
