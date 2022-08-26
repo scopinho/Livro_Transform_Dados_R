@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 3&nbsp; Organização de Dados com TIDYR</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 2&nbsp; Organização de Dados com TIDYR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,13 +125,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -139,14 +158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Transformação e Manipulação de Dados com a linguagem R</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -161,39 +175,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Parte 1 - Obtendo e Ajustando os Dados</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Parte 2 -Trabalhando com Strings e Datas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Parte 3 - Gráficos</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -203,73 +247,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">3.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">2.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">3.1.1</span> Exemplos da Folha de Referência</a></li>
-  <li><a href="#conjunto-de-dados" id="toc-conjunto-de-dados" class="nav-link" data-scroll-target="#conjunto-de-dados"> <span class="header-section-number">3.1.2</span> Conjunto de Dados</a></li>
-  <li><a href="#dados-organizados-e-canalização" id="toc-dados-organizados-e-canalização" class="nav-link" data-scroll-target="#dados-organizados-e-canalização"> <span class="header-section-number">3.1.3</span> Dados Organizados e Canalização</a></li>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">2.1.1</span> Exemplos da Folha de Referência</a></li>
+  <li><a href="#conjunto-de-dados" id="toc-conjunto-de-dados" class="nav-link" data-scroll-target="#conjunto-de-dados"> <span class="header-section-number">2.1.2</span> Conjunto de Dados</a></li>
+  <li><a href="#dados-organizados-e-canalização" id="toc-dados-organizados-e-canalização" class="nav-link" data-scroll-target="#dados-organizados-e-canalização"> <span class="header-section-number">2.1.3</span> Dados Organizados e Canalização</a></li>
   </ul></li>
-  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"> <span class="header-section-number">3.2</span> Tibbles</a>
+  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"> <span class="header-section-number">2.2</span> Tibbles</a>
   <ul class="collapse">
-  <li><a href="#criando-tibble" id="toc-criando-tibble" class="nav-link" data-scroll-target="#criando-tibble"> <span class="header-section-number">3.2.1</span> Criando tibble</a>
+  <li><a href="#criando-tibble" id="toc-criando-tibble" class="nav-link" data-scroll-target="#criando-tibble"> <span class="header-section-number">2.2.1</span> Criando tibble</a>
   <ul class="collapse">
-  <li><a href="#tibble" id="toc-tibble" class="nav-link" data-scroll-target="#tibble"> <span class="header-section-number">3.2.1.1</span> tibble</a></li>
-  <li><a href="#tribble" id="toc-tribble" class="nav-link" data-scroll-target="#tribble"> <span class="header-section-number">3.2.1.2</span> tribble</a></li>
-  <li><a href="#as_tibble" id="toc-as_tibble" class="nav-link" data-scroll-target="#as_tibble"> <span class="header-section-number">3.2.1.3</span> as_tibble</a></li>
-  <li><a href="#enframe" id="toc-enframe" class="nav-link" data-scroll-target="#enframe"> <span class="header-section-number">3.2.1.4</span> enframe</a></li>
-  <li><a href="#is_tibble" id="toc-is_tibble" class="nav-link" data-scroll-target="#is_tibble"> <span class="header-section-number">3.2.1.5</span> is_tibble</a></li>
+  <li><a href="#tibble" id="toc-tibble" class="nav-link" data-scroll-target="#tibble"> <span class="header-section-number">2.2.1.1</span> tibble</a></li>
+  <li><a href="#tribble" id="toc-tribble" class="nav-link" data-scroll-target="#tribble"> <span class="header-section-number">2.2.1.2</span> tribble</a></li>
+  <li><a href="#as_tibble" id="toc-as_tibble" class="nav-link" data-scroll-target="#as_tibble"> <span class="header-section-number">2.2.1.3</span> as_tibble</a></li>
+  <li><a href="#enframe" id="toc-enframe" class="nav-link" data-scroll-target="#enframe"> <span class="header-section-number">2.2.1.4</span> enframe</a></li>
+  <li><a href="#is_tibble" id="toc-is_tibble" class="nav-link" data-scroll-target="#is_tibble"> <span class="header-section-number">2.2.1.5</span> is_tibble</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#reformatando-dados" id="toc-reformatando-dados" class="nav-link" data-scroll-target="#reformatando-dados"> <span class="header-section-number">3.3</span> Reformatando Dados</a>
+  <li><a href="#reformatando-dados" id="toc-reformatando-dados" class="nav-link" data-scroll-target="#reformatando-dados"> <span class="header-section-number">2.3</span> Reformatando Dados</a>
   <ul class="collapse">
-  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"> <span class="header-section-number">3.3.0.1</span> pivot_longer</a></li>
-  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"> <span class="header-section-number">3.3.0.2</span> pivot_wider</a></li>
+  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"> <span class="header-section-number">2.3.0.1</span> pivot_longer</a></li>
+  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"> <span class="header-section-number">2.3.0.2</span> pivot_wider</a></li>
   </ul></li>
-  <li><a href="#expandindo-tabelas" id="toc-expandindo-tabelas" class="nav-link" data-scroll-target="#expandindo-tabelas"> <span class="header-section-number">3.4</span> Expandindo Tabelas</a>
+  <li><a href="#expandindo-tabelas" id="toc-expandindo-tabelas" class="nav-link" data-scroll-target="#expandindo-tabelas"> <span class="header-section-number">2.4</span> Expandindo Tabelas</a>
   <ul class="collapse">
-  <li><a href="#expand" id="toc-expand" class="nav-link" data-scroll-target="#expand"> <span class="header-section-number">3.4.0.1</span> expand</a></li>
-  <li><a href="#complete" id="toc-complete" class="nav-link" data-scroll-target="#complete"> <span class="header-section-number">3.4.0.2</span> complete</a></li>
+  <li><a href="#expand" id="toc-expand" class="nav-link" data-scroll-target="#expand"> <span class="header-section-number">2.4.0.1</span> expand</a></li>
+  <li><a href="#complete" id="toc-complete" class="nav-link" data-scroll-target="#complete"> <span class="header-section-number">2.4.0.2</span> complete</a></li>
   </ul></li>
-  <li><a href="#combinando-e-dividindo-celulas" id="toc-combinando-e-dividindo-celulas" class="nav-link" data-scroll-target="#combinando-e-dividindo-celulas"> <span class="header-section-number">3.5</span> Combinando e Dividindo Celulas</a>
+  <li><a href="#combinando-e-dividindo-celulas" id="toc-combinando-e-dividindo-celulas" class="nav-link" data-scroll-target="#combinando-e-dividindo-celulas"> <span class="header-section-number">2.5</span> Combinando e Dividindo Celulas</a>
   <ul class="collapse">
-  <li><a href="#unite" id="toc-unite" class="nav-link" data-scroll-target="#unite"> <span class="header-section-number">3.5.0.1</span> unite</a></li>
-  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate"> <span class="header-section-number">3.5.0.2</span> separate</a></li>
-  <li><a href="#separate_rows" id="toc-separate_rows" class="nav-link" data-scroll-target="#separate_rows"> <span class="header-section-number">3.5.0.3</span> separate_rows</a></li>
+  <li><a href="#unite" id="toc-unite" class="nav-link" data-scroll-target="#unite"> <span class="header-section-number">2.5.0.1</span> unite</a></li>
+  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate"> <span class="header-section-number">2.5.0.2</span> separate</a></li>
+  <li><a href="#separate_rows" id="toc-separate_rows" class="nav-link" data-scroll-target="#separate_rows"> <span class="header-section-number">2.5.0.3</span> separate_rows</a></li>
   </ul></li>
-  <li><a href="#lidando-com-valores-ausentes" id="toc-lidando-com-valores-ausentes" class="nav-link" data-scroll-target="#lidando-com-valores-ausentes"> <span class="header-section-number">3.6</span> Lidando com Valores Ausentes</a>
+  <li><a href="#lidando-com-valores-ausentes" id="toc-lidando-com-valores-ausentes" class="nav-link" data-scroll-target="#lidando-com-valores-ausentes"> <span class="header-section-number">2.6</span> Lidando com Valores Ausentes</a>
   <ul class="collapse">
-  <li><a href="#drop_na" id="toc-drop_na" class="nav-link" data-scroll-target="#drop_na"> <span class="header-section-number">3.6.0.1</span> drop_na</a></li>
-  <li><a href="#fill" id="toc-fill" class="nav-link" data-scroll-target="#fill"> <span class="header-section-number">3.6.0.2</span> fill</a></li>
-  <li><a href="#replace_na" id="toc-replace_na" class="nav-link" data-scroll-target="#replace_na"> <span class="header-section-number">3.6.0.3</span> replace_na</a></li>
+  <li><a href="#drop_na" id="toc-drop_na" class="nav-link" data-scroll-target="#drop_na"> <span class="header-section-number">2.6.0.1</span> drop_na</a></li>
+  <li><a href="#fill" id="toc-fill" class="nav-link" data-scroll-target="#fill"> <span class="header-section-number">2.6.0.2</span> fill</a></li>
+  <li><a href="#replace_na" id="toc-replace_na" class="nav-link" data-scroll-target="#replace_na"> <span class="header-section-number">2.6.0.3</span> replace_na</a></li>
   </ul></li>
-  <li><a href="#dados-aninhados" id="toc-dados-aninhados" class="nav-link" data-scroll-target="#dados-aninhados"> <span class="header-section-number">3.7</span> Dados Aninhados</a>
+  <li><a href="#dados-aninhados" id="toc-dados-aninhados" class="nav-link" data-scroll-target="#dados-aninhados"> <span class="header-section-number">2.7</span> Dados Aninhados</a>
   <ul class="collapse">
-  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">3.7.1</span> Introdução</a></li>
-  <li><a href="#criando-dados-aninhados" id="toc-criando-dados-aninhados" class="nav-link" data-scroll-target="#criando-dados-aninhados"> <span class="header-section-number">3.7.2</span> Criando dados Aninhados</a>
+  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">2.7.1</span> Introdução</a></li>
+  <li><a href="#criando-dados-aninhados" id="toc-criando-dados-aninhados" class="nav-link" data-scroll-target="#criando-dados-aninhados"> <span class="header-section-number">2.7.2</span> Criando dados Aninhados</a>
   <ul class="collapse">
-  <li><a href="#nest" id="toc-nest" class="nav-link" data-scroll-target="#nest"> <span class="header-section-number">3.7.2.1</span> nest</a></li>
+  <li><a href="#nest" id="toc-nest" class="nav-link" data-scroll-target="#nest"> <span class="header-section-number">2.7.2.1</span> nest</a></li>
   </ul></li>
-  <li><a href="#criando-tibbles-com-colunas-de-listas" id="toc-criando-tibbles-com-colunas-de-listas" class="nav-link" data-scroll-target="#criando-tibbles-com-colunas-de-listas"> <span class="header-section-number">3.7.3</span> Criando Tibbles com Colunas de Listas</a>
+  <li><a href="#criando-tibbles-com-colunas-de-listas" id="toc-criando-tibbles-com-colunas-de-listas" class="nav-link" data-scroll-target="#criando-tibbles-com-colunas-de-listas"> <span class="header-section-number">2.7.3</span> Criando Tibbles com Colunas de Listas</a>
   <ul class="collapse">
-  <li><a href="#tibble-1" id="toc-tibble-1" class="nav-link" data-scroll-target="#tibble-1"> <span class="header-section-number">3.7.3.1</span> tibble</a></li>
-  <li><a href="#tribble-1" id="toc-tribble-1" class="nav-link" data-scroll-target="#tribble-1"> <span class="header-section-number">3.7.3.2</span> tribble</a></li>
-  <li><a href="#enframe-1" id="toc-enframe-1" class="nav-link" data-scroll-target="#enframe-1"> <span class="header-section-number">3.7.3.3</span> enframe</a></li>
-  <li><a href="#outras-funções-retornam-coluna-de-lista" id="toc-outras-funções-retornam-coluna-de-lista" class="nav-link" data-scroll-target="#outras-funções-retornam-coluna-de-lista"> <span class="header-section-number">3.7.3.4</span> Outras Funções Retornam Coluna de Lista</a></li>
+  <li><a href="#tibble-1" id="toc-tibble-1" class="nav-link" data-scroll-target="#tibble-1"> <span class="header-section-number">2.7.3.1</span> tibble</a></li>
+  <li><a href="#tribble-1" id="toc-tribble-1" class="nav-link" data-scroll-target="#tribble-1"> <span class="header-section-number">2.7.3.2</span> tribble</a></li>
+  <li><a href="#enframe-1" id="toc-enframe-1" class="nav-link" data-scroll-target="#enframe-1"> <span class="header-section-number">2.7.3.3</span> enframe</a></li>
+  <li><a href="#outras-funções-retornam-coluna-de-lista" id="toc-outras-funções-retornam-coluna-de-lista" class="nav-link" data-scroll-target="#outras-funções-retornam-coluna-de-lista"> <span class="header-section-number">2.7.3.4</span> Outras Funções Retornam Coluna de Lista</a></li>
   </ul></li>
-  <li><a href="#reformatando-dados-aninhados" id="toc-reformatando-dados-aninhados" class="nav-link" data-scroll-target="#reformatando-dados-aninhados"> <span class="header-section-number">3.7.4</span> Reformatando dados Aninhados</a>
+  <li><a href="#reformatando-dados-aninhados" id="toc-reformatando-dados-aninhados" class="nav-link" data-scroll-target="#reformatando-dados-aninhados"> <span class="header-section-number">2.7.4</span> Reformatando dados Aninhados</a>
   <ul class="collapse">
-  <li><a href="#unest" id="toc-unest" class="nav-link" data-scroll-target="#unest"> <span class="header-section-number">3.7.4.1</span> unest</a></li>
-  <li><a href="#unest_longer" id="toc-unest_longer" class="nav-link" data-scroll-target="#unest_longer"> <span class="header-section-number">3.7.4.2</span> unest_longer</a></li>
-  <li><a href="#unest_wider" id="toc-unest_wider" class="nav-link" data-scroll-target="#unest_wider"> <span class="header-section-number">3.7.4.3</span> unest_wider</a></li>
-  <li><a href="#hoist" id="toc-hoist" class="nav-link" data-scroll-target="#hoist"> <span class="header-section-number">3.7.4.4</span> hoist</a></li>
+  <li><a href="#unest" id="toc-unest" class="nav-link" data-scroll-target="#unest"> <span class="header-section-number">2.7.4.1</span> unest</a></li>
+  <li><a href="#unest_longer" id="toc-unest_longer" class="nav-link" data-scroll-target="#unest_longer"> <span class="header-section-number">2.7.4.2</span> unest_longer</a></li>
+  <li><a href="#unest_wider" id="toc-unest_wider" class="nav-link" data-scroll-target="#unest_wider"> <span class="header-section-number">2.7.4.3</span> unest_wider</a></li>
+  <li><a href="#hoist" id="toc-hoist" class="nav-link" data-scroll-target="#hoist"> <span class="header-section-number">2.7.4.4</span> hoist</a></li>
   </ul></li>
-  <li><a href="#transfromando-dados-aninhados" id="toc-transfromando-dados-aninhados" class="nav-link" data-scroll-target="#transfromando-dados-aninhados"> <span class="header-section-number">3.7.5</span> Transfromando dados Aninhados</a>
+  <li><a href="#transfromando-dados-aninhados" id="toc-transfromando-dados-aninhados" class="nav-link" data-scroll-target="#transfromando-dados-aninhados"> <span class="header-section-number">2.7.5</span> Transfromando dados Aninhados</a>
   <ul class="collapse">
-  <li><a href="#exemplo-1" id="toc-exemplo-1" class="nav-link" data-scroll-target="#exemplo-1"> <span class="header-section-number">3.7.5.1</span> Exemplo 1:</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">3.7.5.2</span> </a></li>
-  <li><a href="#exemplo-2" id="toc-exemplo-2" class="nav-link" data-scroll-target="#exemplo-2"> <span class="header-section-number">3.7.5.3</span> Exemplo 2:</a></li>
-  <li><a href="#exemplo-3" id="toc-exemplo-3" class="nav-link" data-scroll-target="#exemplo-3"> <span class="header-section-number">3.7.5.4</span> Exemplo 3:</a></li>
-  <li><a href="#exemplo-4" id="toc-exemplo-4" class="nav-link" data-scroll-target="#exemplo-4"> <span class="header-section-number">3.7.5.5</span> Exemplo 4:</a></li>
+  <li><a href="#exemplo-1" id="toc-exemplo-1" class="nav-link" data-scroll-target="#exemplo-1"> <span class="header-section-number">2.7.5.1</span> Exemplo 1:</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">2.7.5.2</span> </a></li>
+  <li><a href="#exemplo-2" id="toc-exemplo-2" class="nav-link" data-scroll-target="#exemplo-2"> <span class="header-section-number">2.7.5.3</span> Exemplo 2:</a></li>
+  <li><a href="#exemplo-3" id="toc-exemplo-3" class="nav-link" data-scroll-target="#exemplo-3"> <span class="header-section-number">2.7.5.4</span> Exemplo 3:</a></li>
+  <li><a href="#exemplo-4" id="toc-exemplo-4" class="nav-link" data-scroll-target="#exemplo-4"> <span class="header-section-number">2.7.5.5</span> Exemplo 4:</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -280,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></h1>
 </div>
 
 
@@ -294,8 +338,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introdução" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">3.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">2.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de organização de dados utilizando o pacote TIDYR do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=tidyr" class="uri">https://cran.r-project.org/package=tidyr</a>.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -321,12 +365,12 @@ Aviso
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (gt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="exemplos-da-folha-de-referência" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">3.1.1</span> Exemplos da Folha de Referência</h3>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">2.1.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf"><strong>Folha de Referência</strong></a> do tidyr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 </section>
-<section id="conjunto-de-dados" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="conjunto-de-dados"><span class="header-section-number">3.1.2</span> Conjunto de Dados</h3>
+<section id="conjunto-de-dados" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="conjunto-de-dados"><span class="header-section-number">2.1.2</span> Conjunto de Dados</h3>
 <p>Para a maioria dos exemplos utilizaremos as bases de dados <strong>mtcars, storms</strong> e <strong>starwars</strong> provenientes do pacote <strong>datasets e dplyr e</strong> também algumas tabelas (<strong>Table1</strong>, <strong>2, 3, 4a, 4b e 5</strong>) que vem com o pacote <strong>tidyr</strong>.</p>
 <hr>
 <p><strong>MTCARS</strong>: Dados de consumo de combustível, performance e design de 32 automóveis ( <em>1974 Motor Trend US magazine</em>)</p>
@@ -373,7 +417,7 @@ Aviso
 </div>
 <p><strong>TABELAS EXEMPLOS</strong> - Table1, 2, 3, 4a, 4b e 5</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Table1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Table2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Table3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Table4a</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Table4b</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Table5</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Table1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Table2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Table3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Table4a</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Table4b</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Table5</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
@@ -459,8 +503,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="dados-organizados-e-canalização" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="dados-organizados-e-canalização"><span class="header-section-number">3.1.3</span> Dados Organizados e Canalização</h3>
+<section id="dados-organizados-e-canalização" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="dados-organizados-e-canalização"><span class="header-section-number">2.1.3</span> Dados Organizados e Canalização</h3>
 <p>Dados organizados (<em>tidy</em>) são estruturados onde:</p>
 <p>Cada <strong>variável</strong> está em sua própria <strong>coluna</strong> e cada <strong>observação</strong> está em sua própria <strong>linha</strong>.</p>
 <p><img src="images/tidy_data01.png" class="img-fluid"></p>
@@ -468,8 +512,8 @@ Nota
 <p>Os <strong>observações</strong> (ou linhas) são preservadas em operações vetorizadas, ou seja, quando utilizamos funções que recebem vetores na entrada e retornam vetores na sua saída.</p>
 </section>
 </section>
-<section id="tibbles" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="tibbles"><span class="header-section-number">3.2</span> Tibbles</h2>
+<section id="tibbles" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tibbles"><span class="header-section-number">2.2</span> Tibbles</h2>
 <p>Podemos considerar que “<strong>Tibbles</strong>” são objetos similares aos “<strong>Data Frames</strong>”, porém com algumas melhorias/vantagens. Estes objetos são fornecidos pelo packago <strong>tibble</strong>. Eles herdam a classe data frame, mas possuem alguns comportamentos melhorados, como:</p>
 <ul>
 <li><p>Extrai parte de um tibble usando colchetes ] e um vetor com duplo colchetes ]] ou $</p></li>
@@ -489,11 +533,11 @@ Nota
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span> (starwars, <span class="dv">3</span>)      <span class="co">#Por numero usando select()</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span> (starwars, name)   <span class="co">#Por nome usando select()</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="criando-tibble" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="criando-tibble"><span class="header-section-number">3.2.1</span> Criando tibble</h3>
+<section id="criando-tibble" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="criando-tibble"><span class="header-section-number">2.2.1</span> Criando tibble</h3>
 <p>Podemos utilziar as funções tibble() ou tribble() para criar a mesma tabela. A diferença é apenas na forma em que os parêmetros são utilizados.</p>
-<section id="tibble" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="tibble"><span class="header-section-number">3.2.1.1</span> tibble</h4>
+<section id="tibble" class="level4" data-number="2.2.1.1">
+<h4 data-number="2.2.1.1" class="anchored" data-anchor-id="tibble"><span class="header-section-number">2.2.1.1</span> tibble</h4>
 <p>Use para criar um tibble por colunas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -507,8 +551,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="tribble" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="tribble"><span class="header-section-number">3.2.1.2</span> tribble</h4>
+<section id="tribble" class="level4" data-number="2.2.1.2">
+<h4 data-number="2.2.1.2" class="anchored" data-anchor-id="tribble"><span class="header-section-number">2.2.1.2</span> tribble</h4>
 <p>Use para criar um tibble por linhas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(<span class="sc">~</span>x, <span class="sc">~</span>y, </span>
@@ -526,8 +570,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="as_tibble" class="level4" data-number="3.2.1.3">
-<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="as_tibble"><span class="header-section-number">3.2.1.3</span> as_tibble</h4>
+<section id="as_tibble" class="level4" data-number="2.2.1.3">
+<h4 data-number="2.2.1.3" class="anchored" data-anchor-id="as_tibble"><span class="header-section-number">2.2.1.3</span> as_tibble</h4>
 <p>Use para converter um data frame para um tibble.</p>
 <p>Por exemplo, para converter o data frame MTCARS para um tibble, fazemos:</p>
 <div class="cell">
@@ -542,12 +586,12 @@ Nota
 </div>
 </div>
 </section>
-<section id="enframe" class="level4" data-number="3.2.1.4">
-<h4 data-number="3.2.1.4" class="anchored" data-anchor-id="enframe"><span class="header-section-number">3.2.1.4</span> enframe</h4>
+<section id="enframe" class="level4" data-number="2.2.1.4">
+<h4 data-number="2.2.1.4" class="anchored" data-anchor-id="enframe"><span class="header-section-number">2.2.1.4</span> enframe</h4>
 <p>Use para converter um vetor para um tibble. Use deframe() parta fazer o inverso.</p>
 </section>
-<section id="is_tibble" class="level4" data-number="3.2.1.5">
-<h4 data-number="3.2.1.5" class="anchored" data-anchor-id="is_tibble"><span class="header-section-number">3.2.1.5</span> is_tibble</h4>
+<section id="is_tibble" class="level4" data-number="2.2.1.5">
+<h4 data-number="2.2.1.5" class="anchored" data-anchor-id="is_tibble"><span class="header-section-number">2.2.1.5</span> is_tibble</h4>
 <p>Use para saber se um objeto é um tibble ou não.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_tibble</span>(mtcars)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -558,8 +602,8 @@ Nota
 </section>
 </section>
 </section>
-<section id="reformatando-dados" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="reformatando-dados"><span class="header-section-number">3.3</span> Reformatando Dados</h2>
+<section id="reformatando-dados" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="reformatando-dados"><span class="header-section-number">2.3</span> Reformatando Dados</h2>
 <p>Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira como vimos na seção <a href="#dados-organizados-e-canalização">Dados Organizados e Canalização</a>. Para casos onde temos, por exemplo, as variáveis em linhas e/ou observações em colunas, etc, precisamos fazer uma ação conhecida como “pivotagem”. Pivotar dados, no contexto do tidyr, significa ajustar linhas em colunas e/ou colunas em linhas, de forma a obtermos nossos dados da maneira organizada (tidy).</p>
 <p>Veja, por exemplo, nossa tabela 1 (table1). Ela está em um formato organizado, pois possui cada variável em uma coluna e cada observações em sua linha, com os valores nas células.</p>
 <div class="cell">
@@ -573,8 +617,8 @@ Nota
 </div>
 </div>
 </div>
-<section id="pivot_longer" class="level4" data-number="3.3.0.1">
-<h4 data-number="3.3.0.1" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">3.3.0.1</span> pivot_longer</h4>
+<section id="pivot_longer" class="level4" data-number="2.3.0.1">
+<h4 data-number="2.3.0.1" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">2.3.0.1</span> pivot_longer</h4>
 <p>Use para “pivotar” os dados das colunas para as linhas, <strong>alongando</strong> a tabela, juntando várias colunas em duas, sendo uma a colunas que receberá os nomes das colunas e outra que recebera os valores das colunas.</p>
 <p>Por exemplo, vejamos nossa tabela 4 (table4).</p>
 <div class="cell">
@@ -603,8 +647,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="pivot_wider" class="level4" data-number="3.3.0.2">
-<h4 data-number="3.3.0.2" class="anchored" data-anchor-id="pivot_wider"><span class="header-section-number">3.3.0.2</span> pivot_wider</h4>
+<section id="pivot_wider" class="level4" data-number="2.3.0.2">
+<h4 data-number="2.3.0.2" class="anchored" data-anchor-id="pivot_wider"><span class="header-section-number">2.3.0.2</span> pivot_wider</h4>
 <p>Use para “pivotar” os dados das linhas para as colunas, <strong>expandindo</strong> a tabela gerando novas colunas.</p>
 <p>Vejamos o caso da tabela 2 (table2).</p>
 <div class="cell">
@@ -633,12 +677,12 @@ Nota
 </div>
 </section>
 </section>
-<section id="expandindo-tabelas" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="expandindo-tabelas"><span class="header-section-number">3.4</span> Expandindo Tabelas</h2>
+<section id="expandindo-tabelas" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="expandindo-tabelas"><span class="header-section-number">2.4</span> Expandindo Tabelas</h2>
 <p>Em algumas situações, precisamos criar novas combinações das variáveis ou identificar valores ausentes implícitos, ou seja, combinações de variáveis não presentes nos dados.</p>
 <p>Para isto, temos as funções <strong>expand</strong>() e <strong>complete</strong>().</p>
-<section id="expand" class="level4" data-number="3.4.0.1">
-<h4 data-number="3.4.0.1" class="anchored" data-anchor-id="expand"><span class="header-section-number">3.4.0.1</span> expand</h4>
+<section id="expand" class="level4" data-number="2.4.0.1">
+<h4 data-number="2.4.0.1" class="anchored" data-anchor-id="expand"><span class="header-section-number">2.4.0.1</span> expand</h4>
 <p>Use para criar um novo tibble com todas as possibilidades de combinações dos valores das variáveis passadas para a função expand(), <strong>ignorando</strong> as demais variáveis.</p>
 <p>Por exemplo, se quisermos obter todas as combinações possíveis entre o número de cilindros (cyl), marchas (gear) e numero de carburadores (carb) da tabela mtcars, e ignorar todas as demais variáveis da tabela, podemos usar:</p>
 <div class="cell">
@@ -655,8 +699,8 @@ Nota
 </div>
 <p>Observe que não há na tabela original (mtcars) um veículo de 4 cilindros e 8 carburadores, porém esta combinação foi possível usando a função expand().</p>
 </section>
-<section id="complete" class="level4" data-number="3.4.0.2">
-<h4 data-number="3.4.0.2" class="anchored" data-anchor-id="complete"><span class="header-section-number">3.4.0.2</span> complete</h4>
+<section id="complete" class="level4" data-number="2.4.0.2">
+<h4 data-number="2.4.0.2" class="anchored" data-anchor-id="complete"><span class="header-section-number">2.4.0.2</span> complete</h4>
 <p>Use para criar um novo tibble com todas as possibilidades de combinações dos valores das variáveis passadas para a função expand(), <strong>colocando NA</strong> nas demais variáveis.</p>
 <p>Por exemplo, se quisermos obter todas as combinações possíveis entre o número de cilindros (cyl), marchas (gear) e numero de carburadores (carb) da tabela mtcars, e colocar NA para as demais variáveis em que a combinação não exista, podemos usar:</p>
 <div class="cell">
@@ -673,11 +717,11 @@ Nota
 </div>
 </section>
 </section>
-<section id="combinando-e-dividindo-celulas" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="combinando-e-dividindo-celulas"><span class="header-section-number">3.5</span> Combinando e Dividindo Celulas</h2>
+<section id="combinando-e-dividindo-celulas" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="combinando-e-dividindo-celulas"><span class="header-section-number">2.5</span> Combinando e Dividindo Celulas</h2>
 <p>Use as funções a seguir para dividir ou combinar células da tabela em valores individuais isolados.</p>
-<section id="unite" class="level4" data-number="3.5.0.1">
-<h4 data-number="3.5.0.1" class="anchored" data-anchor-id="unite"><span class="header-section-number">3.5.0.1</span> unite</h4>
+<section id="unite" class="level4" data-number="2.5.0.1">
+<h4 data-number="2.5.0.1" class="anchored" data-anchor-id="unite"><span class="header-section-number">2.5.0.1</span> unite</h4>
 <p>Use para combinar celulas de diversas colunas em uma única coluna.</p>
 <p>Vejamos com é a tabela 5 (table5) em seu formato original:</p>
 <div class="cell">
@@ -718,8 +762,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="separate" class="level4" data-number="3.5.0.2">
-<h4 data-number="3.5.0.2" class="anchored" data-anchor-id="separate"><span class="header-section-number">3.5.0.2</span> separate</h4>
+<section id="separate" class="level4" data-number="2.5.0.2">
+<h4 data-number="2.5.0.2" class="anchored" data-anchor-id="separate"><span class="header-section-number">2.5.0.2</span> separate</h4>
 <p>Use para dividir cada célula de <strong>uma coluna</strong> em <strong>várias colunas</strong>.</p>
 <p>Por exemplo, na tabela 3 (table3), temos uma coluna “rate” que possui daos dos casos e população separados por uma barr (“/”). Neste caso, podemos utilzar a função separate para dividí-la e criar duas novas colunas com seus dados separados.</p>
 <div class="cell">
@@ -736,8 +780,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="separate_rows" class="level4" data-number="3.5.0.3">
-<h4 data-number="3.5.0.3" class="anchored" data-anchor-id="separate_rows"><span class="header-section-number">3.5.0.3</span> separate_rows</h4>
+<section id="separate_rows" class="level4" data-number="2.5.0.3">
+<h4 data-number="2.5.0.3" class="anchored" data-anchor-id="separate_rows"><span class="header-section-number">2.5.0.3</span> separate_rows</h4>
 <p>Use para dividir cada célula de <strong>uma coluna</strong> em <strong>várias linhas</strong>.</p>
 <p>É similar a função <a href="">separate</a>, porém o conteúdo de cada célula irá para uma linha ao invés de uma colunas.</p>
 <div class="cell">
@@ -754,11 +798,11 @@ Nota
 </div>
 </section>
 </section>
-<section id="lidando-com-valores-ausentes" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="lidando-com-valores-ausentes"><span class="header-section-number">3.6</span> Lidando com Valores Ausentes</h2>
+<section id="lidando-com-valores-ausentes" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="lidando-com-valores-ausentes"><span class="header-section-number">2.6</span> Lidando com Valores Ausentes</h2>
 <p>Muitas vezes precisamos <strong>ignorar</strong> ou <strong>substituir</strong> valores ausentes (<strong>NA</strong>). Para isso, podemos usar as funções drop_na(), fill() ou replace_na()</p>
-<section id="drop_na" class="level4" data-number="3.6.0.1">
-<h4 data-number="3.6.0.1" class="anchored" data-anchor-id="drop_na"><span class="header-section-number">3.6.0.1</span> drop_na</h4>
+<section id="drop_na" class="level4" data-number="2.6.0.1">
+<h4 data-number="2.6.0.1" class="anchored" data-anchor-id="drop_na"><span class="header-section-number">2.6.0.1</span> drop_na</h4>
 <p>Ignora linhas que possuem valores ausentes (NA) nas colunas.</p>
 <p>Por exemplo, na tabela starwars, temos 5 personagens que não possuim cor de cabelo (hair color):</p>
 <div class="cell">
@@ -789,8 +833,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="fill" class="level4" data-number="3.6.0.2">
-<h4 data-number="3.6.0.2" class="anchored" data-anchor-id="fill"><span class="header-section-number">3.6.0.2</span> fill</h4>
+<section id="fill" class="level4" data-number="2.6.0.2">
+<h4 data-number="2.6.0.2" class="anchored" data-anchor-id="fill"><span class="header-section-number">2.6.0.2</span> fill</h4>
 <p>Use para substituir o valores ausente (NA) da coluna pelo último valor disponível em linhas anteriores ou posteriores.</p>
 <p>Por exemplo:</p>
 <p>Como vimos no exemplo da função <a href="">drop_na</a>, temos 5 personagens de starwars que não possuem cor de cabelo preenchido.</p>
@@ -810,8 +854,8 @@ Nota
 </div>
 <p>Veja que o personagem C-3PO que tinha a cor de cabelo não preenchida, agora está como loiro (blond), pois o personagem anteriormente preenchido, era o Luke Skywalker, que tinha a cor de cabelo loiro (blond). Já o personagem R5-D4, teve sua cor de cabelo preenchida de marron (brown), pois o personagem anterior Beru Whitesun lars, tinha o cabelo marron (brown).</p>
 </section>
-<section id="replace_na" class="level4" data-number="3.6.0.3">
-<h4 data-number="3.6.0.3" class="anchored" data-anchor-id="replace_na"><span class="header-section-number">3.6.0.3</span> replace_na</h4>
+<section id="replace_na" class="level4" data-number="2.6.0.3">
+<h4 data-number="2.6.0.3" class="anchored" data-anchor-id="replace_na"><span class="header-section-number">2.6.0.3</span> replace_na</h4>
 <p>Use para substituir os valores de NA por um valor específico.</p>
 <p>Por exemplo, vamos substituir a cor de cabelo dos personagens que tem NA na coluna “hair_color” pela cor azul (blue).</p>
 <div class="cell">
@@ -842,10 +886,10 @@ Aviso
 </div>
 </section>
 </section>
-<section id="dados-aninhados" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="dados-aninhados"><span class="header-section-number">3.7</span> Dados Aninhados</h2>
-<section id="introdução-1" class="level3" data-number="3.7.1">
-<h3 data-number="3.7.1" class="anchored" data-anchor-id="introdução-1"><span class="header-section-number">3.7.1</span> Introdução</h3>
+<section id="dados-aninhados" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="dados-aninhados"><span class="header-section-number">2.7</span> Dados Aninhados</h2>
+<section id="introdução-1" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="introdução-1"><span class="header-section-number">2.7.1</span> Introdução</h3>
 <p>Um data frame aninhado (nested) é aquela que possui tabelas completas em colunas do tipo lista (colunas de lista) dentro de outro data frame maior e organizado. Uma coluna de lista, podem ser também listas de vetores ou listas de vários tipos de dados.</p>
 <p>Alguns uso de um data frame de dados aninhados são:</p>
 <ul>
@@ -854,10 +898,10 @@ Aviso
 <li><p>Manipular várias sub-tabelas de uma vez com funcções do pacote purrr como map(), map2() ou pmap() ou com a rowwise() do pacote dplyr.</p></li>
 </ul>
 </section>
-<section id="criando-dados-aninhados" class="level3" data-number="3.7.2">
-<h3 data-number="3.7.2" class="anchored" data-anchor-id="criando-dados-aninhados"><span class="header-section-number">3.7.2</span> Criando dados Aninhados</h3>
-<section id="nest" class="level4" data-number="3.7.2.1">
-<h4 data-number="3.7.2.1" class="anchored" data-anchor-id="nest"><span class="header-section-number">3.7.2.1</span> nest</h4>
+<section id="criando-dados-aninhados" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="criando-dados-aninhados"><span class="header-section-number">2.7.2</span> Criando dados Aninhados</h3>
+<section id="nest" class="level4" data-number="2.7.2.1">
+<h4 data-number="2.7.2.1" class="anchored" data-anchor-id="nest"><span class="header-section-number">2.7.2.1</span> nest</h4>
 <p>Use para mover grupos de células para uma coluna de lista de um data frame. Pode ser usada sozinha ou em conjunto com a grupo_by().</p>
 <p><strong>Exemplo 1: nest() com groupg_by()</strong></p>
 <p>Digamos que gostaríamos ter uma linha para cada furacão de nosso data frame (storms) e em uma coluna de lista, uma tabela dos dados do respectivo furação. Para isso, podemos utilizar a função nest() em conjunto com a função group_by(). Veja abaixo:</p>
@@ -932,11 +976,11 @@ Aviso
 </div>
 </section>
 </section>
-<section id="criando-tibbles-com-colunas-de-listas" class="level3" data-number="3.7.3">
-<h3 data-number="3.7.3" class="anchored" data-anchor-id="criando-tibbles-com-colunas-de-listas"><span class="header-section-number">3.7.3</span> Criando Tibbles com Colunas de Listas</h3>
+<section id="criando-tibbles-com-colunas-de-listas" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3" class="anchored" data-anchor-id="criando-tibbles-com-colunas-de-listas"><span class="header-section-number">2.7.3</span> Criando Tibbles com Colunas de Listas</h3>
 <p>Para criar um objeto tibble com colunas de lista (list-column), você pode utilizar as mesmas funções <strong>tibble</strong>(), <strong>trible</strong>() e <strong>enframe</strong>(), passando uma objeto lista para a coluna.</p>
-<section id="tibble-1" class="level4" data-number="3.7.3.1">
-<h4 data-number="3.7.3.1" class="anchored" data-anchor-id="tibble-1"><span class="header-section-number">3.7.3.1</span> tibble</h4>
+<section id="tibble-1" class="level4" data-number="2.7.3.1">
+<h4 data-number="2.7.3.1" class="anchored" data-anchor-id="tibble-1"><span class="header-section-number">2.7.3.1</span> tibble</h4>
 <p>Use para criar uma tibble com uma coluna de lista salvando uma lista na coluna.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">max=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">seq=</span><span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -950,8 +994,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="tribble-1" class="level4" data-number="3.7.3.2">
-<h4 data-number="3.7.3.2" class="anchored" data-anchor-id="tribble-1"><span class="header-section-number">3.7.3.2</span> tribble</h4>
+<section id="tribble-1" class="level4" data-number="2.7.3.2">
+<h4 data-number="2.7.3.2" class="anchored" data-anchor-id="tribble-1"><span class="header-section-number">2.7.3.2</span> tribble</h4>
 <p>Use para criar uma tibble com uma coluna de lista por linhas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(<span class="sc">~</span>max, <span class="sc">~</span>seq, </span>
@@ -968,8 +1012,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="enframe-1" class="level4" data-number="3.7.3.3">
-<h4 data-number="3.7.3.3" class="anchored" data-anchor-id="enframe-1"><span class="header-section-number">3.7.3.3</span> enframe</h4>
+<section id="enframe-1" class="level4" data-number="2.7.3.3">
+<h4 data-number="2.7.3.3" class="anchored" data-anchor-id="enframe-1"><span class="header-section-number">2.7.3.3</span> enframe</h4>
 <p>Use para converter listas em um tibble dentro de uma coluna de lista.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">'3'</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">'4'</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="st">'5'</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
@@ -997,8 +1041,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="outras-funções-retornam-coluna-de-lista" class="level4" data-number="3.7.3.4">
-<h4 data-number="3.7.3.4" class="anchored" data-anchor-id="outras-funções-retornam-coluna-de-lista"><span class="header-section-number">3.7.3.4</span> Outras Funções Retornam Coluna de Lista</h4>
+<section id="outras-funções-retornam-coluna-de-lista" class="level4" data-number="2.7.3.4">
+<h4 data-number="2.7.3.4" class="anchored" data-anchor-id="outras-funções-retornam-coluna-de-lista"><span class="header-section-number">2.7.3.4</span> Outras Funções Retornam Coluna de Lista</h4>
 <p>Algumas funções, como por exemplo, mutate(), transmute() e summarise() do pacote dplyr tem como saída uma colunas de lista caso retornem uma lista.</p>
 <p>Por exemplo, se criarmos uma lista com os quartis da variável consumo (mpg) da tatela mtcars agrupada por cilindros (cyl) e utilzarmos a função summarise(), teremos uma coluna de lista contendo os quartis para cada grupo de cilindro.</p>
 <div class="cell">
@@ -1016,10 +1060,10 @@ Nota
 </div>
 </section>
 </section>
-<section id="reformatando-dados-aninhados" class="level3" data-number="3.7.4">
-<h3 data-number="3.7.4" class="anchored" data-anchor-id="reformatando-dados-aninhados"><span class="header-section-number">3.7.4</span> Reformatando dados Aninhados</h3>
-<section id="unest" class="level4" data-number="3.7.4.1">
-<h4 data-number="3.7.4.1" class="anchored" data-anchor-id="unest"><span class="header-section-number">3.7.4.1</span> unest</h4>
+<section id="reformatando-dados-aninhados" class="level3" data-number="2.7.4">
+<h3 data-number="2.7.4" class="anchored" data-anchor-id="reformatando-dados-aninhados"><span class="header-section-number">2.7.4</span> Reformatando dados Aninhados</h3>
+<section id="unest" class="level4" data-number="2.7.4.1">
+<h4 data-number="2.7.4.1" class="anchored" data-anchor-id="unest"><span class="header-section-number">2.7.4.1</span> unest</h4>
 <p>Use para desaninhar os dados. Esta função, faz o inverso da função <a href="">nest</a>.</p>
 <p>Por exemplo, para desaninhar os dados da coluna data criada na tabela n_storms, fazemos:</p>
 <div class="cell">
@@ -1035,8 +1079,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="unest_longer" class="level4" data-number="3.7.4.2">
-<h4 data-number="3.7.4.2" class="anchored" data-anchor-id="unest_longer"><span class="header-section-number">3.7.4.2</span> unest_longer</h4>
+<section id="unest_longer" class="level4" data-number="2.7.4.2">
+<h4 data-number="2.7.4.2" class="anchored" data-anchor-id="unest_longer"><span class="header-section-number">2.7.4.2</span> unest_longer</h4>
 <p>Use para desaninhar um coluna de lista, tornando cada <strong>elemento</strong> da lista em uma <strong>linha</strong>.</p>
 <p>Por exemplo, na tabela starwars, temos uma coluna de lista chamada “films”, nesta coluna temos uma lista de filmes que cada personagem participou. Se quisermos desaninhar esta coluna e colocar cada filme em uma linha, faremos:</p>
 <div class="cell">
@@ -1053,8 +1097,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="unest_wider" class="level4" data-number="3.7.4.3">
-<h4 data-number="3.7.4.3" class="anchored" data-anchor-id="unest_wider"><span class="header-section-number">3.7.4.3</span> unest_wider</h4>
+<section id="unest_wider" class="level4" data-number="2.7.4.3">
+<h4 data-number="2.7.4.3" class="anchored" data-anchor-id="unest_wider"><span class="header-section-number">2.7.4.3</span> unest_wider</h4>
 <p>Use para desaninhar um coluna de lista, tornando cada <strong>elemento</strong> da lista em uma <strong>coluna</strong>.</p>
 <p>Por exemplo, na tabela starwars, temos uma coluna de lista chamada “films”, nesta coluna temos uma lista de filmes que cada personagem participou. Se quisermos desaninhar esta coluna e colocar cada filme em uma coluna, faremos:</p>
 <div class="cell">
@@ -1071,8 +1115,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="hoist" class="level4" data-number="3.7.4.4">
-<h4 data-number="3.7.4.4" class="anchored" data-anchor-id="hoist"><span class="header-section-number">3.7.4.4</span> hoist</h4>
+<section id="hoist" class="level4" data-number="2.7.4.4">
+<h4 data-number="2.7.4.4" class="anchored" data-anchor-id="hoist"><span class="header-section-number">2.7.4.4</span> hoist</h4>
 <p>Use para selecionar componentes específicos de uma lista e desaninhá-lo em uma nova coluna. É similar ao unnest_wider(), mas desaninha colunas específicas usando a sintaxe do purrr:pluck().</p>
 <p>Por exemplo, vamos desaninhar apenas o primeiro e segundo filmes em que o psernagem de starwars particiou e manter os demais anihados:</p>
 <div class="cell">
@@ -1090,13 +1134,13 @@ Nota
 </div>
 </section>
 </section>
-<section id="transfromando-dados-aninhados" class="level3" data-number="3.7.5">
-<h3 data-number="3.7.5" class="anchored" data-anchor-id="transfromando-dados-aninhados"><span class="header-section-number">3.7.5</span> Transfromando dados Aninhados</h3>
+<section id="transfromando-dados-aninhados" class="level3" data-number="2.7.5">
+<h3 data-number="2.7.5" class="anchored" data-anchor-id="transfromando-dados-aninhados"><span class="header-section-number">2.7.5</span> Transfromando dados Aninhados</h3>
 <p>Uma função vetorizada recebe um vetor, transforma cada elemento em paralelo e retorna um vetor de mesmo tamanho que o vetor de entrada. Estas funções sozinhas não trabalham com listas, e consequentemente, não trabalham com colunas de listas.</p>
 <p>A função dplyr::rownames() agrupa cada linha da tabela em um grupo diferente e dentro de cada grupo os elementos da coluna de lista aparecem diretamente (acessados por colchetes duplo) e não mais como uma lista e tamanho 1.</p>
 <p>Portanto, quando usamos a rownames(), as funções vetorizadas do pacote dplyr poderão ser aplicadas em uma coluna de lista de uma forma vetorizada.</p>
-<section id="exemplo-1" class="level4" data-number="3.7.5.1">
-<h4 data-number="3.7.5.1" class="anchored" data-anchor-id="exemplo-1"><span class="header-section-number">3.7.5.1</span> Exemplo 1:</h4>
+<section id="exemplo-1" class="level4" data-number="2.7.5.1">
+<h4 data-number="2.7.5.1" class="anchored" data-anchor-id="exemplo-1"><span class="header-section-number">2.7.5.1</span> Exemplo 1:</h4>
 <p>Vamos aplicar a função mutate() para criar uma nova coluna de lista contendo as dimensões do tibble presente na coluna “data”:<br>
 </p>
 <div class="cell">
@@ -1113,13 +1157,13 @@ Nota
 </div>
 </div>
 </section>
-<section id="section" class="level4" data-number="3.7.5.2">
-<h4 data-number="3.7.5.2" class="anchored" data-anchor-id="section"><span class="header-section-number">3.7.5.2</span> </h4>
+<section id="section" class="level4" data-number="2.7.5.2">
+<h4 data-number="2.7.5.2" class="anchored" data-anchor-id="section"><span class="header-section-number">2.7.5.2</span> </h4>
 <p>Neste exemplo, utilzamos a função dim() que retorna as dimensões de um objeto. Como na coluna “data”, temos um objeto tibble para cada linha, a função dim irá retornar dois valores (qtd de linha e qtd de colunas).</p>
 <p>Isto só funcionou porque agrupamento através da função rowwise() a tabela anterior.</p>
 </section>
-<section id="exemplo-2" class="level4" data-number="3.7.5.3">
-<h4 data-number="3.7.5.3" class="anchored" data-anchor-id="exemplo-2"><span class="header-section-number">3.7.5.3</span> Exemplo 2:</h4>
+<section id="exemplo-2" class="level4" data-number="2.7.5.3">
+<h4 data-number="2.7.5.3" class="anchored" data-anchor-id="exemplo-2"><span class="header-section-number">2.7.5.3</span> Exemplo 2:</h4>
 <p>Vamos aplicar a função mutate() para criar um coluna “normal” contendo o número de linhas da tibble presente na coluna “data”:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>n_storms  <span class="sc">|&gt;</span> </span>
@@ -1135,8 +1179,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="exemplo-3" class="level4" data-number="3.7.5.4">
-<h4 data-number="3.7.5.4" class="anchored" data-anchor-id="exemplo-3"><span class="header-section-number">3.7.5.4</span> Exemplo 3:</h4>
+<section id="exemplo-3" class="level4" data-number="2.7.5.4">
+<h4 data-number="2.7.5.4" class="anchored" data-anchor-id="exemplo-3"><span class="header-section-number">2.7.5.4</span> Exemplo 3:</h4>
 <p>Vamos aplicar a função mutate() para criar um coluna de lista contendo uma outra lista com a união entre as colunas de listas “vehicles” e “starships” presentes na tabela starwars:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span> </span>
@@ -1181,8 +1225,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="exemplo-4" class="level4" data-number="3.7.5.5">
-<h4 data-number="3.7.5.5" class="anchored" data-anchor-id="exemplo-4"><span class="header-section-number">3.7.5.5</span> Exemplo 4:</h4>
+<section id="exemplo-4" class="level4" data-number="2.7.5.5">
+<h4 data-number="2.7.5.5" class="anchored" data-anchor-id="exemplo-4"><span class="header-section-number">2.7.5.5</span> Exemplo 4:</h4>
 <p>Vamos aplicar a função mutate() para criar um coluna de lista contendo uma o tamanho das listas “vehicles” e “starships” presentes na tabela starwars, e depois iremos desaninhar esta lista, obtendo assim quantos transportes cada personagem possui:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span> </span>
@@ -1336,12 +1380,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 6&nbsp; Datas e horas com LUBRIDATE</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 5&nbsp; Datas e horas com LUBRIDATE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,13 +126,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -140,14 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Transformação e Manipulação de Dados com a linguagem R</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -162,39 +176,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Parte 1 - Obtendo e Ajustando os Dados</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Parte 2 -Trabalhando com Strings e Datas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Parte 3 - Gráficos</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -204,70 +248,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">6.1</span> Introdução</a></li>
-  <li><a href="#tipos-de-objetos-de-data-e-hora" id="toc-tipos-de-objetos-de-data-e-hora" class="nav-link" data-scroll-target="#tipos-de-objetos-de-data-e-hora"> <span class="header-section-number">6.2</span> Tipos de objetos de data e hora</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">5.1</span> Introdução</a></li>
+  <li><a href="#tipos-de-objetos-de-data-e-hora" id="toc-tipos-de-objetos-de-data-e-hora" class="nav-link" data-scroll-target="#tipos-de-objetos-de-data-e-hora"> <span class="header-section-number">5.2</span> Tipos de objetos de data e hora</a>
   <ul class="collapse">
-  <li><a href="#datetime" id="toc-datetime" class="nav-link" data-scroll-target="#datetime"> <span class="header-section-number">6.2.0.1</span> Datetime</a></li>
-  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"> <span class="header-section-number">6.2.0.2</span> Date</a></li>
-  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"> <span class="header-section-number">6.2.0.3</span> <strong>Time</strong></a></li>
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">6.2.1</span> Exemplos da Folha de Referência</a></li>
+  <li><a href="#datetime" id="toc-datetime" class="nav-link" data-scroll-target="#datetime"> <span class="header-section-number">5.2.0.1</span> Datetime</a></li>
+  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"> <span class="header-section-number">5.2.0.2</span> Date</a></li>
+  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"> <span class="header-section-number">5.2.0.3</span> <strong>Time</strong></a></li>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">5.2.1</span> Exemplos da Folha de Referência</a></li>
   </ul></li>
-  <li><a href="#validando-data-e-hora" id="toc-validando-data-e-hora" class="nav-link" data-scroll-target="#validando-data-e-hora"> <span class="header-section-number">6.3</span> Validando Data e Hora</a>
+  <li><a href="#validando-data-e-hora" id="toc-validando-data-e-hora" class="nav-link" data-scroll-target="#validando-data-e-hora"> <span class="header-section-number">5.3</span> Validando Data e Hora</a>
   <ul class="collapse">
-  <li><a href="#outras-funções-úteis" id="toc-outras-funções-úteis" class="nav-link" data-scroll-target="#outras-funções-úteis"> <span class="header-section-number">6.3.1</span> Outras funções úteis</a>
+  <li><a href="#outras-funções-úteis" id="toc-outras-funções-úteis" class="nav-link" data-scroll-target="#outras-funções-úteis"> <span class="header-section-number">5.3.1</span> Outras funções úteis</a>
   <ul class="collapse">
-  <li><a href="#date_decimal" id="toc-date_decimal" class="nav-link" data-scroll-target="#date_decimal"> <span class="header-section-number">6.3.1.1</span> date_decimal</a></li>
-  <li><a href="#now" id="toc-now" class="nav-link" data-scroll-target="#now"> <span class="header-section-number">6.3.1.2</span> now</a></li>
-  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today"> <span class="header-section-number">6.3.1.3</span> today</a></li>
-  <li><a href="#fast_strptime" id="toc-fast_strptime" class="nav-link" data-scroll-target="#fast_strptime"> <span class="header-section-number">6.3.1.4</span> fast_strptime</a></li>
-  <li><a href="#parse_date_time" id="toc-parse_date_time" class="nav-link" data-scroll-target="#parse_date_time"> <span class="header-section-number">6.3.1.5</span> parse_date_time</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#obtendo-e-definindo-componentes-de-data-e-hora" id="toc-obtendo-e-definindo-componentes-de-data-e-hora" class="nav-link" data-scroll-target="#obtendo-e-definindo-componentes-de-data-e-hora"> <span class="header-section-number">6.4</span> Obtendo e Definindo Componentes de Data e Hora</a></li>
-  <li><a href="#arredondando-data-e-hora" id="toc-arredondando-data-e-hora" class="nav-link" data-scroll-target="#arredondando-data-e-hora"> <span class="header-section-number">6.5</span> Arredondando Data e Hora</a>
-  <ul class="collapse">
-  <li><a href="#floor_date" id="toc-floor_date" class="nav-link" data-scroll-target="#floor_date"> <span class="header-section-number">6.5.0.1</span> floor_date</a></li>
-  <li><a href="#ceiling_date" id="toc-ceiling_date" class="nav-link" data-scroll-target="#ceiling_date"> <span class="header-section-number">6.5.0.2</span> ceiling_date</a></li>
-  </ul></li>
-  <li><a href="#imprimindo-data-e-hora" id="toc-imprimindo-data-e-hora" class="nav-link" data-scroll-target="#imprimindo-data-e-hora"> <span class="header-section-number">6.6</span> Imprimindo data e hora</a>
-  <ul class="collapse">
-  <li><a href="#stamp" id="toc-stamp" class="nav-link" data-scroll-target="#stamp"> <span class="header-section-number">6.6.0.1</span> stamp</a></li>
-  </ul></li>
-  <li><a href="#fuso-horários" id="toc-fuso-horários" class="nav-link" data-scroll-target="#fuso-horários"> <span class="header-section-number">6.7</span> Fuso-Horários</a>
-  <ul class="collapse">
-  <li><a href="#sys.timezone" id="toc-sys.timezone" class="nav-link" data-scroll-target="#sys.timezone"> <span class="header-section-number">6.7.0.1</span> Sys.timezone</a></li>
-  <li><a href="#with_tz" id="toc-with_tz" class="nav-link" data-scroll-target="#with_tz"> <span class="header-section-number">6.7.0.2</span> with_tz</a></li>
-  <li><a href="#local_time" id="toc-local_time" class="nav-link" data-scroll-target="#local_time"> <span class="header-section-number">6.7.0.3</span> local_time</a></li>
-  <li><a href="#force_tz" id="toc-force_tz" class="nav-link" data-scroll-target="#force_tz"> <span class="header-section-number">6.7.0.4</span> force_tz</a></li>
-  </ul></li>
-  <li><a href="#matemática-com-data-e-hora" id="toc-matemática-com-data-e-hora" class="nav-link" data-scroll-target="#matemática-com-data-e-hora"> <span class="header-section-number">6.8</span> Matemática com Data e Hora</a>
-  <ul class="collapse">
-  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">6.8.1</span> Introdução</a></li>
-  <li><a href="#períodos" id="toc-períodos" class="nav-link" data-scroll-target="#períodos"> <span class="header-section-number">6.8.2</span> <strong>Períodos</strong></a>
-  <ul class="collapse">
-  <li><a href="#period" id="toc-period" class="nav-link" data-scroll-target="#period"> <span class="header-section-number">6.8.2.1</span> period</a></li>
-  <li><a href="#as.period" id="toc-as.period" class="nav-link" data-scroll-target="#as.period"> <span class="header-section-number">6.8.2.2</span> as.period</a></li>
-  <li><a href="#period_to_seconds" id="toc-period_to_seconds" class="nav-link" data-scroll-target="#period_to_seconds"> <span class="header-section-number">6.8.2.3</span> period_to_seconds</a></li>
-  </ul></li>
-  <li><a href="#duração" id="toc-duração" class="nav-link" data-scroll-target="#duração"> <span class="header-section-number">6.8.3</span> <strong>Duração</strong></a>
-  <ul class="collapse">
-  <li><a href="#duration" id="toc-duration" class="nav-link" data-scroll-target="#duration"> <span class="header-section-number">6.8.3.1</span> duration</a></li>
-  <li><a href="#as.duration" id="toc-as.duration" class="nav-link" data-scroll-target="#as.duration"> <span class="header-section-number">6.8.3.2</span> as.duration</a></li>
-  <li><a href="#make_difftime" id="toc-make_difftime" class="nav-link" data-scroll-target="#make_difftime"> <span class="header-section-number">6.8.3.3</span> make_difftime</a></li>
-  </ul></li>
-  <li><a href="#intervalo" id="toc-intervalo" class="nav-link" data-scroll-target="#intervalo"> <span class="header-section-number">6.8.4</span> <strong>Intervalo</strong></a>
-  <ul class="collapse">
-  <li><a href="#within" id="toc-within" class="nav-link" data-scroll-target="#within"> <span class="header-section-number">6.8.4.1</span> %within%</a></li>
-  <li><a href="#int_start" id="toc-int_start" class="nav-link" data-scroll-target="#int_start"> <span class="header-section-number">6.8.4.2</span> int_start</a></li>
-  <li><a href="#int_diff" id="toc-int_diff" class="nav-link" data-scroll-target="#int_diff"> <span class="header-section-number">6.8.4.3</span> int_diff</a></li>
-  <li><a href="#int_length" id="toc-int_length" class="nav-link" data-scroll-target="#int_length"> <span class="header-section-number">6.8.4.4</span> int_length</a></li>
-  <li><a href="#int_shift" id="toc-int_shift" class="nav-link" data-scroll-target="#int_shift"> <span class="header-section-number">6.8.4.5</span> int_shift</a></li>
-  <li><a href="#as.interval" id="toc-as.interval" class="nav-link" data-scroll-target="#as.interval"> <span class="header-section-number">6.8.4.6</span> as.interval</a></li>
+  <li><a href="#date_decimal" id="toc-date_decimal" class="nav-link" data-scroll-target="#date_decimal"> <span class="header-section-number">5.3.1.1</span> date_decimal</a></li>
+  <li><a href="#now" id="toc-now" class="nav-link" data-scroll-target="#now"> <span class="header-section-number">5.3.1.2</span> now</a></li>
+  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today"> <span class="header-section-number">5.3.1.3</span> today</a></li>
+  <li><a href="#fast_strptime" id="toc-fast_strptime" class="nav-link" data-scroll-target="#fast_strptime"> <span class="header-section-number">5.3.1.4</span> fast_strptime</a></li>
+  <li><a href="#parse_date_time" id="toc-parse_date_time" class="nav-link" data-scroll-target="#parse_date_time"> <span class="header-section-number">5.3.1.5</span> parse_date_time</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#datas-imaginárias" id="toc-datas-imaginárias" class="nav-link" data-scroll-target="#datas-imaginárias"> <span class="header-section-number">6.9</span> Datas Imaginárias</a>
+  <li><a href="#obtendo-e-definindo-componentes-de-data-e-hora" id="toc-obtendo-e-definindo-componentes-de-data-e-hora" class="nav-link" data-scroll-target="#obtendo-e-definindo-componentes-de-data-e-hora"> <span class="header-section-number">5.4</span> Obtendo e Definindo Componentes de Data e Hora</a></li>
+  <li><a href="#arredondando-data-e-hora" id="toc-arredondando-data-e-hora" class="nav-link" data-scroll-target="#arredondando-data-e-hora"> <span class="header-section-number">5.5</span> Arredondando Data e Hora</a>
   <ul class="collapse">
-  <li><a href="#aritmética-dos-meses" id="toc-aritmética-dos-meses" class="nav-link" data-scroll-target="#aritmética-dos-meses"> <span class="header-section-number">6.9.1</span> Aritmética dos meses</a></li>
+  <li><a href="#floor_date" id="toc-floor_date" class="nav-link" data-scroll-target="#floor_date"> <span class="header-section-number">5.5.0.1</span> floor_date</a></li>
+  <li><a href="#ceiling_date" id="toc-ceiling_date" class="nav-link" data-scroll-target="#ceiling_date"> <span class="header-section-number">5.5.0.2</span> ceiling_date</a></li>
+  </ul></li>
+  <li><a href="#imprimindo-data-e-hora" id="toc-imprimindo-data-e-hora" class="nav-link" data-scroll-target="#imprimindo-data-e-hora"> <span class="header-section-number">5.6</span> Imprimindo data e hora</a>
+  <ul class="collapse">
+  <li><a href="#stamp" id="toc-stamp" class="nav-link" data-scroll-target="#stamp"> <span class="header-section-number">5.6.0.1</span> stamp</a></li>
+  </ul></li>
+  <li><a href="#fuso-horários" id="toc-fuso-horários" class="nav-link" data-scroll-target="#fuso-horários"> <span class="header-section-number">5.7</span> Fuso-Horários</a>
+  <ul class="collapse">
+  <li><a href="#sys.timezone" id="toc-sys.timezone" class="nav-link" data-scroll-target="#sys.timezone"> <span class="header-section-number">5.7.0.1</span> Sys.timezone</a></li>
+  <li><a href="#with_tz" id="toc-with_tz" class="nav-link" data-scroll-target="#with_tz"> <span class="header-section-number">5.7.0.2</span> with_tz</a></li>
+  <li><a href="#local_time" id="toc-local_time" class="nav-link" data-scroll-target="#local_time"> <span class="header-section-number">5.7.0.3</span> local_time</a></li>
+  <li><a href="#force_tz" id="toc-force_tz" class="nav-link" data-scroll-target="#force_tz"> <span class="header-section-number">5.7.0.4</span> force_tz</a></li>
+  </ul></li>
+  <li><a href="#matemática-com-data-e-hora" id="toc-matemática-com-data-e-hora" class="nav-link" data-scroll-target="#matemática-com-data-e-hora"> <span class="header-section-number">5.8</span> Matemática com Data e Hora</a>
+  <ul class="collapse">
+  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">5.8.1</span> Introdução</a></li>
+  <li><a href="#períodos" id="toc-períodos" class="nav-link" data-scroll-target="#períodos"> <span class="header-section-number">5.8.2</span> <strong>Períodos</strong></a>
+  <ul class="collapse">
+  <li><a href="#period" id="toc-period" class="nav-link" data-scroll-target="#period"> <span class="header-section-number">5.8.2.1</span> period</a></li>
+  <li><a href="#as.period" id="toc-as.period" class="nav-link" data-scroll-target="#as.period"> <span class="header-section-number">5.8.2.2</span> as.period</a></li>
+  <li><a href="#period_to_seconds" id="toc-period_to_seconds" class="nav-link" data-scroll-target="#period_to_seconds"> <span class="header-section-number">5.8.2.3</span> period_to_seconds</a></li>
+  </ul></li>
+  <li><a href="#duração" id="toc-duração" class="nav-link" data-scroll-target="#duração"> <span class="header-section-number">5.8.3</span> <strong>Duração</strong></a>
+  <ul class="collapse">
+  <li><a href="#duration" id="toc-duration" class="nav-link" data-scroll-target="#duration"> <span class="header-section-number">5.8.3.1</span> duration</a></li>
+  <li><a href="#as.duration" id="toc-as.duration" class="nav-link" data-scroll-target="#as.duration"> <span class="header-section-number">5.8.3.2</span> as.duration</a></li>
+  <li><a href="#make_difftime" id="toc-make_difftime" class="nav-link" data-scroll-target="#make_difftime"> <span class="header-section-number">5.8.3.3</span> make_difftime</a></li>
+  </ul></li>
+  <li><a href="#intervalo" id="toc-intervalo" class="nav-link" data-scroll-target="#intervalo"> <span class="header-section-number">5.8.4</span> <strong>Intervalo</strong></a>
+  <ul class="collapse">
+  <li><a href="#within" id="toc-within" class="nav-link" data-scroll-target="#within"> <span class="header-section-number">5.8.4.1</span> %within%</a></li>
+  <li><a href="#int_start" id="toc-int_start" class="nav-link" data-scroll-target="#int_start"> <span class="header-section-number">5.8.4.2</span> int_start</a></li>
+  <li><a href="#int_diff" id="toc-int_diff" class="nav-link" data-scroll-target="#int_diff"> <span class="header-section-number">5.8.4.3</span> int_diff</a></li>
+  <li><a href="#int_length" id="toc-int_length" class="nav-link" data-scroll-target="#int_length"> <span class="header-section-number">5.8.4.4</span> int_length</a></li>
+  <li><a href="#int_shift" id="toc-int_shift" class="nav-link" data-scroll-target="#int_shift"> <span class="header-section-number">5.8.4.5</span> int_shift</a></li>
+  <li><a href="#as.interval" id="toc-as.interval" class="nav-link" data-scroll-target="#as.interval"> <span class="header-section-number">5.8.4.6</span> as.interval</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#datas-imaginárias" id="toc-datas-imaginárias" class="nav-link" data-scroll-target="#datas-imaginárias"> <span class="header-section-number">5.9</span> Datas Imaginárias</a>
+  <ul class="collapse">
+  <li><a href="#aritmética-dos-meses" id="toc-aritmética-dos-meses" class="nav-link" data-scroll-target="#aritmética-dos-meses"> <span class="header-section-number">5.9.1</span> Aritmética dos meses</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -277,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></h1>
 </div>
 
 
@@ -291,8 +335,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introdução" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">5.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de manipulação de <strong>variáveis</strong> <strong>data e hora</strong> utilizando o pacote LUBRIDATE do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=lubridate" class="uri">https://cran.r-project.org/package=lubridate</a>.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -321,10 +365,10 @@ Aviso
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (lubridate)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="tipos-de-objetos-de-data-e-hora" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="tipos-de-objetos-de-data-e-hora"><span class="header-section-number">6.2</span> Tipos de objetos de data e hora</h2>
-<section id="datetime" class="level4" data-number="6.2.0.1">
-<h4 data-number="6.2.0.1" class="anchored" data-anchor-id="datetime"><span class="header-section-number">6.2.0.1</span> Datetime</h4>
+<section id="tipos-de-objetos-de-data-e-hora" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="tipos-de-objetos-de-data-e-hora"><span class="header-section-number">5.2</span> Tipos de objetos de data e hora</h2>
+<section id="datetime" class="level4" data-number="5.2.0.1">
+<h4 data-number="5.2.0.1" class="anchored" data-anchor-id="datetime"><span class="header-section-number">5.2.0.1</span> Datetime</h4>
 <p>Uma variável do tipo “<strong>datetime</strong>” (<em>data e hora</em>) representa um ponto na linha do tempo armazenado em um número que representa o número de <strong>segundos</strong> desde <strong>01-01-1970 00:00:00 (UTC)</strong>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -340,12 +384,12 @@ Nota
 </div>
 </div>
 </section>
-<section id="date" class="level4" data-number="6.2.0.2">
-<h4 data-number="6.2.0.2" class="anchored" data-anchor-id="date"><span class="header-section-number">6.2.0.2</span> Date</h4>
+<section id="date" class="level4" data-number="5.2.0.2">
+<h4 data-number="5.2.0.2" class="anchored" data-anchor-id="date"><span class="header-section-number">5.2.0.2</span> Date</h4>
 <p>Quando nos referimos à uma variável “<strong>date</strong>”(<em>data</em>), significa que ela armazena um número inteiro que representa o número de <strong>dias</strong> <strong>desde 01-01-1970.</strong></p>
 </section>
-<section id="time" class="level4" data-number="6.2.0.3">
-<h4 data-number="6.2.0.3" class="anchored" data-anchor-id="time"><span class="header-section-number">6.2.0.3</span> <strong>Time</strong></h4>
+<section id="time" class="level4" data-number="5.2.0.3">
+<h4 data-number="5.2.0.3" class="anchored" data-anchor-id="time"><span class="header-section-number">5.2.0.3</span> <strong>Time</strong></h4>
 <p>Quando nos referimos à uma variável “<strong>time</strong>” (tempo em segundos), ela armazena um número inteiro que representa o número de <strong>segundos</strong> <strong>desde às</strong> <strong>00:00:00</strong> (hms).</p>
 <p>Para os vários exemplos a seguir, utilizaremos os seguintes objetos data e hora:</p>
 <div class="cell">
@@ -379,8 +423,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="exemplos-da-folha-de-referência" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">6.2.1</span> Exemplos da Folha de Referência</h3>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">5.2.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf"><strong>Folha de Referência</strong></a> do lubridate disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 <hr>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -412,8 +456,8 @@ Nota
 </div>
 </section>
 </section>
-<section id="validando-data-e-hora" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="validando-data-e-hora"><span class="header-section-number">6.3</span> Validando Data e Hora</h2>
+<section id="validando-data-e-hora" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="validando-data-e-hora"><span class="header-section-number">5.3</span> Validando Data e Hora</h2>
 <p>O pacote lubridate possui uma série de funções para obter e definir os elementos de ano, mês, dia, hora, minuto e segundos de um objeto data e hora.</p>
 <p>Use as funções a seguir servem para identificar estes elementos em seus dados a partir de uma string. Cada uma delas aceita o argumento “tz” para definir o fuso-horário (<em>timezone</em>), se este não for definido, UTC é utilizado.</p>
 <p>Estas funções são nomeadas conforme a tabela abaixo e sua ordem obedece tal nomenclatura:</p>
@@ -531,10 +575,10 @@ Nota
 <pre><code>02:01:00</code></pre>
 </div>
 </div>
-<section id="outras-funções-úteis" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="outras-funções-úteis"><span class="header-section-number">6.3.1</span> Outras funções úteis</h3>
-<section id="date_decimal" class="level4" data-number="6.3.1.1">
-<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="date_decimal"><span class="header-section-number">6.3.1.1</span> date_decimal</h4>
+<section id="outras-funções-úteis" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="outras-funções-úteis"><span class="header-section-number">5.3.1</span> Outras funções úteis</h3>
+<section id="date_decimal" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="date_decimal"><span class="header-section-number">5.3.1.1</span> date_decimal</h4>
 <p>Use para converter um número decimala para data e hora:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date_decimal</span>(<span class="fl">2017.5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -543,13 +587,13 @@ Nota
 </div>
 </div>
 </section>
-<section id="now" class="level4" data-number="6.3.1.2">
-<h4 data-number="6.3.1.2" class="anchored" data-anchor-id="now"><span class="header-section-number">6.3.1.2</span> now</h4>
+<section id="now" class="level4" data-number="5.3.1.2">
+<h4 data-number="5.3.1.2" class="anchored" data-anchor-id="now"><span class="header-section-number">5.3.1.2</span> now</h4>
 <p>Use para obter um objeto data e hora do instante:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"America/Sao_Paulo"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2022-08-26 12:04:02 -03"</code></pre>
+<pre><code>[1] "2022-08-26 13:20:24 -03"</code></pre>
 </div>
 </div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -566,8 +610,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="today" class="level4" data-number="6.3.1.3">
-<h4 data-number="6.3.1.3" class="anchored" data-anchor-id="today"><span class="header-section-number">6.3.1.3</span> today</h4>
+<section id="today" class="level4" data-number="5.3.1.3">
+<h4 data-number="5.3.1.3" class="anchored" data-anchor-id="today"><span class="header-section-number">5.3.1.3</span> today</h4>
 <p>Use para obter a data atual.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,8 +620,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="fast_strptime" class="level4" data-number="6.3.1.4">
-<h4 data-number="6.3.1.4" class="anchored" data-anchor-id="fast_strptime"><span class="header-section-number">6.3.1.4</span> fast_strptime</h4>
+<section id="fast_strptime" class="level4" data-number="5.3.1.4">
+<h4 data-number="5.3.1.4" class="anchored" data-anchor-id="fast_strptime"><span class="header-section-number">5.3.1.4</span> fast_strptime</h4>
 <p>Use para converter vetores de caracteres para objetos data e hora (POSIXlt) de forma rápida.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(<span class="st">'9/1/01'</span>, <span class="st">'%y/%m/%d'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -586,8 +630,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="parse_date_time" class="level4" data-number="6.3.1.5">
-<h4 data-number="6.3.1.5" class="anchored" data-anchor-id="parse_date_time"><span class="header-section-number">6.3.1.5</span> parse_date_time</h4>
+<section id="parse_date_time" class="level4" data-number="5.3.1.5">
+<h4 data-number="5.3.1.5" class="anchored" data-anchor-id="parse_date_time"><span class="header-section-number">5.3.1.5</span> parse_date_time</h4>
 <p>Use para converter vetores de caracteres para objetos data e hora (POSIXct) de forma mais simplificada.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">parse_date_time</span>(<span class="st">"19/1/1"</span>, <span class="st">"ymd"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -598,8 +642,8 @@ Importante
 </section>
 </section>
 </section>
-<section id="obtendo-e-definindo-componentes-de-data-e-hora" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="obtendo-e-definindo-componentes-de-data-e-hora"><span class="header-section-number">6.4</span> Obtendo e Definindo Componentes de Data e Hora</h2>
+<section id="obtendo-e-definindo-componentes-de-data-e-hora" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="obtendo-e-definindo-componentes-de-data-e-hora"><span class="header-section-number">5.4</span> Obtendo e Definindo Componentes de Data e Hora</h2>
 <p>Use as funções abaixo para obter um componente de um objeto data e hora.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obter o "DIA" de um objeto "datetime"</span></span>
@@ -719,14 +763,14 @@ Levels: dom &lt; seg &lt; ter &lt; qua &lt; qui &lt; sex &lt; sáb</code></pre>
 </div>
 <p>O exemplo acima, altera o dia do mês para 2 e a hora para 01.</p>
 </section>
-<section id="arredondando-data-e-hora" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="arredondando-data-e-hora"><span class="header-section-number">6.5</span> Arredondando Data e Hora</h2>
+<section id="arredondando-data-e-hora" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="arredondando-data-e-hora"><span class="header-section-number">5.5</span> Arredondando Data e Hora</h2>
 <p>Use as funções a seguir para “arredondar” ou aproximar um objeto data e hora para unidades de ajuste. As unidades válidas são:</p>
 <ul>
 <li><em>second, minute, hour, day, week, month, bimonth, quarter, season, halfyear e year.</em></li>
 </ul>
-<section id="floor_date" class="level4" data-number="6.5.0.1">
-<h4 data-number="6.5.0.1" class="anchored" data-anchor-id="floor_date"><span class="header-section-number">6.5.0.1</span> floor_date</h4>
+<section id="floor_date" class="level4" data-number="5.5.0.1">
+<h4 data-number="5.5.0.1" class="anchored" data-anchor-id="floor_date"><span class="header-section-number">5.5.0.1</span> floor_date</h4>
 <p>Use para “<strong>arredondar para baixo</strong>” a data e hora para a unidade mais próxima.</p>
 <p>Por exemplo, digamos que temos um objeto data = “2017-11-28” e queremos arredondar para baixo, sendo que a unidade é mês, ou seja, arredondar para o início do mês:</p>
 <div class="cell">
@@ -746,8 +790,8 @@ Levels: dom &lt; seg &lt; ter &lt; qua &lt; qui &lt; sex &lt; sáb</code></pre>
 <p>Veja que no exemplo acima, como tínhamos dia 28/11 e pedimos para arredondar na unidade “month”, ele arredondou para o mês 01/12.</p>
 <p>Se o dia fosse 14/11, a função arredondaria para 01/11.</p>
 </section>
-<section id="ceiling_date" class="level4" data-number="6.5.0.2">
-<h4 data-number="6.5.0.2" class="anchored" data-anchor-id="ceiling_date"><span class="header-section-number">6.5.0.2</span> ceiling_date</h4>
+<section id="ceiling_date" class="level4" data-number="5.5.0.2">
+<h4 data-number="5.5.0.2" class="anchored" data-anchor-id="ceiling_date"><span class="header-section-number">5.5.0.2</span> ceiling_date</h4>
 <p>Use para “<strong>arredondar para cima</strong>” a data e hora para a unidade mais próxima.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(dt, <span class="at">unit=</span><span class="st">"month"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -757,11 +801,11 @@ Levels: dom &lt; seg &lt; ter &lt; qua &lt; qui &lt; sex &lt; sáb</code></pre>
 </div>
 </section>
 </section>
-<section id="imprimindo-data-e-hora" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="imprimindo-data-e-hora"><span class="header-section-number">6.6</span> Imprimindo data e hora</h2>
+<section id="imprimindo-data-e-hora" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="imprimindo-data-e-hora"><span class="header-section-number">5.6</span> Imprimindo data e hora</h2>
 <p>Em alguns casos, desejamos imprimir um objeto data e hora de uma maneira específica e/ou mais amigável. O pacote lubridate tem a capacidade de utilizar “templates” e ainda permite modificá-los para customizar como a impressão do objeto será feita.</p>
-<section id="stamp" class="level4" data-number="6.6.0.1">
-<h4 data-number="6.6.0.1" class="anchored" data-anchor-id="stamp"><span class="header-section-number">6.6.0.1</span> stamp</h4>
+<section id="stamp" class="level4" data-number="5.6.0.1">
+<h4 data-number="5.6.0.1" class="anchored" data-anchor-id="stamp"><span class="header-section-number">5.6.0.1</span> stamp</h4>
 <p>Use para criar um “template” mais amigável à partir de uma string de exemplo. Veja também as função stamp_date() e stamp_time() que são funções específicas para lidar com datas e horas respectivamente.</p>
 <p>Em geral criamos uma função que utiliza a função stamp() e depois a utilizamos em nosso script passando o objeto data e hora. Veja este exemplo:</p>
 <div class="cell">
@@ -786,8 +830,8 @@ Dica
 </div>
 </section>
 </section>
-<section id="fuso-horários" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="fuso-horários"><span class="header-section-number">6.7</span> Fuso-Horários</h2>
+<section id="fuso-horários" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="fuso-horários"><span class="header-section-number">5.7</span> Fuso-Horários</h2>
 <p>O R reconhece ~600 fuso-horários. Cada um deles, tem iformações sobre o fuso-horário, horário de verão e variações de calendário históricas de uma área. O R define apenas um fuso-horário por vetor.</p>
 <p>Use o fuso-horário “UTC” para evitar horários-de-verão nos objetos.</p>
 <p>Para obter uma lista dos fuso-horários disponíveis, use:</p>
@@ -803,8 +847,8 @@ Dica
 </div>
 </div>
 </div>
-<section id="sys.timezone" class="level4" data-number="6.7.0.1">
-<h4 data-number="6.7.0.1" class="anchored" data-anchor-id="sys.timezone"><span class="header-section-number">6.7.0.1</span> Sys.timezone</h4>
+<section id="sys.timezone" class="level4" data-number="5.7.0.1">
+<h4 data-number="5.7.0.1" class="anchored" data-anchor-id="sys.timezone"><span class="header-section-number">5.7.0.1</span> Sys.timezone</h4>
 <p>Use para obter o fuso-horário atual, use:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -813,8 +857,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="with_tz" class="level4" data-number="6.7.0.2">
-<h4 data-number="6.7.0.2" class="anchored" data-anchor-id="with_tz"><span class="header-section-number">6.7.0.2</span> with_tz</h4>
+<section id="with_tz" class="level4" data-number="5.7.0.2">
+<h4 data-number="5.7.0.2" class="anchored" data-anchor-id="with_tz"><span class="header-section-number">5.7.0.2</span> with_tz</h4>
 <p>Use para obter <strong>o mesmo objeto</strong> data e hora em um novo fuso-horário (<strong>novo relógio</strong>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with_tz</span>(dt, <span class="at">tzone =</span> <span class="st">"US/Alaska"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -823,8 +867,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="local_time" class="level4" data-number="6.7.0.3">
-<h4 data-number="6.7.0.3" class="anchored" data-anchor-id="local_time"><span class="header-section-number">6.7.0.3</span> local_time</h4>
+<section id="local_time" class="level4" data-number="5.7.0.3">
+<h4 data-number="5.7.0.3" class="anchored" data-anchor-id="local_time"><span class="header-section-number">5.7.0.3</span> local_time</h4>
 <p>Para saber a diferença entre fuso-horários, podemos usar a função local_time e definir a unidade. Por exemplo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">local_time</span>(dt, <span class="at">tz =</span> <span class="st">"US/Alaska"</span>, <span class="at">units =</span> <span class="st">"hours"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -833,8 +877,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="force_tz" class="level4" data-number="6.7.0.4">
-<h4 data-number="6.7.0.4" class="anchored" data-anchor-id="force_tz"><span class="header-section-number">6.7.0.4</span> force_tz</h4>
+<section id="force_tz" class="level4" data-number="5.7.0.4">
+<h4 data-number="5.7.0.4" class="anchored" data-anchor-id="force_tz"><span class="header-section-number">5.7.0.4</span> force_tz</h4>
 <p>Use para obter <strong>o mesmo objeto</strong> data e hora em um novo fuso-horário (<strong>novo data e hora</strong>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">force_tz</span>(dt, <span class="st">"US/Pacific"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -844,10 +888,10 @@ Dica
 </div>
 </section>
 </section>
-<section id="matemática-com-data-e-hora" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="matemática-com-data-e-hora"><span class="header-section-number">6.8</span> Matemática com Data e Hora</h2>
-<section id="introdução-1" class="level3" data-number="6.8.1">
-<h3 data-number="6.8.1" class="anchored" data-anchor-id="introdução-1"><span class="header-section-number">6.8.1</span> Introdução</h3>
+<section id="matemática-com-data-e-hora" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="matemática-com-data-e-hora"><span class="header-section-number">5.8</span> Matemática com Data e Hora</h2>
+<section id="introdução-1" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="introdução-1"><span class="header-section-number">5.8.1</span> Introdução</h3>
 <p>O pacote lubridate fornece três classes de intervalo de tempo para fazer cálculos com data e hora.</p>
 <ul>
 <li><p><strong>Períodos</strong>: Acompanham mudanças no horário do relógio, isto ignora irregularidades na “linha do tempo”.</p></li>
@@ -884,8 +928,8 @@ Dica
 <p>Para os casos acima, criamos quarto objetos data e hora: <strong>nor</strong>, <strong>gap</strong>, <strong>lap</strong> e <strong>leap</strong> para representar cada cenário de inconsistência na linha do tempo.</p>
 <p>Agora veremos com as três classes do lubridate citadas anteriormente reagem em cada situação:</p>
 </section>
-<section id="períodos" class="level3" data-number="6.8.2">
-<h3 data-number="6.8.2" class="anchored" data-anchor-id="períodos"><span class="header-section-number">6.8.2</span> <strong>Períodos</strong></h3>
+<section id="períodos" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="períodos"><span class="header-section-number">5.8.2</span> <strong>Períodos</strong></h3>
 <p>Vimos que os períodos acompanham as mudanças no horário do relógio, isto ignora irregularidades na “linha do tempo”.</p>
 <p>Por exemplo, se quisermos adicionar 90 minutos ao objeto nor criado anteriormente, teremos:</p>
 <div class="cell">
@@ -993,8 +1037,8 @@ Dica
 </div>
 </div>
 <p>Podemos também usar as funções abaixo para criar objetos período:</p>
-<section id="period" class="level4" data-number="6.8.2.1">
-<h4 data-number="6.8.2.1" class="anchored" data-anchor-id="period"><span class="header-section-number">6.8.2.1</span> period</h4>
+<section id="period" class="level4" data-number="5.8.2.1">
+<h4 data-number="5.8.2.1" class="anchored" data-anchor-id="period"><span class="header-section-number">5.8.2.1</span> period</h4>
 <p>Use para automatizar a criação de períodos.</p>
 <p>Por exemplo, para criar um objeto com período de 5 anos, podemos usar years(5) ou:</p>
 <div class="cell">
@@ -1004,8 +1048,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="as.period" class="level4" data-number="6.8.2.2">
-<h4 data-number="6.8.2.2" class="anchored" data-anchor-id="as.period"><span class="header-section-number">6.8.2.2</span> as.period</h4>
+<section id="as.period" class="level4" data-number="5.8.2.2">
+<h4 data-number="5.8.2.2" class="anchored" data-anchor-id="as.period"><span class="header-section-number">5.8.2.2</span> as.period</h4>
 <p>Use para transformar objetos de duração, intervalos e números para obejtos do tipo período:</p>
 <p>Por exemplos, temos um número 5 e queremos criar um período de 5 dias, podemos fazer:</p>
 <div class="cell">
@@ -1015,8 +1059,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="period_to_seconds" class="level4" data-number="6.8.2.3">
-<h4 data-number="6.8.2.3" class="anchored" data-anchor-id="period_to_seconds"><span class="header-section-number">6.8.2.3</span> period_to_seconds</h4>
+<section id="period_to_seconds" class="level4" data-number="5.8.2.3">
+<h4 data-number="5.8.2.3" class="anchored" data-anchor-id="period_to_seconds"><span class="header-section-number">5.8.2.3</span> period_to_seconds</h4>
 <p>Use para transformar um objeto do tipo período no total de número de segundos do período:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">period_to_seconds</span>(p)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1026,8 +1070,8 @@ Dica
 </div>
 </section>
 </section>
-<section id="duração" class="level3" data-number="6.8.3">
-<h3 data-number="6.8.3" class="anchored" data-anchor-id="duração"><span class="header-section-number">6.8.3</span> <strong>Duração</strong></h3>
+<section id="duração" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="duração"><span class="header-section-number">5.8.3</span> <strong>Duração</strong></h3>
 <p>Diferentes dos objetos períodos, os objetos do tipo duração (<em>duration</em>), Acompanham a passagem do “tempo físico”, o que diverge do horário do relógio quando irregularidades na “linha do tempo” acontecem.</p>
 <p>Por exemplo, digamos que temos nosso “dia normal” na linha do tempo e adicionarmos 90 minutos de duração:</p>
 <div class="cell">
@@ -1144,8 +1188,8 @@ Dica
 </tr>
 </tbody>
 </table>
-<section id="duration" class="level4" data-number="6.8.3.1">
-<h4 data-number="6.8.3.1" class="anchored" data-anchor-id="duration"><span class="header-section-number">6.8.3.1</span> duration</h4>
+<section id="duration" class="level4" data-number="5.8.3.1">
+<h4 data-number="5.8.3.1" class="anchored" data-anchor-id="duration"><span class="header-section-number">5.8.3.1</span> duration</h4>
 <p>Use para automatizar a criação de durações.</p>
 <p>Por exemplo, para criar um objeto com duração de 5 anos, podemos usar dyears(5) ou:</p>
 <div class="cell">
@@ -1155,8 +1199,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="as.duration" class="level4" data-number="6.8.3.2">
-<h4 data-number="6.8.3.2" class="anchored" data-anchor-id="as.duration"><span class="header-section-number">6.8.3.2</span> as.duration</h4>
+<section id="as.duration" class="level4" data-number="5.8.3.2">
+<h4 data-number="5.8.3.2" class="anchored" data-anchor-id="as.duration"><span class="header-section-number">5.8.3.2</span> as.duration</h4>
 <p>Use para transformar objetos de períodos, intervalos e números para objetos do tipo duração:</p>
 <p>Por exemplos, temos um número 10 e queremos criar um período de 10 segundos, podemos fazer:</p>
 <div class="cell">
@@ -1166,8 +1210,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="make_difftime" class="level4" data-number="6.8.3.3">
-<h4 data-number="6.8.3.3" class="anchored" data-anchor-id="make_difftime"><span class="header-section-number">6.8.3.3</span> make_difftime</h4>
+<section id="make_difftime" class="level4" data-number="5.8.3.3">
+<h4 data-number="5.8.3.3" class="anchored" data-anchor-id="make_difftime"><span class="header-section-number">5.8.3.3</span> make_difftime</h4>
 <p>Use para criar um objeto difftime (R base) com um número específico de unidades.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_difftime</span>(<span class="dv">3600</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1177,8 +1221,8 @@ Dica
 </div>
 </section>
 </section>
-<section id="intervalo" class="level3" data-number="6.8.4">
-<h3 data-number="6.8.4" class="anchored" data-anchor-id="intervalo"><span class="header-section-number">6.8.4</span> <strong>Intervalo</strong></h3>
+<section id="intervalo" class="level3" data-number="5.8.4">
+<h3 data-number="5.8.4" class="anchored" data-anchor-id="intervalo"><span class="header-section-number">5.8.4</span> <strong>Intervalo</strong></h3>
 <p>Objeto do tipo intervalo, representam um intervalo específico da “linha do tempo”, limitado pelo início e fim da data e hora. Se dividirmor o intervalo, pela pela duração teremos a distância física do tempo. Se dividirmos o intervalo pelo período, termeos a distância relativa ao relógio.</p>
 <p>Podemos criar um objeto de intervalo, usando a função interval() ou o símbolo %--%.</p>
 <div class="cell">
@@ -1226,8 +1270,8 @@ Dica
 </div>
 <p><img src="images/interval04.png" class="img-fluid"></p>
 <p>O pacote lubridate possui diversas funções para lidar com intervalo.</p>
-<section id="within" class="level4" data-number="6.8.4.1">
-<h4 data-number="6.8.4.1" class="anchored" data-anchor-id="within"><span class="header-section-number">6.8.4.1</span> %within%</h4>
+<section id="within" class="level4" data-number="5.8.4.1">
+<h4 data-number="5.8.4.1" class="anchored" data-anchor-id="within"><span class="header-section-number">5.8.4.1</span> %within%</h4>
 <p>Use para identificar se um objeto do tipo intervalo ou data e hora “a” cai dentro de um interválo “b”</p>
 <p>Por exemplo, se quisermos se a data e hora atual está dentro do intervalo “i”.</p>
 <div class="cell">
@@ -1237,8 +1281,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="int_start" class="level4" data-number="6.8.4.2">
-<h4 data-number="6.8.4.2" class="anchored" data-anchor-id="int_start"><span class="header-section-number">6.8.4.2</span> int_start</h4>
+<section id="int_start" class="level4" data-number="5.8.4.2">
+<h4 data-number="5.8.4.2" class="anchored" data-anchor-id="int_start"><span class="header-section-number">5.8.4.2</span> int_start</h4>
 <p>Use para obter ou definir o <strong>início</strong> de um <strong>intervalo</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_start</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1285,8 +1329,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="int_diff" class="level4" data-number="6.8.4.3">
-<h4 data-number="6.8.4.3" class="anchored" data-anchor-id="int_diff"><span class="header-section-number">6.8.4.3</span> int_diff</h4>
+<section id="int_diff" class="level4" data-number="5.8.4.3">
+<h4 data-number="5.8.4.3" class="anchored" data-anchor-id="int_diff"><span class="header-section-number">5.8.4.3</span> int_diff</h4>
 <p>Use para transformar em intervalos, os valores que estão em um vetor de data e hora.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(dt, dt<span class="sc">+</span><span class="dv">100</span>, dt<span class="sc">+</span><span class="dv">1000</span>); <span class="fu">int_diff</span>(v)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1300,46 +1344,46 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_flip</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-08-26 15:04:03 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-08-26 16:20:25 UTC</code></pre>
 </div>
 </div>
 <p>Para colocar em ordem padrão um intervalo de acordo com a linha do tempo, podemos usar a função <strong>int_standardize</strong>().</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_standardize</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-08-26 15:04:03 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-08-26 16:20:25 UTC</code></pre>
 </div>
 </div>
 </section>
-<section id="int_length" class="level4" data-number="6.8.4.4">
-<h4 data-number="6.8.4.4" class="anchored" data-anchor-id="int_length"><span class="header-section-number">6.8.4.4</span> int_length</h4>
+<section id="int_length" class="level4" data-number="5.8.4.4">
+<h4 data-number="5.8.4.4" class="anchored" data-anchor-id="int_length"><span class="header-section-number">5.8.4.4</span> int_length</h4>
 <p>Use para obter, em segundos, o tempo total de um intervalo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_length</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -152031843</code></pre>
+<pre><code>[1] -152036425</code></pre>
 </div>
 </div>
 </section>
-<section id="int_shift" class="level4" data-number="6.8.4.5">
-<h4 data-number="6.8.4.5" class="anchored" data-anchor-id="int_shift"><span class="header-section-number">6.8.4.5</span> int_shift</h4>
+<section id="int_shift" class="level4" data-number="5.8.4.5">
+<h4 data-number="5.8.4.5" class="anchored" data-anchor-id="int_shift"><span class="header-section-number">5.8.4.5</span> int_shift</h4>
 <p>Use para mover um intervalo para mais ou para menos na linha do tempo.</p>
 <p>Por exemplo, se mover todo o intervalo (início e fim) em um dia antes da linha do tempo, podemos fazer:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_shift</span>(i, <span class="fu">days</span>(<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-08-25 12:04:03 -03--2017-10-30 22:00:00 -02</code></pre>
+<pre><code>[1] 2022-08-25 13:20:25 -03--2017-10-30 22:00:00 -02</code></pre>
 </div>
 </div>
 </section>
-<section id="as.interval" class="level4" data-number="6.8.4.6">
-<h4 data-number="6.8.4.6" class="anchored" data-anchor-id="as.interval"><span class="header-section-number">6.8.4.6</span> as.interval</h4>
+<section id="as.interval" class="level4" data-number="5.8.4.6">
+<h4 data-number="5.8.4.6" class="anchored" data-anchor-id="as.interval"><span class="header-section-number">5.8.4.6</span> as.interval</h4>
 <p>Use para criar um objeto intervalo com determinado periodo definindo uma dat e hora de início.</p>
 <p>Por exemplo, para criarmos um intervalo de 1 dia, iniciando na data atual, podemos fazer:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.interval</span>(<span class="fu">days</span>(<span class="dv">1</span>), <span class="at">start =</span> <span class="fu">now</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-08-26 12:04:03 -03--2022-08-27 12:04:03 -03</code></pre>
+<pre><code>[1] 2022-08-26 13:20:25 -03--2022-08-27 13:20:25 -03</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -1358,8 +1402,8 @@ Nota
 </section>
 </section>
 </section>
-<section id="datas-imaginárias" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="datas-imaginárias"><span class="header-section-number">6.9</span> Datas Imaginárias</h2>
+<section id="datas-imaginárias" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="datas-imaginárias"><span class="header-section-number">5.9</span> Datas Imaginárias</h2>
 <p>É importante observar que nem todos os anos tem 365 dias (ex: ano bi-sexto) e nem todos os minutos tem 60 segundos (ex: fim de horário de verão).</p>
 <p>Isso é importante de ser observado, pois em alguns casos tentamos criar data imaginárias, como por exemplo “Fev 31”, adicionando um mês à “Jan 31”. As funções do pacote lubridate são inteligentes o suficiente e neste caso retornaria um valor NA:<br>
 </p>
@@ -1370,8 +1414,8 @@ Nota
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
-<section id="aritmética-dos-meses" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="aritmética-dos-meses"><span class="header-section-number">6.9.1</span> Aritmética dos meses</h3>
+<section id="aritmética-dos-meses" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="aritmética-dos-meses"><span class="header-section-number">5.9.1</span> Aritmética dos meses</h3>
 <p>Porém, as vezes, intuitivamente, é isto que desejamos fazer, ou seja, adicionar “um mês” a “Jan 31”, mas que a função seja inteligente o suficiente para <strong>rolar</strong> para o <strong>último</strong> <strong>dia</strong> <strong>do</strong> <strong>mês</strong>.</p>
 <p>Adicionar ou subtrair <strong>meses</strong> as vezes é uma tarefa difícil, pois temos meses de diferentes tamanhos (ex: 30, 31, 28 dias ou até 29). Por isso, em alguns casos é útil termos a possibildade de fazermos um ajustes automáticos.</p>
 <p>Para isso usamos, ao invés do sinal de adição “<strong>+</strong>”, utilizamos o símbolo %<strong>m+</strong>% para adicionar meses (ou %<strong>m-</strong>% para subtrair). Veja:</p>
@@ -1510,12 +1554,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 5&nbsp; Manipulacao de Strings com STRINGR</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 4&nbsp; Manipulacao de Strings com STRINGR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,13 +128,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -142,14 +161,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Transformação e Manipulação de Dados com a linguagem R</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -164,39 +178,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Parte 1 - Obtendo e Ajustando os Dados</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Parte 2 -Trabalhando com Strings e Datas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Parte 3 - Gráficos</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -206,77 +250,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">5.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">4.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">5.1.1</span> Exemplos da Folha de Referência</a></li>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">4.1.1</span> Exemplos da Folha de Referência</a></li>
   </ul></li>
-  <li><a href="#detectando-combinações" id="toc-detectando-combinações" class="nav-link" data-scroll-target="#detectando-combinações"> <span class="header-section-number">5.2</span> Detectando Combinações</a>
+  <li><a href="#detectando-combinações" id="toc-detectando-combinações" class="nav-link" data-scroll-target="#detectando-combinações"> <span class="header-section-number">4.2</span> Detectando Combinações</a>
   <ul class="collapse">
-  <li><a href="#str_detect" id="toc-str_detect" class="nav-link" data-scroll-target="#str_detect"> <span class="header-section-number">5.2.0.1</span> str_detect</a></li>
-  <li><a href="#str_starts" id="toc-str_starts" class="nav-link" data-scroll-target="#str_starts"> <span class="header-section-number">5.2.0.2</span> str_starts</a></li>
-  <li><a href="#str_which" id="toc-str_which" class="nav-link" data-scroll-target="#str_which"> <span class="header-section-number">5.2.0.3</span> str_which</a></li>
-  <li><a href="#str_locate" id="toc-str_locate" class="nav-link" data-scroll-target="#str_locate"> <span class="header-section-number">5.2.0.4</span> str_locate</a></li>
-  <li><a href="#str_count" id="toc-str_count" class="nav-link" data-scroll-target="#str_count"> <span class="header-section-number">5.2.0.5</span> str_count</a></li>
+  <li><a href="#str_detect" id="toc-str_detect" class="nav-link" data-scroll-target="#str_detect"> <span class="header-section-number">4.2.0.1</span> str_detect</a></li>
+  <li><a href="#str_starts" id="toc-str_starts" class="nav-link" data-scroll-target="#str_starts"> <span class="header-section-number">4.2.0.2</span> str_starts</a></li>
+  <li><a href="#str_which" id="toc-str_which" class="nav-link" data-scroll-target="#str_which"> <span class="header-section-number">4.2.0.3</span> str_which</a></li>
+  <li><a href="#str_locate" id="toc-str_locate" class="nav-link" data-scroll-target="#str_locate"> <span class="header-section-number">4.2.0.4</span> str_locate</a></li>
+  <li><a href="#str_count" id="toc-str_count" class="nav-link" data-scroll-target="#str_count"> <span class="header-section-number">4.2.0.5</span> str_count</a></li>
   </ul></li>
-  <li><a href="#partes-da-string" id="toc-partes-da-string" class="nav-link" data-scroll-target="#partes-da-string"> <span class="header-section-number">5.3</span> Partes da String</a>
+  <li><a href="#partes-da-string" id="toc-partes-da-string" class="nav-link" data-scroll-target="#partes-da-string"> <span class="header-section-number">4.3</span> Partes da String</a>
   <ul class="collapse">
-  <li><a href="#str_sub" id="toc-str_sub" class="nav-link" data-scroll-target="#str_sub"> <span class="header-section-number">5.3.0.1</span> str_sub</a></li>
-  <li><a href="#str_subset" id="toc-str_subset" class="nav-link" data-scroll-target="#str_subset"> <span class="header-section-number">5.3.0.2</span> str_subset</a></li>
-  <li><a href="#str_extract" id="toc-str_extract" class="nav-link" data-scroll-target="#str_extract"> <span class="header-section-number">5.3.0.3</span> str_extract</a></li>
-  <li><a href="#str_match" id="toc-str_match" class="nav-link" data-scroll-target="#str_match"> <span class="header-section-number">5.3.0.4</span> str_match</a></li>
+  <li><a href="#str_sub" id="toc-str_sub" class="nav-link" data-scroll-target="#str_sub"> <span class="header-section-number">4.3.0.1</span> str_sub</a></li>
+  <li><a href="#str_subset" id="toc-str_subset" class="nav-link" data-scroll-target="#str_subset"> <span class="header-section-number">4.3.0.2</span> str_subset</a></li>
+  <li><a href="#str_extract" id="toc-str_extract" class="nav-link" data-scroll-target="#str_extract"> <span class="header-section-number">4.3.0.3</span> str_extract</a></li>
+  <li><a href="#str_match" id="toc-str_match" class="nav-link" data-scroll-target="#str_match"> <span class="header-section-number">4.3.0.4</span> str_match</a></li>
   </ul></li>
-  <li><a href="#gerenciando-tamanho" id="toc-gerenciando-tamanho" class="nav-link" data-scroll-target="#gerenciando-tamanho"> <span class="header-section-number">5.4</span> Gerenciando Tamanho</a>
+  <li><a href="#gerenciando-tamanho" id="toc-gerenciando-tamanho" class="nav-link" data-scroll-target="#gerenciando-tamanho"> <span class="header-section-number">4.4</span> Gerenciando Tamanho</a>
   <ul class="collapse">
-  <li><a href="#str_length" id="toc-str_length" class="nav-link" data-scroll-target="#str_length"> <span class="header-section-number">5.4.0.1</span> str_length</a></li>
-  <li><a href="#str_pad" id="toc-str_pad" class="nav-link" data-scroll-target="#str_pad"> <span class="header-section-number">5.4.0.2</span> str_pad</a></li>
-  <li><a href="#str_trunc" id="toc-str_trunc" class="nav-link" data-scroll-target="#str_trunc"> <span class="header-section-number">5.4.0.3</span> str_trunc</a></li>
-  <li><a href="#str_trim" id="toc-str_trim" class="nav-link" data-scroll-target="#str_trim"> <span class="header-section-number">5.4.0.4</span> str_trim</a></li>
-  <li><a href="#str_squish" id="toc-str_squish" class="nav-link" data-scroll-target="#str_squish"> <span class="header-section-number">5.4.0.5</span> str_squish</a></li>
+  <li><a href="#str_length" id="toc-str_length" class="nav-link" data-scroll-target="#str_length"> <span class="header-section-number">4.4.0.1</span> str_length</a></li>
+  <li><a href="#str_pad" id="toc-str_pad" class="nav-link" data-scroll-target="#str_pad"> <span class="header-section-number">4.4.0.2</span> str_pad</a></li>
+  <li><a href="#str_trunc" id="toc-str_trunc" class="nav-link" data-scroll-target="#str_trunc"> <span class="header-section-number">4.4.0.3</span> str_trunc</a></li>
+  <li><a href="#str_trim" id="toc-str_trim" class="nav-link" data-scroll-target="#str_trim"> <span class="header-section-number">4.4.0.4</span> str_trim</a></li>
+  <li><a href="#str_squish" id="toc-str_squish" class="nav-link" data-scroll-target="#str_squish"> <span class="header-section-number">4.4.0.5</span> str_squish</a></li>
   </ul></li>
-  <li><a href="#modificando-string" id="toc-modificando-string" class="nav-link" data-scroll-target="#modificando-string"> <span class="header-section-number">5.5</span> Modificando String</a>
+  <li><a href="#modificando-string" id="toc-modificando-string" class="nav-link" data-scroll-target="#modificando-string"> <span class="header-section-number">4.5</span> Modificando String</a>
   <ul class="collapse">
-  <li><a href="#str_sub-1" id="toc-str_sub-1" class="nav-link" data-scroll-target="#str_sub-1"> <span class="header-section-number">5.5.0.1</span> str_sub</a></li>
-  <li><a href="#str_replace" id="toc-str_replace" class="nav-link" data-scroll-target="#str_replace"> <span class="header-section-number">5.5.0.2</span> str_replace</a></li>
-  <li><a href="#str_replace_all" id="toc-str_replace_all" class="nav-link" data-scroll-target="#str_replace_all"> <span class="header-section-number">5.5.0.3</span> str_replace_all</a></li>
-  <li><a href="#str_to_lower" id="toc-str_to_lower" class="nav-link" data-scroll-target="#str_to_lower"> <span class="header-section-number">5.5.0.4</span> str_to_lower</a></li>
-  <li><a href="#str_to_upper" id="toc-str_to_upper" class="nav-link" data-scroll-target="#str_to_upper"> <span class="header-section-number">5.5.0.5</span> str_to_upper</a></li>
-  <li><a href="#str_to_title" id="toc-str_to_title" class="nav-link" data-scroll-target="#str_to_title"> <span class="header-section-number">5.5.0.6</span> str_to_title</a></li>
+  <li><a href="#str_sub-1" id="toc-str_sub-1" class="nav-link" data-scroll-target="#str_sub-1"> <span class="header-section-number">4.5.0.1</span> str_sub</a></li>
+  <li><a href="#str_replace" id="toc-str_replace" class="nav-link" data-scroll-target="#str_replace"> <span class="header-section-number">4.5.0.2</span> str_replace</a></li>
+  <li><a href="#str_replace_all" id="toc-str_replace_all" class="nav-link" data-scroll-target="#str_replace_all"> <span class="header-section-number">4.5.0.3</span> str_replace_all</a></li>
+  <li><a href="#str_to_lower" id="toc-str_to_lower" class="nav-link" data-scroll-target="#str_to_lower"> <span class="header-section-number">4.5.0.4</span> str_to_lower</a></li>
+  <li><a href="#str_to_upper" id="toc-str_to_upper" class="nav-link" data-scroll-target="#str_to_upper"> <span class="header-section-number">4.5.0.5</span> str_to_upper</a></li>
+  <li><a href="#str_to_title" id="toc-str_to_title" class="nav-link" data-scroll-target="#str_to_title"> <span class="header-section-number">4.5.0.6</span> str_to_title</a></li>
   </ul></li>
-  <li><a href="#juntando-e-dividindo" id="toc-juntando-e-dividindo" class="nav-link" data-scroll-target="#juntando-e-dividindo"> <span class="header-section-number">5.6</span> Juntando e Dividindo</a>
+  <li><a href="#juntando-e-dividindo" id="toc-juntando-e-dividindo" class="nav-link" data-scroll-target="#juntando-e-dividindo"> <span class="header-section-number">4.6</span> Juntando e Dividindo</a>
   <ul class="collapse">
-  <li><a href="#str_c" id="toc-str_c" class="nav-link" data-scroll-target="#str_c"> <span class="header-section-number">5.6.0.1</span> str_c</a></li>
-  <li><a href="#str_flatten" id="toc-str_flatten" class="nav-link" data-scroll-target="#str_flatten"> <span class="header-section-number">5.6.0.2</span> str_flatten</a></li>
-  <li><a href="#str_dup" id="toc-str_dup" class="nav-link" data-scroll-target="#str_dup"> <span class="header-section-number">5.6.0.3</span> str_dup</a></li>
-  <li><a href="#str_split_fixed" id="toc-str_split_fixed" class="nav-link" data-scroll-target="#str_split_fixed"> <span class="header-section-number">5.6.0.4</span> str_split_fixed</a></li>
-  <li><a href="#str_glue" id="toc-str_glue" class="nav-link" data-scroll-target="#str_glue"> <span class="header-section-number">5.6.0.5</span> str_glue</a></li>
-  <li><a href="#str_glue_data" id="toc-str_glue_data" class="nav-link" data-scroll-target="#str_glue_data"> <span class="header-section-number">5.6.0.6</span> str_glue_data</a></li>
+  <li><a href="#str_c" id="toc-str_c" class="nav-link" data-scroll-target="#str_c"> <span class="header-section-number">4.6.0.1</span> str_c</a></li>
+  <li><a href="#str_flatten" id="toc-str_flatten" class="nav-link" data-scroll-target="#str_flatten"> <span class="header-section-number">4.6.0.2</span> str_flatten</a></li>
+  <li><a href="#str_dup" id="toc-str_dup" class="nav-link" data-scroll-target="#str_dup"> <span class="header-section-number">4.6.0.3</span> str_dup</a></li>
+  <li><a href="#str_split_fixed" id="toc-str_split_fixed" class="nav-link" data-scroll-target="#str_split_fixed"> <span class="header-section-number">4.6.0.4</span> str_split_fixed</a></li>
+  <li><a href="#str_glue" id="toc-str_glue" class="nav-link" data-scroll-target="#str_glue"> <span class="header-section-number">4.6.0.5</span> str_glue</a></li>
+  <li><a href="#str_glue_data" id="toc-str_glue_data" class="nav-link" data-scroll-target="#str_glue_data"> <span class="header-section-number">4.6.0.6</span> str_glue_data</a></li>
   </ul></li>
-  <li><a href="#ordenando-string" id="toc-ordenando-string" class="nav-link" data-scroll-target="#ordenando-string"> <span class="header-section-number">5.7</span> Ordenando String</a>
+  <li><a href="#ordenando-string" id="toc-ordenando-string" class="nav-link" data-scroll-target="#ordenando-string"> <span class="header-section-number">4.7</span> Ordenando String</a>
   <ul class="collapse">
-  <li><a href="#str_order" id="toc-str_order" class="nav-link" data-scroll-target="#str_order"> <span class="header-section-number">5.7.0.1</span> str_order</a></li>
-  <li><a href="#str_sort" id="toc-str_sort" class="nav-link" data-scroll-target="#str_sort"> <span class="header-section-number">5.7.0.2</span> str_sort</a></li>
+  <li><a href="#str_order" id="toc-str_order" class="nav-link" data-scroll-target="#str_order"> <span class="header-section-number">4.7.0.1</span> str_order</a></li>
+  <li><a href="#str_sort" id="toc-str_sort" class="nav-link" data-scroll-target="#str_sort"> <span class="header-section-number">4.7.0.2</span> str_sort</a></li>
   </ul></li>
-  <li><a href="#auxiliares" id="toc-auxiliares" class="nav-link" data-scroll-target="#auxiliares"> <span class="header-section-number">5.8</span> Auxiliares</a>
+  <li><a href="#auxiliares" id="toc-auxiliares" class="nav-link" data-scroll-target="#auxiliares"> <span class="header-section-number">4.8</span> Auxiliares</a>
   <ul class="collapse">
-  <li><a href="#str_conv" id="toc-str_conv" class="nav-link" data-scroll-target="#str_conv"> <span class="header-section-number">5.8.0.1</span> str_conv</a></li>
-  <li><a href="#str_view_all" id="toc-str_view_all" class="nav-link" data-scroll-target="#str_view_all"> <span class="header-section-number">5.8.0.2</span> str_view_all</a></li>
-  <li><a href="#str_wrap" id="toc-str_wrap" class="nav-link" data-scroll-target="#str_wrap"> <span class="header-section-number">5.8.0.3</span> str_wrap</a></li>
+  <li><a href="#str_conv" id="toc-str_conv" class="nav-link" data-scroll-target="#str_conv"> <span class="header-section-number">4.8.0.1</span> str_conv</a></li>
+  <li><a href="#str_view_all" id="toc-str_view_all" class="nav-link" data-scroll-target="#str_view_all"> <span class="header-section-number">4.8.0.2</span> str_view_all</a></li>
+  <li><a href="#str_wrap" id="toc-str_wrap" class="nav-link" data-scroll-target="#str_wrap"> <span class="header-section-number">4.8.0.3</span> str_wrap</a></li>
   </ul></li>
-  <li><a href="#expressões-regulares" id="toc-expressões-regulares" class="nav-link" data-scroll-target="#expressões-regulares"> <span class="header-section-number">5.9</span> Expressões Regulares</a>
+  <li><a href="#expressões-regulares" id="toc-expressões-regulares" class="nav-link" data-scroll-target="#expressões-regulares"> <span class="header-section-number">4.9</span> Expressões Regulares</a>
   <ul class="collapse">
-  <li><a href="#combinando-caracteres" id="toc-combinando-caracteres" class="nav-link" data-scroll-target="#combinando-caracteres"> <span class="header-section-number">5.9.1</span> Combinando Caracteres</a></li>
-  <li><a href="#quantificadores" id="toc-quantificadores" class="nav-link" data-scroll-target="#quantificadores"> <span class="header-section-number">5.9.2</span> Quantificadores</a></li>
-  <li><a href="#alternadores" id="toc-alternadores" class="nav-link" data-scroll-target="#alternadores"> <span class="header-section-number">5.9.3</span> Alternadores</a></li>
-  <li><a href="#ancoragem" id="toc-ancoragem" class="nav-link" data-scroll-target="#ancoragem"> <span class="header-section-number">5.9.4</span> Ancoragem</a></li>
-  <li><a href="#grupos" id="toc-grupos" class="nav-link" data-scroll-target="#grupos"> <span class="header-section-number">5.9.5</span> Grupos</a></li>
-  <li><a href="#pesquisa-ao-redor" id="toc-pesquisa-ao-redor" class="nav-link" data-scroll-target="#pesquisa-ao-redor"> <span class="header-section-number">5.9.6</span> Pesquisa ao Redor</a></li>
+  <li><a href="#combinando-caracteres" id="toc-combinando-caracteres" class="nav-link" data-scroll-target="#combinando-caracteres"> <span class="header-section-number">4.9.1</span> Combinando Caracteres</a></li>
+  <li><a href="#quantificadores" id="toc-quantificadores" class="nav-link" data-scroll-target="#quantificadores"> <span class="header-section-number">4.9.2</span> Quantificadores</a></li>
+  <li><a href="#alternadores" id="toc-alternadores" class="nav-link" data-scroll-target="#alternadores"> <span class="header-section-number">4.9.3</span> Alternadores</a></li>
+  <li><a href="#ancoragem" id="toc-ancoragem" class="nav-link" data-scroll-target="#ancoragem"> <span class="header-section-number">4.9.4</span> Ancoragem</a></li>
+  <li><a href="#grupos" id="toc-grupos" class="nav-link" data-scroll-target="#grupos"> <span class="header-section-number">4.9.5</span> Grupos</a></li>
+  <li><a href="#pesquisa-ao-redor" id="toc-pesquisa-ao-redor" class="nav-link" data-scroll-target="#pesquisa-ao-redor"> <span class="header-section-number">4.9.6</span> Pesquisa ao Redor</a></li>
   </ul></li>
-  <li><a href="#outras-interpretações" id="toc-outras-interpretações" class="nav-link" data-scroll-target="#outras-interpretações"> <span class="header-section-number">5.10</span> Outras Interpretações</a>
+  <li><a href="#outras-interpretações" id="toc-outras-interpretações" class="nav-link" data-scroll-target="#outras-interpretações"> <span class="header-section-number">4.10</span> Outras Interpretações</a>
   <ul class="collapse">
-  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"> <span class="header-section-number">5.10.0.1</span> regex</a></li>
-  <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed"> <span class="header-section-number">5.10.0.2</span> fixed</a></li>
-  <li><a href="#coll" id="toc-coll" class="nav-link" data-scroll-target="#coll"> <span class="header-section-number">5.10.0.3</span> coll</a></li>
-  <li><a href="#boundary" id="toc-boundary" class="nav-link" data-scroll-target="#boundary"> <span class="header-section-number">5.10.0.4</span> boundary</a></li>
+  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"> <span class="header-section-number">4.10.0.1</span> regex</a></li>
+  <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed"> <span class="header-section-number">4.10.0.2</span> fixed</a></li>
+  <li><a href="#coll" id="toc-coll" class="nav-link" data-scroll-target="#coll"> <span class="header-section-number">4.10.0.3</span> coll</a></li>
+  <li><a href="#boundary" id="toc-boundary" class="nav-link" data-scroll-target="#boundary"> <span class="header-section-number">4.10.0.4</span> boundary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -286,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
 </div>
 
 
@@ -300,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introdução" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">5.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">4.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de manipulação de strings (cadeia de caracteres) utilizando o pacote STRINGR do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=stringr" class="uri">https://cran.r-project.org/package=stringr</a>.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -350,8 +394,8 @@ Nota
 <pre><code>[1] "Isto é uma string"</code></pre>
 </div>
 </div>
-<section id="exemplos-da-folha-de-referência" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">5.1.1</span> Exemplos da Folha de Referência</h3>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">4.1.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf"><strong>Folha de Referência</strong></a> do stringr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 <p>Para a maioria dos exemplos utilizaremos as bases de dados <strong>fruit</strong> (frutas) que será criado a seguir.</p>
 <hr>
@@ -398,12 +442,12 @@ Nota
 </div>
 </section>
 </section>
-<section id="detectando-combinações" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="detectando-combinações"><span class="header-section-number">5.2</span> Detectando Combinações</h2>
+<section id="detectando-combinações" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="detectando-combinações"><span class="header-section-number">4.2</span> Detectando Combinações</h2>
 <p>O pacote stringr possui uma série de funções para identificar a ocorrência ou não de padrões de caracteres (patterns).</p>
 <p>Na maioria das vezes o mecanismo de interpretação padrão é o de “Expressão Regular” (regex). Isto significa que podemos construir um padrão de caracteres não somente com letras ou números, mas criando expressões que significam uma combinação mais flexivel no padrão de busca. Para maiores informações veja: <a href="#expressões-regulares">Expressões Regulares</a>.</p>
-<section id="str_detect" class="level4" data-number="5.2.0.1">
-<h4 data-number="5.2.0.1" class="anchored" data-anchor-id="str_detect"><span class="header-section-number">5.2.0.1</span> str_detect</h4>
+<section id="str_detect" class="level4" data-number="4.2.0.1">
+<h4 data-number="4.2.0.1" class="anchored" data-anchor-id="str_detect"><span class="header-section-number">4.2.0.1</span> str_detect</h4>
 <p>Use para <strong>detectar</strong> a presença de um <strong>padrão</strong> em uma <strong>string</strong>.</p>
 <p>Por exemplo, para detectar quais frutas tem a letra “a”, podemos usar:</p>
 <div class="cell">
@@ -442,8 +486,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="str_starts" class="level4" data-number="5.2.0.2">
-<h4 data-number="5.2.0.2" class="anchored" data-anchor-id="str_starts"><span class="header-section-number">5.2.0.2</span> str_starts</h4>
+<section id="str_starts" class="level4" data-number="4.2.0.2">
+<h4 data-number="4.2.0.2" class="anchored" data-anchor-id="str_starts"><span class="header-section-number">4.2.0.2</span> str_starts</h4>
 <p>Use para determinar <strong>se há o padrão definido</strong> <strong>no início</strong> da string.</p>
 <p>Por exemplo, se quisermos identificar quais frutas que começam com o padrão “Bl”, usamos:</p>
 <div class="cell">
@@ -473,8 +517,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="str_which" class="level4" data-number="5.2.0.3">
-<h4 data-number="5.2.0.3" class="anchored" data-anchor-id="str_which"><span class="header-section-number">5.2.0.3</span> str_which</h4>
+<section id="str_which" class="level4" data-number="4.2.0.3">
+<h4 data-number="4.2.0.3" class="anchored" data-anchor-id="str_which"><span class="header-section-number">4.2.0.3</span> str_which</h4>
 <p>Use para retornar em <strong>qual linha</strong> o pdrão foi encontrado.</p>
 <p>Por exemplo, supondo que o padrão sejam as letras “Bl” (B maiúscula e l minúscula), usamos:</p>
 <div class="cell">
@@ -485,8 +529,8 @@ Importante
 </div>
 <p>Neste exemplo, identificamos que os únicos registros que atendem ao padrão “Bl” estão nas linhas 5 e 6 da tabela.</p>
 </section>
-<section id="str_locate" class="level4" data-number="5.2.0.4">
-<h4 data-number="5.2.0.4" class="anchored" data-anchor-id="str_locate"><span class="header-section-number">5.2.0.4</span> str_locate</h4>
+<section id="str_locate" class="level4" data-number="4.2.0.4">
+<h4 data-number="4.2.0.4" class="anchored" data-anchor-id="str_locate"><span class="header-section-number">4.2.0.4</span> str_locate</h4>
 <p>Use para <strong>localizar a posição</strong> do padrão na string.</p>
 <p>Por exemplo, se criarmos uma coluna contendo onde, em cada nome de fruta, o padrão de busca “er” é encontrado, usamos:<br>
 </p>
@@ -517,8 +561,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_count" class="level4" data-number="5.2.0.5">
-<h4 data-number="5.2.0.5" class="anchored" data-anchor-id="str_count"><span class="header-section-number">5.2.0.5</span> str_count</h4>
+<section id="str_count" class="level4" data-number="4.2.0.5">
+<h4 data-number="4.2.0.5" class="anchored" data-anchor-id="str_count"><span class="header-section-number">4.2.0.5</span> str_count</h4>
 <p>Use para identificar o número de vez que o padrão foi encontrado na string.</p>
 <p>Por exemplo, se buscarmos pelo padrão “na”, identificamos que a fruta <em>banana</em>, possui o padrão três vezes, enquanto a fruta <em>pomegranade</em> apenas uma vez.</p>
 <div class="cell">
@@ -535,11 +579,11 @@ Dica
 </div>
 </section>
 </section>
-<section id="partes-da-string" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="partes-da-string"><span class="header-section-number">5.3</span> Partes da String</h2>
+<section id="partes-da-string" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="partes-da-string"><span class="header-section-number">4.3</span> Partes da String</h2>
 <p>O pacote stringr possui uma série de funções que permitem obter partes de uma string baseado em um padrão de busca. Assim como nas funções de detecção, o interpretador padrão é o regex. Para maiores informações veja: <a href="#expressões-regulares">Expressões Regulares</a>.</p>
-<section id="str_sub" class="level4" data-number="5.3.0.1">
-<h4 data-number="5.3.0.1" class="anchored" data-anchor-id="str_sub"><span class="header-section-number">5.3.0.1</span> str_sub</h4>
+<section id="str_sub" class="level4" data-number="4.3.0.1">
+<h4 data-number="4.3.0.1" class="anchored" data-anchor-id="str_sub"><span class="header-section-number">4.3.0.1</span> str_sub</h4>
 <p>Use para <strong>extrair</strong> ou <strong>substituir</strong> partes de uma string a partir de um vetor de caracteres.</p>
 <p>Por exemplo, para <strong>extrair</strong> do segundo até o quarto caractere dos nomes das frutas, usamos:</p>
 <div class="cell">
@@ -556,8 +600,8 @@ Dica
 </div>
 <p>Se precisarmos variar o início ou fim da extração de parte da string, podemos passar valores negativos para os parametros start = e/ou end =, fazendo com que a contagem acontece de trás para frente.</p>
 </section>
-<section id="str_subset" class="level4" data-number="5.3.0.2">
-<h4 data-number="5.3.0.2" class="anchored" data-anchor-id="str_subset"><span class="header-section-number">5.3.0.2</span> str_subset</h4>
+<section id="str_subset" class="level4" data-number="4.3.0.2">
+<h4 data-number="4.3.0.2" class="anchored" data-anchor-id="str_subset"><span class="header-section-number">4.3.0.2</span> str_subset</h4>
 <p>Use para retornar as strings que contém o padrão. É equivalente a fazer str_detect(x, pattern), porém ao invés de retornar verdadeiro ou falso, retorna a string.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -566,8 +610,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_extract" class="level4" data-number="5.3.0.3">
-<h4 data-number="5.3.0.3" class="anchored" data-anchor-id="str_extract"><span class="header-section-number">5.3.0.3</span> str_extract</h4>
+<section id="str_extract" class="level4" data-number="4.3.0.3">
+<h4 data-number="4.3.0.3" class="anchored" data-anchor-id="str_extract"><span class="header-section-number">4.3.0.3</span> str_extract</h4>
 <p>Use para obter o padrão encontrado na string.</p>
 <p>Por exemplo, queremos obter parte da string que atenda ao padrão “erry”. Neste caso, a função irá retornar NA para as strings que não contém o padrão e o padrão para aquelas que o contém.</p>
 <div class="cell">
@@ -583,8 +627,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_match" class="level4" data-number="5.3.0.4">
-<h4 data-number="5.3.0.4" class="anchored" data-anchor-id="str_match"><span class="header-section-number">5.3.0.4</span> str_match</h4>
+<section id="str_match" class="level4" data-number="4.3.0.4">
+<h4 data-number="4.3.0.4" class="anchored" data-anchor-id="str_match"><span class="header-section-number">4.3.0.4</span> str_match</h4>
 <p>Use para obter os grupos identificados pelo padrão de busca. Ela retorna uma matriz, onde a primeira coluna retorna a combinação (match) toda e as demais colunas será uma para cada grupo identificado.</p>
 <p>Por exemplo, se buscarmos por dois grupos, sendo o primeiro (Ba) e o segundo grupo (na), teremos o seguinte resultado:</p>
 <div class="cell">
@@ -614,10 +658,10 @@ Nota
 </div>
 </section>
 </section>
-<section id="gerenciando-tamanho" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="gerenciando-tamanho"><span class="header-section-number">5.4</span> Gerenciando Tamanho</h2>
-<section id="str_length" class="level4" data-number="5.4.0.1">
-<h4 data-number="5.4.0.1" class="anchored" data-anchor-id="str_length"><span class="header-section-number">5.4.0.1</span> str_length</h4>
+<section id="gerenciando-tamanho" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="gerenciando-tamanho"><span class="header-section-number">4.4</span> Gerenciando Tamanho</h2>
+<section id="str_length" class="level4" data-number="4.4.0.1">
+<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="str_length"><span class="header-section-number">4.4.0.1</span> str_length</h4>
 <p>Use para obter o tamanho da string.</p>
 <p>Por exemplo, para obtermos o tamanho das strings correspondentes aos nomes das frutas e adicioná-las em uma coluna chamada “Tamanho”, podemos fazer:</p>
 <div class="cell">
@@ -633,8 +677,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_pad" class="level4" data-number="5.4.0.2">
-<h4 data-number="5.4.0.2" class="anchored" data-anchor-id="str_pad"><span class="header-section-number">5.4.0.2</span> str_pad</h4>
+<section id="str_pad" class="level4" data-number="4.4.0.2">
+<h4 data-number="4.4.0.2" class="anchored" data-anchor-id="str_pad"><span class="header-section-number">4.4.0.2</span> str_pad</h4>
 <p>Use para adicionar espaços em branco ao lado (esquerdo, direito, ambos) da string.</p>
 <p>Por exemplo, para adicionar espaços em branco para ajustar em 20 caracteres os nomes das frutas, usamos:</p>
 <div class="cell">
@@ -674,8 +718,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_trunc" class="level4" data-number="5.4.0.3">
-<h4 data-number="5.4.0.3" class="anchored" data-anchor-id="str_trunc"><span class="header-section-number">5.4.0.3</span> str_trunc</h4>
+<section id="str_trunc" class="level4" data-number="4.4.0.3">
+<h4 data-number="4.4.0.3" class="anchored" data-anchor-id="str_trunc"><span class="header-section-number">4.4.0.3</span> str_trunc</h4>
 <p>Use para truncar a string em um número fixo de caracteres.</p>
 <p>Por exemplo, para truncar os nomes das frutas em até 8 caracteres, usamos:</p>
 <div class="cell">
@@ -728,8 +772,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_trim" class="level4" data-number="5.4.0.4">
-<h4 data-number="5.4.0.4" class="anchored" data-anchor-id="str_trim"><span class="header-section-number">5.4.0.4</span> str_trim</h4>
+<section id="str_trim" class="level4" data-number="4.4.0.4">
+<h4 data-number="4.4.0.4" class="anchored" data-anchor-id="str_trim"><span class="header-section-number">4.4.0.4</span> str_trim</h4>
 <p>Use para remover os espaços em brancos do início em final da string.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em branco no início e no final   "</span></span>
@@ -739,8 +783,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_squish" class="level4" data-number="5.4.0.5">
-<h4 data-number="5.4.0.5" class="anchored" data-anchor-id="str_squish"><span class="header-section-number">5.4.0.5</span> str_squish</h4>
+<section id="str_squish" class="level4" data-number="4.4.0.5">
+<h4 data-number="4.4.0.5" class="anchored" data-anchor-id="str_squish"><span class="header-section-number">4.4.0.5</span> str_squish</h4>
 <p>Use para remover espaços em branco no início e final da string e também espaços em brancos repetidos no meio da string.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em       branco no início, no final e repetidos no meio   "</span></span>
@@ -751,10 +795,10 @@ Dica
 </div>
 </section>
 </section>
-<section id="modificando-string" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="modificando-string"><span class="header-section-number">5.5</span> Modificando String</h2>
-<section id="str_sub-1" class="level4" data-number="5.5.0.1">
-<h4 data-number="5.5.0.1" class="anchored" data-anchor-id="str_sub-1"><span class="header-section-number">5.5.0.1</span> str_sub</h4>
+<section id="modificando-string" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="modificando-string"><span class="header-section-number">4.5</span> Modificando String</h2>
+<section id="str_sub-1" class="level4" data-number="4.5.0.1">
+<h4 data-number="4.5.0.1" class="anchored" data-anchor-id="str_sub-1"><span class="header-section-number">4.5.0.1</span> str_sub</h4>
 <p>Use para <strong>extrair</strong> ou <strong>substituir</strong> partes de uma string a partir de um vetor de caracteres.</p>
 <p>Por exemplo, para <strong>substituir</strong> do segundo até o quarto caractere dos nomes das frutas, usamos:</p>
 <div class="cell">
@@ -813,8 +857,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_replace" class="level4" data-number="5.5.0.2">
-<h4 data-number="5.5.0.2" class="anchored" data-anchor-id="str_replace"><span class="header-section-number">5.5.0.2</span> str_replace</h4>
+<section id="str_replace" class="level4" data-number="4.5.0.2">
+<h4 data-number="4.5.0.2" class="anchored" data-anchor-id="str_replace"><span class="header-section-number">4.5.0.2</span> str_replace</h4>
 <p>Use para substituir partes de uma string por outra string de acordo com o padrão de busca (ex: regex) definido.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -856,8 +900,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_replace_all" class="level4" data-number="5.5.0.3">
-<h4 data-number="5.5.0.3" class="anchored" data-anchor-id="str_replace_all"><span class="header-section-number">5.5.0.3</span> str_replace_all</h4>
+<section id="str_replace_all" class="level4" data-number="4.5.0.3">
+<h4 data-number="4.5.0.3" class="anchored" data-anchor-id="str_replace_all"><span class="header-section-number">4.5.0.3</span> str_replace_all</h4>
 <p>Use para substituir partes de uma string por outra string de acordo com o padrão de busca (ex: regex) definido em TODAS as vezes que o padrão for encontrado.</p>
 <p>Por exemplo, vamos definir inicialmente que nosso padrão de busca são as letras “na”. Agora vamos substituir este padrão pela string ” XX ” colocando em uma coluna ao lado usando a função mutate().</p>
 <div class="cell">
@@ -874,8 +918,8 @@ Nota
 </div>
 <p>Note que se tivessemo utilizado a função str_replace ao invés da str_replace_all, a palavra “<strong>Banana</strong>” retornaria “B<strong>a XX na</strong>”, pois ela substituiria apenas a primeira vez que o padrão fosse encontrado.</p>
 </section>
-<section id="str_to_lower" class="level4" data-number="5.5.0.4">
-<h4 data-number="5.5.0.4" class="anchored" data-anchor-id="str_to_lower"><span class="header-section-number">5.5.0.4</span> str_to_lower</h4>
+<section id="str_to_lower" class="level4" data-number="4.5.0.4">
+<h4 data-number="4.5.0.4" class="anchored" data-anchor-id="str_to_lower"><span class="header-section-number">4.5.0.4</span> str_to_lower</h4>
 <p>Use para colocar a string em letras minúsculas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
@@ -890,8 +934,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_to_upper" class="level4" data-number="5.5.0.5">
-<h4 data-number="5.5.0.5" class="anchored" data-anchor-id="str_to_upper"><span class="header-section-number">5.5.0.5</span> str_to_upper</h4>
+<section id="str_to_upper" class="level4" data-number="4.5.0.5">
+<h4 data-number="4.5.0.5" class="anchored" data-anchor-id="str_to_upper"><span class="header-section-number">4.5.0.5</span> str_to_upper</h4>
 <p>Use para colocar a string em letras maiúsculas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
@@ -906,8 +950,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_to_title" class="level4" data-number="5.5.0.6">
-<h4 data-number="5.5.0.6" class="anchored" data-anchor-id="str_to_title"><span class="header-section-number">5.5.0.6</span> str_to_title</h4>
+<section id="str_to_title" class="level4" data-number="4.5.0.6">
+<h4 data-number="4.5.0.6" class="anchored" data-anchor-id="str_to_title"><span class="header-section-number">4.5.0.6</span> str_to_title</h4>
 <p>Use para colocar a string com a primeira letra maiúscula e as demais em letras minúsculas de cada palavra.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
@@ -923,10 +967,10 @@ Nota
 </div>
 </section>
 </section>
-<section id="juntando-e-dividindo" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="juntando-e-dividindo"><span class="header-section-number">5.6</span> Juntando e Dividindo</h2>
-<section id="str_c" class="level4" data-number="5.6.0.1">
-<h4 data-number="5.6.0.1" class="anchored" data-anchor-id="str_c"><span class="header-section-number">5.6.0.1</span> str_c</h4>
+<section id="juntando-e-dividindo" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="juntando-e-dividindo"><span class="header-section-number">4.6</span> Juntando e Dividindo</h2>
+<section id="str_c" class="level4" data-number="4.6.0.1">
+<h4 data-number="4.6.0.1" class="anchored" data-anchor-id="str_c"><span class="header-section-number">4.6.0.1</span> str_c</h4>
 <p>Use para juntar várias strings em uma única string.</p>
 <p>Para exemplificar, vamos criar uma segunda coluna em nossa tabela de frutas.</p>
 <div class="cell">
@@ -963,8 +1007,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_flatten" class="level4" data-number="5.6.0.2">
-<h4 data-number="5.6.0.2" class="anchored" data-anchor-id="str_flatten"><span class="header-section-number">5.6.0.2</span> str_flatten</h4>
+<section id="str_flatten" class="level4" data-number="4.6.0.2">
+<h4 data-number="4.6.0.2" class="anchored" data-anchor-id="str_flatten"><span class="header-section-number">4.6.0.2</span> str_flatten</h4>
 <p>Use para “achatar” o vetor de string. O parametro collapse = “” pode ser alterado para incluir um caractere específico enquanto ocorre o processo.</p>
 <p>Por exemplo, temos uma string “Bom dia”. Neste caso, temos um vetor de caracteres de tamanho 7 (“B” “o” “m” ” ” “d” “i” “a”). A função flatten irá achatar este vetor e retornar apenas uma string com um único vetor (“Bom dia”).</p>
 <div class="cell">
@@ -986,8 +1030,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_dup" class="level4" data-number="5.6.0.3">
-<h4 data-number="5.6.0.3" class="anchored" data-anchor-id="str_dup"><span class="header-section-number">5.6.0.3</span> str_dup</h4>
+<section id="str_dup" class="level4" data-number="4.6.0.3">
+<h4 data-number="4.6.0.3" class="anchored" data-anchor-id="str_dup"><span class="header-section-number">4.6.0.3</span> str_dup</h4>
 <p>Use para duplicar uma string determinado número de vezes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
@@ -1002,8 +1046,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_split_fixed" class="level4" data-number="5.6.0.4">
-<h4 data-number="5.6.0.4" class="anchored" data-anchor-id="str_split_fixed"><span class="header-section-number">5.6.0.4</span> str_split_fixed</h4>
+<section id="str_split_fixed" class="level4" data-number="4.6.0.4">
+<h4 data-number="4.6.0.4" class="anchored" data-anchor-id="str_split_fixed"><span class="header-section-number">4.6.0.4</span> str_split_fixed</h4>
 <p>Use para “quebrar” um string em partes. A funçao <strong>str_split</strong>() retorna uma string dividida enquanto a funçao <strong>str_split_fixed</strong>() retorna uma matriz de caracteres com número fixo de colunas.</p>
 <p>Por exemplo, vamos usar a mesma tabela usada no exemplo da funçao <a href="#str_c">str_c</a> chamada frutas (na fruit). Iremos “quebrar as strings da coluna”nova_string” usando oseparator “_”. Como temos exatamente o mesmo número de sperador em todas as strings, a funções irá nos retornar um vetor de caracteres de tamanho 4.</p>
 <div class="cell">
@@ -1104,8 +1148,8 @@ Dica
 </div>
 <p>Se quisermos “quebrar” uma string usando um separador e já gerarmos as respectivas colunas em uma tabela, podemos usar a função str_split_fixed(), extrairmos as respectivas matrizes e adicionarmos como colunas na tabela, podemos fazer: .</p>
 </section>
-<section id="str_glue" class="level4" data-number="5.6.0.5">
-<h4 data-number="5.6.0.5" class="anchored" data-anchor-id="str_glue"><span class="header-section-number">5.6.0.5</span> str_glue</h4>
+<section id="str_glue" class="level4" data-number="4.6.0.5">
+<h4 data-number="4.6.0.5" class="anchored" data-anchor-id="str_glue"><span class="header-section-number">4.6.0.5</span> str_glue</h4>
 <p>Use para interpolar/formatar uma string.</p>
 <p>Por exemplo, se tivermos duas strings: s1 = “Fulano” e s2 = “da Silva”. Podemos “colar” estas strings usando a função <strong>str_glue</strong>().</p>
 <div class="cell">
@@ -1126,8 +1170,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="str_glue_data" class="level4" data-number="5.6.0.6">
-<h4 data-number="5.6.0.6" class="anchored" data-anchor-id="str_glue_data"><span class="header-section-number">5.6.0.6</span> str_glue_data</h4>
+<section id="str_glue_data" class="level4" data-number="4.6.0.6">
+<h4 data-number="4.6.0.6" class="anchored" data-anchor-id="str_glue_data"><span class="header-section-number">4.6.0.6</span> str_glue_data</h4>
 <p>É similar a função <a href="">str_glue</a>, mas adequada a objetos de dados.</p>
 <p>Por exemplo, vamos juntar o nome das frutas, o nome da linha da tabela que ela está e mais uma string fixa:</p>
 <div class="cell">
@@ -1167,10 +1211,10 @@ A Watermelon é uma fruta.</code></pre>
 </div>
 </section>
 </section>
-<section id="ordenando-string" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="ordenando-string"><span class="header-section-number">5.7</span> Ordenando String</h2>
-<section id="str_order" class="level4" data-number="5.7.0.1">
-<h4 data-number="5.7.0.1" class="anchored" data-anchor-id="str_order"><span class="header-section-number">5.7.0.1</span> str_order</h4>
+<section id="ordenando-string" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="ordenando-string"><span class="header-section-number">4.7</span> Ordenando String</h2>
+<section id="str_order" class="level4" data-number="4.7.0.1">
+<h4 data-number="4.7.0.1" class="anchored" data-anchor-id="str_order"><span class="header-section-number">4.7.0.1</span> str_order</h4>
 <p>Use para sequenciar um vetor de caracteres.</p>
 <p>Por exemplo, para colocar em sequência de forma decrescente os nomes da frutas, podemos usar:</p>
 <div class="cell">
@@ -1182,8 +1226,8 @@ A Watermelon é uma fruta.</code></pre>
 </div>
 <p>O resultado será uma sequência (descrescente) em que cada item do vetor está.</p>
 </section>
-<section id="str_sort" class="level4" data-number="5.7.0.2">
-<h4 data-number="5.7.0.2" class="anchored" data-anchor-id="str_sort"><span class="header-section-number">5.7.0.2</span> str_sort</h4>
+<section id="str_sort" class="level4" data-number="4.7.0.2">
+<h4 data-number="4.7.0.2" class="anchored" data-anchor-id="str_sort"><span class="header-section-number">4.7.0.2</span> str_sort</h4>
 <p>Use para ordenar um vetor de caracteres.</p>
 <p>Por exemplo, para ordenar de forma decrescente os nomes da frutas, podemos usar:</p>
 <div class="cell">
@@ -1200,10 +1244,10 @@ A Watermelon é uma fruta.</code></pre>
 </div>
 </section>
 </section>
-<section id="auxiliares" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="auxiliares"><span class="header-section-number">5.8</span> Auxiliares</h2>
-<section id="str_conv" class="level4" data-number="5.8.0.1">
-<h4 data-number="5.8.0.1" class="anchored" data-anchor-id="str_conv"><span class="header-section-number">5.8.0.1</span> str_conv</h4>
+<section id="auxiliares" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="auxiliares"><span class="header-section-number">4.8</span> Auxiliares</h2>
+<section id="str_conv" class="level4" data-number="4.8.0.1">
+<h4 data-number="4.8.0.1" class="anchored" data-anchor-id="str_conv"><span class="header-section-number">4.8.0.1</span> str_conv</h4>
 <p>Use para converter o “encode” de uma string.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(<span class="fu">as.raw</span>(<span class="dv">177</span>))</span>
@@ -1221,15 +1265,15 @@ A Watermelon é uma fruta.</code></pre>
 </div>
 </div>
 </section>
-<section id="str_view_all" class="level4" data-number="5.8.0.2">
-<h4 data-number="5.8.0.2" class="anchored" data-anchor-id="str_view_all"><span class="header-section-number">5.8.0.2</span> str_view_all</h4>
+<section id="str_view_all" class="level4" data-number="4.8.0.2">
+<h4 data-number="4.8.0.2" class="anchored" data-anchor-id="str_view_all"><span class="header-section-number">4.8.0.2</span> str_view_all</h4>
 <p>Use para ver os valores encontrados na string de acordo com um padrão de busca.</p>
 <p>Por exemplo, se tivermos o padrão de busca como “er”, podemos ver onde na strings ele é encontrado.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"Banana"</span>, <span class="st">"Blueberry"</span>, <span class="st">"Blackberry"</span>), <span class="st">"er"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-5fcff32f334619da7efc" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5fcff32f334619da7efc">{"x":{"html":"<ul>\n  <li>Banana<\/li>\n  <li>Blueb<span class='match'>er<\/span>ry<\/li>\n  <li>Blackb<span class='match'>er<\/span>ry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-758c3c09a283c6790020" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-758c3c09a283c6790020">{"x":{"html":"<ul>\n  <li>Banana<\/li>\n  <li>Blueb<span class='match'>er<\/span>ry<\/li>\n  <li>Blackb<span class='match'>er<\/span>ry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -1246,8 +1290,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="str_wrap" class="level4" data-number="5.8.0.3">
-<h4 data-number="5.8.0.3" class="anchored" data-anchor-id="str_wrap"><span class="header-section-number">5.8.0.3</span> str_wrap</h4>
+<section id="str_wrap" class="level4" data-number="4.8.0.3">
+<h4 data-number="4.8.0.3" class="anchored" data-anchor-id="str_wrap"><span class="header-section-number">4.8.0.3</span> str_wrap</h4>
 <p>Use para formatar uma string em parágrafos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>thanks_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">"doc"</span>), <span class="st">"THANKS"</span>)</span>
@@ -1282,8 +1326,8 @@ acknowledged in the code files, including </code></pre>
 </div>
 </section>
 </section>
-<section id="expressões-regulares" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="expressões-regulares"><span class="header-section-number">5.9</span> Expressões Regulares</h2>
+<section id="expressões-regulares" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="expressões-regulares"><span class="header-section-number">4.9</span> Expressões Regulares</h2>
 <p>Padrões de buscas são interpretados na funções do pacote stringr como Expressões Regulares (regex). Ou seja, quando uma função possui o parametro pattern =, significa que o interpretador irá entendem como uma expressão regular. Você pode alterar o interpretadores para outros tipos se necessário. Para saber mais sobre isso, acesse <a href="#outras-interpretações">Outras Interpretações</a>.</p>
 <p><strong>Expressão Regular</strong> é uma sequencia de caracteres que especificam um padrão de busca em uma string.</p>
 <p>No R, você escreve uma expressão regular como um string, ou seja, uma sequencia de caracteres entre asps simples ’ ou duplas “.</p>
@@ -1354,8 +1398,8 @@ Dica
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
-<section id="combinando-caracteres" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="combinando-caracteres"><span class="header-section-number">5.9.1</span> Combinando Caracteres</h3>
+<section id="combinando-caracteres" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="combinando-caracteres"><span class="header-section-number">4.9.1</span> Combinando Caracteres</h3>
 <p>No exemplo anterior utilizamos apenas um caractere como padrão de busca, no caso a letra “a”.</p>
 <p>Quando desejamos combinar diversos caracteres (letras, numeros, simbolos, espaços, etc) utilizamos a expressões na tabela abaixo:</p>
 <p>Para facilitar o entendimento, utilizaremos uma string com letras maiúsculas, minúsculas, símbolos e números:</p>
@@ -1488,8 +1532,8 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-0112a1a97d8edc8ab092" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0112a1a97d8edc8ab092">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>bc ABC 123\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-38706a312e2ebd9e1882" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-38706a312e2ebd9e1882">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>bc ABC 123\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
@@ -1497,8 +1541,8 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-ee58e9f8a6106b8a85e0" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ee58e9f8a6106b8a85e0">{"x":{"html":"<ul>\n  <li>abc ABC 123\t.!<span class='match'>?<\/span>\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-18a5be78e5a063deb6f9" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-18a5be78e5a063deb6f9">{"x":{"html":"<ul>\n  <li>abc ABC 123\t.!<span class='match'>?<\/span>\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
@@ -1506,8 +1550,8 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-63ad4395897b9c159ca2" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-63ad4395897b9c159ca2">{"x":{"html":"<ul>\n  <li>abc ABC <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-244082044e66b2b8d33a" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-244082044e66b2b8d33a">{"x":{"html":"<ul>\n  <li>abc ABC <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -1526,8 +1570,8 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">D"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-cc0ecb82411f100c9599" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cc0ecb82411f100c9599">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span><span class='match'> <\/span><span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span><span class='match'> <\/span>123<span class='match'>\t<\/span><span class='match'>.<\/span><span class='match'>!<\/span><span class='match'>?<\/span><span class='match'>\\<\/span><span class='match'>(<\/span><span class='match'>)<\/span><span class='match'>{<\/span><span class='match'>}<\/span><span class='match'>\n<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e421a35e5f41cf3691be" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e421a35e5f41cf3691be">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span><span class='match'> <\/span><span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span><span class='match'> <\/span>123<span class='match'>\t<\/span><span class='match'>.<\/span><span class='match'>!<\/span><span class='match'>?<\/span><span class='match'>\\<\/span><span class='match'>(<\/span><span class='match'>)<\/span><span class='match'>{<\/span><span class='match'>}<\/span><span class='match'>\n<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
@@ -1535,13 +1579,13 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"[:alnum:]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-432355f69e13f3ec9b8e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-432355f69e13f3ec9b8e">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span> <span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span> <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ed38ecb14c560cd19684" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed38ecb14c560cd19684">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span> <span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span> <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="quantificadores" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="quantificadores"><span class="header-section-number">5.9.2</span> Quantificadores</h3>
+<section id="quantificadores" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="quantificadores"><span class="header-section-number">4.9.2</span> Quantificadores</h3>
 <p>Agora que já saber como criar padrões de busca para identificar diversos tipos de caracteres, veremos como difinir a quantidade desses caracteres em nosso padrão. Veja a tabela abaixo:</p>
 <table class="table">
 <thead>
@@ -1587,8 +1631,8 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-819936faaae2489dbac8" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-819936faaae2489dbac8">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-16e0fa66e4a6e2605ef5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-16e0fa66e4a6e2605ef5">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Neste caso, todas as vezes que a funções encontrar a letra “a” zero ou uma vez, elá irá marcar.</p>
@@ -1608,8 +1652,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-fec06098148f4451335e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fec06098148f4451335e">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.a.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-45fcc13312453b27ba6b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-45fcc13312453b27ba6b">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.a.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Observe que a busca para logo no primeiro caractere, pois estamos buscando pela letra “a” <strong>ZERO</strong> ou mais vezes.</p>
@@ -1618,8 +1662,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a+"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-87acb2c2cf6ade13b5b7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-87acb2c2cf6ade13b5b7">{"x":{"html":"<ul>\n  <li>.<span class='match'>a<\/span>.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a43f546e0ff68ee7d761" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a43f546e0ff68ee7d761">{"x":{"html":"<ul>\n  <li>.<span class='match'>a<\/span>.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
@@ -1627,16 +1671,16 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-b2e2eab3b8ab2e3216eb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b2e2eab3b8ab2e3216eb">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-efa031f6cb28c69fcba3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-efa031f6cb28c69fcba3">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Veja que ele localizou apenas as duas letras “aa” e não marcou as letras “aaa”. Isto é porque utilizamos a função str_view(), que parou a busca assim que a primeiro encontro ocorreu. Se quisermos continuar a busca, devemos utilizar a função str_view_all().</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-6134c3bac179417908bb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6134c3bac179417908bb">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.<span class='match'>aaa<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-85d0115184370ceb0207" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-85d0115184370ceb0207">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.<span class='match'>aaa<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
@@ -1671,8 +1715,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="alternadores" class="level3" data-number="5.9.3">
-<h3 data-number="5.9.3" class="anchored" data-anchor-id="alternadores"><span class="header-section-number">5.9.3</span> Alternadores</h3>
+<section id="alternadores" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="alternadores"><span class="header-section-number">4.9.3</span> Alternadores</h3>
 <p>Até aqui, utilizamos os caracteres especiais (<a href="#combinando-caracteres">Combinando Caracteres</a>) e sabemos como localizá-los em diversas quantidades (<a href="#quantificadores">Quantificadores</a>). Mas em muitos casos precisamos organizá-los de forma lógica, possibilitando utilizá-los em combinações mais flexíveis. Para isto, utilizamos os símbolos de alternadores, veja:</p>
 <table class="table">
 <caption>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_3 = “abcde”</caption>
@@ -1709,8 +1753,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"ab|d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-de72af4cc3d0ddbebbfa" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-de72af4cc3d0ddbebbfa">{"x":{"html":"<ul>\n  <li><span class='match'>ab<\/span>c<span class='match'>d<\/span>e<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-715ed7b5ca65a4370c0b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-715ed7b5ca65a4370c0b">{"x":{"html":"<ul>\n  <li><span class='match'>ab<\/span>c<span class='match'>d<\/span>e<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
@@ -1718,8 +1762,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[abe]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-94c6cb2f0ec3a27e93cb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-94c6cb2f0ec3a27e93cb">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span>cd<span class='match'>e<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-54f34b34b47f4bbe515d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-54f34b34b47f4bbe515d">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span>cd<span class='match'>e<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
@@ -1727,8 +1771,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[a-c]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-b009c940517c56026717" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b009c940517c56026717">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span>de<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0d552da29bd9d7c9974d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0d552da29bd9d7c9974d">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span>de<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
@@ -1748,8 +1792,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="ancoragem" class="level3" data-number="5.9.4">
-<h3 data-number="5.9.4" class="anchored" data-anchor-id="ancoragem"><span class="header-section-number">5.9.4</span> Ancoragem</h3>
+<section id="ancoragem" class="level3" data-number="4.9.4">
+<h3 data-number="4.9.4" class="anchored" data-anchor-id="ancoragem"><span class="header-section-number">4.9.4</span> Ancoragem</h3>
 <p>Para definir se a sequência do padrão de busca está no início ou fim da string, utilizamos as expressões de ancoragem:</p>
 <table class="table">
 <thead>
@@ -1778,8 +1822,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"a$"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3e73acfc42bbafe1ac01" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3e73acfc42bbafe1ac01">{"x":{"html":"<ul>\n  <li>aa<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5879d4a72bb2848e90ec" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5879d4a72bb2848e90ec">{"x":{"html":"<ul>\n  <li>aa<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
@@ -1787,8 +1831,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"^a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-5a5fe936cfff8b7bc4af" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5a5fe936cfff8b7bc4af">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>aa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ac84d3ec98426567a78d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac84d3ec98426567a78d">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>aa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
@@ -1807,8 +1851,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="grupos" class="level3" data-number="5.9.5">
-<h3 data-number="5.9.5" class="anchored" data-anchor-id="grupos"><span class="header-section-number">5.9.5</span> Grupos</h3>
+<section id="grupos" class="level3" data-number="4.9.5">
+<h3 data-number="4.9.5" class="anchored" data-anchor-id="grupos"><span class="header-section-number">4.9.5</span> Grupos</h3>
 <p>Você pode utilizar <strong>parênteses</strong> <strong>(</strong> <strong>)</strong> para definir expressões de <strong>precedência</strong> ou para serem <strong>referenciados</strong> posteriormente através da <strong>ordem de criação</strong>.</p>
 <p>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_5 = “abbaab”</p>
 <div class="cell">
@@ -1820,24 +1864,24 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-647b7a99aae868f12372" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-647b7a99aae868f12372">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d755e844328e9acb7f31" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d755e844328e9acb7f31">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Veja que se nossa string fosse “Blueberry is special”, a letra “e” de “special” não seria encontrada:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-ad4953b5aa8e8bf9571f" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ad4953b5aa8e8bf9571f">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry is special<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9e7555869cad0c864849" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9e7555869cad0c864849">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry is special<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Se quisermos criar um padrão que encontre a letra “e” precedida de qualquer letra, podemos fazer:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"([:alpha:])e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-da51e7b7c13657d1700f" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-da51e7b7c13657d1700f">{"x":{"html":"<ul>\n  <li>Bl<span class='match'>ue<\/span><span class='match'>be<\/span>rry is s<span class='match'>pe<\/span>cial<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-90c583eaec9f676f8e09" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90c583eaec9f676f8e09">{"x":{"html":"<ul>\n  <li>Bl<span class='match'>ue<\/span><span class='match'>be<\/span>rry is s<span class='match'>pe<\/span>cial<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
@@ -1848,8 +1892,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_5, <span class="st">"(a)(b)</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-e47e750757fe853738cb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e47e750757fe853738cb">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span>ab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-09abf98a7702298a6f2f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-09abf98a7702298a6f2f">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span>ab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Neste exemplo, nosso padrão busca por “ba”, atraveś de \\2\\1, desde que tenham precedência de “ab”, através dos grupos (a)(b).</p>
@@ -1858,8 +1902,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Tem uma banana na mesa"</span>, <span class="st">"(na)</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-4b2d09b6c74bf9b8c69a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b2d09b6c74bf9b8c69a">{"x":{"html":"<ul>\n  <li>Tem uma ba<span class='match'>nana<\/span> na mesa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-43956745b451ef60210f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-43956745b451ef60210f">{"x":{"html":"<ul>\n  <li>Tem uma ba<span class='match'>nana<\/span> na mesa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
@@ -1884,8 +1928,8 @@ Aviso
 <p>Com nosso padrão de busca criado, iremos criar nosso padrão de substituição, ou seja, aquilo que for encontrado pelo padrão de busca, será substituído pelo padrão de substituição.</p>
 <p>Nosso padrão de substituição ficou simples (“\\1\\2”). Veja que ele apenas pega o conteúdo do grupo 1 e grupo 2 criados no padrão de busca usando parênteses para substituir.</p>
 </section>
-<section id="pesquisa-ao-redor" class="level3" data-number="5.9.6">
-<h3 data-number="5.9.6" class="anchored" data-anchor-id="pesquisa-ao-redor"><span class="header-section-number">5.9.6</span> Pesquisa ao Redor</h3>
+<section id="pesquisa-ao-redor" class="level3" data-number="4.9.6">
+<h3 data-number="4.9.6" class="anchored" data-anchor-id="pesquisa-ao-redor"><span class="header-section-number">4.9.6</span> Pesquisa ao Redor</h3>
 <p>Em alguns casos, precisamos criar um padrão que <strong>olhe ao redor</strong> para encontrar o que buscamos.</p>
 <p>Há símbolos para definirmos grupos que estão <strong>precedendo</strong> o que buscamos e há símbolos para definirmos grupos que estão <strong>posteriores</strong> ao que buscamos. Há também símbolos para negar os casos anteriores e posteriores.</p>
 <p>Veja a tabela:</p>
@@ -1925,8 +1969,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"a(?=c)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-93a96c9d2c4eb153976d" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-93a96c9d2c4eb153976d">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b1d8aaf69953b354509d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b1d8aaf69953b354509d">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
@@ -1934,8 +1978,8 @@ Aviso
 <div class="cell">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"(?&lt;=b)a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-a1d8bda358a837d00b46" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a1d8bda358a837d00b46">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-63ec86c0b163ba125ddd" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63ec86c0b163ba125ddd">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
@@ -1955,15 +1999,15 @@ Aviso
 </div>
 </section>
 </section>
-<section id="outras-interpretações" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="outras-interpretações"><span class="header-section-number">5.10</span> Outras Interpretações</h2>
-<section id="regex" class="level4" data-number="5.10.0.1">
-<h4 data-number="5.10.0.1" class="anchored" data-anchor-id="regex"><span class="header-section-number">5.10.0.1</span> regex</h4>
+<section id="outras-interpretações" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="outras-interpretações"><span class="header-section-number">4.10</span> Outras Interpretações</h2>
+<section id="regex" class="level4" data-number="4.10.0.1">
+<h4 data-number="4.10.0.1" class="anchored" data-anchor-id="regex"><span class="header-section-number">4.10.0.1</span> regex</h4>
 <p>Conforme visto na seção <a href="#expressões-regulares">Expressões Regulares</a>, o interpretador padrão das funções do pacote stringr, é o regex, ou seja, sempre que tivermos o parâmetro pattern =, se não especificarmos nada, ele irá interpretar a string deste parêmetro como se fosse uma expressão regular (regex).</p>
 <p>A seguir, veremos como mudar este padrão e introduzir outros interpretadores disponíveis.</p>
 </section>
-<section id="fixed" class="level4" data-number="5.10.0.2">
-<h4 data-number="5.10.0.2" class="anchored" data-anchor-id="fixed"><span class="header-section-number">5.10.0.2</span> fixed</h4>
+<section id="fixed" class="level4" data-number="4.10.0.2">
+<h4 data-number="4.10.0.2" class="anchored" data-anchor-id="fixed"><span class="header-section-number">4.10.0.2</span> fixed</h4>
 <p>Para buscar bytes nativos (raw), podemos usar o interpretador fixed(). Esta opção é bastante rápida, mas pode perder alguns caracteres que podem estar representados de maneiras diferentes (ex não ASCII).</p>
 <p>Exemplo:</p>
 <div class="cell">
@@ -1973,8 +2017,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="coll" class="level4" data-number="5.10.0.3">
-<h4 data-number="5.10.0.3" class="anchored" data-anchor-id="coll"><span class="header-section-number">5.10.0.3</span> coll</h4>
+<section id="coll" class="level4" data-number="4.10.0.3">
+<h4 data-number="4.10.0.3" class="anchored" data-anchor-id="coll"><span class="header-section-number">4.10.0.3</span> coll</h4>
 <p>Para comparar strings respeitando seu agrupamento. Interessante para strings com localização e não sensíveis a maiúsculas ou minúsculas.</p>
 <p>Exemplo:</p>
 <div class="cell">
@@ -1984,8 +2028,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="boundary" class="level4" data-number="5.10.0.4">
-<h4 data-number="5.10.0.4" class="anchored" data-anchor-id="boundary"><span class="header-section-number">5.10.0.4</span> boundary</h4>
+<section id="boundary" class="level4" data-number="4.10.0.4">
+<h4 data-number="4.10.0.4" class="anchored" data-anchor-id="boundary"><span class="header-section-number">4.10.0.4</span> boundary</h4>
 <p>Para localizar fronterias entre caracteres. quebra de linhas, sentenças ou palavras.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2122,12 +2166,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

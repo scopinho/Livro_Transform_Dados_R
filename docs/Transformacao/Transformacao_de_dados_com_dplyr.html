@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 4&nbsp; Transformação de Dados com DPLYR</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 3&nbsp; Transformação de Dados com DPLYR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,13 +125,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -139,14 +158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">Transformação e Manipulação de Dados com a linguagem R</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -161,39 +175,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Parte 1 - Obtendo e Ajustando os Dados</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Parte 2 -Trabalhando com Strings e Datas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Parte 3 - Gráficos</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -203,167 +247,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">4.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">3.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">4.1.1</span> Exemplos da Folha de Referência</a></li>
-  <li><a href="#dados-organizados-e-canalização" id="toc-dados-organizados-e-canalização" class="nav-link" data-scroll-target="#dados-organizados-e-canalização"> <span class="header-section-number">4.1.2</span> Dados Organizados e Canalização</a></li>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">3.1.1</span> Exemplos da Folha de Referência</a></li>
+  <li><a href="#dados-organizados-e-canalização" id="toc-dados-organizados-e-canalização" class="nav-link" data-scroll-target="#dados-organizados-e-canalização"> <span class="header-section-number">3.1.2</span> Dados Organizados e Canalização</a></li>
   </ul></li>
-  <li><a href="#resumindo-observações" id="toc-resumindo-observações" class="nav-link" data-scroll-target="#resumindo-observações"> <span class="header-section-number">4.2</span> Resumindo Observações</a>
+  <li><a href="#resumindo-observações" id="toc-resumindo-observações" class="nav-link" data-scroll-target="#resumindo-observações"> <span class="header-section-number">3.2</span> Resumindo Observações</a>
   <ul class="collapse">
-  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise"> <span class="header-section-number">4.2.0.1</span> summarise</a></li>
-  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count"> <span class="header-section-number">4.2.0.2</span> count</a></li>
+  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise"> <span class="header-section-number">3.2.0.1</span> summarise</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count"> <span class="header-section-number">3.2.0.2</span> count</a></li>
   </ul></li>
-  <li><a href="#agrupando-observações" id="toc-agrupando-observações" class="nav-link" data-scroll-target="#agrupando-observações"> <span class="header-section-number">4.3</span> Agrupando Observações</a>
+  <li><a href="#agrupando-observações" id="toc-agrupando-observações" class="nav-link" data-scroll-target="#agrupando-observações"> <span class="header-section-number">3.3</span> Agrupando Observações</a>
   <ul class="collapse">
-  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"> <span class="header-section-number">4.3.0.1</span> group_by</a></li>
-  <li><a href="#rowwise" id="toc-rowwise" class="nav-link" data-scroll-target="#rowwise"> <span class="header-section-number">4.3.0.2</span> rowwise</a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"> <span class="header-section-number">3.3.0.1</span> group_by</a></li>
+  <li><a href="#rowwise" id="toc-rowwise" class="nav-link" data-scroll-target="#rowwise"> <span class="header-section-number">3.3.0.2</span> rowwise</a></li>
   </ul></li>
-  <li><a href="#manipulando-observações" id="toc-manipulando-observações" class="nav-link" data-scroll-target="#manipulando-observações"> <span class="header-section-number">4.4</span> Manipulando Observações</a>
+  <li><a href="#manipulando-observações" id="toc-manipulando-observações" class="nav-link" data-scroll-target="#manipulando-observações"> <span class="header-section-number">3.4</span> Manipulando Observações</a>
   <ul class="collapse">
-  <li><a href="#extração-de-observações" id="toc-extração-de-observações" class="nav-link" data-scroll-target="#extração-de-observações"> <span class="header-section-number">4.4.1</span> Extração de Observações</a>
+  <li><a href="#extração-de-observações" id="toc-extração-de-observações" class="nav-link" data-scroll-target="#extração-de-observações"> <span class="header-section-number">3.4.1</span> Extração de Observações</a>
   <ul class="collapse">
-  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"> <span class="header-section-number">4.4.1.1</span> filter</a></li>
-  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct"> <span class="header-section-number">4.4.1.2</span> distinct</a></li>
-  <li><a href="#slice" id="toc-slice" class="nav-link" data-scroll-target="#slice"> <span class="header-section-number">4.4.1.3</span> slice</a></li>
-  <li><a href="#slice_sample" id="toc-slice_sample" class="nav-link" data-scroll-target="#slice_sample"> <span class="header-section-number">4.4.1.4</span> slice_sample</a></li>
-  <li><a href="#slice_min" id="toc-slice_min" class="nav-link" data-scroll-target="#slice_min"> <span class="header-section-number">4.4.1.5</span> slice_min</a></li>
-  <li><a href="#slice_head" id="toc-slice_head" class="nav-link" data-scroll-target="#slice_head"> <span class="header-section-number">4.4.1.6</span> slice_head</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"> <span class="header-section-number">3.4.1.1</span> filter</a></li>
+  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct"> <span class="header-section-number">3.4.1.2</span> distinct</a></li>
+  <li><a href="#slice" id="toc-slice" class="nav-link" data-scroll-target="#slice"> <span class="header-section-number">3.4.1.3</span> slice</a></li>
+  <li><a href="#slice_sample" id="toc-slice_sample" class="nav-link" data-scroll-target="#slice_sample"> <span class="header-section-number">3.4.1.4</span> slice_sample</a></li>
+  <li><a href="#slice_min" id="toc-slice_min" class="nav-link" data-scroll-target="#slice_min"> <span class="header-section-number">3.4.1.5</span> slice_min</a></li>
+  <li><a href="#slice_head" id="toc-slice_head" class="nav-link" data-scroll-target="#slice_head"> <span class="header-section-number">3.4.1.6</span> slice_head</a></li>
   </ul></li>
-  <li><a href="#arranjar-observações" id="toc-arranjar-observações" class="nav-link" data-scroll-target="#arranjar-observações"> <span class="header-section-number">4.4.2</span> Arranjar Observações</a>
+  <li><a href="#arranjar-observações" id="toc-arranjar-observações" class="nav-link" data-scroll-target="#arranjar-observações"> <span class="header-section-number">3.4.2</span> Arranjar Observações</a>
   <ul class="collapse">
-  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"> <span class="header-section-number">4.4.2.1</span> arrange</a></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"> <span class="header-section-number">3.4.2.1</span> arrange</a></li>
   </ul></li>
-  <li><a href="#adicionar-observações" id="toc-adicionar-observações" class="nav-link" data-scroll-target="#adicionar-observações"> <span class="header-section-number">4.4.3</span> Adicionar Observações</a>
+  <li><a href="#adicionar-observações" id="toc-adicionar-observações" class="nav-link" data-scroll-target="#adicionar-observações"> <span class="header-section-number">3.4.3</span> Adicionar Observações</a>
   <ul class="collapse">
-  <li><a href="#add_row" id="toc-add_row" class="nav-link" data-scroll-target="#add_row"> <span class="header-section-number">4.4.3.1</span> add_row</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#manipulando-variáveis" id="toc-manipulando-variáveis" class="nav-link" data-scroll-target="#manipulando-variáveis"> <span class="header-section-number">4.5</span> Manipulando Variáveis</a>
-  <ul class="collapse">
-  <li><a href="#extração-de-variáveis" id="toc-extração-de-variáveis" class="nav-link" data-scroll-target="#extração-de-variáveis"> <span class="header-section-number">4.5.1</span> Extração de Variáveis</a>
-  <ul class="collapse">
-  <li><a href="#pull" id="toc-pull" class="nav-link" data-scroll-target="#pull"> <span class="header-section-number">4.5.1.1</span> pull</a></li>
-  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"> <span class="header-section-number">4.5.1.2</span> select</a></li>
-  <li><a href="#relocate" id="toc-relocate" class="nav-link" data-scroll-target="#relocate"> <span class="header-section-number">4.5.1.3</span> relocate</a></li>
-  </ul></li>
-  <li><a href="#manipular-várias-variáveis-de-uma-vez" id="toc-manipular-várias-variáveis-de-uma-vez" class="nav-link" data-scroll-target="#manipular-várias-variáveis-de-uma-vez"> <span class="header-section-number">4.5.2</span> Manipular Várias Variáveis de Uma Vez</a>
-  <ul class="collapse">
-  <li><a href="#across" id="toc-across" class="nav-link" data-scroll-target="#across"> <span class="header-section-number">4.5.2.1</span> across</a></li>
-  <li><a href="#c_across" id="toc-c_across" class="nav-link" data-scroll-target="#c_across"> <span class="header-section-number">4.5.2.2</span> c_across</a></li>
-  </ul></li>
-  <li><a href="#criando-novas-variáveis" id="toc-criando-novas-variáveis" class="nav-link" data-scroll-target="#criando-novas-variáveis"> <span class="header-section-number">4.5.3</span> Criando novas variáveis</a>
-  <ul class="collapse">
-  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"> <span class="header-section-number">4.5.3.1</span> mutate</a></li>
-  <li><a href="#transmutate" id="toc-transmutate" class="nav-link" data-scroll-target="#transmutate"> <span class="header-section-number">4.5.3.2</span> transmutate</a></li>
-  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"> <span class="header-section-number">4.5.3.3</span> rename</a></li>
+  <li><a href="#add_row" id="toc-add_row" class="nav-link" data-scroll-target="#add_row"> <span class="header-section-number">3.4.3.1</span> add_row</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#funções-vetorizadas" id="toc-funções-vetorizadas" class="nav-link" data-scroll-target="#funções-vetorizadas"> <span class="header-section-number">4.6</span> Funções Vetorizadas</a>
+  <li><a href="#manipulando-variáveis" id="toc-manipulando-variáveis" class="nav-link" data-scroll-target="#manipulando-variáveis"> <span class="header-section-number">3.5</span> Manipulando Variáveis</a>
   <ul class="collapse">
-  <li><a href="#deslocamento" id="toc-deslocamento" class="nav-link" data-scroll-target="#deslocamento"> <span class="header-section-number">4.6.1</span> Deslocamento</a>
+  <li><a href="#extração-de-variáveis" id="toc-extração-de-variáveis" class="nav-link" data-scroll-target="#extração-de-variáveis"> <span class="header-section-number">3.5.1</span> Extração de Variáveis</a>
   <ul class="collapse">
-  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag"> <span class="header-section-number">4.6.1.1</span> lag</a></li>
-  <li><a href="#lead" id="toc-lead" class="nav-link" data-scroll-target="#lead"> <span class="header-section-number">4.6.1.2</span> lead</a></li>
+  <li><a href="#pull" id="toc-pull" class="nav-link" data-scroll-target="#pull"> <span class="header-section-number">3.5.1.1</span> pull</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"> <span class="header-section-number">3.5.1.2</span> select</a></li>
+  <li><a href="#relocate" id="toc-relocate" class="nav-link" data-scroll-target="#relocate"> <span class="header-section-number">3.5.1.3</span> relocate</a></li>
   </ul></li>
-  <li><a href="#agregação-acumulada" id="toc-agregação-acumulada" class="nav-link" data-scroll-target="#agregação-acumulada"> <span class="header-section-number">4.6.2</span> Agregação Acumulada</a>
+  <li><a href="#manipular-várias-variáveis-de-uma-vez" id="toc-manipular-várias-variáveis-de-uma-vez" class="nav-link" data-scroll-target="#manipular-várias-variáveis-de-uma-vez"> <span class="header-section-number">3.5.2</span> Manipular Várias Variáveis de Uma Vez</a>
   <ul class="collapse">
-  <li><a href="#cumall" id="toc-cumall" class="nav-link" data-scroll-target="#cumall"> <span class="header-section-number">4.6.2.1</span> cumall</a></li>
-  <li><a href="#cumany" id="toc-cumany" class="nav-link" data-scroll-target="#cumany"> <span class="header-section-number">4.6.2.2</span> cumany</a></li>
-  <li><a href="#cummean" id="toc-cummean" class="nav-link" data-scroll-target="#cummean"> <span class="header-section-number">4.6.2.3</span> cummean</a></li>
-  <li><a href="#cummax" id="toc-cummax" class="nav-link" data-scroll-target="#cummax"> <span class="header-section-number">4.6.2.4</span> cummax</a></li>
-  <li><a href="#cummin" id="toc-cummin" class="nav-link" data-scroll-target="#cummin"> <span class="header-section-number">4.6.2.5</span> cummin</a></li>
-  <li><a href="#cumprod" id="toc-cumprod" class="nav-link" data-scroll-target="#cumprod"> <span class="header-section-number">4.6.2.6</span> cumprod</a></li>
-  <li><a href="#cumsum" id="toc-cumsum" class="nav-link" data-scroll-target="#cumsum"> <span class="header-section-number">4.6.2.7</span> cumsum</a></li>
+  <li><a href="#across" id="toc-across" class="nav-link" data-scroll-target="#across"> <span class="header-section-number">3.5.2.1</span> across</a></li>
+  <li><a href="#c_across" id="toc-c_across" class="nav-link" data-scroll-target="#c_across"> <span class="header-section-number">3.5.2.2</span> c_across</a></li>
   </ul></li>
-  <li><a href="#ranqueamento" id="toc-ranqueamento" class="nav-link" data-scroll-target="#ranqueamento"> <span class="header-section-number">4.6.3</span> Ranqueamento</a>
+  <li><a href="#criando-novas-variáveis" id="toc-criando-novas-variáveis" class="nav-link" data-scroll-target="#criando-novas-variáveis"> <span class="header-section-number">3.5.3</span> Criando novas variáveis</a>
   <ul class="collapse">
-  <li><a href="#row_number" id="toc-row_number" class="nav-link" data-scroll-target="#row_number"> <span class="header-section-number">4.6.3.1</span> row_number</a></li>
-  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"> <span class="header-section-number">4.6.3.2</span> rank</a></li>
-  <li><a href="#dense_rank" id="toc-dense_rank" class="nav-link" data-scroll-target="#dense_rank"> <span class="header-section-number">4.6.3.3</span> dense_rank</a></li>
-  <li><a href="#percent_rank" id="toc-percent_rank" class="nav-link" data-scroll-target="#percent_rank"> <span class="header-section-number">4.6.3.4</span> percent_rank</a></li>
-  <li><a href="#cume_dist" id="toc-cume_dist" class="nav-link" data-scroll-target="#cume_dist"> <span class="header-section-number">4.6.3.5</span> cume_dist</a></li>
-  <li><a href="#ntile" id="toc-ntile" class="nav-link" data-scroll-target="#ntile"> <span class="header-section-number">4.6.3.6</span> ntile</a></li>
-  </ul></li>
-  <li><a href="#matemática" id="toc-matemática" class="nav-link" data-scroll-target="#matemática"> <span class="header-section-number">4.6.4</span> Matemática</a>
-  <ul class="collapse">
-  <li><a href="#operações-e-logs" id="toc-operações-e-logs" class="nav-link" data-scroll-target="#operações-e-logs"> <span class="header-section-number">4.6.4.1</span> operações e logs:</a></li>
-  <li><a href="#between" id="toc-between" class="nav-link" data-scroll-target="#between"> <span class="header-section-number">4.6.4.2</span> between</a></li>
-  <li><a href="#near" id="toc-near" class="nav-link" data-scroll-target="#near"> <span class="header-section-number">4.6.4.3</span> near</a></li>
-  </ul></li>
-  <li><a href="#miscelânea" id="toc-miscelânea" class="nav-link" data-scroll-target="#miscelânea"> <span class="header-section-number">4.6.5</span> Miscelânea</a>
-  <ul class="collapse">
-  <li><a href="#if_else" id="toc-if_else" class="nav-link" data-scroll-target="#if_else"> <span class="header-section-number">4.6.5.1</span> if_else</a></li>
-  <li><a href="#case_when" id="toc-case_when" class="nav-link" data-scroll-target="#case_when"> <span class="header-section-number">4.6.5.2</span> case_when</a></li>
-  <li><a href="#coalesce" id="toc-coalesce" class="nav-link" data-scroll-target="#coalesce"> <span class="header-section-number">4.6.5.3</span> coalesce</a></li>
-  <li><a href="#na_if" id="toc-na_if" class="nav-link" data-scroll-target="#na_if"> <span class="header-section-number">4.6.5.4</span> na_if</a></li>
-  <li><a href="#pmax---max" id="toc-pmax---max" class="nav-link" data-scroll-target="#pmax---max"> <span class="header-section-number">4.6.5.5</span> pmax - max</a></li>
-  <li><a href="#pmin---min" id="toc-pmin---min" class="nav-link" data-scroll-target="#pmin---min"> <span class="header-section-number">4.6.5.6</span> pmin - min</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"> <span class="header-section-number">3.5.3.1</span> mutate</a></li>
+  <li><a href="#transmutate" id="toc-transmutate" class="nav-link" data-scroll-target="#transmutate"> <span class="header-section-number">3.5.3.2</span> transmutate</a></li>
+  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"> <span class="header-section-number">3.5.3.3</span> rename</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#funções-de-resumo" id="toc-funções-de-resumo" class="nav-link" data-scroll-target="#funções-de-resumo"> <span class="header-section-number">4.7</span> Funções de Resumo</a>
+  <li><a href="#funções-vetorizadas" id="toc-funções-vetorizadas" class="nav-link" data-scroll-target="#funções-vetorizadas"> <span class="header-section-number">3.6</span> Funções Vetorizadas</a>
   <ul class="collapse">
-  <li><a href="#contagem" id="toc-contagem" class="nav-link" data-scroll-target="#contagem"> <span class="header-section-number">4.7.1</span> Contagem</a>
+  <li><a href="#deslocamento" id="toc-deslocamento" class="nav-link" data-scroll-target="#deslocamento"> <span class="header-section-number">3.6.1</span> Deslocamento</a>
   <ul class="collapse">
-  <li><a href="#n" id="toc-n" class="nav-link" data-scroll-target="#n"> <span class="header-section-number">4.7.1.1</span> n</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">4.7.1.2</span> </a></li>
-  <li><a href="#n_distinct" id="toc-n_distinct" class="nav-link" data-scroll-target="#n_distinct"> <span class="header-section-number">4.7.1.3</span> n_distinct</a></li>
-  <li><a href="#sum" id="toc-sum" class="nav-link" data-scroll-target="#sum"> <span class="header-section-number">4.7.1.4</span> sum</a></li>
+  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag"> <span class="header-section-number">3.6.1.1</span> lag</a></li>
+  <li><a href="#lead" id="toc-lead" class="nav-link" data-scroll-target="#lead"> <span class="header-section-number">3.6.1.2</span> lead</a></li>
   </ul></li>
-  <li><a href="#posição" id="toc-posição" class="nav-link" data-scroll-target="#posição"> <span class="header-section-number">4.7.2</span> Posição</a>
+  <li><a href="#agregação-acumulada" id="toc-agregação-acumulada" class="nav-link" data-scroll-target="#agregação-acumulada"> <span class="header-section-number">3.6.2</span> Agregação Acumulada</a>
   <ul class="collapse">
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"> <span class="header-section-number">4.7.2.1</span> mean</a></li>
-  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"> <span class="header-section-number">4.7.2.2</span> median</a></li>
+  <li><a href="#cumall" id="toc-cumall" class="nav-link" data-scroll-target="#cumall"> <span class="header-section-number">3.6.2.1</span> cumall</a></li>
+  <li><a href="#cumany" id="toc-cumany" class="nav-link" data-scroll-target="#cumany"> <span class="header-section-number">3.6.2.2</span> cumany</a></li>
+  <li><a href="#cummean" id="toc-cummean" class="nav-link" data-scroll-target="#cummean"> <span class="header-section-number">3.6.2.3</span> cummean</a></li>
+  <li><a href="#cummax" id="toc-cummax" class="nav-link" data-scroll-target="#cummax"> <span class="header-section-number">3.6.2.4</span> cummax</a></li>
+  <li><a href="#cummin" id="toc-cummin" class="nav-link" data-scroll-target="#cummin"> <span class="header-section-number">3.6.2.5</span> cummin</a></li>
+  <li><a href="#cumprod" id="toc-cumprod" class="nav-link" data-scroll-target="#cumprod"> <span class="header-section-number">3.6.2.6</span> cumprod</a></li>
+  <li><a href="#cumsum" id="toc-cumsum" class="nav-link" data-scroll-target="#cumsum"> <span class="header-section-number">3.6.2.7</span> cumsum</a></li>
   </ul></li>
-  <li><a href="#ordem" id="toc-ordem" class="nav-link" data-scroll-target="#ordem"> <span class="header-section-number">4.7.3</span> Ordem</a>
+  <li><a href="#ranqueamento" id="toc-ranqueamento" class="nav-link" data-scroll-target="#ranqueamento"> <span class="header-section-number">3.6.3</span> Ranqueamento</a>
   <ul class="collapse">
-  <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"> <span class="header-section-number">4.7.3.1</span> first</a></li>
-  <li><a href="#last" id="toc-last" class="nav-link" data-scroll-target="#last"> <span class="header-section-number">4.7.3.2</span> last</a></li>
-  <li><a href="#nth" id="toc-nth" class="nav-link" data-scroll-target="#nth"> <span class="header-section-number">4.7.3.3</span> nth</a></li>
+  <li><a href="#row_number" id="toc-row_number" class="nav-link" data-scroll-target="#row_number"> <span class="header-section-number">3.6.3.1</span> row_number</a></li>
+  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"> <span class="header-section-number">3.6.3.2</span> rank</a></li>
+  <li><a href="#dense_rank" id="toc-dense_rank" class="nav-link" data-scroll-target="#dense_rank"> <span class="header-section-number">3.6.3.3</span> dense_rank</a></li>
+  <li><a href="#percent_rank" id="toc-percent_rank" class="nav-link" data-scroll-target="#percent_rank"> <span class="header-section-number">3.6.3.4</span> percent_rank</a></li>
+  <li><a href="#cume_dist" id="toc-cume_dist" class="nav-link" data-scroll-target="#cume_dist"> <span class="header-section-number">3.6.3.5</span> cume_dist</a></li>
+  <li><a href="#ntile" id="toc-ntile" class="nav-link" data-scroll-target="#ntile"> <span class="header-section-number">3.6.3.6</span> ntile</a></li>
   </ul></li>
-  <li><a href="#ranqueamento-1" id="toc-ranqueamento-1" class="nav-link" data-scroll-target="#ranqueamento-1"> <span class="header-section-number">4.7.4</span> Ranqueamento</a>
+  <li><a href="#matemática" id="toc-matemática" class="nav-link" data-scroll-target="#matemática"> <span class="header-section-number">3.6.4</span> Matemática</a>
   <ul class="collapse">
-  <li><a href="#quantile" id="toc-quantile" class="nav-link" data-scroll-target="#quantile"> <span class="header-section-number">4.7.4.1</span> quantile</a></li>
-  <li><a href="#min" id="toc-min" class="nav-link" data-scroll-target="#min"> <span class="header-section-number">4.7.4.2</span> min</a></li>
-  <li><a href="#max" id="toc-max" class="nav-link" data-scroll-target="#max"> <span class="header-section-number">4.7.4.3</span> max</a></li>
+  <li><a href="#operações-e-logs" id="toc-operações-e-logs" class="nav-link" data-scroll-target="#operações-e-logs"> <span class="header-section-number">3.6.4.1</span> operações e logs:</a></li>
+  <li><a href="#between" id="toc-between" class="nav-link" data-scroll-target="#between"> <span class="header-section-number">3.6.4.2</span> between</a></li>
+  <li><a href="#near" id="toc-near" class="nav-link" data-scroll-target="#near"> <span class="header-section-number">3.6.4.3</span> near</a></li>
   </ul></li>
-  <li><a href="#dispersão" id="toc-dispersão" class="nav-link" data-scroll-target="#dispersão"> <span class="header-section-number">4.7.5</span> Dispersão</a>
+  <li><a href="#miscelânea" id="toc-miscelânea" class="nav-link" data-scroll-target="#miscelânea"> <span class="header-section-number">3.6.5</span> Miscelânea</a>
   <ul class="collapse">
-  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"> <span class="header-section-number">4.7.5.1</span> var</a></li>
-  <li><a href="#sd" id="toc-sd" class="nav-link" data-scroll-target="#sd"> <span class="header-section-number">4.7.5.2</span> sd</a></li>
-  <li><a href="#iqr" id="toc-iqr" class="nav-link" data-scroll-target="#iqr"> <span class="header-section-number">4.7.5.3</span> IQR</a></li>
-  <li><a href="#mad" id="toc-mad" class="nav-link" data-scroll-target="#mad"> <span class="header-section-number">4.7.5.4</span> mad</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#combinando-tabelas" id="toc-combinando-tabelas" class="nav-link" data-scroll-target="#combinando-tabelas"> <span class="header-section-number">4.8</span> Combinando Tabelas</a>
-  <ul class="collapse">
-  <li><a href="#juntando-variáveis" id="toc-juntando-variáveis" class="nav-link" data-scroll-target="#juntando-variáveis"> <span class="header-section-number">4.8.1</span> Juntando Variáveis</a>
-  <ul class="collapse">
-  <li><a href="#bind_cols" id="toc-bind_cols" class="nav-link" data-scroll-target="#bind_cols"> <span class="header-section-number">4.8.1.1</span> bind_cols</a></li>
-  </ul></li>
-  <li><a href="#relacionando-dados" id="toc-relacionando-dados" class="nav-link" data-scroll-target="#relacionando-dados"> <span class="header-section-number">4.8.2</span> Relacionando Dados</a>
-  <ul class="collapse">
-  <li><a href="#left_join" id="toc-left_join" class="nav-link" data-scroll-target="#left_join"> <span class="header-section-number">4.8.2.1</span> left_join</a></li>
-  <li><a href="#right_join" id="toc-right_join" class="nav-link" data-scroll-target="#right_join"> <span class="header-section-number">4.8.2.2</span> right_join</a></li>
-  <li><a href="#inner_join" id="toc-inner_join" class="nav-link" data-scroll-target="#inner_join"> <span class="header-section-number">4.8.2.3</span> inner_join</a></li>
-  <li><a href="#full_join" id="toc-full_join" class="nav-link" data-scroll-target="#full_join"> <span class="header-section-number">4.8.2.4</span> full_join</a></li>
-  <li><a href="#combinando-colunas-para-uniões" id="toc-combinando-colunas-para-uniões" class="nav-link" data-scroll-target="#combinando-colunas-para-uniões"> <span class="header-section-number">4.8.2.5</span> Combinando colunas para uniões</a></li>
-  </ul></li>
-  <li><a href="#juntando-observações" id="toc-juntando-observações" class="nav-link" data-scroll-target="#juntando-observações"> <span class="header-section-number">4.8.3</span> Juntando Observações</a>
-  <ul class="collapse">
-  <li><a href="#bind_rows" id="toc-bind_rows" class="nav-link" data-scroll-target="#bind_rows"> <span class="header-section-number">4.8.3.1</span> bind_rows</a></li>
-  <li><a href="#semi_join" id="toc-semi_join" class="nav-link" data-scroll-target="#semi_join"> <span class="header-section-number">4.8.3.2</span> semi_join</a></li>
-  <li><a href="#anti_join" id="toc-anti_join" class="nav-link" data-scroll-target="#anti_join"> <span class="header-section-number">4.8.3.3</span> anti_join</a></li>
-  <li><a href="#nest_join" id="toc-nest_join" class="nav-link" data-scroll-target="#nest_join"> <span class="header-section-number">4.8.3.4</span> nest_join</a></li>
-  <li><a href="#operações-de-definição" id="toc-operações-de-definição" class="nav-link" data-scroll-target="#operações-de-definição"> <span class="header-section-number">4.8.3.5</span> Operações de Definição</a></li>
-  <li><a href="#intersect" id="toc-intersect" class="nav-link" data-scroll-target="#intersect"> <span class="header-section-number">4.8.3.6</span> intersect</a></li>
-  <li><a href="#setdiff" id="toc-setdiff" class="nav-link" data-scroll-target="#setdiff"> <span class="header-section-number">4.8.3.7</span> setdiff</a></li>
-  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union"> <span class="header-section-number">4.8.3.8</span> union</a></li>
+  <li><a href="#if_else" id="toc-if_else" class="nav-link" data-scroll-target="#if_else"> <span class="header-section-number">3.6.5.1</span> if_else</a></li>
+  <li><a href="#case_when" id="toc-case_when" class="nav-link" data-scroll-target="#case_when"> <span class="header-section-number">3.6.5.2</span> case_when</a></li>
+  <li><a href="#coalesce" id="toc-coalesce" class="nav-link" data-scroll-target="#coalesce"> <span class="header-section-number">3.6.5.3</span> coalesce</a></li>
+  <li><a href="#na_if" id="toc-na_if" class="nav-link" data-scroll-target="#na_if"> <span class="header-section-number">3.6.5.4</span> na_if</a></li>
+  <li><a href="#pmax---max" id="toc-pmax---max" class="nav-link" data-scroll-target="#pmax---max"> <span class="header-section-number">3.6.5.5</span> pmax - max</a></li>
+  <li><a href="#pmin---min" id="toc-pmin---min" class="nav-link" data-scroll-target="#pmin---min"> <span class="header-section-number">3.6.5.6</span> pmin - min</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#nome-de-linhas" id="toc-nome-de-linhas" class="nav-link" data-scroll-target="#nome-de-linhas"> <span class="header-section-number">4.9</span> Nome de Linhas</a>
+  <li><a href="#funções-de-resumo" id="toc-funções-de-resumo" class="nav-link" data-scroll-target="#funções-de-resumo"> <span class="header-section-number">3.7</span> Funções de Resumo</a>
   <ul class="collapse">
-  <li><a href="#rownames_to_column" id="toc-rownames_to_column" class="nav-link" data-scroll-target="#rownames_to_column"> <span class="header-section-number">4.9.0.1</span> rownames_to_column</a></li>
-  <li><a href="#column_to_rownames" id="toc-column_to_rownames" class="nav-link" data-scroll-target="#column_to_rownames"> <span class="header-section-number">4.9.0.2</span> column_to_rownames</a></li>
+  <li><a href="#contagem" id="toc-contagem" class="nav-link" data-scroll-target="#contagem"> <span class="header-section-number">3.7.1</span> Contagem</a>
+  <ul class="collapse">
+  <li><a href="#n" id="toc-n" class="nav-link" data-scroll-target="#n"> <span class="header-section-number">3.7.1.1</span> n</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">3.7.1.2</span> </a></li>
+  <li><a href="#n_distinct" id="toc-n_distinct" class="nav-link" data-scroll-target="#n_distinct"> <span class="header-section-number">3.7.1.3</span> n_distinct</a></li>
+  <li><a href="#sum" id="toc-sum" class="nav-link" data-scroll-target="#sum"> <span class="header-section-number">3.7.1.4</span> sum</a></li>
+  </ul></li>
+  <li><a href="#posição" id="toc-posição" class="nav-link" data-scroll-target="#posição"> <span class="header-section-number">3.7.2</span> Posição</a>
+  <ul class="collapse">
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"> <span class="header-section-number">3.7.2.1</span> mean</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"> <span class="header-section-number">3.7.2.2</span> median</a></li>
+  </ul></li>
+  <li><a href="#ordem" id="toc-ordem" class="nav-link" data-scroll-target="#ordem"> <span class="header-section-number">3.7.3</span> Ordem</a>
+  <ul class="collapse">
+  <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"> <span class="header-section-number">3.7.3.1</span> first</a></li>
+  <li><a href="#last" id="toc-last" class="nav-link" data-scroll-target="#last"> <span class="header-section-number">3.7.3.2</span> last</a></li>
+  <li><a href="#nth" id="toc-nth" class="nav-link" data-scroll-target="#nth"> <span class="header-section-number">3.7.3.3</span> nth</a></li>
+  </ul></li>
+  <li><a href="#ranqueamento-1" id="toc-ranqueamento-1" class="nav-link" data-scroll-target="#ranqueamento-1"> <span class="header-section-number">3.7.4</span> Ranqueamento</a>
+  <ul class="collapse">
+  <li><a href="#quantile" id="toc-quantile" class="nav-link" data-scroll-target="#quantile"> <span class="header-section-number">3.7.4.1</span> quantile</a></li>
+  <li><a href="#min" id="toc-min" class="nav-link" data-scroll-target="#min"> <span class="header-section-number">3.7.4.2</span> min</a></li>
+  <li><a href="#max" id="toc-max" class="nav-link" data-scroll-target="#max"> <span class="header-section-number">3.7.4.3</span> max</a></li>
+  </ul></li>
+  <li><a href="#dispersão" id="toc-dispersão" class="nav-link" data-scroll-target="#dispersão"> <span class="header-section-number">3.7.5</span> Dispersão</a>
+  <ul class="collapse">
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"> <span class="header-section-number">3.7.5.1</span> var</a></li>
+  <li><a href="#sd" id="toc-sd" class="nav-link" data-scroll-target="#sd"> <span class="header-section-number">3.7.5.2</span> sd</a></li>
+  <li><a href="#iqr" id="toc-iqr" class="nav-link" data-scroll-target="#iqr"> <span class="header-section-number">3.7.5.3</span> IQR</a></li>
+  <li><a href="#mad" id="toc-mad" class="nav-link" data-scroll-target="#mad"> <span class="header-section-number">3.7.5.4</span> mad</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#combinando-tabelas" id="toc-combinando-tabelas" class="nav-link" data-scroll-target="#combinando-tabelas"> <span class="header-section-number">3.8</span> Combinando Tabelas</a>
+  <ul class="collapse">
+  <li><a href="#juntando-variáveis" id="toc-juntando-variáveis" class="nav-link" data-scroll-target="#juntando-variáveis"> <span class="header-section-number">3.8.1</span> Juntando Variáveis</a>
+  <ul class="collapse">
+  <li><a href="#bind_cols" id="toc-bind_cols" class="nav-link" data-scroll-target="#bind_cols"> <span class="header-section-number">3.8.1.1</span> bind_cols</a></li>
+  </ul></li>
+  <li><a href="#relacionando-dados" id="toc-relacionando-dados" class="nav-link" data-scroll-target="#relacionando-dados"> <span class="header-section-number">3.8.2</span> Relacionando Dados</a>
+  <ul class="collapse">
+  <li><a href="#left_join" id="toc-left_join" class="nav-link" data-scroll-target="#left_join"> <span class="header-section-number">3.8.2.1</span> left_join</a></li>
+  <li><a href="#right_join" id="toc-right_join" class="nav-link" data-scroll-target="#right_join"> <span class="header-section-number">3.8.2.2</span> right_join</a></li>
+  <li><a href="#inner_join" id="toc-inner_join" class="nav-link" data-scroll-target="#inner_join"> <span class="header-section-number">3.8.2.3</span> inner_join</a></li>
+  <li><a href="#full_join" id="toc-full_join" class="nav-link" data-scroll-target="#full_join"> <span class="header-section-number">3.8.2.4</span> full_join</a></li>
+  <li><a href="#combinando-colunas-para-uniões" id="toc-combinando-colunas-para-uniões" class="nav-link" data-scroll-target="#combinando-colunas-para-uniões"> <span class="header-section-number">3.8.2.5</span> Combinando colunas para uniões</a></li>
+  </ul></li>
+  <li><a href="#juntando-observações" id="toc-juntando-observações" class="nav-link" data-scroll-target="#juntando-observações"> <span class="header-section-number">3.8.3</span> Juntando Observações</a>
+  <ul class="collapse">
+  <li><a href="#bind_rows" id="toc-bind_rows" class="nav-link" data-scroll-target="#bind_rows"> <span class="header-section-number">3.8.3.1</span> bind_rows</a></li>
+  <li><a href="#semi_join" id="toc-semi_join" class="nav-link" data-scroll-target="#semi_join"> <span class="header-section-number">3.8.3.2</span> semi_join</a></li>
+  <li><a href="#anti_join" id="toc-anti_join" class="nav-link" data-scroll-target="#anti_join"> <span class="header-section-number">3.8.3.3</span> anti_join</a></li>
+  <li><a href="#nest_join" id="toc-nest_join" class="nav-link" data-scroll-target="#nest_join"> <span class="header-section-number">3.8.3.4</span> nest_join</a></li>
+  <li><a href="#operações-de-definição" id="toc-operações-de-definição" class="nav-link" data-scroll-target="#operações-de-definição"> <span class="header-section-number">3.8.3.5</span> Operações de Definição</a></li>
+  <li><a href="#intersect" id="toc-intersect" class="nav-link" data-scroll-target="#intersect"> <span class="header-section-number">3.8.3.6</span> intersect</a></li>
+  <li><a href="#setdiff" id="toc-setdiff" class="nav-link" data-scroll-target="#setdiff"> <span class="header-section-number">3.8.3.7</span> setdiff</a></li>
+  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union"> <span class="header-section-number">3.8.3.8</span> union</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#nome-de-linhas" id="toc-nome-de-linhas" class="nav-link" data-scroll-target="#nome-de-linhas"> <span class="header-section-number">3.9</span> Nome de Linhas</a>
+  <ul class="collapse">
+  <li><a href="#rownames_to_column" id="toc-rownames_to_column" class="nav-link" data-scroll-target="#rownames_to_column"> <span class="header-section-number">3.9.0.1</span> rownames_to_column</a></li>
+  <li><a href="#column_to_rownames" id="toc-column_to_rownames" class="nav-link" data-scroll-target="#column_to_rownames"> <span class="header-section-number">3.9.0.2</span> column_to_rownames</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -373,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></h1>
 </div>
 
 
@@ -387,8 +431,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introdução" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">4.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">3.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de transformação de dados utilizando o pacote DYPLR do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=dplyr" class="uri">https://cran.r-project.org/package=dplyr</a>.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -414,8 +458,8 @@ Aviso
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (gt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="exemplos-da-folha-de-referência" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">4.1.1</span> Exemplos da Folha de Referência</h3>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">3.1.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf"><strong>Folha de Referência</strong></a> do dyplr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 <p>Para a maioria dos exemplos utilizaremos as bases de dados <strong>mtcars</strong> e <strong>starwars</strong> provenientes do pacote <strong>datasets e dplyr</strong>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -474,8 +518,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="dados-organizados-e-canalização" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="dados-organizados-e-canalização"><span class="header-section-number">4.1.2</span> Dados Organizados e Canalização</h3>
+<section id="dados-organizados-e-canalização" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="dados-organizados-e-canalização"><span class="header-section-number">3.1.2</span> Dados Organizados e Canalização</h3>
 <p>Dados organizados (<em>tidy</em>) são estruturados onde:</p>
 <p>Cada <strong>variável</strong> está em sua própria <strong>coluna</strong> e cada <strong>observação</strong> está em sua própria <strong>linha</strong>.</p>
 <p><img src="images/tidy_data01.png" class="img-fluid"></p>
@@ -483,11 +527,11 @@ Nota
 <p><strong>Exemplo</strong>: x |&gt; f(y), é o mesmo que f(x,y)</p>
 </section>
 </section>
-<section id="resumindo-observações" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="resumindo-observações"><span class="header-section-number">4.2</span> Resumindo Observações</h2>
+<section id="resumindo-observações" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="resumindo-observações"><span class="header-section-number">3.2</span> Resumindo Observações</h2>
 <p><strong>Funções de resumo</strong> recebem vetores como entrada e retornam um único valor.</p>
-<section id="summarise" class="level4" data-number="4.2.0.1">
-<h4 data-number="4.2.0.1" class="anchored" data-anchor-id="summarise"><span class="header-section-number">4.2.0.1</span> summarise</h4>
+<section id="summarise" class="level4" data-number="3.2.0.1">
+<h4 data-number="3.2.0.1" class="anchored" data-anchor-id="summarise"><span class="header-section-number">3.2.0.1</span> summarise</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span> (mtcars, <span class="at">media=</span><span class="fu">mean</span>(mpg)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -508,8 +552,8 @@ Nota
 </div>
 <p>Ver a seção de <a href="#funções-de-resumo">Funções de Resumo</a> para mais detalhes.</p>
 </section>
-<section id="count" class="level4" data-number="4.2.0.2">
-<h4 data-number="4.2.0.2" class="anchored" data-anchor-id="count"><span class="header-section-number">4.2.0.2</span> count</h4>
+<section id="count" class="level4" data-number="3.2.0.2">
+<h4 data-number="3.2.0.2" class="anchored" data-anchor-id="count"><span class="header-section-number">3.2.0.2</span> count</h4>
 <p>Conta valores únicos de uma ou mais variáveis.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
@@ -527,10 +571,10 @@ Nota
 <p>Mais sobre a função group_by na seção <a href="#agrupando-observações">Agrupando Observações</a>.</p>
 </section>
 </section>
-<section id="agrupando-observações" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="agrupando-observações"><span class="header-section-number">4.3</span> Agrupando Observações</h2>
-<section id="group_by" class="level4" data-number="4.3.0.1">
-<h4 data-number="4.3.0.1" class="anchored" data-anchor-id="group_by"><span class="header-section-number">4.3.0.1</span> group_by</h4>
+<section id="agrupando-observações" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="agrupando-observações"><span class="header-section-number">3.3</span> Agrupando Observações</h2>
+<section id="group_by" class="level4" data-number="3.3.0.1">
+<h4 data-number="3.3.0.1" class="anchored" data-anchor-id="group_by"><span class="header-section-number">3.3.0.1</span> group_by</h4>
 <p>Use <strong>group_by</strong> (.data, …, .add = FALSE, .drop = TRUE) para criar uma cópia da tabela agrupada por colunas. As funções do dplyr irão manipular cada grupo separadamente e combinar os resultados.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -661,8 +705,8 @@ Nota
 </div>
 <p>No caso acima, se não tivessemos utilizado o desagrupamento (<strong>un_group</strong>), o resultado ainda teria os grupos demarcados.</p>
 </section>
-<section id="rowwise" class="level4" data-number="4.3.0.2">
-<h4 data-number="4.3.0.2" class="anchored" data-anchor-id="rowwise"><span class="header-section-number">4.3.0.2</span> rowwise</h4>
+<section id="rowwise" class="level4" data-number="3.3.0.2">
+<h4 data-number="3.3.0.2" class="anchored" data-anchor-id="rowwise"><span class="header-section-number">3.3.0.2</span> rowwise</h4>
 <p>Use rowwise(.data, …) para agrupar dados em linhas individuais. Funções do dyplr irão computar os resultados para cada linha.</p>
 <p>No exemplo abaixo, a tabela de dados startwars, possui uma variável (films) que é o tipo lista, ou seja, a coluna contém uma lista de filmes para cada personagem (observação).</p>
 <p>Supondo que quiséssemos saber em quantos filmes cada personagem aparece:</p>
@@ -698,13 +742,13 @@ Nota
 <p>Veja a seção de <a href="#funções-vetorizadas">Funções Vetorizadas</a>para maiores informações.</p>
 </section>
 </section>
-<section id="manipulando-observações" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="manipulando-observações"><span class="header-section-number">4.4</span> Manipulando Observações</h2>
-<section id="extração-de-observações" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="extração-de-observações"><span class="header-section-number">4.4.1</span> Extração de Observações</h3>
+<section id="manipulando-observações" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="manipulando-observações"><span class="header-section-number">3.4</span> Manipulando Observações</h2>
+<section id="extração-de-observações" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="extração-de-observações"><span class="header-section-number">3.4.1</span> Extração de Observações</h3>
 <p>O dplyr possui uma série de funções que nos ajudam a extrair observações (linhas) de uma tabela, dentre estas, temos:</p>
-<section id="filter" class="level4" data-number="4.4.1.1">
-<h4 data-number="4.4.1.1" class="anchored" data-anchor-id="filter"><span class="header-section-number">4.4.1.1</span> filter</h4>
+<section id="filter" class="level4" data-number="3.4.1.1">
+<h4 data-number="3.4.1.1" class="anchored" data-anchor-id="filter"><span class="header-section-number">3.4.1.1</span> filter</h4>
 <p>Extrai linhas de uma tablea que satisfazem o critério lógico.</p>
 <p>filter(.data, …, .preserve = FALSE)</p>
 <p>Exemplo: Para extrair apenas os veículos que possuem consumo (miles/galon) acima de 20, podemos usar:</p>
@@ -735,8 +779,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="distinct" class="level4" data-number="4.4.1.2">
-<h4 data-number="4.4.1.2" class="anchored" data-anchor-id="distinct"><span class="header-section-number">4.4.1.2</span> distinct</h4>
+<section id="distinct" class="level4" data-number="3.4.1.2">
+<h4 data-number="3.4.1.2" class="anchored" data-anchor-id="distinct"><span class="header-section-number">3.4.1.2</span> distinct</h4>
 <p>Remove linhas com valores duplicados, retornando apenas os valores únicos da variável (coluna).</p>
 <p>distinct(.data, …, .keep_all = FALSE) .</p>
 <p>Por exemplo, se precisarmos saber quais os valores da variável gear (marcha), podemos utilizar:</p>
@@ -766,8 +810,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="slice" class="level4" data-number="4.4.1.3">
-<h4 data-number="4.4.1.3" class="anchored" data-anchor-id="slice"><span class="header-section-number">4.4.1.3</span> slice</h4>
+<section id="slice" class="level4" data-number="3.4.1.3">
+<h4 data-number="3.4.1.3" class="anchored" data-anchor-id="slice"><span class="header-section-number">3.4.1.3</span> slice</h4>
 <p>Seleciona linhas pelas suas respectivas posições nda tabela.</p>
 <p>slice(.data, …, .preserve = FALSE)</p>
 <p>Por exemplo, para selecionarmos apenas da linha 10 até a linha 15 da tabela usamos:</p>
@@ -797,8 +841,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="slice_sample" class="level4" data-number="4.4.1.4">
-<h4 data-number="4.4.1.4" class="anchored" data-anchor-id="slice_sample"><span class="header-section-number">4.4.1.4</span> slice_sample</h4>
+<section id="slice_sample" class="level4" data-number="3.4.1.4">
+<h4 data-number="3.4.1.4" class="anchored" data-anchor-id="slice_sample"><span class="header-section-number">3.4.1.4</span> slice_sample</h4>
 <p>Para randomicamente selecionar linhas da tabela. Use <strong>n</strong> para selecionar o número de linhas ou <strong>prop</strong> para selecionar um percentual das linhas.</p>
 <p>slice_sample(.data, …, n, prop, weight_by = NULL, replace = FALSE) .</p>
 <p>Para selecionar <strong>5</strong> linhas randomicas da tabela usamos:</p>
@@ -809,7 +853,7 @@ Nota
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.17","7":"14.50","8":"0","9":"1","10":"5","11":"4","_rn_":"Ford Pantera L"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.44","7":"18.90","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280C"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.73","7":"17.60","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SL"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.46","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"},{"1":"22.8","2":"4","3":"108.0","4":"93","5":"3.85","6":"2.32","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.875","7":"17.02","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4 Wag"},{"1":"30.4","2":"4","3":"75.7","4":"52","5":"4.93","6":"1.615","7":"18.52","8":"1","9":"1","10":"4","11":"2","_rn_":"Honda Civic"},{"1":"21.5","2":"4","3":"120.1","4":"97","5":"3.70","6":"2.465","7":"20.01","8":"1","9":"0","10":"3","11":"1","_rn_":"Toyota Corona"},{"1":"21.4","2":"6","3":"258.0","4":"110","5":"3.08","6":"3.215","7":"19.44","8":"1","9":"0","10":"3","11":"1","_rn_":"Hornet 4 Drive"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -822,14 +866,14 @@ Nota
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4","_rn_":"Cadillac Fleetwood"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin...2"},{"1":"22.8","2":"4","3":"108.0","4":"93","5":"3.85","6":"2.320","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"},{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2","_rn_":"Hornet Sportabout"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin...5"},{"1":"24.4","2":"4","3":"146.7","4":"62","5":"3.69","6":"3.190","7":"20.00","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 240D"},{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.620","7":"16.46","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280C"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SL"},{"1":"30.4","2":"4","3":"75.7","4":"52","5":"4.93","6":"1.615","7":"18.52","8":"1","9":"1","10":"4","11":"2","_rn_":"Honda Civic"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin"},{"1":"22.8","2":"4","3":"140.8","4":"95","5":"3.92","6":"3.150","7":"22.90","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 230"},{"1":"26.0","2":"4","3":"120.3","4":"91","5":"4.43","6":"2.140","7":"16.70","8":"0","9":"1","10":"5","11":"2","_rn_":"Porsche 914-2"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4","_rn_":"Lincoln Continental"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4","_rn_":"Duster 360"},{"1":"24.4","2":"4","3":"146.7","4":"62","5":"3.69","6":"3.190","7":"20.00","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 240D"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
 </section>
-<section id="slice_min" class="level4" data-number="4.4.1.5">
-<h4 data-number="4.4.1.5" class="anchored" data-anchor-id="slice_min"><span class="header-section-number">4.4.1.5</span> slice_min</h4>
+<section id="slice_min" class="level4" data-number="3.4.1.5">
+<h4 data-number="3.4.1.5" class="anchored" data-anchor-id="slice_min"><span class="header-section-number">3.4.1.5</span> slice_min</h4>
 <p>Seleciona linhas com valores minímo (slice_min) ou máximo (slice_max) de uma variável.</p>
 <p>slice_min(.data, order_by, …, n, prop, with_ties = TRUE) and slice_max() .</p>
 <p>Por exemplo, com base no menor valor da variável de consumo do veículo (mpg), retorne 25% da tabela.</p>
@@ -859,8 +903,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="slice_head" class="level4" data-number="4.4.1.6">
-<h4 data-number="4.4.1.6" class="anchored" data-anchor-id="slice_head"><span class="header-section-number">4.4.1.6</span> slice_head</h4>
+<section id="slice_head" class="level4" data-number="3.4.1.6">
+<h4 data-number="3.4.1.6" class="anchored" data-anchor-id="slice_head"><span class="header-section-number">3.4.1.6</span> slice_head</h4>
 <p>Seleciona as primeiras (slice_head) or últimas (slide_tail) linhas de uma tabela.</p>
 <p>slice_head(.data, …, n, prop) and slice_tail() .</p>
 <p>Por exemplo, vamos selecionar as 5 primeiras linhas de mtcars:</p>
@@ -883,12 +927,12 @@ Nota
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="ooexgapdea" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xdbyhxzhui" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ooexgapdea .gt_table {
+#xdbyhxzhui .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -913,7 +957,7 @@ Nota
   border-left-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_heading {
+#xdbyhxzhui .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -925,7 +969,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_title {
+#xdbyhxzhui .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -937,7 +981,7 @@ Nota
   border-bottom-width: 0;
 }
 
-#ooexgapdea .gt_subtitle {
+#xdbyhxzhui .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -949,13 +993,13 @@ Nota
   border-top-width: 0;
 }
 
-#ooexgapdea .gt_bottom_border {
+#xdbyhxzhui .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_col_headings {
+#xdbyhxzhui .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -970,7 +1014,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_col_heading {
+#xdbyhxzhui .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -990,7 +1034,7 @@ Nota
   overflow-x: hidden;
 }
 
-#ooexgapdea .gt_column_spanner_outer {
+#xdbyhxzhui .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1002,15 +1046,15 @@ Nota
   padding-right: 4px;
 }
 
-#ooexgapdea .gt_column_spanner_outer:first-child {
+#xdbyhxzhui .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ooexgapdea .gt_column_spanner_outer:last-child {
+#xdbyhxzhui .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ooexgapdea .gt_column_spanner {
+#xdbyhxzhui .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1022,7 +1066,7 @@ Nota
   width: 100%;
 }
 
-#ooexgapdea .gt_group_heading {
+#xdbyhxzhui .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1047,7 +1091,7 @@ Nota
   vertical-align: middle;
 }
 
-#ooexgapdea .gt_empty_group_heading {
+#xdbyhxzhui .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1062,15 +1106,15 @@ Nota
   vertical-align: middle;
 }
 
-#ooexgapdea .gt_from_md > :first-child {
+#xdbyhxzhui .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ooexgapdea .gt_from_md > :last-child {
+#xdbyhxzhui .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ooexgapdea .gt_row {
+#xdbyhxzhui .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1089,7 +1133,7 @@ Nota
   overflow-x: hidden;
 }
 
-#ooexgapdea .gt_stub {
+#xdbyhxzhui .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1102,7 +1146,7 @@ Nota
   padding-right: 5px;
 }
 
-#ooexgapdea .gt_stub_row_group {
+#xdbyhxzhui .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1116,11 +1160,11 @@ Nota
   vertical-align: top;
 }
 
-#ooexgapdea .gt_row_group_first td {
+#xdbyhxzhui .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ooexgapdea .gt_summary_row {
+#xdbyhxzhui .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1130,16 +1174,16 @@ Nota
   padding-right: 5px;
 }
 
-#ooexgapdea .gt_first_summary_row {
+#xdbyhxzhui .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_first_summary_row.thick {
+#xdbyhxzhui .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ooexgapdea .gt_last_summary_row {
+#xdbyhxzhui .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1149,7 +1193,7 @@ Nota
   border-bottom-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_grand_summary_row {
+#xdbyhxzhui .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1159,7 +1203,7 @@ Nota
   padding-right: 5px;
 }
 
-#ooexgapdea .gt_first_grand_summary_row {
+#xdbyhxzhui .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1169,11 +1213,11 @@ Nota
   border-top-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_striped {
+#xdbyhxzhui .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ooexgapdea .gt_table_body {
+#xdbyhxzhui .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1182,7 +1226,7 @@ Nota
   border-bottom-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_footnotes {
+#xdbyhxzhui .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1196,7 +1240,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_footnote {
+#xdbyhxzhui .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1205,7 +1249,7 @@ Nota
   padding-right: 5px;
 }
 
-#ooexgapdea .gt_sourcenotes {
+#xdbyhxzhui .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1219,7 +1263,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#ooexgapdea .gt_sourcenote {
+#xdbyhxzhui .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1227,36 +1271,36 @@ Nota
   padding-right: 5px;
 }
 
-#ooexgapdea .gt_left {
+#xdbyhxzhui .gt_left {
   text-align: left;
 }
 
-#ooexgapdea .gt_center {
+#xdbyhxzhui .gt_center {
   text-align: center;
 }
 
-#ooexgapdea .gt_right {
+#xdbyhxzhui .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ooexgapdea .gt_font_normal {
+#xdbyhxzhui .gt_font_normal {
   font-weight: normal;
 }
 
-#ooexgapdea .gt_font_bold {
+#xdbyhxzhui .gt_font_bold {
   font-weight: bold;
 }
 
-#ooexgapdea .gt_font_italic {
+#xdbyhxzhui .gt_font_italic {
   font-style: italic;
 }
 
-#ooexgapdea .gt_super {
+#xdbyhxzhui .gt_super {
   font-size: 65%;
 }
 
-#ooexgapdea .gt_two_val_uncert {
+#xdbyhxzhui .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1265,31 +1309,31 @@ Nota
   margin-left: 0.1em;
 }
 
-#ooexgapdea .gt_footnote_marks {
+#xdbyhxzhui .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ooexgapdea .gt_asterisk {
+#xdbyhxzhui .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ooexgapdea .gt_slash_mark {
+#xdbyhxzhui .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ooexgapdea .gt_fraction_numerator {
+#xdbyhxzhui .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ooexgapdea .gt_fraction_denominator {
+#xdbyhxzhui .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1383,10 +1427,10 @@ Nota
 </div>
 </section>
 </section>
-<section id="arranjar-observações" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="arranjar-observações"><span class="header-section-number">4.4.2</span> Arranjar Observações</h3>
-<section id="arrange" class="level4" data-number="4.4.2.1">
-<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="arrange"><span class="header-section-number">4.4.2.1</span> arrange</h4>
+<section id="arranjar-observações" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="arranjar-observações"><span class="header-section-number">3.4.2</span> Arranjar Observações</h3>
+<section id="arrange" class="level4" data-number="3.4.2.1">
+<h4 data-number="3.4.2.1" class="anchored" data-anchor-id="arrange"><span class="header-section-number">3.4.2.1</span> arrange</h4>
 <p>A função arrange ordena linhas por valores de uma coluna(s) (menor para maior), use com a função <strong>desc()</strong> para ordenar de maior para menor.</p>
 <p>arrange(.data, …, .by_group = FALSE) arrange(mtcars, mpg) ou arrange(mtcars, desc(mpg))</p>
 <p>No exemplo abaixo, vamos ordenar a variável mpg, de forma a mostrar primeiro os veículos com menor consumo de combustível até o de maior consumo:</p>
@@ -1396,12 +1440,12 @@ Nota
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="wcpovbzaoy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jqrpykbmrk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wcpovbzaoy .gt_table {
+#jqrpykbmrk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1426,7 +1470,7 @@ Nota
   border-left-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_heading {
+#jqrpykbmrk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1438,7 +1482,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_title {
+#jqrpykbmrk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1450,7 +1494,7 @@ Nota
   border-bottom-width: 0;
 }
 
-#wcpovbzaoy .gt_subtitle {
+#jqrpykbmrk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1462,13 +1506,13 @@ Nota
   border-top-width: 0;
 }
 
-#wcpovbzaoy .gt_bottom_border {
+#jqrpykbmrk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_col_headings {
+#jqrpykbmrk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1483,7 +1527,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_col_heading {
+#jqrpykbmrk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1503,7 +1547,7 @@ Nota
   overflow-x: hidden;
 }
 
-#wcpovbzaoy .gt_column_spanner_outer {
+#jqrpykbmrk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1515,15 +1559,15 @@ Nota
   padding-right: 4px;
 }
 
-#wcpovbzaoy .gt_column_spanner_outer:first-child {
+#jqrpykbmrk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wcpovbzaoy .gt_column_spanner_outer:last-child {
+#jqrpykbmrk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wcpovbzaoy .gt_column_spanner {
+#jqrpykbmrk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1535,7 +1579,7 @@ Nota
   width: 100%;
 }
 
-#wcpovbzaoy .gt_group_heading {
+#jqrpykbmrk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1560,7 +1604,7 @@ Nota
   vertical-align: middle;
 }
 
-#wcpovbzaoy .gt_empty_group_heading {
+#jqrpykbmrk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1575,15 +1619,15 @@ Nota
   vertical-align: middle;
 }
 
-#wcpovbzaoy .gt_from_md > :first-child {
+#jqrpykbmrk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wcpovbzaoy .gt_from_md > :last-child {
+#jqrpykbmrk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wcpovbzaoy .gt_row {
+#jqrpykbmrk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1602,7 +1646,7 @@ Nota
   overflow-x: hidden;
 }
 
-#wcpovbzaoy .gt_stub {
+#jqrpykbmrk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1615,7 +1659,7 @@ Nota
   padding-right: 5px;
 }
 
-#wcpovbzaoy .gt_stub_row_group {
+#jqrpykbmrk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1629,11 +1673,11 @@ Nota
   vertical-align: top;
 }
 
-#wcpovbzaoy .gt_row_group_first td {
+#jqrpykbmrk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wcpovbzaoy .gt_summary_row {
+#jqrpykbmrk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1643,16 +1687,16 @@ Nota
   padding-right: 5px;
 }
 
-#wcpovbzaoy .gt_first_summary_row {
+#jqrpykbmrk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_first_summary_row.thick {
+#jqrpykbmrk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wcpovbzaoy .gt_last_summary_row {
+#jqrpykbmrk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1662,7 +1706,7 @@ Nota
   border-bottom-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_grand_summary_row {
+#jqrpykbmrk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1672,7 +1716,7 @@ Nota
   padding-right: 5px;
 }
 
-#wcpovbzaoy .gt_first_grand_summary_row {
+#jqrpykbmrk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1682,11 +1726,11 @@ Nota
   border-top-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_striped {
+#jqrpykbmrk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wcpovbzaoy .gt_table_body {
+#jqrpykbmrk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1695,7 +1739,7 @@ Nota
   border-bottom-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_footnotes {
+#jqrpykbmrk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1709,7 +1753,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_footnote {
+#jqrpykbmrk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1718,7 +1762,7 @@ Nota
   padding-right: 5px;
 }
 
-#wcpovbzaoy .gt_sourcenotes {
+#jqrpykbmrk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1732,7 +1776,7 @@ Nota
   border-right-color: #D3D3D3;
 }
 
-#wcpovbzaoy .gt_sourcenote {
+#jqrpykbmrk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1740,36 +1784,36 @@ Nota
   padding-right: 5px;
 }
 
-#wcpovbzaoy .gt_left {
+#jqrpykbmrk .gt_left {
   text-align: left;
 }
 
-#wcpovbzaoy .gt_center {
+#jqrpykbmrk .gt_center {
   text-align: center;
 }
 
-#wcpovbzaoy .gt_right {
+#jqrpykbmrk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wcpovbzaoy .gt_font_normal {
+#jqrpykbmrk .gt_font_normal {
   font-weight: normal;
 }
 
-#wcpovbzaoy .gt_font_bold {
+#jqrpykbmrk .gt_font_bold {
   font-weight: bold;
 }
 
-#wcpovbzaoy .gt_font_italic {
+#jqrpykbmrk .gt_font_italic {
   font-style: italic;
 }
 
-#wcpovbzaoy .gt_super {
+#jqrpykbmrk .gt_super {
   font-size: 65%;
 }
 
-#wcpovbzaoy .gt_two_val_uncert {
+#jqrpykbmrk .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1778,31 +1822,31 @@ Nota
   margin-left: 0.1em;
 }
 
-#wcpovbzaoy .gt_footnote_marks {
+#jqrpykbmrk .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wcpovbzaoy .gt_asterisk {
+#jqrpykbmrk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wcpovbzaoy .gt_slash_mark {
+#jqrpykbmrk .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#wcpovbzaoy .gt_fraction_numerator {
+#jqrpykbmrk .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#wcpovbzaoy .gt_fraction_denominator {
+#jqrpykbmrk .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2220,11 +2264,11 @@ Nota
 </div>
 </section>
 </section>
-<section id="adicionar-observações" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="adicionar-observações"><span class="header-section-number">4.4.3</span> Adicionar Observações</h3>
+<section id="adicionar-observações" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="adicionar-observações"><span class="header-section-number">3.4.3</span> Adicionar Observações</h3>
 <p>Algumas vezes precisamos adicionar observações (linhas) em uma tabela já existente, neste caso podemos utilizar a função add_row().</p>
-<section id="add_row" class="level4" data-number="4.4.3.1">
-<h4 data-number="4.4.3.1" class="anchored" data-anchor-id="add_row"><span class="header-section-number">4.4.3.1</span> add_row</h4>
+<section id="add_row" class="level4" data-number="3.4.3.1">
+<h4 data-number="3.4.3.1" class="anchored" data-anchor-id="add_row"><span class="header-section-number">3.4.3.1</span> add_row</h4>
 <p>add_row(cars, speed = 1, dist = 1).</p>
 <p>Neste caso, iremos adicionar uma nova linha na tables cars (não mtcars), que possui apenas duas variáveis (speed e dist).</p>
 <div class="cell">
@@ -2243,13 +2287,13 @@ Nota
 </section>
 </section>
 </section>
-<section id="manipulando-variáveis" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="manipulando-variáveis"><span class="header-section-number">4.5</span> Manipulando Variáveis</h2>
-<section id="extração-de-variáveis" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="extração-de-variáveis"><span class="header-section-number">4.5.1</span> Extração de Variáveis</h3>
+<section id="manipulando-variáveis" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="manipulando-variáveis"><span class="header-section-number">3.5</span> Manipulando Variáveis</h2>
+<section id="extração-de-variáveis" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="extração-de-variáveis"><span class="header-section-number">3.5.1</span> Extração de Variáveis</h3>
 <p>O dplyr possui uma série de funções que nos ajudam a obter um conjunto de variáveis (colunas) como um novo vetor ou nova tabela:</p>
-<section id="pull" class="level4" data-number="4.5.1.1">
-<h4 data-number="4.5.1.1" class="anchored" data-anchor-id="pull"><span class="header-section-number">4.5.1.1</span> pull</h4>
+<section id="pull" class="level4" data-number="3.5.1.1">
+<h4 data-number="3.5.1.1" class="anchored" data-anchor-id="pull"><span class="header-section-number">3.5.1.1</span> pull</h4>
 <p>Extrai valores da coluna como um vetor, por nome ou índice.</p>
 <p>pull(.data, var = -1, name = NULL, …)</p>
 <div class="cell">
@@ -2272,8 +2316,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="select" class="level4" data-number="4.5.1.2">
-<h4 data-number="4.5.1.2" class="anchored" data-anchor-id="select"><span class="header-section-number">4.5.1.2</span> select</h4>
+<section id="select" class="level4" data-number="3.5.1.2">
+<h4 data-number="3.5.1.2" class="anchored" data-anchor-id="select"><span class="header-section-number">3.5.1.2</span> select</h4>
 <p>Extrai valores de uma ou mais variáveis (colunas) e retorna uma nova tabela, por nome ou índice.</p>
 <p>select(.data, …)</p>
 <p>Por exemplo, podemos obter uma nova tabela contendo apenas as variáveis mpg e wt usando:</p>
@@ -2327,8 +2371,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="relocate" class="level4" data-number="4.5.1.3">
-<h4 data-number="4.5.1.3" class="anchored" data-anchor-id="relocate"><span class="header-section-number">4.5.1.3</span> relocate</h4>
+<section id="relocate" class="level4" data-number="3.5.1.3">
+<h4 data-number="3.5.1.3" class="anchored" data-anchor-id="relocate"><span class="header-section-number">3.5.1.3</span> relocate</h4>
 <p>Move colunas para uma nova posição e retonar uma tabela com esta nova order de colunas.</p>
 <p>relocate(.data, …, .before = NULL, .after = NULL)</p>
 <div class="cell">
@@ -2346,11 +2390,11 @@ Nota
 <p>No exemplo acima, escolhermos mover as colunas mpg e cyl para depois (à direita) da última coluna (last_col()).</p>
 </section>
 </section>
-<section id="manipular-várias-variáveis-de-uma-vez" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="manipular-várias-variáveis-de-uma-vez"><span class="header-section-number">4.5.2</span> Manipular Várias Variáveis de Uma Vez</h3>
+<section id="manipular-várias-variáveis-de-uma-vez" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="manipular-várias-variáveis-de-uma-vez"><span class="header-section-number">3.5.2</span> Manipular Várias Variáveis de Uma Vez</h3>
 <p>Em algumas situações, desejamos manipular várias variáveis (colunas) de uma só vez ou invés de cada coluna de cada vez. Para estes casos ,podemos usar as funções across e c_across.</p>
-<section id="across" class="level4" data-number="4.5.2.1">
-<h4 data-number="4.5.2.1" class="anchored" data-anchor-id="across"><span class="header-section-number">4.5.2.1</span> across</h4>
+<section id="across" class="level4" data-number="3.5.2.1">
+<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="across"><span class="header-section-number">3.5.2.1</span> across</h4>
 <p>Resume ou alterar múltiplas colunas da mesma maneira. across(.cols, .funs, …, .names = NULL)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
@@ -2379,8 +2423,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="c_across" class="level4" data-number="4.5.2.2">
-<h4 data-number="4.5.2.2" class="anchored" data-anchor-id="c_across"><span class="header-section-number">4.5.2.2</span> c_across</h4>
+<section id="c_across" class="level4" data-number="3.5.2.2">
+<h4 data-number="3.5.2.2" class="anchored" data-anchor-id="c_across"><span class="header-section-number">3.5.2.2</span> c_across</h4>
 <p>Computa através das colunas os dados linha a linha. Em geral, esta função é utilizado em conjunto com a função rowwise().</p>
 <p>c_across(.cols)</p>
 <div class="cell">
@@ -2399,11 +2443,11 @@ Nota
 <p>No exemplo acima, “varremos” linha a linha da tabela e depois fazemos a soma da coluna 4 até a coluna 6.</p>
 </section>
 </section>
-<section id="criando-novas-variáveis" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="criando-novas-variáveis"><span class="header-section-number">4.5.3</span> Criando novas variáveis</h3>
+<section id="criando-novas-variáveis" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="criando-novas-variáveis"><span class="header-section-number">3.5.3</span> Criando novas variáveis</h3>
 <p>O dyplr possui a habilidade de criar novas variáveis (colunas) ou alterar variáveis já existentes. Estes comandos, aplicam funções que são de um tipo especial chamadas “funções vetorizadas. Elas recebem vetores como entradas e retornam vetores do mesmo tamanho como. Para maiores detalhes veja a seção <a href="#funções-vetorizadas">Funções Vetorizadas</a>.</p>
-<section id="mutate" class="level4" data-number="4.5.3.1">
-<h4 data-number="4.5.3.1" class="anchored" data-anchor-id="mutate"><span class="header-section-number">4.5.3.1</span> mutate</h4>
+<section id="mutate" class="level4" data-number="3.5.3.1">
+<h4 data-number="3.5.3.1" class="anchored" data-anchor-id="mutate"><span class="header-section-number">3.5.3.1</span> mutate</h4>
 <p>Altera ou cria uma nova variável.</p>
 <p>mutate(.data, …, .keep = “all”, .before = NULL, .after = NULL).</p>
 <p>Por exemplo, se quisermos utilizar a variável <strong>mpg</strong> (milhas por galão) e criar uma nova variável chamada <strong>gpm</strong> (galões por milha), usamos:</p>
@@ -2461,12 +2505,12 @@ Cuidado
 </div>
 <p>*Veja também add_column(), add_count(), e add_tally().</p>
 </section>
-<section id="transmutate" class="level4" data-number="4.5.3.2">
-<h4 data-number="4.5.3.2" class="anchored" data-anchor-id="transmutate"><span class="header-section-number">4.5.3.2</span> transmutate</h4>
+<section id="transmutate" class="level4" data-number="3.5.3.2">
+<h4 data-number="3.5.3.2" class="anchored" data-anchor-id="transmutate"><span class="header-section-number">3.5.3.2</span> transmutate</h4>
 <p>A função <strong>transmutate</strong> funciona de forma similar a função <strong>mutate</strong>, porém ela cria/altera uma ou mais colunas e ignora todas as demais em suas saída.</p>
 </section>
-<section id="rename" class="level4" data-number="4.5.3.3">
-<h4 data-number="4.5.3.3" class="anchored" data-anchor-id="rename"><span class="header-section-number">4.5.3.3</span> rename</h4>
+<section id="rename" class="level4" data-number="3.5.3.3">
+<h4 data-number="3.5.3.3" class="anchored" data-anchor-id="rename"><span class="header-section-number">3.5.3.3</span> rename</h4>
 <p>Renomeia variáveis (colunas).</p>
 <p>Há também a função rename_with() para chamar uma função para renomear a coluna.</p>
 <p>A função rename(.data, …)</p>
@@ -2486,8 +2530,8 @@ Cuidado
 </section>
 </section>
 </section>
-<section id="funções-vetorizadas" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="funções-vetorizadas"><span class="header-section-number">4.6</span> Funções Vetorizadas</h2>
+<section id="funções-vetorizadas" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="funções-vetorizadas"><span class="header-section-number">3.6</span> Funções Vetorizadas</h2>
 <p>As funções <strong>mutate()</strong>&nbsp;e&nbsp;<strong>transmute()</strong>&nbsp;aplicam <strong>funções vetorizadas</strong> em colunas para criar novas colunas.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2503,11 +2547,11 @@ Nota
 </div>
 </div>
 <p>A seguir temos algumas funções vetorizadas que auxiliam na manipulação de dados e, em geral, são utilizadas com mutate() ou filter().</p>
-<section id="deslocamento" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="deslocamento"><span class="header-section-number">4.6.1</span> Deslocamento</h3>
+<section id="deslocamento" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="deslocamento"><span class="header-section-number">3.6.1</span> Deslocamento</h3>
 <p>O dplyr possui funções para ajuste de deslocamento (offset). Estas funções são muito úteis para “encontrar” valores antes ou depois em relação aos valores atuais.</p>
-<section id="lag" class="level4" data-number="4.6.1.1">
-<h4 data-number="4.6.1.1" class="anchored" data-anchor-id="lag"><span class="header-section-number">4.6.1.1</span> lag</h4>
+<section id="lag" class="level4" data-number="3.6.1.1">
+<h4 data-number="3.6.1.1" class="anchored" data-anchor-id="lag"><span class="header-section-number">3.6.1.1</span> lag</h4>
 <p>Desloca elementos em <em>n</em> posições positivas. Usado para “encontrar o valor <strong>anterior</strong> em <em>n</em> posições”.</p>
 <p>Supondo que precisarmos criar uma coluna contendo o consumo do veiculo que aparece na linha anterior da tabela, podemos fazer:</p>
 <div class="cell">
@@ -2524,8 +2568,8 @@ Nota
 </div>
 <p>Caso os dados não estejam ordenados,</p>
 </section>
-<section id="lead" class="level4" data-number="4.6.1.2">
-<h4 data-number="4.6.1.2" class="anchored" data-anchor-id="lead"><span class="header-section-number">4.6.1.2</span> lead</h4>
+<section id="lead" class="level4" data-number="3.6.1.2">
+<h4 data-number="3.6.1.2" class="anchored" data-anchor-id="lead"><span class="header-section-number">3.6.1.2</span> lead</h4>
 <p>Desloca elementos em <em>n</em> posições negativas. Usado para “encontrar o valor <strong>posterior</strong> em <em>n</em> posições”.</p>
 <p>Supondo que precisarmos criar uma coluna contendo o consumo do veiculo que aparece duas linhas posteriores da tabela, podemos fazer:</p>
 <div class="cell">
@@ -2542,8 +2586,8 @@ Nota
 </div>
 </section>
 </section>
-<section id="agregação-acumulada" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="agregação-acumulada"><span class="header-section-number">4.6.2</span> Agregação Acumulada</h3>
+<section id="agregação-acumulada" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="agregação-acumulada"><span class="header-section-number">3.6.2</span> Agregação Acumulada</h3>
 <p>O dplyr possui funções de agregações acumuladas. São versões vetorizadas de all, any e mean, enquanto outras são de soma e produtos acumulados e extremos (min/max).</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2558,8 +2602,8 @@ Dica
 <p>As funções cumall() e cumany() são muito úteis quando usadas com <strong>filter()</strong>, pois avaliam uma expressão retornando um <strong>vetor lógico</strong> a partir do valor avaliado pela expressão:</p>
 </div>
 </div>
-<section id="cumall" class="level4" data-number="4.6.2.1">
-<h4 data-number="4.6.2.1" class="anchored" data-anchor-id="cumall"><span class="header-section-number">4.6.2.1</span> cumall</h4>
+<section id="cumall" class="level4" data-number="3.6.2.1">
+<h4 data-number="3.6.2.1" class="anchored" data-anchor-id="cumall"><span class="header-section-number">3.6.2.1</span> cumall</h4>
 <p>Retorna todas as observações (linhas) até que o primeiro caso da expressão a ser avaliada seja falso.</p>
 <p>No exemplo a seguir, iremos retornar todos os veículos até que encontre um veículo onde sua potência (<strong>hp</strong>) seja maior ou igual à <strong>110</strong>. Quando encontrar esta linha, todas as demais à partir dela na tabela serão ignoradas, mesmo que atendam a expressão. Ou seja, mesmo que houver um veículo com potencia 110 na última linha, nexte exemplo ela será ignorada.</p>
 <div class="cell">
@@ -2588,8 +2632,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cumany" class="level4" data-number="4.6.2.2">
-<h4 data-number="4.6.2.2" class="anchored" data-anchor-id="cumany"><span class="header-section-number">4.6.2.2</span> cumany</h4>
+<section id="cumany" class="level4" data-number="3.6.2.2">
+<h4 data-number="3.6.2.2" class="anchored" data-anchor-id="cumany"><span class="header-section-number">3.6.2.2</span> cumany</h4>
 <p>Retorna todas as observações (linhas) após o primeiro caso da expressão a ser avaliada seja verdadeiro.</p>
 <p>Por exemplo: Se quisermos “varrer” a tabela em busca do veículo com potência menor que 70 e obter esta e todas as demais linhas após, usamos:</p>
 <div class="cell">
@@ -2605,8 +2649,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cummean" class="level4" data-number="4.6.2.3">
-<h4 data-number="4.6.2.3" class="anchored" data-anchor-id="cummean"><span class="header-section-number">4.6.2.3</span> cummean</h4>
+<section id="cummean" class="level4" data-number="3.6.2.3">
+<h4 data-number="3.6.2.3" class="anchored" data-anchor-id="cummean"><span class="header-section-number">3.6.2.3</span> cummean</h4>
 <p>A função cummean() é similar a função cumall ou cumany, porém retorna um <strong>vetor numérico</strong> contento as médias do vetor de entrada.</p>
 <p>Por exemplo, se quisermos criar uma coluna com o valor da média de potência conforme “varremos” a tabela, ou seja, conforme a potência de cada veículo é listada, usamos:</p>
 <div class="cell">
@@ -2622,8 +2666,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cummax" class="level4" data-number="4.6.2.4">
-<h4 data-number="4.6.2.4" class="anchored" data-anchor-id="cummax"><span class="header-section-number">4.6.2.4</span> cummax</h4>
+<section id="cummax" class="level4" data-number="3.6.2.4">
+<h4 data-number="3.6.2.4" class="anchored" data-anchor-id="cummax"><span class="header-section-number">3.6.2.4</span> cummax</h4>
 <p>Use para saber o valor máximo acumulado até aquela linha.</p>
 <p>Por exemplo, se agruparmos os veículos de mtcars de acordo com a coluna de número de cilindros (cyl), podemos saber qual o maior valor acumulado da coluna potência (hp) por grupo de veículos conforme “varremos” a tabela:</p>
 <div class="cell">
@@ -2640,8 +2684,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cummin" class="level4" data-number="4.6.2.5">
-<h4 data-number="4.6.2.5" class="anchored" data-anchor-id="cummin"><span class="header-section-number">4.6.2.5</span> cummin</h4>
+<section id="cummin" class="level4" data-number="3.6.2.5">
+<h4 data-number="3.6.2.5" class="anchored" data-anchor-id="cummin"><span class="header-section-number">3.6.2.5</span> cummin</h4>
 <p>Use para saber o valor mínimo acumulado até aquela linha.</p>
 <p>Por exemplo, se agruparmos os veículos de mtcars de acordo com a coluna de número de cilindros (cyl), podemos saber qual o menor valor acumulado da coluna potência (hp) por grupo de veículos conforme “varremos” a tabela:</p>
 <div class="cell">
@@ -2658,8 +2702,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cumprod" class="level4" data-number="4.6.2.6">
-<h4 data-number="4.6.2.6" class="anchored" data-anchor-id="cumprod"><span class="header-section-number">4.6.2.6</span> cumprod</h4>
+<section id="cumprod" class="level4" data-number="3.6.2.6">
+<h4 data-number="3.6.2.6" class="anchored" data-anchor-id="cumprod"><span class="header-section-number">3.6.2.6</span> cumprod</h4>
 <p>Similar a cummin() ou cummax(). Use para saber o valor multiplicado acumulado até aquela linha.</p>
 <p>Por exemplo, para acumularmos a multiplicação dos pesos (wt) de cada veículo até a linha, usamos:</p>
 <div class="cell">
@@ -2675,8 +2719,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cumsum" class="level4" data-number="4.6.2.7">
-<h4 data-number="4.6.2.7" class="anchored" data-anchor-id="cumsum"><span class="header-section-number">4.6.2.7</span> cumsum</h4>
+<section id="cumsum" class="level4" data-number="3.6.2.7">
+<h4 data-number="3.6.2.7" class="anchored" data-anchor-id="cumsum"><span class="header-section-number">3.6.2.7</span> cumsum</h4>
 <p>Similar a cummin() ou cummax(). Use para saber o valor da soma acumulada até aquela linha.</p>
 <p>Por exemplo, para acumularmos a soma dos pesos (wt) de cada veículo até a linha, usamos:</p>
 <div class="cell">
@@ -2693,10 +2737,10 @@ Dica
 </div>
 </section>
 </section>
-<section id="ranqueamento" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="ranqueamento"><span class="header-section-number">4.6.3</span> Ranqueamento</h3>
-<section id="row_number" class="level4" data-number="4.6.3.1">
-<h4 data-number="4.6.3.1" class="anchored" data-anchor-id="row_number"><span class="header-section-number">4.6.3.1</span> row_number</h4>
+<section id="ranqueamento" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="ranqueamento"><span class="header-section-number">3.6.3</span> Ranqueamento</h3>
+<section id="row_number" class="level4" data-number="3.6.3.1">
+<h4 data-number="3.6.3.1" class="anchored" data-anchor-id="row_number"><span class="header-section-number">3.6.3.1</span> row_number</h4>
 <p>Use para adicionar o número da linha. Como as demais funções do dplyr, ela respeita os grupos da tabela quando houver.</p>
 <p>Por exemplo, para enumerar as linhas dos veículos agrupados por número de cilindros, podemos usar:</p>
 <div class="cell">
@@ -2713,8 +2757,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="rank" class="level4" data-number="4.6.3.2">
-<h4 data-number="4.6.3.2" class="anchored" data-anchor-id="rank"><span class="header-section-number">4.6.3.2</span> rank</h4>
+<section id="rank" class="level4" data-number="3.6.3.2">
+<h4 data-number="3.6.3.2" class="anchored" data-anchor-id="rank"><span class="header-section-number">3.6.3.2</span> rank</h4>
 <p>Use para criar um ranqueamento de uma variável.</p>
 <p>Por exemplo, para fazer um ranqueamento dos veículos mais leves entre grupos de mesma cilindragem, podemos usar:</p>
 <div class="cell">
@@ -2732,8 +2776,8 @@ Dica
 </div>
 <p>Observe que para veículos de 8 cilindros, a segunda e última linha possuem o mesmo peso e portanto tiveram o mesmo ranqueamento (5.5).</p>
 </section>
-<section id="dense_rank" class="level4" data-number="4.6.3.3">
-<h4 data-number="4.6.3.3" class="anchored" data-anchor-id="dense_rank"><span class="header-section-number">4.6.3.3</span> dense_rank</h4>
+<section id="dense_rank" class="level4" data-number="3.6.3.3">
+<h4 data-number="3.6.3.3" class="anchored" data-anchor-id="dense_rank"><span class="header-section-number">3.6.3.3</span> dense_rank</h4>
 <p>Use para ajustar o ranqueamento sem pular lacunas em casos de empate.</p>
 <p>Vejo abaixo como ele se compara ao ranqueamento da função rank().</p>
 <div class="cell">
@@ -2751,8 +2795,8 @@ Dica
 </div>
 <p>Observe que na segunda e última linha de 8 cilindros, empatam em 5.5 na função rank() e a posição 6 é pulada, sendo o próximo do ranqueamento o número 7. Já na função dense_rank(), o empate fica na posição 5 e o próximo na posição 6.</p>
 </section>
-<section id="percent_rank" class="level4" data-number="4.6.3.4">
-<h4 data-number="4.6.3.4" class="anchored" data-anchor-id="percent_rank"><span class="header-section-number">4.6.3.4</span> percent_rank</h4>
+<section id="percent_rank" class="level4" data-number="3.6.3.4">
+<h4 data-number="3.6.3.4" class="anchored" data-anchor-id="percent_rank"><span class="header-section-number">3.6.3.4</span> percent_rank</h4>
 <p>Use para retornar um número entre 0 e 1 (percentual) do ranqueamento mínimo.</p>
 <p>Veja abaixo como ela se compara com as funções rank e dense_rank:</p>
 <div class="cell">
@@ -2769,8 +2813,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="cume_dist" class="level4" data-number="4.6.3.5">
-<h4 data-number="4.6.3.5" class="anchored" data-anchor-id="cume_dist"><span class="header-section-number">4.6.3.5</span> cume_dist</h4>
+<section id="cume_dist" class="level4" data-number="3.6.3.5">
+<h4 data-number="3.6.3.5" class="anchored" data-anchor-id="cume_dist"><span class="header-section-number">3.6.3.5</span> cume_dist</h4>
 <p>Use para saber a distribuição acumulada de acordo com o ranqueamento atribuído.</p>
 <p>Por exemplo, se agruparmos por número de cilindros (cyl), criarmos uma coluna de ranqueamento (<strong>rank</strong>) e outra coluna com a distribuição, podemos saber como o ranqueamento acumulado está distribuído.</p>
 <div class="cell">
@@ -2788,8 +2832,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="ntile" class="level4" data-number="4.6.3.6">
-<h4 data-number="4.6.3.6" class="anchored" data-anchor-id="ntile"><span class="header-section-number">4.6.3.6</span> ntile</h4>
+<section id="ntile" class="level4" data-number="3.6.3.6">
+<h4 data-number="3.6.3.6" class="anchored" data-anchor-id="ntile"><span class="header-section-number">3.6.3.6</span> ntile</h4>
 <p>Use para retornar um quantil (percentil, quartil, etc) de um vetor.</p>
 <p>Por exemplo, para segregarmos os veículos em quartis (quatro partes) (0-0.25-.50-.75-1), podemos usar:</p>
 <div class="cell">
@@ -2806,16 +2850,16 @@ Dica
 </div>
 </section>
 </section>
-<section id="matemática" class="level3" data-number="4.6.4">
-<h3 data-number="4.6.4" class="anchored" data-anchor-id="matemática"><span class="header-section-number">4.6.4</span> Matemática</h3>
-<section id="operações-e-logs" class="level4" data-number="4.6.4.1">
-<h4 data-number="4.6.4.1" class="anchored" data-anchor-id="operações-e-logs"><span class="header-section-number">4.6.4.1</span> operações e logs:</h4>
+<section id="matemática" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="matemática"><span class="header-section-number">3.6.4</span> Matemática</h3>
+<section id="operações-e-logs" class="level4" data-number="3.6.4.1">
+<h4 data-number="3.6.4.1" class="anchored" data-anchor-id="operações-e-logs"><span class="header-section-number">3.6.4.1</span> operações e logs:</h4>
 <p>São símbolos para funções matemáticas mais comuns como:</p>
 <p><strong>+, - , *, /, ^, %/%, %%</strong> - Usados para as oper. aritiméticas</p>
 <p><strong>log(), log2(), log10()</strong> - Usados para logaritmos</p>
 </section>
-<section id="between" class="level4" data-number="4.6.4.2">
-<h4 data-number="4.6.4.2" class="anchored" data-anchor-id="between"><span class="header-section-number">4.6.4.2</span> between</h4>
+<section id="between" class="level4" data-number="3.6.4.2">
+<h4 data-number="3.6.4.2" class="anchored" data-anchor-id="between"><span class="header-section-number">3.6.4.2</span> between</h4>
 <p>Use para retornar os valores do vetor entre dois valores. É o equivalente a escrever: x &gt;= valor_esquerda &amp; x &lt;= valor_direita.</p>
 <p>Por exemplo, se quisermos obter os veículos com o peso entre 3 a 4 mil libras, podemos usar a função <strong>between()</strong> juntamente com a função <strong>filter()</strong>.</p>
 <div class="cell">
@@ -2831,8 +2875,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="near" class="level4" data-number="4.6.4.3">
-<h4 data-number="4.6.4.3" class="anchored" data-anchor-id="near"><span class="header-section-number">4.6.4.3</span> near</h4>
+<section id="near" class="level4" data-number="3.6.4.3">
+<h4 data-number="3.6.4.3" class="anchored" data-anchor-id="near"><span class="header-section-number">3.6.4.3</span> near</h4>
 <p>Use para verificar se dois vetores de ponto fultuante são iguais:</p>
 <p>O exemplo abaixo, duplica a coluna de peso (wt –&gt; wt2) dos veículos e altera o primeiro valor de <strong>2.620</strong> para <strong>2.600</strong>, salvando em um novo data frame (<em>mtcars_novo</em>) que será usado em seguida;</p>
 <div class="cell">
@@ -2860,10 +2904,10 @@ Dica
 </div>
 </section>
 </section>
-<section id="miscelânea" class="level3" data-number="4.6.5">
-<h3 data-number="4.6.5" class="anchored" data-anchor-id="miscelânea"><span class="header-section-number">4.6.5</span> Miscelânea</h3>
-<section id="if_else" class="level4" data-number="4.6.5.1">
-<h4 data-number="4.6.5.1" class="anchored" data-anchor-id="if_else"><span class="header-section-number">4.6.5.1</span> if_else</h4>
+<section id="miscelânea" class="level3" data-number="3.6.5">
+<h3 data-number="3.6.5" class="anchored" data-anchor-id="miscelânea"><span class="header-section-number">3.6.5</span> Miscelânea</h3>
+<section id="if_else" class="level4" data-number="3.6.5.1">
+<h4 data-number="3.6.5.1" class="anchored" data-anchor-id="if_else"><span class="header-section-number">3.6.5.1</span> if_else</h4>
 <p>Use para fazer um “SE” (IF) vetorizado, ou seja, elemento por elemento.</p>
 <p>Por exemplo, se quisermos saber quais veículos percorrem 1/4 de milha em menos de 20 segundos, podemos usar a coluna <strong>qsec</strong> com a função <strong>if_else</strong> para criar uma nova coluna marcando como “<strong>MAIX VELOZ</strong>” os veículos que percorrem com menos de 20 segundos e “<strong>MENOS VELOZ</strong>” os que não atendem a este critério:</p>
 <div class="cell">
@@ -2880,8 +2924,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="case_when" class="level4" data-number="4.6.5.2">
-<h4 data-number="4.6.5.2" class="anchored" data-anchor-id="case_when"><span class="header-section-number">4.6.5.2</span> case_when</h4>
+<section id="case_when" class="level4" data-number="3.6.5.2">
+<h4 data-number="3.6.5.2" class="anchored" data-anchor-id="case_when"><span class="header-section-number">3.6.5.2</span> case_when</h4>
 <p>Use quando quiser fazer um if_else com mais de dois casos, ou seja, ao invés de aninhá-los(nested if).</p>
 <p>Usando o mesmo exemplo da função <a href="#if_else">if_else</a> , porém gostaríamos de criar um terceira classificação chamada de “SUPER VELOZ” para os veículos com tempo abaixo de 16 segundos, teríamos:</p>
 <div class="cell">
@@ -2919,15 +2963,15 @@ Dica
 </div>
 </div>
 </section>
-<section id="coalesce" class="level4" data-number="4.6.5.3">
-<h4 data-number="4.6.5.3" class="anchored" data-anchor-id="coalesce"><span class="header-section-number">4.6.5.3</span> coalesce</h4>
+<section id="coalesce" class="level4" data-number="3.6.5.3">
+<h4 data-number="3.6.5.3" class="anchored" data-anchor-id="coalesce"><span class="header-section-number">3.6.5.3</span> coalesce</h4>
 <p>Use para sobrescrever os valores de NA em um vetor.</p>
 <p>O exemplo abaixo, sobrescreve com zeros os valores faltantes (missing) do vetor x:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coalesce</span>(x, 0L)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 2 1 3 4 0 0 5</code></pre>
+<pre><code>[1] 5 4 3 0 0 2 1 0</code></pre>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -2944,8 +2988,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="na_if" class="level4" data-number="4.6.5.4">
-<h4 data-number="4.6.5.4" class="anchored" data-anchor-id="na_if"><span class="header-section-number">4.6.5.4</span> na_if</h4>
+<section id="na_if" class="level4" data-number="3.6.5.4">
+<h4 data-number="3.6.5.4" class="anchored" data-anchor-id="na_if"><span class="header-section-number">3.6.5.4</span> na_if</h4>
 <p>Use para sobrescrever um valor específico com NA.</p>
 <p>Por exemplo, se quisermos colocar NAs na coluna de consumo (mpg) para os veículos com 8 cilindros (cyl), podemos usar a na_if() juntamente com a mutate():</p>
 <div class="cell">
@@ -2961,8 +3005,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="pmax---max" class="level4" data-number="4.6.5.5">
-<h4 data-number="4.6.5.5" class="anchored" data-anchor-id="pmax---max"><span class="header-section-number">4.6.5.5</span> pmax - max</h4>
+<section id="pmax---max" class="level4" data-number="3.6.5.5">
+<h4 data-number="3.6.5.5" class="anchored" data-anchor-id="pmax---max"><span class="header-section-number">3.6.5.5</span> pmax - max</h4>
 <p>Use max() para retornar o <strong>máximo</strong> valor de um vetor ou pmax() para retornar o valor máximo entre elementos de vetores em paralelo.</p>
 <p>Por exemplo, se tiver um vetor dois vetores (x e y) com 5 elementos cada, a função <strong>max()</strong> irá retornar o maior vetor contido no vetor escolhido:</p>
 <div class="cell">
@@ -2987,14 +3031,14 @@ Dica
 </div>
 </div>
 </section>
-<section id="pmin---min" class="level4" data-number="4.6.5.6">
-<h4 data-number="4.6.5.6" class="anchored" data-anchor-id="pmin---min"><span class="header-section-number">4.6.5.6</span> pmin - min</h4>
+<section id="pmin---min" class="level4" data-number="3.6.5.6">
+<h4 data-number="3.6.5.6" class="anchored" data-anchor-id="pmin---min"><span class="header-section-number">3.6.5.6</span> pmin - min</h4>
 <p>É idêntico às funções <a href="#pmax---max">pmax - max</a> (), porém ao invés de retornar o valor máximo ou o máximo do elemento em paralelo, estas funções retornam seus respectivos valores <strong>mínimos</strong>.</p>
 </section>
 </section>
 </section>
-<section id="funções-de-resumo" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="funções-de-resumo"><span class="header-section-number">4.7</span> Funções de Resumo</h2>
+<section id="funções-de-resumo" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="funções-de-resumo"><span class="header-section-number">3.7</span> Funções de Resumo</h2>
 <p>summarise() aplica funções de resumo em colunas para criar uma nova tabela. Funções de resumo <strong>recebem</strong> vetores como entrada e <strong>retornam um valor único</strong> na saída.</p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -3009,10 +3053,10 @@ Cuidado
 <p>Estas funções retornam informações sobre o grupo ou variável corrente, portanto só funcionam dentro de um <strong>contexto</strong> específico como <strong>summarise()</strong> ou <strong>mutate()</strong>.</p>
 </div>
 </div>
-<section id="contagem" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="contagem"><span class="header-section-number">4.7.1</span> Contagem</h3>
-<section id="n" class="level4" data-number="4.7.1.1">
-<h4 data-number="4.7.1.1" class="anchored" data-anchor-id="n"><span class="header-section-number">4.7.1.1</span> n</h4>
+<section id="contagem" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="contagem"><span class="header-section-number">3.7.1</span> Contagem</h3>
+<section id="n" class="level4" data-number="3.7.1.1">
+<h4 data-number="3.7.1.1" class="anchored" data-anchor-id="n"><span class="header-section-number">3.7.1.1</span> n</h4>
 <p>Use para retornar o tamanhio do grupo corrente.</p>
 <p>Por exemplo, para contar quantos veículos temos em cada grupo de cilindors, podemos usar a summarise() com o n() depois de agrupar pela coluna de cilindors (cyl).</p>
 <div class="cell">
@@ -3029,11 +3073,11 @@ Cuidado
 </div>
 </div>
 </section>
-<section id="section" class="level4" data-number="4.7.1.2">
-<h4 data-number="4.7.1.2" class="anchored" data-anchor-id="section"><span class="header-section-number">4.7.1.2</span> </h4>
+<section id="section" class="level4" data-number="3.7.1.2">
+<h4 data-number="3.7.1.2" class="anchored" data-anchor-id="section"><span class="header-section-number">3.7.1.2</span> </h4>
 </section>
-<section id="n_distinct" class="level4" data-number="4.7.1.3">
-<h4 data-number="4.7.1.3" class="anchored" data-anchor-id="n_distinct"><span class="header-section-number">4.7.1.3</span> n_distinct</h4>
+<section id="n_distinct" class="level4" data-number="3.7.1.3">
+<h4 data-number="3.7.1.3" class="anchored" data-anchor-id="n_distinct"><span class="header-section-number">3.7.1.3</span> n_distinct</h4>
 <p>Use para contar os valores unicos em um vetor.</p>
 <p>Por exemplo, para saber <strong>QUANTAS</strong> categorias de cilindros temos na tabela mtcars, podemos usar:</p>
 <div class="cell">
@@ -3063,8 +3107,8 @@ Cuidado
 </div>
 </div>
 </section>
-<section id="sum" class="level4" data-number="4.7.1.4">
-<h4 data-number="4.7.1.4" class="anchored" data-anchor-id="sum"><span class="header-section-number">4.7.1.4</span> sum</h4>
+<section id="sum" class="level4" data-number="3.7.1.4">
+<h4 data-number="3.7.1.4" class="anchored" data-anchor-id="sum"><span class="header-section-number">3.7.1.4</span> sum</h4>
 <p>Use para retornar a soma de todos os valores presentes em seu argumento.</p>
 <p>Por exemplo, para sabermos a soma dos pesos (wt) dos veículos agrupados pelo número de cilindros (cyl), podemos usar a função sum, juntamente com o summarise() e group_by().</p>
 <div class="cell">
@@ -3083,10 +3127,10 @@ Cuidado
 <p>Veja que se houver NA na variável (coluna), a função sum irá retornar NA. Para ignorar os NAs e fazer a soma, use o argumento na.rm = TRUE.</p>
 </section>
 </section>
-<section id="posição" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="posição"><span class="header-section-number">4.7.2</span> Posição</h3>
-<section id="mean" class="level4" data-number="4.7.2.1">
-<h4 data-number="4.7.2.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">4.7.2.1</span> mean</h4>
+<section id="posição" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="posição"><span class="header-section-number">3.7.2</span> Posição</h3>
+<section id="mean" class="level4" data-number="3.7.2.1">
+<h4 data-number="3.7.2.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">3.7.2.1</span> mean</h4>
 <p>Use para obter a média dos elementos do vetor. Por exemplo, se quisermos saber a média de peso de todos os veículos, podemos usar:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
@@ -3101,15 +3145,15 @@ Cuidado
 </div>
 </div>
 </section>
-<section id="median" class="level4" data-number="4.7.2.2">
-<h4 data-number="4.7.2.2" class="anchored" data-anchor-id="median"><span class="header-section-number">4.7.2.2</span> median</h4>
+<section id="median" class="level4" data-number="3.7.2.2">
+<h4 data-number="3.7.2.2" class="anchored" data-anchor-id="median"><span class="header-section-number">3.7.2.2</span> median</h4>
 <p>Use para obter a <strong>mediana</strong> dos elementos de um vetor. è similar à função <a href="">mean</a>, porém retorna a mediana ou invés da média.</p>
 </section>
 </section>
-<section id="ordem" class="level3" data-number="4.7.3">
-<h3 data-number="4.7.3" class="anchored" data-anchor-id="ordem"><span class="header-section-number">4.7.3</span> Ordem</h3>
-<section id="first" class="level4" data-number="4.7.3.1">
-<h4 data-number="4.7.3.1" class="anchored" data-anchor-id="first"><span class="header-section-number">4.7.3.1</span> first</h4>
+<section id="ordem" class="level3" data-number="3.7.3">
+<h3 data-number="3.7.3" class="anchored" data-anchor-id="ordem"><span class="header-section-number">3.7.3</span> Ordem</h3>
+<section id="first" class="level4" data-number="3.7.3.1">
+<h4 data-number="3.7.3.1" class="anchored" data-anchor-id="first"><span class="header-section-number">3.7.3.1</span> first</h4>
 <p>Use para obter o <strong>primeiro</strong> elemento de um vetor.</p>
 <p>Por exemplo, se quisermos obter o peso do primeiro veículo de cada grupo de cilindros, podemos usar:</p>
 <div class="cell">
@@ -3155,12 +3199,12 @@ Dica
 </div>
 </div>
 </section>
-<section id="last" class="level4" data-number="4.7.3.2">
-<h4 data-number="4.7.3.2" class="anchored" data-anchor-id="last"><span class="header-section-number">4.7.3.2</span> last</h4>
+<section id="last" class="level4" data-number="3.7.3.2">
+<h4 data-number="3.7.3.2" class="anchored" data-anchor-id="last"><span class="header-section-number">3.7.3.2</span> last</h4>
 <p>Use para obter o <strong>último</strong> elemento. É similar a função <a href="">first</a>, porém ao invés de retornar o primeiro elemento, irá retornar o último.</p>
 </section>
-<section id="nth" class="level4" data-number="4.7.3.3">
-<h4 data-number="4.7.3.3" class="anchored" data-anchor-id="nth"><span class="header-section-number">4.7.3.3</span> nth</h4>
+<section id="nth" class="level4" data-number="3.7.3.3">
+<h4 data-number="3.7.3.3" class="anchored" data-anchor-id="nth"><span class="header-section-number">3.7.3.3</span> nth</h4>
 <p>Use para obter o <strong>n-ésimo</strong> elemento. É similar a função <a href="">first</a>, porém ao invés de retornar o primeiro elemento, irá retornar o n-ésimo elemento.</p>
 <p>Por exemplo, se quisermos obter o peso do <strong>segundo</strong> veículo de cada grupo de cilindros, podemos usar:</p>
 <div class="cell">
@@ -3193,10 +3237,10 @@ Dica
 </div>
 </section>
 </section>
-<section id="ranqueamento-1" class="level3" data-number="4.7.4">
-<h3 data-number="4.7.4" class="anchored" data-anchor-id="ranqueamento-1"><span class="header-section-number">4.7.4</span> Ranqueamento</h3>
-<section id="quantile" class="level4" data-number="4.7.4.1">
-<h4 data-number="4.7.4.1" class="anchored" data-anchor-id="quantile"><span class="header-section-number">4.7.4.1</span> quantile</h4>
+<section id="ranqueamento-1" class="level3" data-number="3.7.4">
+<h3 data-number="3.7.4" class="anchored" data-anchor-id="ranqueamento-1"><span class="header-section-number">3.7.4</span> Ranqueamento</h3>
+<section id="quantile" class="level4" data-number="3.7.4.1">
+<h4 data-number="3.7.4.1" class="anchored" data-anchor-id="quantile"><span class="header-section-number">3.7.4.1</span> quantile</h4>
 <p>Use para obter os quantils de um vetor. Por padrão retorna os quartis (0, 0.25, .5, .75 e 1) de um vetor.</p>
 <p>Por exemplo, se quisermos saber os quartis dos pesos dos grupos de cilindors dos veículos, podemos usar:</p>
 <div class="cell">
@@ -3230,20 +3274,20 @@ Dica
 </div>
 </div>
 </section>
-<section id="min" class="level4" data-number="4.7.4.2">
-<h4 data-number="4.7.4.2" class="anchored" data-anchor-id="min"><span class="header-section-number">4.7.4.2</span> min</h4>
+<section id="min" class="level4" data-number="3.7.4.2">
+<h4 data-number="3.7.4.2" class="anchored" data-anchor-id="min"><span class="header-section-number">3.7.4.2</span> min</h4>
 <p>Use para obter o valor <strong>mínimo</strong>. Similar a <a href="x,%20probs%20=%20**0**">quantile</a>.</p>
 </section>
-<section id="max" class="level4" data-number="4.7.4.3">
-<h4 data-number="4.7.4.3" class="anchored" data-anchor-id="max"><span class="header-section-number">4.7.4.3</span> max</h4>
+<section id="max" class="level4" data-number="3.7.4.3">
+<h4 data-number="3.7.4.3" class="anchored" data-anchor-id="max"><span class="header-section-number">3.7.4.3</span> max</h4>
 <p>Use para obter o valor <strong>máximo</strong>. Similar a <a href="x,%20probs%20=%20**1**">quantile</a>.</p>
 </section>
 </section>
-<section id="dispersão" class="level3" data-number="4.7.5">
-<h3 data-number="4.7.5" class="anchored" data-anchor-id="dispersão"><span class="header-section-number">4.7.5</span> Dispersão</h3>
+<section id="dispersão" class="level3" data-number="3.7.5">
+<h3 data-number="3.7.5" class="anchored" data-anchor-id="dispersão"><span class="header-section-number">3.7.5</span> Dispersão</h3>
 <p>O dyplr possuem algumas funções para avaliar o espalhamento dos dados (dispersão) em torno da média central. Estas funções vem do campo da estatística.</p>
-<section id="var" class="level4" data-number="4.7.5.1">
-<h4 data-number="4.7.5.1" class="anchored" data-anchor-id="var"><span class="header-section-number">4.7.5.1</span> var</h4>
+<section id="var" class="level4" data-number="3.7.5.1">
+<h4 data-number="3.7.5.1" class="anchored" data-anchor-id="var"><span class="header-section-number">3.7.5.1</span> var</h4>
 <p>Use para calcular a variância dos dados.</p>
 <p>Por exemplo, par calcular a <strong>variância</strong> total dos pesos (wt) dos veículos de tabela mtcars agrupada pelo número de cilindros (cyl), podemos usa-la junto com a função summarise:</p>
 <div class="cell">
@@ -3261,8 +3305,8 @@ Dica
 </div>
 <p>No exemplo acima, observamos que os veículos com 6cilindros possuem seus pesos mais próximos da média que os veículos com 4 ou 8 cilindros.</p>
 </section>
-<section id="sd" class="level4" data-number="4.7.5.2">
-<h4 data-number="4.7.5.2" class="anchored" data-anchor-id="sd"><span class="header-section-number">4.7.5.2</span> sd</h4>
+<section id="sd" class="level4" data-number="3.7.5.2">
+<h4 data-number="3.7.5.2" class="anchored" data-anchor-id="sd"><span class="header-section-number">3.7.5.2</span> sd</h4>
 <p>Use para calcular o <strong>desvio padrão</strong>. É similar a função <a href="#var">var</a>, porém retorna o desvio padrão ao invés da variância.</p>
 <p>Usando o mesmo exemplo da função var, o código ficaria:</p>
 <div class="cell">
@@ -3279,8 +3323,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="iqr" class="level4" data-number="4.7.5.3">
-<h4 data-number="4.7.5.3" class="anchored" data-anchor-id="iqr"><span class="header-section-number">4.7.5.3</span> IQR</h4>
+<section id="iqr" class="level4" data-number="3.7.5.3">
+<h4 data-number="3.7.5.3" class="anchored" data-anchor-id="iqr"><span class="header-section-number">3.7.5.3</span> IQR</h4>
 <p>Use para calcular a <strong>distância inter-quartil</strong>. É similar a função <a href="#var">var</a>, porém retorna o range entre os quartis ao invés da variância.</p>
 <p>Usando o mesmo exemplo da função var, o código ficaria:</p>
 <div class="cell">
@@ -3297,8 +3341,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="mad" class="level4" data-number="4.7.5.4">
-<h4 data-number="4.7.5.4" class="anchored" data-anchor-id="mad"><span class="header-section-number">4.7.5.4</span> mad</h4>
+<section id="mad" class="level4" data-number="3.7.5.4">
+<h4 data-number="3.7.5.4" class="anchored" data-anchor-id="mad"><span class="header-section-number">3.7.5.4</span> mad</h4>
 <p>Use para calcular a <strong>desvio absoluto da mediana</strong>. É similar a função <a href="#var">var</a>, porém o desvio absoluto da mediana ao invés da variância.</p>
 <p>Usando o mesmo exemplo da função var, o código ficaria:</p>
 <div class="cell">
@@ -3317,13 +3361,13 @@ Dica
 </section>
 </section>
 </section>
-<section id="combinando-tabelas" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="combinando-tabelas"><span class="header-section-number">4.8</span> Combinando Tabelas</h2>
-<section id="juntando-variáveis" class="level3" data-number="4.8.1">
-<h3 data-number="4.8.1" class="anchored" data-anchor-id="juntando-variáveis"><span class="header-section-number">4.8.1</span> Juntando Variáveis</h3>
+<section id="combinando-tabelas" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="combinando-tabelas"><span class="header-section-number">3.8</span> Combinando Tabelas</h2>
+<section id="juntando-variáveis" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="juntando-variáveis"><span class="header-section-number">3.8.1</span> Juntando Variáveis</h3>
 <p>Quando você tem uma ou mais variáveis de um dataframe com o <strong>mesmo número de observações</strong> de outra(s) variável(eis), você pode uní-las diretamente atraveś da função <strong>bind_cols</strong>(), porém se o <strong>número de observações forem diferentes</strong>, é necessário utilizar funções de união transformadoras (mutating joins). Ver a seção <a href="#relacionando-dados">Relacionando Dados</a> para maiores detalhes sobre as uniões transformadoras.</p>
-<section id="bind_cols" class="level4" data-number="4.8.1.1">
-<h4 data-number="4.8.1.1" class="anchored" data-anchor-id="bind_cols"><span class="header-section-number">4.8.1.1</span> bind_cols</h4>
+<section id="bind_cols" class="level4" data-number="3.8.1.1">
+<h4 data-number="3.8.1.1" class="anchored" data-anchor-id="bind_cols"><span class="header-section-number">3.8.1.1</span> bind_cols</h4>
 <p>Use para unir variáveis de mesmo número de observações.</p>
 <p>Por exemplo, no pacotes datasets, temos um dataframe (tabela), chamado <strong>state.names,</strong> que possui o nomes de todos os estados dos EUA. Há também o <strong>state.abb</strong>, que possui uma lista das abreviações dos estados americanos. Se quiser unir ambas variáveis, podemos usar:</p>
 <div class="cell">
@@ -3339,8 +3383,8 @@ Dica
 </div>
 </section>
 </section>
-<section id="relacionando-dados" class="level3" data-number="4.8.2">
-<h3 data-number="4.8.2" class="anchored" data-anchor-id="relacionando-dados"><span class="header-section-number">4.8.2</span> Relacionando Dados</h3>
+<section id="relacionando-dados" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="relacionando-dados"><span class="header-section-number">3.8.2</span> Relacionando Dados</h3>
 <p>Quando temos <strong>dois dataframes</strong> (tabelas) e queremos adicionar colunas de um à outro, usamos funções chamadas de <strong>uniões transformadoras</strong> (“mutating joins”). Estas funções transformam um tabela, adicionando coluna(s) de outra tabela de acordo com as linhas baseado em chaves (“keys”) definidas ao usar a função.</p>
 <p><strong>Preprarando as tabelas de Exemplo:</strong></p>
 <p>Para os exemplos a seguir, utilizaremos o dataframe <strong>state.x77</strong>, que possui 8 variáveis dos estados americanos com expectativa de vida, renda per capita, população, etc. Chamaremos esta tabela de <strong>X</strong>.</p>
@@ -3378,8 +3422,8 @@ Dica
 </div>
 </div>
 </div>
-<section id="left_join" class="level4" data-number="4.8.2.1">
-<h4 data-number="4.8.2.1" class="anchored" data-anchor-id="left_join"><span class="header-section-number">4.8.2.1</span> left_join</h4>
+<section id="left_join" class="level4" data-number="3.8.2.1">
+<h4 data-number="3.8.2.1" class="anchored" data-anchor-id="left_join"><span class="header-section-number">3.8.2.1</span> left_join</h4>
 <p>Use para unir valores iguais de X em Y.</p>
 <p>Por exemplo, usando as tabelas <strong>X</strong> e <strong>Y</strong> preparadas no início da seção <a href="#relacionando-dados">Relacionando Dados</a>, podemos unir a variável população (population) que está na tabela X na tabela Y.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -3433,12 +3477,12 @@ Nota
 </div>
 </div>
 </section>
-<section id="right_join" class="level4" data-number="4.8.2.2">
-<h4 data-number="4.8.2.2" class="anchored" data-anchor-id="right_join"><span class="header-section-number">4.8.2.2</span> right_join</h4>
+<section id="right_join" class="level4" data-number="3.8.2.2">
+<h4 data-number="3.8.2.2" class="anchored" data-anchor-id="right_join"><span class="header-section-number">3.8.2.2</span> right_join</h4>
 <p>Use para unir valores iguais de Y em X. Veja que right_join(Y, X) , é o mesmo que escrever left_join(X, Y). Veja a função <a href="">left_join</a> para mais informações.</p>
 </section>
-<section id="inner_join" class="level4" data-number="4.8.2.3">
-<h4 data-number="4.8.2.3" class="anchored" data-anchor-id="inner_join"><span class="header-section-number">4.8.2.3</span> inner_join</h4>
+<section id="inner_join" class="level4" data-number="3.8.2.3">
+<h4 data-number="3.8.2.3" class="anchored" data-anchor-id="inner_join"><span class="header-section-number">3.8.2.3</span> inner_join</h4>
 <p>Use para unir todos os dados de X em Y e retornar somente as linhas em comum.</p>
 <p>Por exemplo, se quisermos obter todas as linhas da tabela X (com 50 registros) unindo-as com as linhas correspondentes em Y (com 37 registros), fazemos:</p>
 <div class="cell">
@@ -3453,8 +3497,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="full_join" class="level4" data-number="4.8.2.4">
-<h4 data-number="4.8.2.4" class="anchored" data-anchor-id="full_join"><span class="header-section-number">4.8.2.4</span> full_join</h4>
+<section id="full_join" class="level4" data-number="3.8.2.4">
+<h4 data-number="3.8.2.4" class="anchored" data-anchor-id="full_join"><span class="header-section-number">3.8.2.4</span> full_join</h4>
 <p>Use para unir os dados de X e Y, mantendo todas as linhas e todas as variáveis.</p>
 <p>Para este exemplo, iremos incluir uma linha (<a href="">add_row</a>) na tabela Y, que não possui um valores correspondente em X.</p>
 <div class="cell">
@@ -3471,8 +3515,8 @@ Nota
 </div>
 <p>Veja que no exemplo acima, temos agora 51 registros, já que uma linha adicional foi criada com o novo registro de Y que não existia em X.</p>
 </section>
-<section id="combinando-colunas-para-uniões" class="level4" data-number="4.8.2.5">
-<h4 data-number="4.8.2.5" class="anchored" data-anchor-id="combinando-colunas-para-uniões"><span class="header-section-number">4.8.2.5</span> Combinando colunas para uniões</h4>
+<section id="combinando-colunas-para-uniões" class="level4" data-number="3.8.2.5">
+<h4 data-number="3.8.2.5" class="anchored" data-anchor-id="combinando-colunas-para-uniões"><span class="header-section-number">3.8.2.5</span> Combinando colunas para uniões</h4>
 <p>Se não for definido o parâmetro “<strong>by =</strong>”, a função irá automaticamente selecionar todas as colunas com o mesmo nome para definir uma chave.</p>
 <p>Se usarmos by = vetor, por exemplo, by = c(“Estado”), estamos definindo a chave de maneira explícita. Podemos definir uma chave contendo mais que uma colunas usando c(“coluna1”, “coluna2”), com isto, a união será feita encontrando os valores comuns em ambas as colunas das duas tabelas.</p>
 <p>Se quisermos definir uma chave que não possui o mesmo nome nas duas tabelas, podemos ainda usar o parametro by = c(“coluna de X” = “aa”, “coluna de Y” = “bb”).</p>
@@ -3513,8 +3557,8 @@ Dica
 </div>
 </section>
 </section>
-<section id="juntando-observações" class="level3" data-number="4.8.3">
-<h3 data-number="4.8.3" class="anchored" data-anchor-id="juntando-observações"><span class="header-section-number">4.8.3</span> Juntando Observações</h3>
+<section id="juntando-observações" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="juntando-observações"><span class="header-section-number">3.8.3</span> Juntando Observações</h3>
 <p>Quando tivermos linhas em tabelas diferentes para serem unidas, podemos fazê-lo usndo a função bind_rows(). Em alguns casos, desejamos filtrar linhas de uma tabela, baseada em linhas em comum de outra tabela, para estes casos, iremos usar as uniões de filtro (filtering joins).</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -3529,8 +3573,8 @@ Nota
 <p>As tabelas usadas nos exemplos a seguir são as mesmas utilizadas na seção <a href="#relacionando-dados">Relacionando Dados</a>.</p>
 </div>
 </div>
-<section id="bind_rows" class="level4" data-number="4.8.3.1">
-<h4 data-number="4.8.3.1" class="anchored" data-anchor-id="bind_rows"><span class="header-section-number">4.8.3.1</span> bind_rows</h4>
+<section id="bind_rows" class="level4" data-number="3.8.3.1">
+<h4 data-number="3.8.3.1" class="anchored" data-anchor-id="bind_rows"><span class="header-section-number">3.8.3.1</span> bind_rows</h4>
 <p>Use para unir observações (linhas) que possuem o mesmo número de colunas.</p>
 <p>Por exemplo, usando as tabelas <strong>X</strong> e <strong>Y</strong> preparadas no início da seção <a href="#relacionando-dados">Relacionando Dados</a>, podemos criar uma tabela Z, com mais 3 observações e uní-la na tabela Y.</p>
 <p>Tabela Z</p>
@@ -3586,8 +3630,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="semi_join" class="level4" data-number="4.8.3.2">
-<h4 data-number="4.8.3.2" class="anchored" data-anchor-id="semi_join"><span class="header-section-number">4.8.3.2</span> semi_join</h4>
+<section id="semi_join" class="level4" data-number="3.8.3.2">
+<h4 data-number="3.8.3.2" class="anchored" data-anchor-id="semi_join"><span class="header-section-number">3.8.3.2</span> semi_join</h4>
 <p>Use para retornar todas as linhas da tabela X que são <strong>comuns</strong> na tabela Y.</p>
 <p>Por exemplo, para filtrar a tabela Y com apenas os valores presentes na tabela X, usamos:</p>
 <div class="cell">
@@ -3602,8 +3646,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="anti_join" class="level4" data-number="4.8.3.3">
-<h4 data-number="4.8.3.3" class="anchored" data-anchor-id="anti_join"><span class="header-section-number">4.8.3.3</span> anti_join</h4>
+<section id="anti_join" class="level4" data-number="3.8.3.3">
+<h4 data-number="3.8.3.3" class="anchored" data-anchor-id="anti_join"><span class="header-section-number">3.8.3.3</span> anti_join</h4>
 <p>Use para retornar todas as linhas da tabela X que são <strong>NÃO</strong> <strong>comuns</strong> na tabela Y.</p>
 <p>Por exemplo, para filtrar a tabela Y com apenas os valores NÃO presentes na tabela X, usamos:</p>
 <div class="cell">
@@ -3618,8 +3662,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="nest_join" class="level4" data-number="4.8.3.4">
-<h4 data-number="4.8.3.4" class="anchored" data-anchor-id="nest_join"><span class="header-section-number">4.8.3.4</span> nest_join</h4>
+<section id="nest_join" class="level4" data-number="3.8.3.4">
+<h4 data-number="3.8.3.4" class="anchored" data-anchor-id="nest_join"><span class="header-section-number">3.8.3.4</span> nest_join</h4>
 <p>Use para retornar todas as linhas e colunas de X em uma nova coluna contendo todos os valores encontrados em Y.</p>
 <p>Por exemplo, para criar uma colunas na tabela Y, contendo os registros encontrados na tabela X que são comuns entre elas, ou seja, que possuem a coluna Estado com valores comuns entre elas:</p>
 <div class="cell">
@@ -3647,12 +3691,12 @@ Dica
 </div>
 </div>
 </section>
-<section id="operações-de-definição" class="level4" data-number="4.8.3.5">
-<h4 data-number="4.8.3.5" class="anchored" data-anchor-id="operações-de-definição"><span class="header-section-number">4.8.3.5</span> Operações de Definição</h4>
+<section id="operações-de-definição" class="level4" data-number="3.8.3.5">
+<h4 data-number="3.8.3.5" class="anchored" data-anchor-id="operações-de-definição"><span class="header-section-number">3.8.3.5</span> Operações de Definição</h4>
 <p>O pacote generics, possui também algumas funções que ajudam a identificar uniões (union), intersecções (intersect) e diferenças entre dois vetores. Esta funções podem ser úteis para obter estão operações em dois data-frames.</p>
 </section>
-<section id="intersect" class="level4" data-number="4.8.3.6">
-<h4 data-number="4.8.3.6" class="anchored" data-anchor-id="intersect"><span class="header-section-number">4.8.3.6</span> intersect</h4>
+<section id="intersect" class="level4" data-number="3.8.3.6">
+<h4 data-number="3.8.3.6" class="anchored" data-anchor-id="intersect"><span class="header-section-number">3.8.3.6</span> intersect</h4>
 <p>Use para obter a intersecção de dois conjuntos de dados.</p>
 <p>Por exemplo, se quisermos saber quais linhas estão presentes no vetor v (1,2,3,4,5) e w(2,4) , podemos fazer:</p>
 <div class="cell">
@@ -3665,8 +3709,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="setdiff" class="level4" data-number="4.8.3.7">
-<h4 data-number="4.8.3.7" class="anchored" data-anchor-id="setdiff"><span class="header-section-number">4.8.3.7</span> setdiff</h4>
+<section id="setdiff" class="level4" data-number="3.8.3.7">
+<h4 data-number="3.8.3.7" class="anchored" data-anchor-id="setdiff"><span class="header-section-number">3.8.3.7</span> setdiff</h4>
 <p>Use para saber quais elementos de v NÃO estão presentes em w.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
@@ -3678,8 +3722,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="union" class="level4" data-number="4.8.3.8">
-<h4 data-number="4.8.3.8" class="anchored" data-anchor-id="union"><span class="header-section-number">4.8.3.8</span> union</h4>
+<section id="union" class="level4" data-number="3.8.3.8">
+<h4 data-number="3.8.3.8" class="anchored" data-anchor-id="union"><span class="header-section-number">3.8.3.8</span> union</h4>
 <p>Use para fazer a união de dois conjuntos de dados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
@@ -3692,8 +3736,8 @@ Dica
 </section>
 </section>
 </section>
-<section id="nome-de-linhas" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="nome-de-linhas"><span class="header-section-number">4.9</span> Nome de Linhas</h2>
+<section id="nome-de-linhas" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="nome-de-linhas"><span class="header-section-number">3.9</span> Nome de Linhas</h2>
 <p>Dados organizados (tidy) não usam <strong>nomes</strong> de linhas (que contém uma variável fora das colunas). Para trabalhar com este nomes, mova para uma coluna.</p>
 <p>Por exemplo, quando usamos a função <strong>head</strong>() para obter as primeiras linhas da tabela mtcars, obtemos a seguinte resposta:</p>
 <div class="cell">
@@ -3711,8 +3755,8 @@ Dica
 <p>Observe que na lista acima, o nome de cada veículo aparece na saída.</p>
 <p>Porém, se pedirmos para mostrar os nomes as variáveis da table usando a função <strong>names</strong>(), não há nenhuma coluna que comporta o nome dos veículos.</p>
 <p>Isto acontece porque o nomes dos veículos está associado ao nomes das linhas e não a coluna.</p>
-<section id="rownames_to_column" class="level4" data-number="4.9.0.1">
-<h4 data-number="4.9.0.1" class="anchored" data-anchor-id="rownames_to_column"><span class="header-section-number">4.9.0.1</span> rownames_to_column</h4>
+<section id="rownames_to_column" class="level4" data-number="3.9.0.1">
+<h4 data-number="3.9.0.1" class="anchored" data-anchor-id="rownames_to_column"><span class="header-section-number">3.9.0.1</span> rownames_to_column</h4>
 <p>Se quisermos mover os nomes das linha para uma coluna, usamos a função rownames_to_column do pacote tibble:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">"Nomes_Veiculos"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3726,8 +3770,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="column_to_rownames" class="level4" data-number="4.9.0.2">
-<h4 data-number="4.9.0.2" class="anchored" data-anchor-id="column_to_rownames"><span class="header-section-number">4.9.0.2</span> column_to_rownames</h4>
+<section id="column_to_rownames" class="level4" data-number="3.9.0.2">
+<h4 data-number="3.9.0.2" class="anchored" data-anchor-id="column_to_rownames"><span class="header-section-number">3.9.0.2</span> column_to_rownames</h4>
 <p>Use para nomear as linhas de acordo com uma variável já existente. Digamos que esta função faz o oposto da rownames_to_column, pois ao invés de pegar os nomes das linhas e colocar em uma variável, ela pega uma variável e a transforma em nomes para as linha.</p>
 
 
@@ -3851,12 +3895,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

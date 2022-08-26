@@ -5,20 +5,39 @@ project:
 book:
   title: "Transformação e Manipulação de Dados com a linguagem R"
   author: "Eric Scopinho"
+  search: 
+    location: sidebar
+  navbar: 
+    background: "#1cafcf"
+    foreground: "#FFFFFF"
+    collapse: true
+    right: 
+      - icon: github
+        href: http://github.com/scopinho/Livro_Transform_Dados_R
+        aria-label: Github
+  sidebar:
+    collapse-level: 1
+
+
 #  date: "8/24/2022"
   cover-image: images/cover.png
   chapters:
-    - index.qmd
-    - intro.qmd
-    - Importacao/Importacao_de_dados_com_tidyverse.qmd
-    - Organizacao/Organizacao_de_dados_com_tidyr.qmd
-    - Transformacao/Transformacao_de_dados_com_dplyr.qmd
-    - Manipulacao_Strings/Manipulacao de strings com stringr.qmd
-    - DataHora/Datas_e_horas_com_lubridate.qmd
-    - Visualizacao/Visualizacao_de_dados_com_ggplot2.qmd
+  - index.qmd
+  - intro.qmd
+  - part: "Parte 1 - Obtendo e Ajustando os Dados"
+    chapters:
+      - Importacao/Importacao_de_dados_com_tidyverse.qmd
+      - Organizacao/Organizacao_de_dados_com_tidyr.qmd
+      - Transformacao/Transformacao_de_dados_com_dplyr.qmd
+  - part: "Parte 2 -Trabalhando com Strings e Datas"
+    chapters:
+      - Manipulacao_Strings/Manipulacao de strings com stringr.qmd
+      - DataHora/Datas_e_horas_com_lubridate.qmd
+  - part: "Parte 3 - Gráficos"
+    chapters:
+      - Visualizacao/Visualizacao_de_dados_com_ggplot2.qmd
 
 bibliography: references.bib
-
 
 format: 
   html: 
@@ -30,7 +49,8 @@ format:
     toc-depth: 4
     theme: cosmo
   pdf:
-    documentclass: scrreprt
+    #documentclass: scrreprt
+    documentclass: scrbook
 
 editor: visual
 execute: 
