@@ -166,9 +166,11 @@ ul.task-list{list-style: none;}
 
 </header>
 
-
+<p><img src="images/cover.png" title="Transformação e Manipulação de Dados com a linguagem R" class="quarto-cover-image img-fluid"></p>
+<hr>
+<hr>
 <section id="bem-vindo" class="level1 unnumbered">
-<p><img src="images/cover.png" title="Transformação e Manipulação de Dados com a linguagem R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Bem-Vindo</h1>
+<h1 class="unnumbered">Bem-Vindo</h1>
 <p>Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a linguagem R, mais especificamente o pacote tidyverse.</p>
 <p>Estas são etapas muito importantes no ciclo de vida de um projeto de ciência de dados ou mesmo para utilização em áreas de negócio das organizações, que estão cada vez mais, buscando tomar decisão com base em dados.</p>
 <p>A comunidade R tem produzido ao longo dos anos uma série <a href="https://www.rstudio.com/resources/cheatsheets/">Folhas de Referências</a>(<em>cheatsheets</em>)que fazem parte também da ferramenta de desenvolvimento <a href="http://localhost:7802/rstudio.com">RStudio</a>.</p>
@@ -312,6 +314,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return popup.innerHTML;
     });
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">

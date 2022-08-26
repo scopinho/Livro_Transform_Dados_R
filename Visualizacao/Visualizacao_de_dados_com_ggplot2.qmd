@@ -1,17 +1,5 @@
 ---
 title: "Visualização de Dados com GGPLOT2"
-format: 
-  html: 
-    df-print: paged
-    link-external-icon: true
-    link-external-newwindow: true
-toc: true
-toc-location: right
-toc-depth: 4
-editor: visual
-lang: pt
-execute: 
-  warning: false
 ---
 
 ## EM CONSTRUÇÃO!!!!
@@ -22,6 +10,8 @@ A seguir temos vários exemplos de visualização de dados utilizando o pacote G
 
 ::: callout-note
 Apesar de visualização de dados não ser especificamente parte das etapas de transformação e manipulação de dados, acreditamos ser importante um conhecimento básico sobre o tema, pois muitas vezes, para explicarmos aquilo que estamos transformando ou manipulando, o fazemos de forma gráfica para melhor compreensão.
+
+O objetivo não é explicar a aplicabilidade e/ou o a função de cada gráfico, mas sim, como ele pode ser construído.
 :::
 
 Para saber mais sobre este pacote, acesse:
@@ -132,7 +122,7 @@ Por exemplo, para salvar o diretório atual um arquivo com o gráfico chamado "p
 ggsave("plot-01.png", width = 5, height = 5, units = "cm")
 ```
 
-# ESTÉTICA (AES)
+# Estética (aes)
 
 Cada estética possui valores padrões que serão usados por determinada função de geometria ou de estatística. Mas existem valores que são comuns a quase todas as geom/stat(), a seguir veremos alguns deles:
 
@@ -222,7 +212,7 @@ ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg), shape = 5)
 ```
 
-# GEOMETRIAS (GEOMS)
+# Geometrias (geoms)
 
 Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.
 
@@ -460,28 +450,30 @@ c2 + geom_qq(aes(sample = hwy))
 
 ## Três Variáveis
 
-# ESTATÍSTICAS (STATS) {#estatísticas-stats}
+# Estatísticas (stats) {#estatísticas-stats}
 
-# ESCALAS (SCALES)
+# Escalas (scales)
 
-## ESCALAS DE PROPÓSITO GERAL
+## Escalas de Propósito Geral
 
-## ESCALAS DE LOCALIZAÇÃO X & Y
+## Escalas de Localização X & Y
 
-## ESCALAS DE COR E PREENCHIMENTO (DISCRETAS)
+## Escalas de Cor e Preenchimento
 
-## ESCALAS DE COR E PREENCHIMENTO (CONTÍNUAS)
+### Variáveis Discretas
 
-## ESCALAS DE FORMA E TAMANHO
+### Variáveis Contínuas
 
-# SISTEMA DE COORDENADAS
+## Escalas de Forma e Tamanho
 
-# AJUSTE DE POSIÇÃO
+# Sistema de Coordenadas
 
-# TEMAS
+# Ajuste de Posição
 
-# FACES
+# Temas
 
-# TEXTOS E LEGENDAS
+# Facetas
 
-# ZOOM
+# Texto e Legendas
+
+# Zoom

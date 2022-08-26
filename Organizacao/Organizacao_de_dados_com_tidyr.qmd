@@ -1,17 +1,5 @@
 ---
 title: "Organização de Dados com TIDYR"
-format: 
-  html: 
-    df-print: paged
-    link-external-icon: true
-    link-external-newwindow: true
-toc: true
-toc-location: right
-toc-depth: 4
-editor: visual
-lang: pt
-execute: 
-  warning: false
 ---
 
 ## Introdução
@@ -47,7 +35,7 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 Para a maioria dos exemplos utilizaremos as bases de dados **mtcars, storms** e **starwars** provenientes do pacote **datasets e dplyr e** também algumas tabelas (**Table1**, **2, 3, 4a, 4b e 5**) que vem com o pacote **tidyr**.
 
 ::: callout-note
-*Em geral, ao final de cada comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+*Em geral, ao final de cada comando, você poderá ver uma chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
 :::
 
 ------------------------------------------------------------------------
@@ -58,8 +46,7 @@ Para a maioria dos exemplos utilizaremos as bases de dados **mtcars, storms** e 
 #| output: true
 
 mtcars |> 
-  head () |> 
-  gt()
+  head () 
 
 ```
 
@@ -69,8 +56,7 @@ mtcars |>
 
 ```{r}
 storms |> 
-  head () |> 
-  gt()
+  head () 
 ```
 
 ------------------------------------------------------------------------
@@ -80,16 +66,47 @@ storms |>
 ```{r}
 starwars |> 
   select(1:8) |> 
-  head() |> 
-  gt()
+  head()
 
 ```
 
 **TABELAS EXEMPLOS** - Table1, 2, 3, 4a, 4b e 5
 
+::: panel-tabset
+## Table1
+
 ```{r}
-gt(table1);gt(table2);gt(table3);gt(table4a);gt(table4b);gt(table5)
+table1
 ```
+
+## Table2
+
+```{r}
+table2
+```
+
+## Table3
+
+```{r}
+table3
+```
+
+## Table4a
+
+```{r}
+table4a
+```
+
+## Table4b
+
+```{r}
+table4b
+```
+
+## Table5
+
+table5
+:::
 
 ::: callout-note
 *O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
@@ -190,7 +207,7 @@ Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira c
 Veja, por exemplo, nossa tabela 1 (table1). Ela está em um formato organizado, pois possui cada variável em uma coluna e cada observações em sua linha, com os valores nas células.
 
 ```{r}
-gt(table1)
+table1
 ```
 
 #### pivot_longer
@@ -200,7 +217,7 @@ Use para "pivotar" os dados das colunas para as linhas, **alongando** a tabela, 
 Por exemplo, vejamos nossa tabela 4 (table4).
 
 ```{r}
-gt(table4a)
+table4a
 ```
 
 Observe que temos uma variável (potencialmente "Ano") que está na colunas 2 e 3 da tabela. Temos também outra variável (potencialmente "Numero_de_Casos" que está nas células da tabela.
@@ -209,8 +226,7 @@ Para organizar esta tabela em nosso formato "tidy", devemos pegar estas duas col
 
 ```{r}
 pivot_longer(table4a, cols = 2:3, names_to ="ano",
-values_to = "num_casos") |> 
-  gt()
+values_to = "num_casos") 
 ```
 
 #### pivot_wider
@@ -220,15 +236,14 @@ Use para "pivotar" os dados das linhas para as colunas, **expandindo** a tabela 
 Vejamos o caso da tabela 2 (table2).
 
 ```{r}
-gt(table2)
+table2
 ```
 
 Neste exemplo, vemos que as variáveis casos (cases) e população (population) estão nas linhas e não nas colunas. Para deixarmos os dados organizados (tidy), devemos "expandir" a tabela, fazendo com que os dados de duas colunas sejam expandidos em vaŕias colunas. Os nomes das novas colunas virão de uma colunas e os valores da outra coluna. Veja:
 
 ```{r}
 table2 |> 
-  pivot_wider(names_from = type, values_from = count) |> 
-  gt()
+  pivot_wider(names_from = type, values_from = count) 
 ```
 
 ## Expandindo Tabelas
@@ -245,8 +260,7 @@ Por exemplo, se quisermos obter todas as combinações possíveis entre o númer
 
 ```{r}
 mtcars |> 
-  expand(cyl, gear, carb) |> 
-  gt()
+  expand(cyl, gear, carb) 
 ```
 
 Observe que não há na tabela original (mtcars) um veículo de 4 cilindros e 8 carburadores, porém esta combinação foi possível usando a função expand().
@@ -259,8 +273,7 @@ Por exemplo, se quisermos obter todas as combinações possíveis entre o númer
 
 ```{r}
 mtcars |> 
-  complete(cyl, gear, carb) |> 
-  gt()
+  complete(cyl, gear, carb) 
 ```
 
 ## Combinando e Dividindo Celulas
@@ -274,15 +287,14 @@ Use para combinar celulas de diversas colunas em uma única coluna.
 Vejamos com é a tabela 5 (table5) em seu formato original:
 
 ```{r}
-table5 |> gt()
+table5 
 ```
 
 Agora queremos unir as colunas "century" e "year" em uma única coluna:
 
 ```{r}
 table5 |> 
-  unite(century, year, col = "ano_completo", sep = "") |> 
-  gt()
+  unite(century, year, col = "ano_completo", sep = "") 
 ```
 
 ::: callout-note
@@ -298,8 +310,7 @@ Por exemplo, na tabela 3 (table3), temos uma coluna "rate" que possui daos dos c
 ```{r}
 table3 |> 
   separate(rate, sep = "/", 
-           into = c("casos", "pop")) |> 
-  gt()
+           into = c("casos", "pop")) 
 ```
 
 #### separate_rows
@@ -310,8 +321,7 @@ Use para dividir cada célula de **uma coluna** em **várias linhas**.
 
 ```{r}
 table3 |> 
-  separate_rows(rate, sep = "/") |> 
-  gt()
+  separate_rows(rate, sep = "/") 
 ```
 
 ## Lidando com Valores Ausentes
@@ -408,16 +418,14 @@ Observe que na coluna "data", temos um objeto \<tibble\> para grupo criado pela 
 Para acessar a tibble gerada para o primeiro grupo (furacão "Amy" na primeira linha acima), podemos fazer:
 
 ```{r}
-n_storms$data[[1]] |> 
-  gt()
+n_storms$data[[1]] 
 ```
 
 Para acessar todas as observações as variáveis "month" e "status" especificamente, podemos usar:
 
 ```{r}
 n_storms$data[[1]][, c("month", "status")] |> 
-  head() |> 
-  gt()
+  head() 
 ```
 
 **Exemplo 2: nest() especificando colunas**

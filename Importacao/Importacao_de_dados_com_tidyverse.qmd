@@ -66,7 +66,7 @@ library (openxlsx)
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf) de importação de dados com tidyverse disponível no site do [RStudio](rstudio.com).
 
 ::: callout-note
-*Em geral, ao final de cada comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+*Em geral, ao final de cada comando, você poderá ver a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
 :::
 
 ### Arquivos
@@ -125,8 +125,7 @@ Use para ler um arquivo tabulado com qualquer delimitador. Se nenhum delimitador
 Por exemplo, para ler um arquivo .TXT tabulado com o caractere "\|" como delimitador, fazemos:
 
 ```{r}
-read_delim("file.txt", delim = "|") |> 
-  gt()
+read_delim("file.txt", delim = "|") 
 ```
 
 ::: callout-tip
@@ -135,7 +134,7 @@ Para armazenar a leitura do arquivo em um objeto no R, podemos usar o operador \
 
 ```{r}
 meu_arquivo_csv <-read_delim("file.txt", delim = "|")
-gt(meu_arquivo_csv)
+meu_arquivo_csv
 ```
 
 #### read_cvs
@@ -143,8 +142,7 @@ gt(meu_arquivo_csv)
 Use para ler um arquivo tabulado **separado por vírgula**. Esta função entende que casas decimais que usam o **ponto** (ex 1.00) como separador de **casas decimais**.
 
 ```{r}
-read_csv("file.csv") |> 
-  gt()
+read_csv("file.csv") 
 ```
 
 #### read_cvs2
@@ -152,8 +150,7 @@ read_csv("file.csv") |>
 Use para ler um arquivo tabulado **separado por ponto-e-vírgula**. Esta função entende que casas decimais que usam a **vírgula** (ex: 1,00) como separador de **casas decimais**.
 
 ```{r}
-read_csv2("file2.csv") |> 
-  gt()
+read_csv2("file2.csv") 
 ```
 
 #### read_tsv
@@ -161,8 +158,7 @@ read_csv2("file2.csv") |>
 Use para ler um arquivo tabulado **separado por tab**.
 
 ```{r}
-read_tsv("file.tsv") |> 
-  gt()
+read_tsv("file.tsv") 
 ```
 
 #### read_fwf
@@ -174,8 +170,7 @@ Veja que a largura das colunas deve ser passada como um vetor para a parametro c
 :::
 
 ```{r}
-read_fwf("file.tsv", fwf_widths(c(2,2,NA))) |> 
-  gt()
+read_fwf("file.tsv", fwf_widths(c(2,2,NA)))
 ```
 
 ### Parâmetros Úteis
@@ -187,8 +182,7 @@ Alguns parametros das funções read\_\*() são muito úteis durante o processo 
 Use o parâmetro **COL_NAMES** para não trazer a primeira linha como nome das colunas.
 
 ```{r}
-read_csv2("file2.csv", col_names = FALSE) |> 
-  gt()
+read_csv2("file2.csv", col_names = FALSE) 
 ```
 
 #### Definir cabeçalho
@@ -196,8 +190,7 @@ read_csv2("file2.csv", col_names = FALSE) |>
 Use o parâmetro **COL_NAMES** para definir manualmente os nomes das colunas.
 
 ```{r}
-read_csv("file.csv", col_names = c("X", "Y", "Z")) |> 
-  gt()
+read_csv("file.csv", col_names = c("X", "Y", "Z")) 
 ```
 
 #### Ler vários arquivos
@@ -207,9 +200,7 @@ Use o parametro **ID** para ler multiplos arquivos e armazená-los em uma mesma 
 ```{r}
 write_file("A,B,C\n1,2,3\n4,5,NA", file = "f1.csv")
 write_file("A,B,C\n6,7,8\n9,10,11", file = "f2.csv")
-read_csv(c("f1.csv", "f2.csv"), id = "arq_origem") |> 
-  gt()
-
+read_csv(c("f1.csv", "f2.csv"), id = "arq_origem") 
 ```
 
 ::: callout-important
@@ -221,8 +212,7 @@ Observe que as colunas dos diversos arquivos devem corresponder, ou seja, ter o 
 Use o prâmetro SKIP para pular as primeiras n linhas.
 
 ```{r}
-read_csv("file.csv", skip = 1) |> 
-  gt()
+read_csv("file.csv", skip = 1) 
 ```
 
 #### Ler um número máximo de linhas
@@ -230,8 +220,7 @@ read_csv("file.csv", skip = 1) |>
 Use o prâmetro **N_MAX** para ler um número máximo de linhas.
 
 ```{r}
-read_csv("file.csv", n_max = 1) |> 
-  gt()
+read_csv("file.csv", n_max = 1) 
 ```
 
 #### Ler valores como NA
@@ -239,8 +228,7 @@ read_csv("file.csv", n_max = 1) |>
 Use o prâmetro **NA** para definir um ou mais valores como NA.
 
 ```{r}
-read_csv("file.csv", na = c("1")) |> 
-  gt()
+read_csv("file.csv", na = c("1")) 
 ```
 
 #### Especificar caractere decimal
@@ -248,8 +236,7 @@ read_csv("file.csv", na = c("1")) |>
 Use o prâmetro **LOCALE** para definir o caractere de casa decimais.
 
 ```{r}
-read_delim("file2.csv", locale = locale(decimal_mark = ",")) |> 
-  gt()
+read_delim("file2.csv", locale = locale(decimal_mark = ",")) 
 ```
 
 ## Salvar dados com readr

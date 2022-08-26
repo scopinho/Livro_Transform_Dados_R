@@ -1,13 +1,5 @@
 ---
 title: "Datas e horas com LUBRIDATE"
-format: html
-toc-location: right
-toc: true
-toc-depth: 4
-editor: visual
-lang: pt
-execute: 
-  warning: false
 ---
 
 ## Introdução
@@ -345,12 +337,13 @@ Procure usar o **dia maior que 12** na hora de criar o template. Isto facilita p
 
 O R reconhece \~600 fuso-horários. Cada um deles, tem iformações sobre o fuso-horário, horário de verão e variações de calendário históricas de uma área. O R define apenas um fuso-horário por vetor.
 
-Use o fuso=horário "UTC" para evitar horários-de-verão nos objetos.
+Use o fuso-horário "UTC" para evitar horários-de-verão nos objetos.
 
 Para obter uma lista dos fuso-horários disponíveis, use:
 
 ```{r}
-OlsonNames()
+OlsonNames() |> 
+  as_tibble()
 ```
 
 #### Sys.timezone

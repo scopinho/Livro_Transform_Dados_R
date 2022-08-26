@@ -1,13 +1,6 @@
 ---
 title: "Manipulacao de Strings com STRINGR"
-format: html
-toc: true
-toc-location: right
-toc-depth: 4
-editor: visual
-lang: pt
-execute: 
-  warning: false
+always_allow_html: yes
 ---
 
 ## Introdução
@@ -60,8 +53,7 @@ Para a maioria dos exemplos utilizaremos as bases de dados **fruit** (frutas) qu
 
 ```{r}
 fruit <- tibble(name = c("Apple", "Apricot", "Avocado", "Banana", "Blackberry", "Blueberry", "Cherry", "Coconut", "Custard-Apple", "Dragonfruit", "Fig", "Gooseberry", "Grapes", "Guava", "Jackfruit", "Java Plum", "Kiwifruit", "Lime", "Mango", "MuskMelon", "Olives", "Orange", "Papaya", "Peach", "Pear", "Pineapple", "Pomegranate", "Strawberry", "Tamarind", "Watermelon"))
-fruit |> 
-  gt()
+fruit 
 ```
 
 ------------------------------------------------------------------------
@@ -102,8 +94,7 @@ Se quisermos criar uma coluna ao lado para facilitar a visualização, podemos u
 
 ```{r}
 fruit |> 
-  mutate (Padrao_Encontrado = str_detect(fruit$name, "a")) |> 
-  gt()
+  mutate (Padrao_Encontrado = str_detect(fruit$name, "a")) 
 ```
 
 #### str_starts
@@ -114,8 +105,7 @@ Por exemplo, se quisermos identificar quais frutas que começam com o padrão "B
 
 ```{r}
 fruit |> 
-  mutate (Padrao_Encontrado_Inicio = str_starts(fruit$name, "Bl")) |> 
-  gt()
+  mutate (Padrao_Encontrado_Inicio = str_starts(fruit$name, "Bl")) 
 ```
 
 Veja que apenas as frutas "Blackberry" e "Bluberry" retornaram verdadeiro (TRUE).
@@ -124,8 +114,7 @@ Veja que apenas as frutas "Blackberry" e "Bluberry" retornaram verdadeiro (TRUE)
 
 ```{r}
 fruit |> 
-  filter (str_starts(name, "Bl")) |> 
-  gt()
+  filter (str_starts(name, "Bl")) 
 ```
 
 #### str_which
@@ -148,8 +137,7 @@ Por exemplo, se criarmos uma coluna contendo onde, em cada nome de fruta, o padr
 
 ```{r}
 fruit |> 
-  mutate (Localização_na_string = str_locate(name, "er")) |> 
-  gt()
+  mutate (Localização_na_string = str_locate(name, "er")) 
 ```
 
 A função str_locale retorna **NA** caso o padrão não seja encontrado na string.
@@ -166,8 +154,7 @@ Por exemplo, se buscarmos pelo padrão "na", identificamos que a fruta *banana*,
 
 ```{r}
 fruit |> 
-  mutate (Vezes_padrao_encontrado = str_count(name, "na")) |> 
-  gt()
+  mutate (Vezes_padrao_encontrado = str_count(name, "na")) 
 ```
 
 ## Partes da String
@@ -182,8 +169,7 @@ Por exemplo, para **extrair** do segundo até o quarto caractere dos nomes das f
 
 ```{r}
 fruit |> 
-  mutate (Segundo_ao_Quarto_Caractere = str_sub(name, 2, 4)) |> 
-  gt()
+  mutate (Segundo_ao_Quarto_Caractere = str_sub(name, 2, 4)) 
 ```
 
 Se precisarmos variar o início ou fim da extração de parte da string, podemos passar valores negativos para os parametros start = e/ou end =, fazendo com que a contagem acontece de trás para frente.
@@ -204,8 +190,7 @@ Por exemplo, queremos obter parte da string que atenda ao padrão "erry". Neste 
 
 ```{r}
 fruit |> 
-  mutate (Str_Extract = str_extract(name, "erry")) |> 
-  gt()
+  mutate (Str_Extract = str_extract(name, "erry")) 
 ```
 
 #### str_match
@@ -215,8 +200,8 @@ Use para obter os grupos identificados pelo padrão de busca. Ela retorna uma ma
 Por exemplo, se buscarmos por dois grupos, sendo o primeiro (Ba) e o segundo grupo (na), teremos o seguinte resultado:
 
 ```{r}
-as_tibble(str_match(fruit$name, "(Ba)(na)")) |> 
-  gt()
+str_match(fruit$name, "(Ba)(na)") |> 
+  as_tibble(.name_repair = "unique")
   
 ```
 
@@ -234,8 +219,7 @@ Por exemplo, para obtermos o tamanho das strings correspondentes aos nomes das f
 
 ```{r}
 fruit |> 
-  mutate(Tamanho = str_length(name)) |> 
-  gt()
+  mutate(Tamanho = str_length(name)) 
 ```
 
 #### str_pad
@@ -308,8 +292,7 @@ substitui_string <- function(str_origin, str_troca, inicio, fim){
 }
 
 fruit |> 
-  mutate (Segundo_ao_Quarto_Caracteres = purrr::map_chr (name, substitui_string, str_troca = "XX", inicio = -3, fim = -2))|> 
-  gt()
+  mutate (Segundo_ao_Quarto_Caracteres = purrr::map_chr (name, substitui_string, str_troca = "XX", inicio = -3, fim = -2))
 
 ```
 
@@ -329,8 +312,7 @@ Por exemplo, vamos definir inicialmente que nosso padrão de busca são as letra
 
 ```{r}
 fruit |> 
-  mutate (nomes_substituidos = str_replace(name, "er", " XX ")) |> 
-  gt()
+  mutate (nomes_substituidos = str_replace(name, "er", " XX ")) 
 ```
 
 ::: callout-note
@@ -345,8 +327,7 @@ Por exemplo, vamos definir inicialmente que nosso padrão de busca são as letra
 
 ```{r}
 fruit |> 
-  mutate (nomes_substituidos = str_replace_all(name, "an", " XX ")) |> 
-  gt()
+  mutate (nomes_substituidos = str_replace_all(name, "an", " XX "))
 ```
 
 Note que se tivessemo utilizado a função str_replace ao invés da str_replace_all, a palavra "**Banana**" retornaria "B**a XX na**", pois ela substituiria apenas a primeira vez que o padrão fosse encontrado.
@@ -357,8 +338,7 @@ Use para colocar a string em letras minúsculas.
 
 ```{r}
 fruit |> 
-  mutate (tolowe = str_to_lower(name)) |> 
-  gt()
+  mutate (tolowe = str_to_lower(name)) 
 ```
 
 #### str_to_upper
@@ -367,8 +347,7 @@ Use para colocar a string em letras maiúsculas.
 
 ```{r}
 fruit |> 
-  mutate (toupper = str_to_upper(name)) |> 
-  gt()
+  mutate (toupper = str_to_upper(name)) 
 ```
 
 #### str_to_title
@@ -377,8 +356,7 @@ Use para colocar a string com a primeira letra maiúscula e as demais em letras 
 
 ```{r}
 fruit |> 
-  mutate (totitle= str_to_title(name)) |> 
-  gt()
+  mutate (totitle= str_to_title(name)) 
 ```
 
 ## Juntando e Dividindo
@@ -399,8 +377,7 @@ frutas <- bind_cols (fruit, col_nova)
 
 #Concatenando ambas colunas
   frutas |> 
-  mutate ( str_c = str_c(name, nova_string)) |>
-  gt()
+  mutate ( str_c = str_c(name, nova_string)) 
 
 
 
@@ -429,8 +406,7 @@ Use para duplicar uma string determinado número de vezes.
 
 ```{r}
 fruit |> 
-  mutate (str_dup = str_dup(name, 3)) |> 
-  gt()
+  mutate (str_dup = str_dup(name, 3)) 
 ```
 
 #### str_split_fixed
@@ -507,8 +483,7 @@ Por exemplo, para ordenar de forma decrescente os nomes da frutas, podemos usar:
 
 ```{r}
 str_sort(fruit$name, decreasing = TRUE) |> 
-  as_tibble() |> 
-  gt()
+  as_tibble(.name_repair = "unique") 
 ```
 
 ## Auxiliares
@@ -615,7 +590,7 @@ Str_Teste
 ```
 
 | String Regex no R | Busca por                                               |
-|-------------------|---------------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | a                 | a (etc.)                                                |
 | \\\\.             | .                                                       |
 | \\\\!             | \\!                                                     |
@@ -757,8 +732,7 @@ Neste exemplo, usaremos a tabela frutas, criada quando descrevemos a função [s
 
 ```{r}
 frutas |> 
-  head() |> 
-  gt()
+  head() 
 ```
 
 Digamos que precisamos extrair apenas os numeros da coluna "nova_string". E colocá-los em uma nova coluna chamda "numeros".
@@ -772,8 +746,7 @@ Em seguida, usamos um outro padrão **\[:punct:\]** na função str_remove para 
 ```{r}
 frutas |> 
   mutate (numeros = str_extract(nova_string, "[0-9].+[0-9]")) |> 
-  mutate (numeros = str_remove(numeros, "[:punct:]")) |> 
-gt()
+  mutate (numeros = str_remove(numeros, "[:punct:]"))
 ```
 
 ### Alternadores
@@ -827,8 +800,7 @@ Podemos usar a função filter() passando o resultado da função str_detect() j
 
 ```{r}
 frutas |> 
-  filter (str_detect(name, "[^[:alnum:]]")) |> 
-  gt()
+  filter (str_detect(name, "[^[:alnum:]]")) 
 ```
 
 ### Ancoragem
@@ -870,8 +842,7 @@ Digamos que queremos filtrar apenas as frutas que **terminem** com a letra "**a*
 
 ```{r}
 frutas |> 
-  filter (str_detect(name, "[ao]$")) |> 
-  gt()
+  filter (str_detect(name, "[ao]$")) 
 ```
 
 ### Grupos
@@ -940,8 +911,7 @@ Porém agora vamos usar a função **str_replace**() e o suporte à **grupos** q
 
 ```{r}
 frutas |> 
-  mutate (numeros = str_replace(nova_string, ".+([0-9]).?([0-9]).+", "\\1\\2")) |> 
-  gt()
+  mutate (numeros = str_replace(nova_string, ".+([0-9]).?([0-9]).+", "\\1\\2")) 
 ```
 
 **Detalhes do exemplo acima:**
@@ -1001,8 +971,7 @@ Digamos que iremos filter as frutas que comecem com as letras "B" e "P" se forem
 
 ```{r}
 frutas |> 
-  filter(str_detect(name, "^[BP](?=[el])")) |> 
-  gt()
+  filter(str_detect(name, "^[BP](?=[el])")) 
 ```
 
 ## Outras Interpretações

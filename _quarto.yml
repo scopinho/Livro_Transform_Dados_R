@@ -1,7 +1,6 @@
 project:
   type: book
   output-dir: docs
-  lang: pt
 
 book:
   title: "Transformação e Manipulação de Dados com a linguagem R"
@@ -23,11 +22,20 @@ book:
 bibliography: references.bib
 
 
-format:
-  html:
+format: 
+  html: 
+    df-print: paged
+    link-external-icon: true
+    link-external-newwindow: true
+    toc: true
+    toc-location: right
+    toc-depth: 4
     theme: cosmo
   pdf:
     documentclass: scrreprt
 
 editor: visual
+execute: 
+  warning: false
+lang: pt
 
