@@ -24,7 +24,7 @@ book:
   chapters:
   - index.qmd
   - intro.qmd
-  - part: "Parte 1 - Obtendo e Ajustando os Dados"
+  - part: "Parte 1 - Obtendo e Manipulando os Dados"
     chapters:
       - Importacao/Importacao_de_dados_com_tidyverse.qmd
       - Organizacao/Organizacao_de_dados_com_tidyr.qmd
