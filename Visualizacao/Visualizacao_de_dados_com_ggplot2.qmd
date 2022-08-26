@@ -1,4 +1,5 @@
 # Visualização de Dados com GGPLOT2
+
 ## Introdução
 
 A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.
@@ -36,6 +37,50 @@ library (gt)
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
 
 ------------------------------------------------------------------------
+
+## Tipos de Variáveis
+
+Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados.
+
+Este conhecimento é importante, pois iremos nos referir a eles, principalmente quando tratarmos das funções de [Geometrias (geoms)](#geometrias-geoms).
+
+Podemos categorizar as variáveis em Qualitativas ou Quantitativas. [@favero]
+
+#### **Qualitativas**
+
+Representam as características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas.
+
+As variáveis **qualitativas**, também poder ser classificadas em função do número de categorias em:
+
+-   **Dicotômica** ou Binária: Apenas duas categorias.
+
+-   **Policotômica**: Mais que duas categorias.
+
+Ou em função da escala de mensuração em:
+
+-   **Nominal**: As unidades são classificadas em categorias em relação à características representadas. Sem ordem ou relação entre si. (ex: sexo)
+
+-   **Ordinal**: As unidades são classificadas em categorias em relação à características representadas. Há uma ordem ou relação entre si. (ex: grau de escolaridade)
+
+#### **Quantitativas**
+
+Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.
+
+As variáveis **quantitativas**, também podem ser classificadas em função da escala de precisão.
+
+-   **Discreta**: Assumem conjunto finito de valores, frequentemente de uma contagem (ex: número de filhos, quantidade de carros, etc)
+
+-   **Contínua**: Assumem conjunto infinito de valores, frequentemente com resultado de uma mensuração (ex: peso, altura, salário, etc)
+
+Ou em função da escala de mensuração em:
+
+-   **Intervalar**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, não expressa ausência de quantidade. (ex: temperatura)
+
+-   **Razão**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: temperatura)
+
+::: callout-caution
+Vale lembrar que nem sempre uma variável representada pr um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
+:::
 
 ## Gramática dos Gráficos
 
@@ -248,7 +293,7 @@ ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg), shape = 5, size = 3)
 ```
 
-## Geometrias (geoms)
+## Geometrias (geoms) {#geometrias-geoms}
 
 Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.
 
@@ -409,6 +454,8 @@ b + geom_spoke(aes(angle = 1:1155, radius = 1))
 
 ### Uma Variável Contínua
 
+Quando precisamos analisar um varíavel contínua, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
 Novamente, iremos preparar nossos objetos básicos para evitar repetição de código. Agora teremos um objeto "**c**" e outro "**c2**", aos quais iremos adicionar novas camadas. Similar ao que fizemos anteriormente, porém agora utilizaremos a base de dados "**mpg**".
 
 ```{r}
@@ -428,21 +475,47 @@ Observe que o objeto "**c**", usa a base "mpg" **já atribuindo a variável "hwy
 Já para o objeto "**c2**", **não temos a estética** de x definida, portanto, teremos que definí-la em nas próximas camadas com a funções de geometria (geom\_\*()).
 :::
 
+#### geom_histogram
+
+Use para criar histogramas, ou seja, uma forma de visualizar uma variável contínua dividindo no eixo x em classes e contando o número de observações de cada classe no eixo y.
+
+O argumento binwidth = define o tamanho das classes.
+
+No exemplo a seguir, dividimos a variável contínua de consumo por rodagem (hwy) em classes com 2 observações cada.
+
+```{r}
+c + geom_histogram(binwidth = 2) 
+```
+
+Se desejar definir o número de classes ao invés de quantas observações terão cada classe, utilize o argumento bins =.
+
+```{r}
+c + geom_histogram(bins = 16) 
+```
+
+#### geom_freqpoly
+
+Use para gerar um gráfico de polígonos de frequência. Enquanto o histograma gera um gráfico de barras, esta geometria gera uma linha.
+
+```{r}
+c + geom_freqpoly(bins = 30)
+```
+
 #### geom_area
 
-Use para criar uma geometria de área.
+Use para criar um gráfico de área, onde para cada valor no eixo x, há um valor y máximo e o valor de y mínimo é sempre zero.
 
 ::: callout-note
 Você verá um argument (stat = "bin") abaixo. Veremos as **estatísticas** na seção [ESTATÍSTICAS (STATS)](#estatísticas-stats). Por hora, pense apenas que é uma forma de definirmos os valores que iremos mostrar para o eixo y. Por padrão o número de agrupamento (bin) é 30.
 :::
 
 ```{r}
-c + geom_area(stat = "bin")
+c + geom_area(stat = "bin", bins = 32)
 ```
 
 #### geom_density
 
-Use para fazer um gráfico de **densidade** de um variável contínua.
+Use para fazer um gráfico de **densidade**. Usando funções de estimativa de densidade de kernel, seria uma versão mais "arredondada" do histogram, mostrando a função densidade de **probabilidade** da variável.
 
 Há a possibilidade de configurar vários kernels das funções de densidade, como "gaussian", "rectangular", "triangular", "epanechnikov", "biweight", "cosine" ou "optcosine".
 
@@ -450,26 +523,21 @@ Há a possibilidade de configurar vários kernels das funções de densidade, co
 c + geom_density(kernel = "gaussian")
 ```
 
+::: callout-tip
+Veja que podemos criar duas geometrias, uma com o histograma e outra de densidade sobrepostas. Para isto temos que sobreescrever a estética definida previamente para o eixo y (antes era count) usando ..density..
+:::
+
+```{r}
+c + geom_histogram(aes(y = ..density..)) +
+  geom_density()
+```
+
 #### geom_dotplot
 
-Use para criar uma geometria de pontos, com a largura dos pontos correspondem à largura do agrupamento e os pontos são empilhados. Cada ponto corresponde à uma observação dos dados.
+Use para criar um gráfico de pontos, com a largura dos pontos correspondem à largura do agrupamento e os pontos são empilhados. Cada ponto corresponde à uma observação dos dados, portanto em geral é utilizado quando temos poucas observações.
 
 ```{r}
-c + geom_dotplot()
-```
-
-#### geom_freqpoly
-
-```{r}
-c + geom_freqpoly()
-```
-
-#### geom_histogram
-
-Use para criar histogramas. O argumento binwidth = define o tamanho do agrupamento da variável.
-
-```{r}
-c + geom_histogram(binwidth = 5)
+c + geom_dotplot() 
 ```
 
 #### geom_qq
@@ -482,11 +550,75 @@ c2 + geom_qq(aes(sample = hwy))
 
 ### Uma Variável Discreta
 
+Quando precisamos analisar um varíavel discreta, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nosso objeto básico para evitar repetição de código. Agora teremos um objeto "**d**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente usando a base de dados **mpg**. Utilizaremos a variável combustível (fl).
+
+```{r}
+d <- ggplot(mpg, aes(fl))
+```
+
+#### geom_bar
+
+#### Use para criar um gráfico de barras.
+
+```{r}
+d + geom_bar()
+```
+
+As variáveis qualitativas (nominais ou ordinais) podem ser representadas por gráficos para variáveis discretas no jargão do ggplot.
+
+Veja que, como aconteceu com o combustível, podemos pegar a variável tipo do veículo (class) e gerar um gráfico de barras também.
+
+```{r}
+d + geom_bar(aes(x = class))
+```
+
+Usando o argumento da estética fill, podemos mapear uma variável (coluna). Com isto, o ggplot automaticamente criará uma legenda para os diferentes valores da varíavel. Veja:
+
+```{r}
+d + geom_bar(aes(fill =class))
+```
+
+Note que como a estética herdada do objeto ggplot base (d) tinha o mapeamento de x para a variável combustível (fl), ela ainda permanece no eixo x.
+
+Se sobrescrevermos este mapeamento para a estético do geom_bar, teremos:
+
+```{r}
+d + geom_bar(aes(x = class, fill = class))
+```
+
+### Duas Variáveis Discretas
+
+Quando precisamos analisar um duas varáveis discretas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nosso objeto básico para evitar repetição de código. Agora teremos um objeto "**g**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente, só que agora usando a base de dados **diamonds**. Utilizaremos as variáveis corte (cut) e cor (color).
+
+```{r}
+g <- ggplot(diamonds, aes(cut, color))
+```
+
+#### geom_count
+
+Esta é uma variante do geom_point() que conta o número de observação em cada localização e então mapeia a contagem na área do ponto.
+
+```{r}
+g + geom_count()
+```
+
+#### geom_jitter
+
+É similar ao geom_point, porém adicoina uma variação aleatória em cada ponto.
+
+```{r}
+g + geom_jitter(height = 2, width = 2)
+```
+
+### Uma Variável Contínua e Outra Discreta
+
 ### Duas Variáveis Contínuas
 
 ### Duas Variáveis Distribuição Bivariada Contínua
-
-### Uma Variável Contínua e Outra Discreta
 
 ### Duas Variáveis Discretas
 
