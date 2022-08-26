@@ -10,8 +10,6 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-#   - summary.qmd
-#    - references.qmd
     - Importacao/Importacao_de_dados_com_tidyverse.qmd
     - Organizacao/Organizacao_de_dados_com_tidyr.qmd
     - Transformacao/Transformacao_de_dados_com_dplyr.qmd
@@ -28,7 +26,7 @@ format:
     link-external-icon: true
     link-external-newwindow: true
     toc: true
-    toc-location: right
+#    toc-location: left
     toc-depth: 4
     theme: cosmo
   pdf:
@@ -38,4 +36,5 @@ editor: visual
 execute: 
   warning: false
 lang: pt
+license: "CC BY"
 

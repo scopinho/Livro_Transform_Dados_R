@@ -1,7 +1,4 @@
----
-title: "Datas e horas com LUBRIDATE"
----
-
+# Datas e horas com LUBRIDATE
 ## Introdução
 
 A seguir temos vários exemplos de manipulação de **variáveis** **data e hora** utilizando o pacote LUBRIDATE do R. Para saber mais sobre este pacote, acesse:

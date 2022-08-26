@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 7&nbsp; Visualização de Dados com GGPLOT2</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 6&nbsp; Visualização de Dados com GGPLOT2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -160,37 +160,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
     </ul>
@@ -202,77 +202,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">7.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">6.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">7.1.1</span> Exemplos da Folha de Referência</a></li>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">6.1.1</span> Exemplos da Folha de Referência</a></li>
   </ul></li>
-  <li><a href="#gramática-dos-gráficos" id="toc-gramática-dos-gráficos" class="nav-link" data-scroll-target="#gramática-dos-gráficos"> <span class="header-section-number">7.2</span> Gramática dos Gráficos</a></li>
-  <li><a href="#modelo-para-construção-de-um-gráfico" id="toc-modelo-para-construção-de-um-gráfico" class="nav-link" data-scroll-target="#modelo-para-construção-de-um-gráfico"> <span class="header-section-number">7.3</span> Modelo para Construção de um Gráfico</a>
+  <li><a href="#gramática-dos-gráficos" id="toc-gramática-dos-gráficos" class="nav-link" data-scroll-target="#gramática-dos-gráficos"> <span class="header-section-number">6.2</span> Gramática dos Gráficos</a></li>
+  <li><a href="#modelo-para-construção-de-um-gráfico" id="toc-modelo-para-construção-de-um-gráfico" class="nav-link" data-scroll-target="#modelo-para-construção-de-um-gráfico"> <span class="header-section-number">6.3</span> Modelo para Construção de um Gráfico</a>
   <ul class="collapse">
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"> <span class="header-section-number">7.3.0.1</span> ggplot</a></li>
-  <li><a href="#last_plot" id="toc-last_plot" class="nav-link" data-scroll-target="#last_plot"> <span class="header-section-number">7.3.0.2</span> last_plot</a></li>
-  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"> <span class="header-section-number">7.3.0.3</span> ggsave</a></li>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"> <span class="header-section-number">6.3.0.1</span> ggplot</a></li>
+  <li><a href="#last_plot" id="toc-last_plot" class="nav-link" data-scroll-target="#last_plot"> <span class="header-section-number">6.3.0.2</span> last_plot</a></li>
+  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"> <span class="header-section-number">6.3.0.3</span> ggsave</a></li>
   </ul></li>
-  <li><a href="#estética-aes" id="toc-estética-aes" class="nav-link" data-scroll-target="#estética-aes"> <span class="header-section-number">7.4</span> Estética (aes)</a>
+  <li><a href="#estética-aes" id="toc-estética-aes" class="nav-link" data-scroll-target="#estética-aes"> <span class="header-section-number">6.4</span> Estética (aes)</a>
   <ul class="collapse">
-  <li><a href="#color-e-fill" id="toc-color-e-fill" class="nav-link" data-scroll-target="#color-e-fill"> <span class="header-section-number">7.4.0.1</span> color e fill</a></li>
-  <li><a href="#linetype" id="toc-linetype" class="nav-link" data-scroll-target="#linetype"> <span class="header-section-number">7.4.0.2</span> linetype</a></li>
-  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"> <span class="header-section-number">7.4.0.3</span> size</a></li>
-  <li><a href="#lineend" id="toc-lineend" class="nav-link" data-scroll-target="#lineend"> <span class="header-section-number">7.4.0.4</span> lineend</a></li>
-  <li><a href="#linejoin" id="toc-linejoin" class="nav-link" data-scroll-target="#linejoin"> <span class="header-section-number">7.4.0.5</span> linejoin</a></li>
-  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"> <span class="header-section-number">7.4.0.6</span> shape</a></li>
+  <li><a href="#color-e-fill" id="toc-color-e-fill" class="nav-link" data-scroll-target="#color-e-fill"> <span class="header-section-number">6.4.0.1</span> color e fill</a></li>
+  <li><a href="#linetype" id="toc-linetype" class="nav-link" data-scroll-target="#linetype"> <span class="header-section-number">6.4.0.2</span> linetype</a></li>
+  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"> <span class="header-section-number">6.4.0.3</span> size</a></li>
+  <li><a href="#lineend" id="toc-lineend" class="nav-link" data-scroll-target="#lineend"> <span class="header-section-number">6.4.0.4</span> lineend</a></li>
+  <li><a href="#linejoin" id="toc-linejoin" class="nav-link" data-scroll-target="#linejoin"> <span class="header-section-number">6.4.0.5</span> linejoin</a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"> <span class="header-section-number">6.4.0.6</span> shape</a></li>
   </ul></li>
-  <li><a href="#geometrias-geoms" id="toc-geometrias-geoms" class="nav-link" data-scroll-target="#geometrias-geoms"> <span class="header-section-number">7.5</span> Geometrias (geoms)</a>
+  <li><a href="#geometrias-geoms" id="toc-geometrias-geoms" class="nav-link" data-scroll-target="#geometrias-geoms"> <span class="header-section-number">6.5</span> Geometrias (geoms)</a>
   <ul class="collapse">
-  <li><a href="#gráficos-primitivos" id="toc-gráficos-primitivos" class="nav-link" data-scroll-target="#gráficos-primitivos"> <span class="header-section-number">7.5.1</span> Gráficos Primitivos</a>
+  <li><a href="#gráficos-primitivos" id="toc-gráficos-primitivos" class="nav-link" data-scroll-target="#gráficos-primitivos"> <span class="header-section-number">6.5.1</span> Gráficos Primitivos</a>
   <ul class="collapse">
-  <li><a href="#geom_blank" id="toc-geom_blank" class="nav-link" data-scroll-target="#geom_blank"> <span class="header-section-number">7.5.1.1</span> geom_blank</a></li>
-  <li><a href="#geom_curve" id="toc-geom_curve" class="nav-link" data-scroll-target="#geom_curve"> <span class="header-section-number">7.5.1.2</span> geom_curve</a></li>
-  <li><a href="#geom_path" id="toc-geom_path" class="nav-link" data-scroll-target="#geom_path"> <span class="header-section-number">7.5.1.3</span> geom_path</a></li>
-  <li><a href="#geom_polygon" id="toc-geom_polygon" class="nav-link" data-scroll-target="#geom_polygon"> <span class="header-section-number">7.5.1.4</span> geom_polygon</a></li>
-  <li><a href="#geom_rect" id="toc-geom_rect" class="nav-link" data-scroll-target="#geom_rect"> <span class="header-section-number">7.5.1.5</span> geom_rect</a></li>
-  <li><a href="#geom_ribbon" id="toc-geom_ribbon" class="nav-link" data-scroll-target="#geom_ribbon"> <span class="header-section-number">7.5.1.6</span> geom_ribbon</a></li>
+  <li><a href="#geom_blank" id="toc-geom_blank" class="nav-link" data-scroll-target="#geom_blank"> <span class="header-section-number">6.5.1.1</span> geom_blank</a></li>
+  <li><a href="#geom_curve" id="toc-geom_curve" class="nav-link" data-scroll-target="#geom_curve"> <span class="header-section-number">6.5.1.2</span> geom_curve</a></li>
+  <li><a href="#geom_path" id="toc-geom_path" class="nav-link" data-scroll-target="#geom_path"> <span class="header-section-number">6.5.1.3</span> geom_path</a></li>
+  <li><a href="#geom_polygon" id="toc-geom_polygon" class="nav-link" data-scroll-target="#geom_polygon"> <span class="header-section-number">6.5.1.4</span> geom_polygon</a></li>
+  <li><a href="#geom_rect" id="toc-geom_rect" class="nav-link" data-scroll-target="#geom_rect"> <span class="header-section-number">6.5.1.5</span> geom_rect</a></li>
+  <li><a href="#geom_ribbon" id="toc-geom_ribbon" class="nav-link" data-scroll-target="#geom_ribbon"> <span class="header-section-number">6.5.1.6</span> geom_ribbon</a></li>
   </ul></li>
-  <li><a href="#segmentos-de-linhas" id="toc-segmentos-de-linhas" class="nav-link" data-scroll-target="#segmentos-de-linhas"> <span class="header-section-number">7.5.2</span> Segmentos de Linhas</a>
+  <li><a href="#segmentos-de-linhas" id="toc-segmentos-de-linhas" class="nav-link" data-scroll-target="#segmentos-de-linhas"> <span class="header-section-number">6.5.2</span> Segmentos de Linhas</a>
   <ul class="collapse">
-  <li><a href="#geom_abline" id="toc-geom_abline" class="nav-link" data-scroll-target="#geom_abline"> <span class="header-section-number">7.5.2.1</span> geom_abline</a></li>
-  <li><a href="#geom_hline" id="toc-geom_hline" class="nav-link" data-scroll-target="#geom_hline"> <span class="header-section-number">7.5.2.2</span> geom_hline</a></li>
-  <li><a href="#geom_vline" id="toc-geom_vline" class="nav-link" data-scroll-target="#geom_vline"> <span class="header-section-number">7.5.2.3</span> geom_vline</a></li>
+  <li><a href="#geom_abline" id="toc-geom_abline" class="nav-link" data-scroll-target="#geom_abline"> <span class="header-section-number">6.5.2.1</span> geom_abline</a></li>
+  <li><a href="#geom_hline" id="toc-geom_hline" class="nav-link" data-scroll-target="#geom_hline"> <span class="header-section-number">6.5.2.2</span> geom_hline</a></li>
+  <li><a href="#geom_vline" id="toc-geom_vline" class="nav-link" data-scroll-target="#geom_vline"> <span class="header-section-number">6.5.2.3</span> geom_vline</a></li>
+  <li><a href="#geom_segment" id="toc-geom_segment" class="nav-link" data-scroll-target="#geom_segment"> <span class="header-section-number">6.5.2.4</span> geom_segment</a></li>
+  <li><a href="#geom_spoke" id="toc-geom_spoke" class="nav-link" data-scroll-target="#geom_spoke"> <span class="header-section-number">6.5.2.5</span> geom_spoke</a></li>
   </ul></li>
-  <li><a href="#uma-variável-contínua" id="toc-uma-variável-contínua" class="nav-link" data-scroll-target="#uma-variável-contínua"> <span class="header-section-number">7.5.3</span> Uma Variável Contínua</a>
+  <li><a href="#uma-variável-contínua" id="toc-uma-variável-contínua" class="nav-link" data-scroll-target="#uma-variável-contínua"> <span class="header-section-number">6.5.3</span> Uma Variável Contínua</a>
   <ul class="collapse">
-  <li><a href="#geom_area" id="toc-geom_area" class="nav-link" data-scroll-target="#geom_area"> <span class="header-section-number">7.5.3.1</span> geom_area</a></li>
-  <li><a href="#geom_density" id="toc-geom_density" class="nav-link" data-scroll-target="#geom_density"> <span class="header-section-number">7.5.3.2</span> geom_density</a></li>
-  <li><a href="#geom_dotplot" id="toc-geom_dotplot" class="nav-link" data-scroll-target="#geom_dotplot"> <span class="header-section-number">7.5.3.3</span> geom_dotplot</a></li>
-  <li><a href="#geom_freqpoly" id="toc-geom_freqpoly" class="nav-link" data-scroll-target="#geom_freqpoly"> <span class="header-section-number">7.5.3.4</span> geom_freqpoly</a></li>
-  <li><a href="#geom_histogram" id="toc-geom_histogram" class="nav-link" data-scroll-target="#geom_histogram"> <span class="header-section-number">7.5.3.5</span> geom_histogram</a></li>
-  <li><a href="#geom_qq" id="toc-geom_qq" class="nav-link" data-scroll-target="#geom_qq"> <span class="header-section-number">7.5.3.6</span> geom_qq</a></li>
+  <li><a href="#geom_area" id="toc-geom_area" class="nav-link" data-scroll-target="#geom_area"> <span class="header-section-number">6.5.3.1</span> geom_area</a></li>
+  <li><a href="#geom_density" id="toc-geom_density" class="nav-link" data-scroll-target="#geom_density"> <span class="header-section-number">6.5.3.2</span> geom_density</a></li>
+  <li><a href="#geom_dotplot" id="toc-geom_dotplot" class="nav-link" data-scroll-target="#geom_dotplot"> <span class="header-section-number">6.5.3.3</span> geom_dotplot</a></li>
+  <li><a href="#geom_freqpoly" id="toc-geom_freqpoly" class="nav-link" data-scroll-target="#geom_freqpoly"> <span class="header-section-number">6.5.3.4</span> geom_freqpoly</a></li>
+  <li><a href="#geom_histogram" id="toc-geom_histogram" class="nav-link" data-scroll-target="#geom_histogram"> <span class="header-section-number">6.5.3.5</span> geom_histogram</a></li>
+  <li><a href="#geom_qq" id="toc-geom_qq" class="nav-link" data-scroll-target="#geom_qq"> <span class="header-section-number">6.5.3.6</span> geom_qq</a></li>
   </ul></li>
-  <li><a href="#uma-variável-discreta" id="toc-uma-variável-discreta" class="nav-link" data-scroll-target="#uma-variável-discreta"> <span class="header-section-number">7.5.4</span> Uma Variável Discreta</a></li>
-  <li><a href="#duas-variáveis-contínuas" id="toc-duas-variáveis-contínuas" class="nav-link" data-scroll-target="#duas-variáveis-contínuas"> <span class="header-section-number">7.5.5</span> Duas Variáveis Contínuas</a></li>
-  <li><a href="#duas-variáveis-distribuição-bivariada-contínua" id="toc-duas-variáveis-distribuição-bivariada-contínua" class="nav-link" data-scroll-target="#duas-variáveis-distribuição-bivariada-contínua"> <span class="header-section-number">7.5.6</span> Duas Variáveis Distribuição Bivariada Contínua</a></li>
-  <li><a href="#uma-variável-contínua-e-outra-discreta" id="toc-uma-variável-contínua-e-outra-discreta" class="nav-link" data-scroll-target="#uma-variável-contínua-e-outra-discreta"> <span class="header-section-number">7.5.7</span> Uma Variável Contínua e Outra Discreta</a></li>
-  <li><a href="#duas-variáveis-discretas" id="toc-duas-variáveis-discretas" class="nav-link" data-scroll-target="#duas-variáveis-discretas"> <span class="header-section-number">7.5.8</span> Duas Variáveis Discretas</a></li>
-  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"> <span class="header-section-number">7.5.9</span> Mapas</a></li>
-  <li><a href="#visualizando-erros" id="toc-visualizando-erros" class="nav-link" data-scroll-target="#visualizando-erros"> <span class="header-section-number">7.5.10</span> Visualizando Erros</a></li>
-  <li><a href="#três-variáveis" id="toc-três-variáveis" class="nav-link" data-scroll-target="#três-variáveis"> <span class="header-section-number">7.5.11</span> Três Variáveis</a></li>
+  <li><a href="#uma-variável-discreta" id="toc-uma-variável-discreta" class="nav-link" data-scroll-target="#uma-variável-discreta"> <span class="header-section-number">6.5.4</span> Uma Variável Discreta</a></li>
+  <li><a href="#duas-variáveis-contínuas" id="toc-duas-variáveis-contínuas" class="nav-link" data-scroll-target="#duas-variáveis-contínuas"> <span class="header-section-number">6.5.5</span> Duas Variáveis Contínuas</a></li>
+  <li><a href="#duas-variáveis-distribuição-bivariada-contínua" id="toc-duas-variáveis-distribuição-bivariada-contínua" class="nav-link" data-scroll-target="#duas-variáveis-distribuição-bivariada-contínua"> <span class="header-section-number">6.5.6</span> Duas Variáveis Distribuição Bivariada Contínua</a></li>
+  <li><a href="#uma-variável-contínua-e-outra-discreta" id="toc-uma-variável-contínua-e-outra-discreta" class="nav-link" data-scroll-target="#uma-variável-contínua-e-outra-discreta"> <span class="header-section-number">6.5.7</span> Uma Variável Contínua e Outra Discreta</a></li>
+  <li><a href="#duas-variáveis-discretas" id="toc-duas-variáveis-discretas" class="nav-link" data-scroll-target="#duas-variáveis-discretas"> <span class="header-section-number">6.5.8</span> Duas Variáveis Discretas</a></li>
+  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"> <span class="header-section-number">6.5.9</span> Mapas</a></li>
+  <li><a href="#visualizando-erros" id="toc-visualizando-erros" class="nav-link" data-scroll-target="#visualizando-erros"> <span class="header-section-number">6.5.10</span> Visualizando Erros</a></li>
+  <li><a href="#três-variáveis" id="toc-três-variáveis" class="nav-link" data-scroll-target="#três-variáveis"> <span class="header-section-number">6.5.11</span> Três Variáveis</a></li>
   </ul></li>
-  <li><a href="#estatísticas-stats" id="toc-estatísticas-stats" class="nav-link" data-scroll-target="#estatísticas-stats"> <span class="header-section-number">7.6</span> Estatísticas (stats)</a></li>
-  <li><a href="#escalas-scales" id="toc-escalas-scales" class="nav-link" data-scroll-target="#escalas-scales"> <span class="header-section-number">7.7</span> Escalas (scales)</a>
+  <li><a href="#estatísticas-stats" id="toc-estatísticas-stats" class="nav-link" data-scroll-target="#estatísticas-stats"> <span class="header-section-number">6.6</span> Estatísticas (stats)</a></li>
+  <li><a href="#escalas-scales" id="toc-escalas-scales" class="nav-link" data-scroll-target="#escalas-scales"> <span class="header-section-number">6.7</span> Escalas (scales)</a>
   <ul class="collapse">
-  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"> <span class="header-section-number">7.7.1</span> Escalas de Propósito Geral</a></li>
-  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">7.7.2</span> Escalas de Localização X &amp; Y</a></li>
-  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">7.7.3</span> Escalas de Cor e Preenchimento</a></li>
-  <li><a href="#variáveis-discretas" id="toc-variáveis-discretas" class="nav-link" data-scroll-target="#variáveis-discretas"> <span class="header-section-number">7.7.4</span> Variáveis Discretas</a></li>
-  <li><a href="#variáveis-contínuas" id="toc-variáveis-contínuas" class="nav-link" data-scroll-target="#variáveis-contínuas"> <span class="header-section-number">7.7.5</span> Variáveis Contínuas</a></li>
-  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"> <span class="header-section-number">7.7.6</span> Escalas de Forma e Tamanho</a></li>
+  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"> <span class="header-section-number">6.7.1</span> Escalas de Propósito Geral</a></li>
+  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">6.7.2</span> Escalas de Localização X &amp; Y</a></li>
+  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">6.7.3</span> Escalas de Cor e Preenchimento</a></li>
+  <li><a href="#variáveis-discretas" id="toc-variáveis-discretas" class="nav-link" data-scroll-target="#variáveis-discretas"> <span class="header-section-number">6.7.4</span> Variáveis Discretas</a></li>
+  <li><a href="#variáveis-contínuas" id="toc-variáveis-contínuas" class="nav-link" data-scroll-target="#variáveis-contínuas"> <span class="header-section-number">6.7.5</span> Variáveis Contínuas</a></li>
+  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"> <span class="header-section-number">6.7.6</span> Escalas de Forma e Tamanho</a></li>
   </ul></li>
-  <li><a href="#sistema-de-coordenadas" id="toc-sistema-de-coordenadas" class="nav-link" data-scroll-target="#sistema-de-coordenadas"> <span class="header-section-number">7.8</span> Sistema de Coordenadas</a></li>
-  <li><a href="#ajuste-de-posição" id="toc-ajuste-de-posição" class="nav-link" data-scroll-target="#ajuste-de-posição"> <span class="header-section-number">7.9</span> Ajuste de Posição</a></li>
-  <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas"> <span class="header-section-number">7.10</span> Temas</a></li>
-  <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"> <span class="header-section-number">7.11</span> Facetas</a></li>
-  <li><a href="#texto-e-legendas" id="toc-texto-e-legendas" class="nav-link" data-scroll-target="#texto-e-legendas"> <span class="header-section-number">7.12</span> Texto e Legendas</a></li>
-  <li><a href="#zoom" id="toc-zoom" class="nav-link" data-scroll-target="#zoom"> <span class="header-section-number">7.13</span> Zoom</a></li>
+  <li><a href="#sistema-de-coordenadas" id="toc-sistema-de-coordenadas" class="nav-link" data-scroll-target="#sistema-de-coordenadas"> <span class="header-section-number">6.8</span> Sistema de Coordenadas</a></li>
+  <li><a href="#ajuste-de-posição" id="toc-ajuste-de-posição" class="nav-link" data-scroll-target="#ajuste-de-posição"> <span class="header-section-number">6.9</span> Ajuste de Posição</a></li>
+  <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas"> <span class="header-section-number">6.10</span> Temas</a></li>
+  <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"> <span class="header-section-number">6.11</span> Facetas</a></li>
+  <li><a href="#texto-e-legendas" id="toc-texto-e-legendas" class="nav-link" data-scroll-target="#texto-e-legendas"> <span class="header-section-number">6.12</span> Texto e Legendas</a></li>
+  <li><a href="#zoom" id="toc-zoom" class="nav-link" data-scroll-target="#zoom"> <span class="header-section-number">6.13</span> Zoom</a></li>
   </ul>
 </nav>
     </div>
@@ -281,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></h1>
 </div>
 
 
@@ -295,8 +297,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introdução" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">7.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -337,14 +339,14 @@ Aviso
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (gt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="exemplos-da-folha-de-referência" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">7.1.1</span> Exemplos da Folha de Referência</h3>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">6.1.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf"><strong>Folha de Referência</strong></a> do stringr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 <hr>
 </section>
 </section>
-<section id="gramática-dos-gráficos" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="gramática-dos-gráficos"><span class="header-section-number">7.2</span> Gramática dos Gráficos</h2>
+<section id="gramática-dos-gráficos" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="gramática-dos-gráficos"><span class="header-section-number">6.2</span> Gramática dos Gráficos</h2>
 <p>O pacote ggplot2 é uma implementação do livro “<strong><em>Grammar of Graphics</em></strong>”, que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões. O modelo teórico proposto no livro é que através de camadas definidas qualquer gráfico pode ser construído. Abaixo o modelo, que deve ser interpretado de baixo para cima.</p>
 <p><img src="images/grammar-01.jpg" class="img-fluid" width="354"></p>
 <p>De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um <strong>conjunto de dados</strong>, um <strong>sistema de coordenadas</strong> e <strong>geoms</strong>, que seriam marcas visuais que representas os pontos dos dados.</p>
@@ -353,13 +355,13 @@ Aviso
 <p>Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor ou tamanho.</p>
 <p><img src="images/ggplot-02.jpg" class="img-fluid" width="475"></p>
 </section>
-<section id="modelo-para-construção-de-um-gráfico" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="modelo-para-construção-de-um-gráfico"><span class="header-section-number">7.3</span> Modelo para Construção de um Gráfico</h2>
+<section id="modelo-para-construção-de-um-gráfico" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="modelo-para-construção-de-um-gráfico"><span class="header-section-number">6.3</span> Modelo para Construção de um Gráfico</h2>
 <p>No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sintaxe de construção de gráficos:</p>
 <p><img src="images/ggplot_template-01.jpg" class="img-fluid" width="556"></p>
 <hr>
-<section id="ggplot" class="level4" data-number="7.3.0.1">
-<h4 data-number="7.3.0.1" class="anchored" data-anchor-id="ggplot"><span class="header-section-number">7.3.0.1</span> ggplot</h4>
+<section id="ggplot" class="level4" data-number="6.3.0.1">
+<h4 data-number="6.3.0.1" class="anchored" data-anchor-id="ggplot"><span class="header-section-number">6.3.0.1</span> ggplot</h4>
 <p>A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência. Adicione uma geometria (geom) para cada camada.</p>
 <p>Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela <strong>mtcars</strong>. Para maiores informação sobre as colunas e dados do mtcars, digite ?mtcars.</p>
 <div class="cell">
@@ -423,8 +425,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="last_plot" class="level4" data-number="7.3.0.2">
-<h4 data-number="7.3.0.2" class="anchored" data-anchor-id="last_plot"><span class="header-section-number">7.3.0.2</span> last_plot</h4>
+<section id="last_plot" class="level4" data-number="6.3.0.2">
+<h4 data-number="6.3.0.2" class="anchored" data-anchor-id="last_plot"><span class="header-section-number">6.3.0.2</span> last_plot</h4>
 <p>Use para retornar o último gráfico gerado.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -433,8 +435,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="ggsave" class="level4" data-number="7.3.0.3">
-<h4 data-number="7.3.0.3" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">7.3.0.3</span> ggsave</h4>
+<section id="ggsave" class="level4" data-number="6.3.0.3">
+<h4 data-number="6.3.0.3" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">6.3.0.3</span> ggsave</h4>
 <p>Use para salvar o gráfico em uma imagem. O tipo de imagem é selecionado pela extensão do arquivo de saída.</p>
 <p>Por exemplo, para salvar o diretório atual um arquivo com o gráfico chamado “plot-01.png” com o formato de imagem “.PNG” de tamanho 5x5 centímetros, fazemos:</p>
 <div class="cell">
@@ -442,11 +444,11 @@ Dica
 </div>
 </section>
 </section>
-<section id="estética-aes" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="estética-aes"><span class="header-section-number">7.4</span> Estética (aes)</h2>
+<section id="estética-aes" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="estética-aes"><span class="header-section-number">6.4</span> Estética (aes)</h2>
 <p>Cada estética possui valores padrões que serão usados por determinada função de geometria ou de estatística. Mas existem valores que são comuns a quase todas as geom/stat(), a seguir veremos alguns deles:</p>
-<section id="color-e-fill" class="level4" data-number="7.4.0.1">
-<h4 data-number="7.4.0.1" class="anchored" data-anchor-id="color-e-fill"><span class="header-section-number">7.4.0.1</span> color e fill</h4>
+<section id="color-e-fill" class="level4" data-number="6.4.0.1">
+<h4 data-number="6.4.0.1" class="anchored" data-anchor-id="color-e-fill"><span class="header-section-number">6.4.0.1</span> color e fill</h4>
 <p>Use para definir a cor (color) ou preenchimento (fill) para a estética.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars)<span class="sc">+</span></span>
@@ -486,8 +488,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="linetype" class="level4" data-number="7.4.0.2">
-<h4 data-number="7.4.0.2" class="anchored" data-anchor-id="linetype"><span class="header-section-number">7.4.0.2</span> linetype</h4>
+<section id="linetype" class="level4" data-number="6.4.0.2">
+<h4 data-number="6.4.0.2" class="anchored" data-anchor-id="linetype"><span class="header-section-number">6.4.0.2</span> linetype</h4>
 <p>Use para definir a linha utilizada no gráfico. Podemos utilizar um número de 0 a 6 ou um nome:</p>
 <p><em>(0 = “blank”, 1 = “solid”, 2 = “dashed”, 3 = “dotted”, 4 = “dotdash”, 5 = “longdash”,6 = “twodash”)</em></p>
 <p>Por exemplo, ao invés de utilizarmos a geometria de pontos (geom_point), vamos utilzar a geometria de linha (geom_line):</p>
@@ -499,8 +501,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="size" class="level4" data-number="7.4.0.3">
-<h4 data-number="7.4.0.3" class="anchored" data-anchor-id="size"><span class="header-section-number">7.4.0.3</span> size</h4>
+<section id="size" class="level4" data-number="6.4.0.3">
+<h4 data-number="6.4.0.3" class="anchored" data-anchor-id="size"><span class="header-section-number">6.4.0.3</span> size</h4>
 <p>Use para definir o tamanho, no caso de uma linha em “mm”.</p>
 <p>Como dito anteriormente, estes valores são comuns para vários geometrias. Por exemplo, podemos utilizar o argumento size também na geometria de pontos (geom_point):</p>
 <div>
@@ -520,8 +522,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="lineend" class="level4" data-number="7.4.0.4">
-<h4 data-number="7.4.0.4" class="anchored" data-anchor-id="lineend"><span class="header-section-number">7.4.0.4</span> lineend</h4>
+<section id="lineend" class="level4" data-number="6.4.0.4">
+<h4 data-number="6.4.0.4" class="anchored" data-anchor-id="lineend"><span class="header-section-number">6.4.0.4</span> lineend</h4>
 <p>Use para definir o terminador da linha. Os valores podem ser: <em>round</em>, <em>butt</em> e <em>square</em>.</p>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">squared</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">butt</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">round</a></li></ul>
@@ -556,8 +558,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="linejoin" class="level4" data-number="7.4.0.5">
-<h4 data-number="7.4.0.5" class="anchored" data-anchor-id="linejoin"><span class="header-section-number">7.4.0.5</span> linejoin</h4>
+<section id="linejoin" class="level4" data-number="6.4.0.5">
+<h4 data-number="6.4.0.5" class="anchored" data-anchor-id="linejoin"><span class="header-section-number">6.4.0.5</span> linejoin</h4>
 <p>Use para definir a junção da linha. Os valores podem ser: <em>round</em>, <em>mitre</em> e <em>bevel</em>.</p>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">round</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">mitre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">bevel</a></li></ul>
@@ -592,8 +594,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="shape" class="level4" data-number="7.4.0.6">
-<h4 data-number="7.4.0.6" class="anchored" data-anchor-id="shape"><span class="header-section-number">7.4.0.6</span> shape</h4>
+<section id="shape" class="level4" data-number="6.4.0.6">
+<h4 data-number="6.4.0.6" class="anchored" data-anchor-id="shape"><span class="header-section-number">6.4.0.6</span> shape</h4>
 <p>Use para definir a forma. Podemos passar um número ou um nome em inglês da forma conforme abaixo:</p>
 <p><img src="images/aes_shape-01.jpg" class="img-fluid"></p>
 <div>
@@ -614,8 +616,8 @@ Importante
 </div>
 </section>
 </section>
-<section id="geometrias-geoms" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="geometrias-geoms"><span class="header-section-number">7.5</span> Geometrias (geoms)</h2>
+<section id="geometrias-geoms" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="geometrias-geoms"><span class="header-section-number">6.5</span> Geometrias (geoms)</h2>
 <p>Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -630,8 +632,8 @@ Aviso
 <p>Lembre-se que cada função retornará uma camada, portanto, a ordem de criação das camadas afeta o resultado do gráfico, pois uma será criada sobre a anterior.</p>
 </div>
 </div>
-<section id="gráficos-primitivos" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="gráficos-primitivos"><span class="header-section-number">7.5.1</span> Gráficos Primitivos</h3>
+<section id="gráficos-primitivos" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="gráficos-primitivos"><span class="header-section-number">6.5.1</span> Gráficos Primitivos</h3>
 <p>Para os exemplos a seguir, utilizaremos duas bases de dados, uma chamada <strong>economics</strong> e outra <strong>chamada</strong> seals.</p>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Economics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Seals</a></li></ul>
@@ -686,8 +688,8 @@ Nota
 </div>
 </div>
 <p>Agora com os objetos inicialmente criados, iremos adicionar novas camadas afim de obtermos os gráficos e entendermos algumas das funções de geometria para gráficos primitivos.</p>
-<section id="geom_blank" class="level4" data-number="7.5.1.1">
-<h4 data-number="7.5.1.1" class="anchored" data-anchor-id="geom_blank"><span class="header-section-number">7.5.1.1</span> geom_blank</h4>
+<section id="geom_blank" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="geom_blank"><span class="header-section-number">6.5.1.1</span> geom_blank</h4>
 <p>Use para garantir limites para todos os gráficos de acordo com os dados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="fu">geom_blank</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -709,8 +711,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="geom_curve" class="level4" data-number="7.5.1.2">
-<h4 data-number="7.5.1.2" class="anchored" data-anchor-id="geom_curve"><span class="header-section-number">7.5.1.2</span> geom_curve</h4>
+<section id="geom_curve" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="geom_curve"><span class="header-section-number">6.5.1.2</span> geom_curve</h4>
 <p>Use para criar curvas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_curve</span>(<span class="fu">aes</span>(<span class="at">yend =</span> lat <span class="sc">+</span> <span class="dv">1</span>, <span class="at">xend =</span> long <span class="sc">+</span> <span class="dv">1</span>), <span class="at">curvature =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -719,8 +721,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="geom_path" class="level4" data-number="7.5.1.3">
-<h4 data-number="7.5.1.3" class="anchored" data-anchor-id="geom_path"><span class="header-section-number">7.5.1.3</span> geom_path</h4>
+<section id="geom_path" class="level4" data-number="6.5.1.3">
+<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="geom_path"><span class="header-section-number">6.5.1.3</span> geom_path</h4>
 <p>Use para conectar observações.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="fu">geom_path</span>(<span class="at">lineend =</span> <span class="st">"butt"</span>, <span class="at">linejoin =</span> <span class="st">"round"</span>, <span class="at">linemitre =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -729,8 +731,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="geom_polygon" class="level4" data-number="7.5.1.4">
-<h4 data-number="7.5.1.4" class="anchored" data-anchor-id="geom_polygon"><span class="header-section-number">7.5.1.4</span> geom_polygon</h4>
+<section id="geom_polygon" class="level4" data-number="6.5.1.4">
+<h4 data-number="6.5.1.4" class="anchored" data-anchor-id="geom_polygon"><span class="header-section-number">6.5.1.4</span> geom_polygon</h4>
 <p>Use para criar poligonos. É similar a geom_path(), porém a parte interna é preenchida com argumento fill =.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">alpha =</span> <span class="dv">50</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -752,8 +754,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="geom_rect" class="level4" data-number="7.5.1.5">
-<h4 data-number="7.5.1.5" class="anchored" data-anchor-id="geom_rect"><span class="header-section-number">7.5.1.5</span> geom_rect</h4>
+<section id="geom_rect" class="level4" data-number="6.5.1.5">
+<h4 data-number="6.5.1.5" class="anchored" data-anchor-id="geom_rect"><span class="header-section-number">6.5.1.5</span> geom_rect</h4>
 <p>Use para criar retângulos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> long, <span class="at">ymin =</span> lat,</span>
@@ -776,8 +778,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="geom_ribbon" class="level4" data-number="7.5.1.6">
-<h4 data-number="7.5.1.6" class="anchored" data-anchor-id="geom_ribbon"><span class="header-section-number">7.5.1.6</span> geom_ribbon</h4>
+<section id="geom_ribbon" class="level4" data-number="6.5.1.6">
+<h4 data-number="6.5.1.6" class="anchored" data-anchor-id="geom_ribbon"><span class="header-section-number">6.5.1.6</span> geom_ribbon</h4>
 <p>Use para criar uma “fita”. Para cada valor de x, ela mostra um intervalo y, definido por ymin e ymax. Veja que geom_area() é um caso especial do geom_ribbon(), onde o ymin é fixo em 0 e y é usado no lugar de ymax.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="fu">geom_ribbon</span> (<span class="fu">aes</span>(<span class="at">ymin =</span> unemploy <span class="sc">-</span> <span class="dv">900</span>,</span>
@@ -788,11 +790,11 @@ Nota
 </div>
 </section>
 </section>
-<section id="segmentos-de-linhas" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="segmentos-de-linhas"><span class="header-section-number">7.5.2</span> Segmentos de Linhas</h3>
+<section id="segmentos-de-linhas" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="segmentos-de-linhas"><span class="header-section-number">6.5.2</span> Segmentos de Linhas</h3>
 <p>Estas funções de geometrias, permitem criar diversos tipo de segmentos de linha e são úteis quando precisamos “marcar” ou definir algo no gráfico, com linhas verticais ou horizontais por exemplo.</p>
-<section id="geom_abline" class="level4" data-number="7.5.2.1">
-<h4 data-number="7.5.2.1" class="anchored" data-anchor-id="geom_abline"><span class="header-section-number">7.5.2.1</span> geom_abline</h4>
+<section id="geom_abline" class="level4" data-number="6.5.2.1">
+<h4 data-number="6.5.2.1" class="anchored" data-anchor-id="geom_abline"><span class="header-section-number">6.5.2.1</span> geom_abline</h4>
 <p>Use para criar uma linha de um ponto “a” até um ponto “b”, passando o intercepto e a inclinação da reta.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -801,8 +803,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="geom_hline" class="level4" data-number="7.5.2.2">
-<h4 data-number="7.5.2.2" class="anchored" data-anchor-id="geom_hline"><span class="header-section-number">7.5.2.2</span> geom_hline</h4>
+<section id="geom_hline" class="level4" data-number="6.5.2.2">
+<h4 data-number="6.5.2.2" class="anchored" data-anchor-id="geom_hline"><span class="header-section-number">6.5.2.2</span> geom_hline</h4>
 <p>Use para criar uma ou mais linhas horizontais.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept =</span> lat))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -819,8 +821,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="geom_vline" class="level4" data-number="7.5.2.3">
-<h4 data-number="7.5.2.3" class="anchored" data-anchor-id="geom_vline"><span class="header-section-number">7.5.2.3</span> geom_vline</h4>
+<section id="geom_vline" class="level4" data-number="6.5.2.3">
+<h4 data-number="6.5.2.3" class="anchored" data-anchor-id="geom_vline"><span class="header-section-number">6.5.2.3</span> geom_vline</h4>
 <p>Use para criar uma ou mais linhas horizontais.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> long))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -828,7 +830,9 @@ Nota
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>geom_segment</p>
+</section>
+<section id="geom_segment" class="level4" data-number="6.5.2.4">
+<h4 data-number="6.5.2.4" class="anchored" data-anchor-id="geom_segment"><span class="header-section-number">6.5.2.4</span> geom_segment</h4>
 <p>É similar ao geom_curve, porém ao invés de criar uma curva, criar um segmento de reta.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">yend =</span> lat <span class="sc">+</span> <span class="dv">1</span>, <span class="at">xend =</span> long <span class="sc">+</span> <span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -836,7 +840,9 @@ Nota
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>geom_spoke</p>
+</section>
+<section id="geom_spoke" class="level4" data-number="6.5.2.5">
+<h4 data-number="6.5.2.5" class="anchored" data-anchor-id="geom_spoke"><span class="header-section-number">6.5.2.5</span> geom_spoke</h4>
 <p>Use para criar um segmento, parametrizado pela localização, direção e distância.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">geom_spoke</span>(<span class="fu">aes</span>(<span class="at">angle =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1155</span>, <span class="at">radius =</span> <span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -846,8 +852,8 @@ Nota
 </div>
 </section>
 </section>
-<section id="uma-variável-contínua" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="uma-variável-contínua"><span class="header-section-number">7.5.3</span> Uma Variável Contínua</h3>
+<section id="uma-variável-contínua" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="uma-variável-contínua"><span class="header-section-number">6.5.3</span> Uma Variável Contínua</h3>
 <p>Novamente, iremos preparar nossos objetos básicos para evitar repetição de código. Agora teremos um objeto “<strong>c</strong>” e outro “<strong>c2</strong>”, aos quais iremos adicionar novas camadas. Similar ao que fizemos anteriormente, porém agora utilizaremos a base de dados “<strong>mpg</strong>”.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>mpg</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -879,10 +885,22 @@ Importante
 <p>Já para o objeto “<strong>c2</strong>”, <strong>não temos a estética</strong> de x definida, portanto, teremos que definí-la em nas próximas camadas com a funções de geometria (geom_*()).</p>
 </div>
 </div>
-<section id="geom_area" class="level4" data-number="7.5.3.1">
-<h4 data-number="7.5.3.1" class="anchored" data-anchor-id="geom_area"><span class="header-section-number">7.5.3.1</span> geom_area</h4>
+<section id="geom_area" class="level4" data-number="6.5.3.1">
+<h4 data-number="6.5.3.1" class="anchored" data-anchor-id="geom_area"><span class="header-section-number">6.5.3.1</span> geom_area</h4>
 <p>Use para criar uma geometria de área.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Você verá um argument (stat = “bin”) abaixo. Veremos as <strong>estatísticas</strong> na seção <a href="#estatísticas-stats">ESTATÍSTICAS (STATS)</a>. Por hora, pense apenas que é uma forma de definirmos os valores que iremos mostrar para o eixo y. Por padrão o número de agrupamento (bin) é 30.</p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"bin"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -890,8 +908,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="geom_density" class="level4" data-number="7.5.3.2">
-<h4 data-number="7.5.3.2" class="anchored" data-anchor-id="geom_density"><span class="header-section-number">7.5.3.2</span> geom_density</h4>
+<section id="geom_density" class="level4" data-number="6.5.3.2">
+<h4 data-number="6.5.3.2" class="anchored" data-anchor-id="geom_density"><span class="header-section-number">6.5.3.2</span> geom_density</h4>
 <p>Use para fazer um gráfico de <strong>densidade</strong> de um variável contínua.</p>
 <p>Há a possibilidade de configurar vários kernels das funções de densidade, como “gaussian”, “rectangular”, “triangular”, “epanechnikov”, “biweight”, “cosine” ou “optcosine”.</p>
 <div class="cell">
@@ -901,8 +919,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="geom_dotplot" class="level4" data-number="7.5.3.3">
-<h4 data-number="7.5.3.3" class="anchored" data-anchor-id="geom_dotplot"><span class="header-section-number">7.5.3.3</span> geom_dotplot</h4>
+<section id="geom_dotplot" class="level4" data-number="6.5.3.3">
+<h4 data-number="6.5.3.3" class="anchored" data-anchor-id="geom_dotplot"><span class="header-section-number">6.5.3.3</span> geom_dotplot</h4>
 <p>Use para criar uma geometria de pontos, com a largura dos pontos correspondem à largura do agrupamento e os pontos são empilhados. Cada ponto corresponde à uma observação dos dados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_dotplot</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -911,8 +929,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="geom_freqpoly" class="level4" data-number="7.5.3.4">
-<h4 data-number="7.5.3.4" class="anchored" data-anchor-id="geom_freqpoly"><span class="header-section-number">7.5.3.4</span> geom_freqpoly</h4>
+<section id="geom_freqpoly" class="level4" data-number="6.5.3.4">
+<h4 data-number="6.5.3.4" class="anchored" data-anchor-id="geom_freqpoly"><span class="header-section-number">6.5.3.4</span> geom_freqpoly</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_freqpoly</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -920,8 +938,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="geom_histogram" class="level4" data-number="7.5.3.5">
-<h4 data-number="7.5.3.5" class="anchored" data-anchor-id="geom_histogram"><span class="header-section-number">7.5.3.5</span> geom_histogram</h4>
+<section id="geom_histogram" class="level4" data-number="6.5.3.5">
+<h4 data-number="6.5.3.5" class="anchored" data-anchor-id="geom_histogram"><span class="header-section-number">6.5.3.5</span> geom_histogram</h4>
 <p>Use para criar histogramas. O argumento binwidth = define o tamanho do agrupamento da variável.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -930,8 +948,8 @@ Importante
 </div>
 </div>
 </section>
-<section id="geom_qq" class="level4" data-number="7.5.3.6">
-<h4 data-number="7.5.3.6" class="anchored" data-anchor-id="geom_qq"><span class="header-section-number">7.5.3.6</span> geom_qq</h4>
+<section id="geom_qq" class="level4" data-number="6.5.3.6">
+<h4 data-number="6.5.3.6" class="anchored" data-anchor-id="geom_qq"><span class="header-section-number">6.5.3.6</span> geom_qq</h4>
 <p>Use para criar um gráfico de quantil-quantil. Em geral utilizado para confirmar se uma variável tem uma distribuição gaussiana.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>c2 <span class="sc">+</span> <span class="fu">geom_qq</span>(<span class="fu">aes</span>(<span class="at">sample =</span> hwy))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -941,72 +959,72 @@ Importante
 </div>
 </section>
 </section>
-<section id="uma-variável-discreta" class="level3" data-number="7.5.4">
-<h3 data-number="7.5.4" class="anchored" data-anchor-id="uma-variável-discreta"><span class="header-section-number">7.5.4</span> Uma Variável Discreta</h3>
+<section id="uma-variável-discreta" class="level3" data-number="6.5.4">
+<h3 data-number="6.5.4" class="anchored" data-anchor-id="uma-variável-discreta"><span class="header-section-number">6.5.4</span> Uma Variável Discreta</h3>
 </section>
-<section id="duas-variáveis-contínuas" class="level3" data-number="7.5.5">
-<h3 data-number="7.5.5" class="anchored" data-anchor-id="duas-variáveis-contínuas"><span class="header-section-number">7.5.5</span> Duas Variáveis Contínuas</h3>
+<section id="duas-variáveis-contínuas" class="level3" data-number="6.5.5">
+<h3 data-number="6.5.5" class="anchored" data-anchor-id="duas-variáveis-contínuas"><span class="header-section-number">6.5.5</span> Duas Variáveis Contínuas</h3>
 </section>
-<section id="duas-variáveis-distribuição-bivariada-contínua" class="level3" data-number="7.5.6">
-<h3 data-number="7.5.6" class="anchored" data-anchor-id="duas-variáveis-distribuição-bivariada-contínua"><span class="header-section-number">7.5.6</span> Duas Variáveis Distribuição Bivariada Contínua</h3>
+<section id="duas-variáveis-distribuição-bivariada-contínua" class="level3" data-number="6.5.6">
+<h3 data-number="6.5.6" class="anchored" data-anchor-id="duas-variáveis-distribuição-bivariada-contínua"><span class="header-section-number">6.5.6</span> Duas Variáveis Distribuição Bivariada Contínua</h3>
 </section>
-<section id="uma-variável-contínua-e-outra-discreta" class="level3" data-number="7.5.7">
-<h3 data-number="7.5.7" class="anchored" data-anchor-id="uma-variável-contínua-e-outra-discreta"><span class="header-section-number">7.5.7</span> Uma Variável Contínua e Outra Discreta</h3>
+<section id="uma-variável-contínua-e-outra-discreta" class="level3" data-number="6.5.7">
+<h3 data-number="6.5.7" class="anchored" data-anchor-id="uma-variável-contínua-e-outra-discreta"><span class="header-section-number">6.5.7</span> Uma Variável Contínua e Outra Discreta</h3>
 </section>
-<section id="duas-variáveis-discretas" class="level3" data-number="7.5.8">
-<h3 data-number="7.5.8" class="anchored" data-anchor-id="duas-variáveis-discretas"><span class="header-section-number">7.5.8</span> Duas Variáveis Discretas</h3>
+<section id="duas-variáveis-discretas" class="level3" data-number="6.5.8">
+<h3 data-number="6.5.8" class="anchored" data-anchor-id="duas-variáveis-discretas"><span class="header-section-number">6.5.8</span> Duas Variáveis Discretas</h3>
 </section>
-<section id="mapas" class="level3" data-number="7.5.9">
-<h3 data-number="7.5.9" class="anchored" data-anchor-id="mapas"><span class="header-section-number">7.5.9</span> Mapas</h3>
+<section id="mapas" class="level3" data-number="6.5.9">
+<h3 data-number="6.5.9" class="anchored" data-anchor-id="mapas"><span class="header-section-number">6.5.9</span> Mapas</h3>
 </section>
-<section id="visualizando-erros" class="level3" data-number="7.5.10">
-<h3 data-number="7.5.10" class="anchored" data-anchor-id="visualizando-erros"><span class="header-section-number">7.5.10</span> Visualizando Erros</h3>
+<section id="visualizando-erros" class="level3" data-number="6.5.10">
+<h3 data-number="6.5.10" class="anchored" data-anchor-id="visualizando-erros"><span class="header-section-number">6.5.10</span> Visualizando Erros</h3>
 </section>
-<section id="três-variáveis" class="level3" data-number="7.5.11">
-<h3 data-number="7.5.11" class="anchored" data-anchor-id="três-variáveis"><span class="header-section-number">7.5.11</span> Três Variáveis</h3>
-</section>
-</section>
-<section id="estatísticas-stats" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="estatísticas-stats"><span class="header-section-number">7.6</span> Estatísticas (stats)</h2>
-</section>
-<section id="escalas-scales" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="escalas-scales"><span class="header-section-number">7.7</span> Escalas (scales)</h2>
-<section id="escalas-de-propósito-geral" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="escalas-de-propósito-geral"><span class="header-section-number">7.7.1</span> Escalas de Propósito Geral</h3>
-</section>
-<section id="escalas-de-localização-x-y" class="level3" data-number="7.7.2">
-<h3 data-number="7.7.2" class="anchored" data-anchor-id="escalas-de-localização-x-y"><span class="header-section-number">7.7.2</span> Escalas de Localização X &amp; Y</h3>
-</section>
-<section id="escalas-de-cor-e-preenchimento" class="level3" data-number="7.7.3">
-<h3 data-number="7.7.3" class="anchored" data-anchor-id="escalas-de-cor-e-preenchimento"><span class="header-section-number">7.7.3</span> Escalas de Cor e Preenchimento</h3>
-</section>
-<section id="variáveis-discretas" class="level3" data-number="7.7.4">
-<h3 data-number="7.7.4" class="anchored" data-anchor-id="variáveis-discretas"><span class="header-section-number">7.7.4</span> Variáveis Discretas</h3>
-</section>
-<section id="variáveis-contínuas" class="level3" data-number="7.7.5">
-<h3 data-number="7.7.5" class="anchored" data-anchor-id="variáveis-contínuas"><span class="header-section-number">7.7.5</span> Variáveis Contínuas</h3>
-</section>
-<section id="escalas-de-forma-e-tamanho" class="level3" data-number="7.7.6">
-<h3 data-number="7.7.6" class="anchored" data-anchor-id="escalas-de-forma-e-tamanho"><span class="header-section-number">7.7.6</span> Escalas de Forma e Tamanho</h3>
+<section id="três-variáveis" class="level3" data-number="6.5.11">
+<h3 data-number="6.5.11" class="anchored" data-anchor-id="três-variáveis"><span class="header-section-number">6.5.11</span> Três Variáveis</h3>
 </section>
 </section>
-<section id="sistema-de-coordenadas" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="sistema-de-coordenadas"><span class="header-section-number">7.8</span> Sistema de Coordenadas</h2>
+<section id="estatísticas-stats" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="estatísticas-stats"><span class="header-section-number">6.6</span> Estatísticas (stats)</h2>
 </section>
-<section id="ajuste-de-posição" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="ajuste-de-posição"><span class="header-section-number">7.9</span> Ajuste de Posição</h2>
+<section id="escalas-scales" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="escalas-scales"><span class="header-section-number">6.7</span> Escalas (scales)</h2>
+<section id="escalas-de-propósito-geral" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="escalas-de-propósito-geral"><span class="header-section-number">6.7.1</span> Escalas de Propósito Geral</h3>
 </section>
-<section id="temas" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="temas"><span class="header-section-number">7.10</span> Temas</h2>
+<section id="escalas-de-localização-x-y" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="escalas-de-localização-x-y"><span class="header-section-number">6.7.2</span> Escalas de Localização X &amp; Y</h3>
 </section>
-<section id="facetas" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="facetas"><span class="header-section-number">7.11</span> Facetas</h2>
+<section id="escalas-de-cor-e-preenchimento" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="escalas-de-cor-e-preenchimento"><span class="header-section-number">6.7.3</span> Escalas de Cor e Preenchimento</h3>
 </section>
-<section id="texto-e-legendas" class="level2" data-number="7.12">
-<h2 data-number="7.12" class="anchored" data-anchor-id="texto-e-legendas"><span class="header-section-number">7.12</span> Texto e Legendas</h2>
+<section id="variáveis-discretas" class="level3" data-number="6.7.4">
+<h3 data-number="6.7.4" class="anchored" data-anchor-id="variáveis-discretas"><span class="header-section-number">6.7.4</span> Variáveis Discretas</h3>
 </section>
-<section id="zoom" class="level2" data-number="7.13">
-<h2 data-number="7.13" class="anchored" data-anchor-id="zoom"><span class="header-section-number">7.13</span> Zoom</h2>
+<section id="variáveis-contínuas" class="level3" data-number="6.7.5">
+<h3 data-number="6.7.5" class="anchored" data-anchor-id="variáveis-contínuas"><span class="header-section-number">6.7.5</span> Variáveis Contínuas</h3>
+</section>
+<section id="escalas-de-forma-e-tamanho" class="level3" data-number="6.7.6">
+<h3 data-number="6.7.6" class="anchored" data-anchor-id="escalas-de-forma-e-tamanho"><span class="header-section-number">6.7.6</span> Escalas de Forma e Tamanho</h3>
+</section>
+</section>
+<section id="sistema-de-coordenadas" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="sistema-de-coordenadas"><span class="header-section-number">6.8</span> Sistema de Coordenadas</h2>
+</section>
+<section id="ajuste-de-posição" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="ajuste-de-posição"><span class="header-section-number">6.9</span> Ajuste de Posição</h2>
+</section>
+<section id="temas" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="temas"><span class="header-section-number">6.10</span> Temas</h2>
+</section>
+<section id="facetas" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="facetas"><span class="header-section-number">6.11</span> Facetas</h2>
+</section>
+<section id="texto-e-legendas" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="texto-e-legendas"><span class="header-section-number">6.12</span> Texto e Legendas</h2>
+</section>
+<section id="zoom" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="zoom"><span class="header-section-number">6.13</span> Zoom</h2>
 
 
 </section>
@@ -1128,7 +1146,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

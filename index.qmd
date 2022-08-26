@@ -1,8 +1,8 @@
 # Bem-Vindo {.unnumbered}
 
-Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a linguagem R, mais especificamente o pacote tidyverse.
+Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a **linguagem R**, mais especificamente o pacote **tidyverse**.
 
-Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisão com base em dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.
+Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisões com base em seus dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.
 
 A comunidade R tem produzido ao longo dos anos uma série [Folhas de Referências](https://www.rstudio.com/resources/cheatsheets/) (*cheatsheets*) que fazem parte também da ferramenta de desenvolvimento [RStudio](http://localhost:7802/rstudio.com).
 
@@ -10,7 +10,7 @@ Estas **Folhas de Referências**, são anotações de 2 páginas que visam resum
 
 Este livro se baseia nestas folhas de referências, que apesar de extremamente úteis, podem ser de difícil interpretação para usuários iniciantes.
 
-Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o indioma inglês.
+Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.
 
 ::: callout-warning
 Para melhor utilizar o conteúdo deste livro, é importante que você já possua uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Não iremos abortar comandos básicos da linguagem e nem mesmo instalação da ferramenta de desenvolvimento.
@@ -22,20 +22,22 @@ Para mais informações acesse:
 
 **Os temas abordados neste livro são:**
 
--   [Importação de Dados](./Importacao/Importacao_de_dados_com_tidyverse.html): Trata sobre **importação de dados** tabulador .csv, .txt, etc, planilhas do Excel e Google Sheets, através do pacote **tidyverse (readr, readxl and googlesheets4).** Ver folha de referência: [data-import cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf).
+-   [Importação de Dados](./Importacao/Importacao_de_dados_com_tidyverse.html): Trata sobre **importação de dados** tabulados (.csv, .tsv, .txt), planilhas do Excel e Google Sheets, através do pacote **tidyverse (readr, readxl and googlesheets4).** Ver folha de referência: [data-import cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf).
 
--   [Organização de Dados](./Organizacao/Organizacao_de_dados_com_tidyr.html): Sobre **organização de dados** com o pacote **tidyr**. Mover colunas e linhas de forma a organizar seus dados em tabelas organizadas. Ver folha de referência: [tidyr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf).
+-   [Organização de Dados](./Organizacao/Organizacao_de_dados_com_tidyr.html): Sobre **organização de dados** com o pacote **tidyr**. Mover colunas e linhas de forma a estruturar seus dados em tabelas organizadas. Ver folha de referência: [tidyr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf).
 
 -   [Transformação de dados](./Transformacao/Transformacao_de_dados_com_dplyr.html) : Apresenta a **transformação de dados** com o pacote **dplyr**. Aplicação de filtros, sumarização, criação de colunas calculadas e muitas outras funções de transformação. Ver folha de referência: [data transformation cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf)
 
 -   [Manipulação de strings](./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html): Fala sobre **manipulação de strings** (textos) com o pacote **stringr**. Apresenta também um bom conteúdo sobre **expressões** **regulares** (**regex**). Ver folha de referência: [stringr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf)
 
--   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folhe da refrência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
+-   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folha da referência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
--   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2**. Ver folha da refrência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf).
+-   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2**. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf).
 
-::: callout-note
-Este livro é de conteúdo público e uma pequena contribuição voluntária. Para acessar o código-fonte e/ou contribuir com correções ou sugestões acesse:
+## Licença
 
-<https://github.com/scopinho/Livro_Transform_Dados_R>
+::: {.callout-note appearance="simple"}
+Este livro é uma pequena contribuição à comunidade de software livre. Ele é (e sempre será) **livre**, e está licenciado sob a [Creative Commons Attribution-NonCommercial-NoDerivs 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) License.
+
+Se você quiser contribuir, por favor, considere em reportar algum erro ou sugestão em [github.com/scopinho/Livro_Transform_Dados_R](https://github.com/scopinho/Livro_Transform_Dados_R).
 :::

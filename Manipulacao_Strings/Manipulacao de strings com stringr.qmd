@@ -1,8 +1,7 @@
 ---
-title: "Manipulacao de Strings com STRINGR"
 always_allow_html: yes
 ---
-
+# Manipulacao de Strings com STRINGR
 ## Introdução
 
 A seguir temos vários exemplos de manipulação de strings (cadeia de caracteres) utilizando o pacote STRINGR do R. Para saber mais sobre este pacote, acesse:
@@ -590,7 +589,7 @@ Str_Teste
 ```
 
 | String Regex no R | Busca por                                               |
-|----------------------|--------------------------------------------------|
+|-----------------------|-------------------------------------------------|
 | a                 | a (etc.)                                                |
 | \\\\.             | .                                                       |
 | \\\\!             | \\!                                                     |

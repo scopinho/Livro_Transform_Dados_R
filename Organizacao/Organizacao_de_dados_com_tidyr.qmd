@@ -1,7 +1,4 @@
----
-title: "Organização de Dados com TIDYR"
----
-
+# Organização de Dados com TIDYR
 ## Introdução
 
 A seguir temos vários exemplos de organização de dados utilizando o pacote TIDYR do R. Para saber mais sobre este pacote, acesse:

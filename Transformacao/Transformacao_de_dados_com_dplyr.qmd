@@ -1,7 +1,4 @@
----
-title: "Transformação de Dados com DPLYR"
----
-
+# Transformação de Dados com DPLYR
 ## Introdução
 
 A seguir temos vários exemplos de transformação de dados utilizando o pacote DYPLR do R. Para saber mais sobre este pacote, acesse:

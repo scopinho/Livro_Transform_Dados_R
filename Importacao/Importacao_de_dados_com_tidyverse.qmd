@@ -1,15 +1,4 @@
----
-title: "Importação de Dados com TIDYVERSE"
-format: html
-toc: true
-toc-location: right
-toc-depth: 4
-editor: visual
-lang: pt
-execute: 
-  warning: false
----
-
+# Importação de Dados com TIDYVERSE
 ## Introdução
 
 A seguir temos vários exemplos de importação de dados utilizando o pacote TIDYVERSE do R. O pacote tidyverse possui vários pacotes de importação de dados, aqui iremos cobrir três deles (readr, readxl e googlesheets4). Para saber mais sobre estes pacotes, acesse:
@@ -39,6 +28,7 @@ Caso você precise trabalhar com outras formatos de arquivos que não sejam os v
 | httr                | Web APIs                   |
 | rvest               | HTML (Web scraping)        |
 | readr::read_lines() | dados texto                |
+| pdftools            | PDF                        |
 
 Para os exemplos, iremos carregar os seguintes pacotes:
 
@@ -90,6 +80,8 @@ write_file("A\tB\tC\n1\t2\t3\n4\t5\tNA\n", file = "file.tsv")
 
 A seguir, você tem um link para o arquivo Excel utilizado nos exemplos.
 
+[Arquivo Exemplo - MS Excel](https://github.com/scopinho/Livro_Transform_Dados_R/blob/main/Importacao/excel_file.xlsx)
+
 É um arquivo com três planilhas (S1, S2 e S3) e em cada uma delas um pequeno conjunto de dados.
 
 ![](images/excel-workbooks.png)
@@ -100,7 +92,11 @@ E a primeira planilha (S1) possui algo como:
 
 ------------------------------------------------------------------------
 
-**GOOGLE_SHEET**: TBD
+**GOOGLE_SHEET**:
+
+A seguir, você tem o link para a planilha do google que será utilizado mais adiante.
+
+[Planilha exemplo - Google Sheets](https://docs.google.com/spreadsheets/d/1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8/edit#gid=0)
 
 ------------------------------------------------------------------------
 
@@ -527,7 +523,7 @@ gs4_get("1_aRR_9UcMytZqjID0BkJ7PW29M1kt1_x2HxhBZOlFN8")
 Use para localizar suas planilhas do Google no drive. Ela retorna um objeto dibble, que é um "tibble" com uma linha por arquivo. E informa o ID dos arquivos.
 
 ```{r}
-my_dribble <- gs4_find(pattern = "tydiverse_sample")
+my_dribble <- gs4_find(pattern = "tidyverse_exemplo")
 my_dribble
 ```
 
@@ -604,6 +600,6 @@ Ver seção [Especificação de celulas]
 
 ### Operadores de arquivos
 
-O pacote googlesheets4 oferece várias forma de manipular os aspectos da planilha como congelar linhas, definir largura das colunas, etc. Acesse [googlesheets4.tydeverse.org](googlesheets4.tydeverse.org) para mais informações.
+O pacote googlesheets4 oferece várias forma de manipular os aspectos da planilha como congelar linhas, definir largura das colunas, etc. Acesse [googlesheets4.tidyverse.org](googlesheets4.tidyverse.org) para mais informações.
 
 Para operções de arquivos (ex: renomear, compartilhar, mover para outra pasta, etc), veja o pacote googledrive no link: [googledrive.tidyverse.org](googledrive.tidyverse.org).

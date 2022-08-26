@@ -95,37 +95,37 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  <a href="./Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  <a href="./Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  <a href="./Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="./Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  <a href="./DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  <a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
   </div>
 </li>
     </ul>
@@ -137,7 +137,10 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#bem-vindo" id="toc-bem-vindo" class="nav-link active" data-scroll-target="#bem-vindo">Bem-Vindo</a></li>
+  <li><a href="#bem-vindo" id="toc-bem-vindo" class="nav-link active" data-scroll-target="#bem-vindo">Bem-Vindo</a>
+  <ul class="collapse">
+  <li><a href="#licença" id="toc-licença" class="nav-link" data-scroll-target="#licença">Licença</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -169,12 +172,12 @@ ul.task-list{list-style: none;}
 
 <section id="bem-vindo" class="level1 unnumbered">
 <p><img src="images/cover.png" title="Transformação e Manipulação de Dados com a linguagem R" class="quarto-cover-image img-fluid"></p><h1 class="unnumbered">Bem-Vindo</h1>
-<p>Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a linguagem R, mais especificamente o pacote tidyverse.</p>
-<p>Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisão com base em dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.</p>
+<p>Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a <strong>linguagem R</strong>, mais especificamente o pacote <strong>tidyverse</strong>.</p>
+<p>Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisões com base em seus dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.</p>
 <p>A comunidade R tem produzido ao longo dos anos uma série <a href="https://www.rstudio.com/resources/cheatsheets/">Folhas de Referências</a> (<em>cheatsheets</em>) que fazem parte também da ferramenta de desenvolvimento <a href="http://localhost:7802/rstudio.com">RStudio</a>.</p>
 <p>Estas <strong>Folhas de Referências</strong>, são anotações de 2 páginas que visam resumir as principais informações sobre determinado tema ou pacote do R. São uma espécie de “cola” para nos lembrarmos dos comandos e informações mais relevantes.</p>
 <p>Este livro se baseia nestas folhas de referências, que apesar de extremamente úteis, podem ser de difícil interpretação para usuários iniciantes.</p>
-<p>Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o indioma inglês.</p>
+<p>Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -192,29 +195,29 @@ Aviso
 </div>
 <p><strong>Os temas abordados neste livro são:</strong></p>
 <ul>
-<li><p><a href="./Importacao/Importacao_de_dados_com_tidyverse.html">Importação de Dados</a>: Trata sobre <strong>importação de dados</strong> tabulador .csv, .txt, etc, planilhas do Excel e Google Sheets, através do pacote <strong>tidyverse (readr, readxl and googlesheets4).</strong> Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf">data-import cheatsheet</a>.</p></li>
-<li><p><a href="./Organizacao/Organizacao_de_dados_com_tidyr.html">Organização de Dados</a>: Sobre <strong>organização de dados</strong> com o pacote <strong>tidyr</strong>. Mover colunas e linhas de forma a organizar seus dados em tabelas organizadas. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf">tidyr cheatsheet</a>.</p></li>
+<li><p><a href="./Importacao/Importacao_de_dados_com_tidyverse.html">Importação de Dados</a>: Trata sobre <strong>importação de dados</strong> tabulados (.csv, .tsv, .txt), planilhas do Excel e Google Sheets, através do pacote <strong>tidyverse (readr, readxl and googlesheets4).</strong> Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf">data-import cheatsheet</a>.</p></li>
+<li><p><a href="./Organizacao/Organizacao_de_dados_com_tidyr.html">Organização de Dados</a>: Sobre <strong>organização de dados</strong> com o pacote <strong>tidyr</strong>. Mover colunas e linhas de forma a estruturar seus dados em tabelas organizadas. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf">tidyr cheatsheet</a>.</p></li>
 <li><p><a href="./Transformacao/Transformacao_de_dados_com_dplyr.html">Transformação de dados</a> : Apresenta a <strong>transformação de dados</strong> com o pacote <strong>dplyr</strong>. Aplicação de filtros, sumarização, criação de colunas calculadas e muitas outras funções de transformação. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf">data transformation cheatsheet</a></p></li>
 <li><p><a href="./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html">Manipulação de strings</a>: Fala sobre <strong>manipulação de strings</strong> (textos) com o pacote <strong>stringr</strong>. Apresenta também um bom conteúdo sobre <strong>expressões</strong> <strong>regulares</strong> (<strong>regex</strong>). Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf">stringr cheatsheet</a></p></li>
-<li><p><a href="./DataHora/Datas_e_horas_com_lubridate.html">Datas e horas</a>: Sobre a formatação e cálculos de <strong>variáveis</strong> com <strong>datas</strong> e <strong>horas</strong> com o pacote <strong>lubridate</strong>. Ver folhe da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf">lubridate cheatsheet</a>.</p></li>
-<li><p><a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html">Visualização de Dados</a>: Traz uma introdução à criação de gráficos através do pacote <strong>ggplot2</strong>. Ver folha da refrência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf">data visualization cheatsheet</a>.</p></li>
+<li><p><a href="./DataHora/Datas_e_horas_com_lubridate.html">Datas e horas</a>: Sobre a formatação e cálculos de <strong>variáveis</strong> com <strong>datas</strong> e <strong>horas</strong> com o pacote <strong>lubridate</strong>. Ver folha da referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf">lubridate cheatsheet</a>.</p></li>
+<li><p><a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html">Visualização de Dados</a>: Traz uma introdução à criação de gráficos através do pacote <strong>ggplot2</strong>. Ver folha da referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf">data visualization cheatsheet</a>.</p></li>
 </ul>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<section id="licença" class="level2">
+<h2 class="anchored" data-anchor-id="licença">Licença</h2>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Nota
+<div class="callout-body-container">
+<p>Este livro é uma pequena contribuição à comunidade de software livre. Ele é (e sempre será) <strong>livre</strong>, e está licenciado sob a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0</a> License.</p>
+<p>Se você quiser contribuir, por favor, considere em reportar algum erro ou sugestão em <a href="https://github.com/scopinho/Livro_Transform_Dados_R">github.com/scopinho/Livro_Transform_Dados_R</a>.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Este livro é de conteúdo público e uma pequena contribuição voluntária. Para acessar o código-fonte e/ou contribuir com correções ou sugestões acesse:</p>
-<p><a href="https://github.com/scopinho/Livro_Transform_Dados_R" class="uri">https://github.com/scopinho/Livro_Transform_Dados_R</a></p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -336,7 +339,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Introdução</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,7 +2,7 @@
 lang: pt
 ---
 
-# Introdução
+# Introdução {.unnumbered}
 
 Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamado **tidyverse**. Ele é uma espécie de "super pacote" para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.
 

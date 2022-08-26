@@ -1,7 +1,4 @@
----
-title: "Visualização de Dados com GGPLOT2"
----
-
+# Visualização de Dados com GGPLOT2
 ## Introdução
 
 A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.
