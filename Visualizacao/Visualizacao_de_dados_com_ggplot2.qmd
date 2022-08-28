@@ -62,6 +62,12 @@ Ou em função da escala de mensuração em:
 
 -   **Ordinal**: As unidades são classificadas em categorias em relação à características representadas. Há uma ordem ou relação entre si. (ex: grau de escolaridade)
 
+::: callout-note
+Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.
+
+Em geral, variáveis qualitativas são representadas no R com o tipo fatores "factors".
+:::
+
 #### **Quantitativas**
 
 Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.
@@ -79,7 +85,11 @@ Ou em função da escala de mensuração em:
 -   **Razão**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: temperatura)
 
 ::: callout-caution
-Vale lembrar que nem sempre uma variável representada pr um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
+Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
+:::
+
+::: callout-note
+O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas. Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc.
 :::
 
 ## Gramática dos Gráficos
@@ -560,21 +570,19 @@ d <- ggplot(mpg, aes(fl))
 
 #### geom_bar
 
-#### Use para criar um gráfico de barras.
+Use para criar um gráfico de barras.
 
 ```{r}
 d + geom_bar()
 ```
 
-As variáveis qualitativas (nominais ou ordinais) podem ser representadas por gráficos para variáveis discretas no jargão do ggplot.
-
-Veja que, como aconteceu com o combustível, podemos pegar a variável tipo do veículo (class) e gerar um gráfico de barras também.
+Veja outro exemplo: Como aconteceu com o combustível (fl), podemos pegar a variável tipo da classe do veículo (class) e gerar um gráfico de barras também.
 
 ```{r}
 d + geom_bar(aes(x = class))
 ```
 
-Usando o argumento da estética fill, podemos mapear uma variável (coluna). Com isto, o ggplot automaticamente criará uma legenda para os diferentes valores da varíavel. Veja:
+Usando o argumento da estética para cor do preenchimento (fill), podemos mapear uma variável igual ou diferente. Com isto, o ggplot automaticamente criará uma legenda para os diferentes valores da varíavel. Veja o que acontece quando temos x=fl e fill = class:
 
 ```{r}
 d + geom_bar(aes(fill =class))
@@ -582,11 +590,50 @@ d + geom_bar(aes(fill =class))
 
 Note que como a estética herdada do objeto ggplot base (d) tinha o mapeamento de x para a variável combustível (fl), ela ainda permanece no eixo x.
 
-Se sobrescrevermos este mapeamento para a estético do geom_bar, teremos:
+Se sobrescrevermos este mapeamento para a estética do geom_bar com a mesma variável para x e fill, teremos:
 
 ```{r}
-d + geom_bar(aes(x = class, fill = class))
+d + geom_bar (aes(x = class, fill = class)) 
 ```
+
+Note que o resultado automático do gráfico foi um pouco diferente. Quando tivemos x = fl e fill = class as barras foram **empilhadas** (stack) e quando tivemos x = class e fill = class, as barras foram lado colocadas **lado a lado** (dogde).
+
+Por padrão, o ggplot, quando múltiplas barras ocupam o mesmo ponto, elas são empilhadas. Este comportamento pode ser definido através do argumento **position =** .
+
+Veja as diferentes opções:
+
+::: panel-tabset
+## dodge
+
+```{r}
+d + geom_bar(aes(fill =class), position = "dodge")
+```
+
+## dodge2
+
+```{r}
+d + geom_bar(aes(fill =class), position = "dodge2")
+```
+
+## stack
+
+```{r}
+d + geom_bar(aes(fill = class) , position = "stack")
+```
+
+## fill
+
+```{r}
+
+d + geom_bar(aes(fill =class), position = "fill")
+```
+:::
+
+::: callout-tip
+As geometrias podem ter valores calculados autometicamente "computed variables". Isto é para faciliar a geração dos gráficos com valores padrões. No caso da geom_bar, não precisamos passar que no eixo y gostaríamos de ter a contagem da variável que está no eixo x. Veja que então, a variável y não ficou sem um valor, ele apenas foi substituído pela contagem (count) automaticamente. A geom_bar tem "count" e "prop" como varíveis computadas.
+
+Para saber quais varíaveis são computadas automaticamente para cada geometria, veja a ajuda com ?geom_bar.
+:::
 
 ### Duas Variáveis Discretas
 
@@ -604,19 +651,132 @@ Esta é uma variante do geom_point() que conta o número de observação em cada
 
 ```{r}
 g + geom_count()
+
 ```
 
 #### geom_jitter
 
-É similar ao geom_point, porém adicoina uma variação aleatória em cada ponto.
+É similar ao geom_point, porém adiciona uma variação aleatória em cada ponto.
 
 ```{r}
 g + geom_jitter(height = 2, width = 2)
 ```
 
+Como várias outras geometrias, podemos adicionar uma cor na estética do geom_jitter, mapeando outra váriável, como por exemplo o corte (cut) para facilitar a visualização:
+
+```{r}
+g + geom_jitter(aes(color = cut), height = 2, width = 2)
+```
+
 ### Uma Variável Contínua e Outra Discreta
 
+Quando precisamos analisar uma varável contínua e outra discreta, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nosso objeto básico para evitar repetição de código. Agora teremos um objeto "**f**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente, só que agora usando a base de dados **mpg**. Utilizaremos as variáveis classe (class) e consumo na estrada (hwy).
+
+```{r}
+f <- ggplot(mpg, aes(class, hwy))
+```
+
+#### geom_col
+
+Use para criar um gráfico de colunas. Ele é similar ao gráfico de barras, porém agora, no eixo y, teremos uma variável contínua. Observe que enquanto no geom_bar, o eixo y é calculado automaticamente, aqui na geom_col, você precisa ter a variável já nos seus dados.
+
+```{r}
+f + geom_col()
+```
+
+Assim, como no geom_bar, podemos definir a cor de preenchimento da estética para geom_col, usando fill =.
+
+Vamos usar a variável de número de cilindros (cyl) como exemplo.
+
+```{r}
+f + geom_col(aes(fill = cyl))
+```
+
+::: callout-warning
+Veja que no caso acima, o ggplot tentou automaticamente ajustar a escala de cores para uma escala contínua. Dá a impressão que temos veículos com 7 cilindros inclusive.
+:::
+
+Isto é porque em nossos dados, a variável "cyl" é do tipo inteiro (integer) e com isto, o ggplot2 entende como um variável contínua.
+
+Para obter o efeito pretendido, temos algumas opções. Uma seria mudar a variável cyl para o tipo fator (factor) usando a função as_factor(). Veja:
+
+```{r}
+f + geom_col(aes(fill = as_factor(cyl)))
+```
+
+Por padrão, as classes são colocadas de forma empilhada, similar ao que vimos na [geom_bar]. Se quisermos colocadas lado a lado, devemos fazer:
+
+```{r}
+f + geom_col(aes(y= hwy, x=class, fill = factor(cyl)), position = "dodge")
+```
+
+::: callout-tip
+A largura das colunas é expandida automaticamente, pois não temos valores para todas as combinações. Por exemplo, não temos 8 cilindros em carros compatos. Há formas difrentes de ajutar isso, uma delas é ajustar a base de dados, criando as combinações possíveis utilização a função tidyr::**complete**()
+:::
+
+```{r}
+complete(mpg, class, cyl) |> ggplot () +
+  geom_col(aes(y= hwy, x=class, fill = factor(cyl)), position = "dodge")
+```
+
+#### geom_boxplot
+
+Use para criar um gráfico boxplot (box e whiskers). Este gráfico é bastante interessante, pois mostra cinco estatísticas automaticamente (a mediana, primeiro e terceiro quartis e os limites max e min) e os pontos fora da curva individualmente (outlyers).
+
+Para este exemplo, iremos além de definir uma cor de preenchimento através do argumento fill = , iremos remover a legenda desta camada usando show.legend = FALSE. \
+
+```{r}
+f + geom_boxplot(aes(fill = factor(class)), show.legend = FALSE)
+```
+
+Para mostrar a média ao invés da media, podemos fazer:
+
+```{r}
+#| eval: false
+f + geom_boxplot(aes(middle = mean(hwy)))
+```
+
+#### geom_dotplot
+
+Use para criar um gráfico de pontos, com a largura dos pontos correspondem à largura do agrupamento e os pontos são empilhados. Cada ponto corresponde à uma observação dos dados, portanto em geral é utilizado quando temos poucas observações.
+
+```{r}
+f + geom_dotplot(aes(color = class),binaxis = "y", stackdir = "center")
+```
+
+#### geom_violin
+
+Use para criar um gráfico de violino. Ele mostra de forma compacta a distribuição de uma variável contínua.
+
+```{r}
+f + geom_violin(aes(fill = class), scale = "area")
+```
+
 ### Duas Variáveis Contínuas
+
+Quando precisamos analisar duas variáveis contínuas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nosso objeto básico para evitar repetição de código. Agora teremos um objeto "**e**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente, só que agora usando a base de dados **mpg**. Utilizaremos as variáveis consumo na cidade (cty) e consumo na estrada (hwy).
+
+```{r}
+e <- ggplot(mpg, aes(cty, hwy))
+```
+
+#### geom_label
+
+#### geom_point
+
+#### geom_quantile
+
+#### geom_rug
+
+#### geom_smooth
+
+#### geom_text
+
+#### 
 
 ### Duas Variáveis Distribuição Bivariada Contínua
 
