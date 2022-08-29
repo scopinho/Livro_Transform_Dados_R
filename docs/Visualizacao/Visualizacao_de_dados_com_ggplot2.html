@@ -344,7 +344,7 @@ div.csl-indent {
   <li><a href="#geom_smooth" id="toc-geom_smooth" class="nav-link" data-scroll-target="#geom_smooth"> <span class="header-section-number">6.6.7.5</span> geom_smooth</a></li>
   <li><a href="#geom_text" id="toc-geom_text" class="nav-link" data-scroll-target="#geom_text"> <span class="header-section-number">6.6.7.6</span> geom_text</a></li>
   </ul></li>
-  <li><a href="#mapas-de-calor-e-densidade" id="toc-mapas-de-calor-e-densidade" class="nav-link" data-scroll-target="#mapas-de-calor-e-densidade"> <span class="header-section-number">6.6.8</span> <strong>Mapas de Calor e Densidade</strong></a>
+  <li><a href="#mapas-de-calor-e-densidade" id="toc-mapas-de-calor-e-densidade" class="nav-link" data-scroll-target="#mapas-de-calor-e-densidade"> <span class="header-section-number">6.6.8</span> Mapas de Calor e Densidade</a>
   <ul class="collapse">
   <li><a href="#geom_bind2d" id="toc-geom_bind2d" class="nav-link" data-scroll-target="#geom_bind2d"> <span class="header-section-number">6.6.8.1</span> geom_bind2d</a></li>
   <li><a href="#geom_density_2d" id="toc-geom_density_2d" class="nav-link" data-scroll-target="#geom_density_2d"> <span class="header-section-number">6.6.8.2</span> geom_density_2d</a></li>
@@ -1631,7 +1631,7 @@ Dica
 </section>
 </section>
 <section id="mapas-de-calor-e-densidade" class="level3" data-number="6.6.8">
-<h3 data-number="6.6.8" class="anchored" data-anchor-id="mapas-de-calor-e-densidade"><span class="header-section-number">6.6.8</span> <strong>Mapas de Calor e Densidade</strong></h3>
+<h3 data-number="6.6.8" class="anchored" data-anchor-id="mapas-de-calor-e-densidade"><span class="header-section-number">6.6.8</span> Mapas de Calor e Densidade</h3>
 <p>En alguns casos, precisamos mostrar como as duas variáveis contínuas se relacionam, dividindo o plano em retângulos e plotando os número de casos em cada retãngulo e preenchendo a cor de acordo com o número de casos. Para os exemplos a seguir, usaremos novamente a base “<strong>diamonds</strong>” em um objeto “<strong>h</strong>” .</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(carat, price))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1884,6 +1884,224 @@ Nota
 </section>
 <section id="estatísticas-stats" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="estatísticas-stats"><span class="header-section-number">6.7</span> Estatísticas (stats)</h2>
+<p>Podemos dizer que as estatísticas, ou mais precisamente, uma transformação estatística, é uma maneira diferente de construirmos uma camada.</p>
+<p>Assim como cada camada de geometria possui uma transformação estatística padrão, cada estatística possui uma geometria padrão.</p>
+<p>A transformação estatística cria novas variáveis que não estavam presentes em nossos dados originais (ex: count, pop)</p>
+<p><img src="images/ggplot-03.jpg" class="img-fluid" width="412"></p>
+<p>Podemos visualizar uma transofrmação estatística mudando a estatística padrão de uma geometria (ex: <strong>geom_bar(stat=“count”)</strong> ou usando uma função stat() (ex: <strong>stat_count(geom=“bar”)</strong> que chama uma geometria padrão para criar uma camada.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Podemos usar a sintaxe <strong>..nome..</strong> para mapear uma estatística em uma estética (aes()).</p>
+</div>
+</div>
+<p>Para ficar mais claro, vejamos o seguinte caso:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>i <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level..),</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="at">geom =</span> <span class="st">"polygon"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Explicando com mais detalhes o exemplo acima, vemos que estamos uma adicionando uma camada no gráfico representado pela letra “i”.</p>
+<p>Depois estamos criando uma nova camada através da estatística “stat_density_2d”. Esta função cria diversas variáveis calculadas automaticamente que podem ser acessadas por ..level.., e neste caso estamos atribuindo uma variável calculada ao mapeamento de preenchimento fill =.</p>
+<p>Ao final, estamos forçando uma geometria “polygon” ou invés da geometria padrão desta função que seria “density_2d”.</p>
+<p>Veja o exemplo abaixo:</p>
+<div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">fill =</span> class))<span class="sc">+</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_count</span>()</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">color =</span> class))<span class="sc">+</span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_count</span>( <span class="at">geom =</span> <span class="st">"point"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-108-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-108-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Neste caso, estamos criando no gráfico da esquerda, uma camada usando a função stat_count (que tem com padrão a geom=“bar”) e no gráfico da direita, estamos forçando uma geometria de pontos.</p>
+<p>O mesmo poderia ser feito, utilizando a geometria e alterando a estatística padrão. Veja como seria:</p>
+<div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">fill =</span> class))<span class="sc">+</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">color =</span> class))<span class="sc">+</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-109-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-109-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Veja que tivemos que alterar a estatística padrão apenas da geom_point. Isto porque a geom_bar, já possui a estatística “count” como padrão, já a geom_point, possui a estatística “identity” como padrão.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A transformação estatística “<strong>identity</strong>”, significa nenhuma transformação, ou seja, utiliza os dados que estão em nossa tabela original. É muito utilizada quando não queremos que alguma geometria faça o cálculo da transformação estatística para nós, mas sim, quando quisermos utilizar os dados já calculados em alguma coluna da tabela.</p>
+</div>
+</div>
+<p>A seguir teremos uma sequência, demonstrando a criação de diversas camadas utilizando as transformações estatísticas e suas respectiva geometrias padrão.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para maiores detalhes dos argumentos, variáveis computadas e geometrias padrão, digite ?&lt;nome_função_estatística&gt; (ex: ?stat_count)</p>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">stat_bin</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">10</span>)</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">stat_count</span>(<span class="at">width =</span> <span class="dv">1</span>)</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">stat_density</span>(<span class="at">adjust =</span> <span class="dv">1</span>, <span class="at">kernel =</span> <span class="st">"gaussian"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-110-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-110-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-110-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_bin_2d</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">drop =</span> T)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_bin_hex</span>(<span class="at">bins =</span> <span class="dv">30</span>)</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="at">contour =</span> <span class="cn">TRUE</span>, <span class="at">n =</span> <span class="dv">100</span>)</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">segments =</span> <span class="dv">51</span>, <span class="at">type =</span> <span class="st">"t"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-111-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-111-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-111-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-111-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>l <span class="sc">+</span> <span class="fu">stat_contour</span>(<span class="fu">aes</span>(<span class="at">z =</span> z))</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>l <span class="sc">+</span> <span class="fu">stat_summary_hex</span>(<span class="fu">aes</span>(<span class="at">z =</span> z), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fun =</span> max)</span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>l <span class="sc">+</span> <span class="fu">stat_summary_2d</span>(<span class="fu">aes</span>(<span class="at">z =</span> z), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fun =</span> mean)</span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>f <span class="sc">+</span> <span class="fu">stat_boxplot</span>(<span class="at">coef =</span> <span class="fl">1.5</span>)</span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>f <span class="sc">+</span> <span class="fu">stat_ydensity</span>(<span class="at">kernel =</span> <span class="st">"gaussian"</span>, <span class="at">scale =</span> <span class="st">"area"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-112-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-112-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-112-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-112-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-112-5.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">n =</span> <span class="dv">40</span>)</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_quantile</span>(<span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>),</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x), <span class="at">method =</span> <span class="st">"rq"</span>)</span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se =</span> T,</span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-113-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-113-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-113-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">n =</span> <span class="dv">20</span>, <span class="at">geom =</span> <span class="st">"point"</span>)</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">stat_qq</span>(<span class="fu">aes</span>(<span class="at">sample =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_sum</span>()</span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_cl_boot"</span>)</span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>h <span class="sc">+</span> <span class="fu">stat_summary_bin</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>)</span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_identity</span>()</span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">stat_unique</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-6.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-114-7.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="escalas-scales" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="escalas-scales"><span class="header-section-number">6.8</span> Escalas (scales)</h2>

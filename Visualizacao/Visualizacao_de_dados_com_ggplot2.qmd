@@ -921,7 +921,7 @@ dados |>
              show.legend = FALSE)
 ```
 
-### **Mapas de Calor e Densidade**
+### Mapas de Calor e Densidade
 
 En alguns casos, precisamos mostrar como as duas variáveis contínuas se relacionam, dividindo o plano em retângulos e plotando os número de casos em cada retãngulo e preenchendo a cor de acordo com o número de casos. Para os exemplos a seguir, usaremos novamente a base "**diamonds**" em um objeto "**h**" .
 
@@ -1125,7 +1125,132 @@ l + geom_tile(aes(fill = z))
 
 ## Estatísticas (stats) {#estatísticas-stats}
 
+Podemos dizer que as estatísticas, ou mais precisamente, uma transformação estatística, é uma maneira diferente de construirmos uma camada.
+
+Assim como cada camada de geometria possui uma transformação estatística padrão, cada estatística possui uma geometria padrão.
+
+A transformação estatística cria novas variáveis que não estavam presentes em nossos dados originais (ex: count, pop)
+
+![](images/ggplot-03.jpg){width="412"}
+
+Podemos visualizar uma transofrmação estatística mudando a estatística padrão de uma geometria (ex: **geom_bar(stat="count")** ou usando uma função stat() (ex: **stat_count(geom="bar")** que chama uma geometria padrão para criar uma camada.
+
+::: callout-note
+Podemos usar a sintaxe **..nome..** para mapear uma estatística em uma estética (aes()).
+:::
+
+Para ficar mais claro, vejamos o seguinte caso:
+
+```{r}
+#| eval: false
+i + stat_density_2d(aes(fill = ..level..),
+geom = "polygon")
+```
+
+Explicando com mais detalhes o exemplo acima, vemos que estamos uma adicionando uma camada no gráfico representado pela letra "i".
+
+Depois estamos criando uma nova camada através da estatística "stat_density_2d". Esta função cria diversas variáveis calculadas automaticamente que podem ser acessadas por ..level.., e neste caso estamos atribuindo uma variável calculada ao mapeamento de preenchimento fill =.
+
+Ao final, estamos forçando uma geometria "polygon" ou invés da geometria padrão desta função que seria "density_2d".
+
+Veja o exemplo abaixo:
+
+```{r}
+#| layout-ncol: 2
+mpg |> ggplot(aes(x = class, fill = class))+
+  stat_count()
+
+mpg |> ggplot(aes(x = class, color = class))+
+  stat_count( geom = "point")
+```
+
+Neste caso, estamos criando no gráfico da esquerda, uma camada usando a função stat_count (que tem com padrão a geom="bar") e no gráfico da direita, estamos forçando uma geometria de pontos.
+
+O mesmo poderia ser feito, utilizando a geometria e alterando a estatística padrão. Veja como seria:
+
+```{r}
+#| layout-ncol: 2
+mpg |> ggplot(aes(x = class, fill = class))+
+  geom_bar()
+
+mpg |> ggplot(aes(x = class, color = class))+
+  geom_point(stat = "count")
+```
+
+Veja que tivemos que alterar a estatística padrão apenas da geom_point. Isto porque a geom_bar, já possui a estatística "count" como padrão, já a geom_point, possui a estatística "identity" como padrão.
+
+::: callout-important
+A transformação estatística "**identity**", significa nenhuma transformação, ou seja, utiliza os dados que estão em nossa tabela original. É muito utilizada quando não queremos que alguma geometria faça o cálculo da transformação estatística para nós, mas sim, quando quisermos utilizar os dados já calculados em alguma coluna da tabela.
+:::
+
+A seguir teremos uma sequência, demonstrando a criação de diversas camadas utilizando as transformações estatísticas e suas respectiva geometrias padrão.
+
+::: callout-tip
+Para maiores detalhes dos argumentos, variáveis computadas e geometrias padrão, digite ?\<nome_função_estatística\> (ex: ?stat_count)
+:::
+
+```{r}
+#| layout-ncol: 3
+c + stat_bin(binwidth = 1, boundary = 10)
+c + stat_count(width = 1)
+c + stat_density(adjust = 1, kernel = "gaussian")
+```
+
+```{r}
+#| layout-ncol: 2
+#| layout-nrow: 2
+e + stat_bin_2d(bins = 30, drop = T)
+e + stat_bin_hex(bins = 30)
+e + stat_density_2d(contour = TRUE, n = 100)
+e + stat_ellipse(level = 0.95, segments = 51, type = "t")
+```
+
+```{r}
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+l + stat_contour(aes(z = z))
+l + stat_summary_hex(aes(z = z), bins = 30, fun = max)
+l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)
+f + stat_boxplot(coef = 1.5)
+f + stat_ydensity(kernel = "gaussian", scale = "area")
+```
+
+```{r}
+#| layout-ncol: 3
+
+e + stat_ecdf(n = 40)
+
+e + stat_quantile(quantiles = c(0.1, 0.9),
+formula = y ~ log(x), method = "rq")
+
+e + stat_smooth(method = "lm", formula = y ~ x, se = T,
+level = 0.95)
+
+```
+
+```{r}
+#| layout-ncol: 3
+#| layout-nrow: 3
+ggplot() + xlim(-5, 5) + 
+  stat_function(fun = dnorm, n = 20, geom = "point")
+
+ggplot() + stat_qq(aes(sample = 1:100))
+
+e + stat_sum()
+
+e + stat_summary(fun.data = "mean_cl_boot")
+
+h + stat_summary_bin(fun = "mean", geom = "bar")
+
+e + stat_identity()
+
+e + stat_unique()
+
+```
+
 ## Escalas (scales)
+
 
 ### Escalas de Propósito Geral
 
