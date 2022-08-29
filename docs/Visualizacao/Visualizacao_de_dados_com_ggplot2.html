@@ -374,7 +374,16 @@ div.csl-indent {
   <li><a href="#estatísticas-stats" id="toc-estatísticas-stats" class="nav-link" data-scroll-target="#estatísticas-stats"> <span class="header-section-number">6.7</span> Estatísticas (stats)</a></li>
   <li><a href="#escalas-scales" id="toc-escalas-scales" class="nav-link" data-scroll-target="#escalas-scales"> <span class="header-section-number">6.8</span> Escalas (scales)</a>
   <ul class="collapse">
-  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"> <span class="header-section-number">6.8.1</span> Escalas de Propósito Geral</a></li>
+  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"> <span class="header-section-number">6.8.1</span> Escalas de Propósito Geral</a>
+  <ul class="collapse">
+  <li><a href="#scale__continuous" id="toc-scale__continuous" class="nav-link" data-scroll-target="#scale__continuous"> <span class="header-section-number">6.8.1.1</span> scale_*_continuous</a></li>
+  <li><a href="#scale__discrete" id="toc-scale__discrete" class="nav-link" data-scroll-target="#scale__discrete"> <span class="header-section-number">6.8.1.2</span> scale_*_discrete</a></li>
+  <li><a href="#scale__binned" id="toc-scale__binned" class="nav-link" data-scroll-target="#scale__binned"> <span class="header-section-number">6.8.1.3</span> scale_*_binned</a></li>
+  <li><a href="#scale__identity" id="toc-scale__identity" class="nav-link" data-scroll-target="#scale__identity"> <span class="header-section-number">6.8.1.4</span> scale_*_identity</a></li>
+  <li><a href="#scale__manual" id="toc-scale__manual" class="nav-link" data-scroll-target="#scale__manual"> <span class="header-section-number">6.8.1.5</span> scale_*_manual</a></li>
+  <li><a href="#scale__date" id="toc-scale__date" class="nav-link" data-scroll-target="#scale__date"> <span class="header-section-number">6.8.1.6</span> scale_*_date</a></li>
+  <li><a href="#scale__datetime" id="toc-scale__datetime" class="nav-link" data-scroll-target="#scale__datetime"> <span class="header-section-number">6.8.1.7</span> scale_*_datetime</a></li>
+  </ul></li>
   <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">6.8.2</span> Escalas de Localização X &amp; Y</a></li>
   <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">6.8.3</span> Escalas de Cor e Preenchimento</a></li>
   <li><a href="#variáveis-discretas" id="toc-variáveis-discretas" class="nav-link" data-scroll-target="#variáveis-discretas"> <span class="header-section-number">6.8.4</span> Variáveis Discretas</a></li>
@@ -2105,8 +2114,172 @@ Dica
 </section>
 <section id="escalas-scales" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="escalas-scales"><span class="header-section-number">6.8</span> Escalas (scales)</h2>
+<p>As escalas mapeiam os valores dos dados em um valor visual de uma estética. Quando criamos uma gráfico, o ggplot adiciona escala para cada mapeamento de forma automática. Mas é possível alterar as escalas padrão.</p>
+<p>Vejamos o gráfico abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-115-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Quando escrevemos o código acima, o ggplot identifica que a variável x é do tipo discreta (categórica) e cria uma escala para ela. Faz o mesmo o o count do eixo y. Portanto, se sobrescrevermos as configurações da escala do eixo x para uma escala discreta, não haverá mudanças.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">+</span> <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-116-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>No examplo a seguir, iremos sobrescrever a escala de preenchimento (fill) para um tipo manual, ou seja, onde iremos manualmente definir as cores de preenchimento, ou limites da escala (de onde até onde ela valerá) e os pontos de parada, seu nome e os títulos (labels). Veja como ficaria:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> d <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fl))</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="at">values =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"royalblue"</span>, <span class="st">"blue"</span>, <span class="st">"navy"</span>),</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"p"</span>, <span class="st">"r"</span>), <span class="at">breaks =</span><span class="fu">c</span>(<span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"p"</span>, <span class="st">"r"</span>),</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="at">name =</span> <span class="st">"fuel"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"P"</span>, <span class="st">"R"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-117-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lembre-se que já existe uma configuração de escala par o eixo x criada por padrão. Quando estamos sobrescrevendo com novos valores, se estes valores não sobrepoem os antigos, os valore anteriores ficam valendo. Por isso, a cor não foi alterada para o combustível (fl = c), já que deinifmos os limites da nova escala apenas para (d, e, p , r).</p>
+</div>
+</div>
 <section id="escalas-de-propósito-geral" class="level3" data-number="6.8.1">
 <h3 data-number="6.8.1" class="anchored" data-anchor-id="escalas-de-propósito-geral"><span class="header-section-number">6.8.1</span> Escalas de Propósito Geral</h3>
+<p>Estas escalas são usadas na maioria das estéticas para mapear valores para os eixos x e y, preenchimento, cores, tipos de linhas, etc.</p>
+<section id="scale__continuous" class="level4" data-number="6.8.1.1">
+<h4 data-number="6.8.1.1" class="anchored" data-anchor-id="scale__continuous"><span class="header-section-number">6.8.1.1</span> scale_*_continuous</h4>
+<p>Use par mapear valores contínuos para os valores visuais.</p>
+<p>Por exemplo, vamos , ver a diferença entre a escala padrão definida para a variável “count” e outra sobrescrevendo a escala e deixando-a de forma reversa.</p>
+<div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Com escala padrão contínua para hwy.</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>()</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Alterando o argumento trans = para inverter a escala.</span></span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"reverse"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-118-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-118-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scale__discrete" class="level4" data-number="6.8.1.2">
+<h4 data-number="6.8.1.2" class="anchored" data-anchor-id="scale__discrete"><span class="header-section-number">6.8.1.2</span> scale_*_discrete</h4>
+<p>Similar a scale_*_continuous porém para variáveis discretas.</p>
+<p>Por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>  d <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">name =</span> <span class="st">"Número de observações"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-119-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__binned" class="level4" data-number="6.8.1.3">
+<h4 data-number="6.8.1.3" class="anchored" data-anchor-id="scale__binned"><span class="header-section-number">6.8.1.3</span> scale_*_binned</h4>
+<p>Use para deixar discreta um variável contínua, separando em classes. Veja o exemplo com a variável de consumo (hwy). Estamos alterando a escala e agrupando em 30 classes esta variável contínua.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_binned</span>(<span class="at">n.breaks =</span> <span class="dv">30</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-120-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__identity" class="level4" data-number="6.8.1.4">
+<h4 data-number="6.8.1.4" class="anchored" data-anchor-id="scale__identity"><span class="header-section-number">6.8.1.4</span> scale_*_identity</h4>
+<div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Criando uma tabela com as cores como uma variável.</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>dfc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span>)) </span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Gráfico com o preenchimento como variável discreta (col)</span></span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfc, <span class="fu">aes</span>(x, y))<span class="sc">+</span></span>
+<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> cor)) </span>
+<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># + scale_fill_discrete() isso é o padrão, portanto opcional</span></span>
+<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-12"><a href="#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Gráfico com o preenchimento pegando o valor da variável col</span></span>
+<span id="cb121-13"><a href="#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfc, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb121-14"><a href="#cb121-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> cor)) <span class="sc">+</span></span>
+<span id="cb121-15"><a href="#cb121-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-121-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-121-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Veja que quando usamos uma nova escala, você precisa definir se quer a legenda e outros elementos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfc, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> cor)) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>(<span class="at">guide =</span> <span class="st">"legend"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-122-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__manual" class="level4" data-number="6.8.1.5">
+<h4 data-number="6.8.1.5" class="anchored" data-anchor-id="scale__manual"><span class="header-section-number">6.8.1.5</span> scale_*_manual</h4>
+<p>Use para definir uma escala de forma manual. Neste exemplo, vamor criar uma variável “cores”, definindo manualmente uma cor para cada classe de veículo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">suv =</span> <span class="st">"red"</span>, </span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">compact =</span> <span class="st">"blue"</span>, </span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"2seater"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>, </span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">minivan =</span> <span class="st">"orange"</span>,</span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">midsize =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">pickup =</span> <span class="st">"yellow"</span>,</span>
+<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">subcompact =</span> <span class="st">"orange3"</span>)</span>
+<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb123-9"><a href="#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, hwy)) <span class="sc">+</span></span>
+<span id="cb123-10"><a href="#cb123-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb123-11"><a href="#cb123-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cores)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-123-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__date" class="level4" data-number="6.8.1.6">
+<h4 data-number="6.8.1.6" class="anchored" data-anchor-id="scale__date"><span class="header-section-number">6.8.1.6</span> scale_*_date</h4>
+<p>Use para tratar uma escala como data. Neste exemplo, iremos utilizar o conjunto de dados “<strong>billboard</strong>” também modificar os labels da escala e quantas paradas ela terá.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date.entered)) <span class="sc">+</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%m/%Y"</span>, <span class="at">date_breaks =</span> <span class="st">"20 weeks"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-124-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__datetime" class="level4" data-number="6.8.1.7">
+<h4 data-number="6.8.1.7" class="anchored" data-anchor-id="scale__datetime"><span class="header-section-number">6.8.1.7</span> scale_*_datetime</h4>
+<p>Similar a scale_*_date , porém ela lida com data e <strong>hora</strong>.</p>
+</section>
 </section>
 <section id="escalas-de-localização-x-y" class="level3" data-number="6.8.2">
 <h3 data-number="6.8.2" class="anchored" data-anchor-id="escalas-de-localização-x-y"><span class="header-section-number">6.8.2</span> Escalas de Localização X &amp; Y</h3>

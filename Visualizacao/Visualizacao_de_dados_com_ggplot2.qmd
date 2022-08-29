@@ -1251,8 +1251,139 @@ e + stat_unique()
 
 ## Escalas (scales)
 
+As escalas mapeiam os valores dos dados em um valor visual de uma estética. Quando criamos uma gráfico, o ggplot adiciona escala para cada mapeamento de forma automática. Mas é possível alterar as escalas padrão.
+
+Vejamos o gráfico abaixo:
+
+```{r}
+d + geom_bar()
+```
+
+Quando escrevemos o código acima, o ggplot identifica que a variável x é do tipo discreta (categórica) e cria uma escala para ela. Faz o mesmo o o count do eixo y. Portanto, se sobrescrevermos as configurações da escala do eixo x para uma escala discreta, não haverá mudanças.
+
+```{r}
+d + geom_bar()+
+  scale_x_discrete()
+```
+
+No examplo a seguir, iremos sobrescrever a escala de preenchimento (fill) para um tipo manual, ou seja, onde iremos manualmente definir as cores de preenchimento, ou limites da escala (de onde até onde ela valerá) e os pontos de parada, seu nome e os títulos (labels). Veja como ficaria:
+
+```{r}
+n <- d + geom_bar(aes(fill = fl))
+
+n + scale_fill_manual(
+values = c("skyblue", "royalblue", "blue", "navy"),
+limits = c("d", "e", "p", "r"), breaks =c("d", "e", "p", "r"),
+name = "fuel", labels = c("D", "E", "P", "R"))
+```
+
+::: callout-note
+Lembre-se que já existe uma configuração de escala par o eixo x criada por padrão. Quando estamos sobrescrevendo com novos valores, se estes valores não sobrepoem os antigos, os valore anteriores ficam valendo. Por isso, a cor não foi alterada para o combustível (fl = c), já que deinifmos os limites da nova escala apenas para (d, e, p , r).
+:::
 
 ### Escalas de Propósito Geral
+
+Estas escalas são usadas na maioria das estéticas para mapear valores para os eixos x e y, preenchimento, cores, tipos de linhas, etc.
+
+#### scale\_\*\_continuous
+
+Use par mapear valores contínuos para os valores visuais.
+
+Por exemplo, vamos , ver a diferença entre a escala padrão definida para a variável "count" e outra sobrescrevendo a escala e deixando-a de forma reversa.
+
+```{r}
+#| layout-ncol: 2
+
+#Com escala padrão contínua para hwy.
+c + geom_line(stat = "count") +
+  scale_x_continuous()
+
+#Alterando o argumento trans = para inverter a escala.
+c + geom_line(stat = "count") +
+  scale_x_continuous(trans = "reverse")
+```
+
+#### scale\_\*\_discrete
+
+Similar a scale\_\*\_continuous porém para variáveis discretas.
+
+Por exemplo:
+
+```{r}
+  d + geom_bar() +
+    scale_y_discrete(name = "Número de observações")
+```
+
+#### scale\_\*\_binned
+
+Use para deixar discreta um variável contínua, separando em classes. Veja o exemplo com a variável de consumo (hwy). Estamos alterando a escala e agrupando em 30 classes esta variável contínua.
+
+```{r}
+c + geom_bar() +
+  scale_x_binned(n.breaks = 30)
+```
+
+#### scale\_\*\_identity
+
+```{r}
+#| layout-ncol: 2
+
+#Criando uma tabela com as cores como uma variável.
+dfc <- data.frame(
+  x = 1:4,
+  y = 1:4,
+  cor = c("red", "green", "blue", "yellow")) 
+
+#Gráfico com o preenchimento como variável discreta (col)
+ggplot(dfc, aes(x, y))+
+  geom_col(aes(fill = cor)) 
+  # + scale_fill_discrete() isso é o padrão, portanto opcional
+
+#Gráfico com o preenchimento pegando o valor da variável col
+ggplot(dfc, aes(x, y)) +
+  geom_col(aes(fill = cor)) +
+  scale_fill_identity()
+```
+
+Veja que quando usamos uma nova escala, você precisa definir se quer a legenda e outros elementos.
+
+```{r}
+ggplot(dfc, aes(x, y)) +
+  geom_col(aes(fill = cor)) +
+  scale_fill_identity(guide = "legend")
+```
+
+#### scale\_\*\_manual
+
+Use para definir uma escala de forma manual. Neste exemplo, vamor criar uma variável "cores", definindo manualmente uma cor para cada classe de veículo.
+
+```{r}
+cores <- c(suv = "red", 
+          compact = "blue", 
+          "2seater" = "darkgreen", 
+          minivan = "orange",
+          midsize = "lightblue",
+          pickup = "yellow",
+          subcompact = "orange3")
+          
+ggplot(mpg, aes(class, hwy)) +
+  geom_col(aes(fill = class)) +
+  scale_fill_manual(values = cores)
+```
+
+#### scale\_\*\_date
+
+Use para tratar uma escala como data. Neste exemplo, iremos utilizar o conjunto de dados "**billboard**" também modificar os labels da escala e quantas paradas ela terá.  
+
+```{r}
+billboard |> 
+  ggplot(aes(x = date.entered)) +
+  geom_bar() +
+  scale_x_date(date_labels = "%m/%Y", date_breaks = "20 weeks")
+```
+
+#### scale\_\*\_datetime
+Similar a scale_\*_date , porém ela lida com data e **hora**.
 
 ### Escalas de Localização X & Y
 
