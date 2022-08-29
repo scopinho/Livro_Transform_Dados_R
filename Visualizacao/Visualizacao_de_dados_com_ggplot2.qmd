@@ -36,23 +36,27 @@ library (gt)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
 
+![](images/cheatsheet-01.png)
+
+![](images/cheatsheet-02.png)
+
 ------------------------------------------------------------------------
 
 ## Tipos de Variáveis
 
-Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados.
+Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados e do ggplot.
 
 Este conhecimento é importante, pois iremos nos referir a eles, principalmente quando tratarmos das funções de [Geometrias (geoms)](#geometrias-geoms).
 
-Podemos categorizar as variáveis em Qualitativas ou Quantitativas. [@favero]
+Podemos categorizar as variáveis em **Qualitativas** ou **Quantitativas**. [@favero]
 
-#### **Qualitativas**
+#### Qualitativas
 
 Representam as características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas.
 
 As variáveis **qualitativas**, também poder ser classificadas em função do número de categorias em:
 
--   **Dicotômica** ou Binária: Apenas duas categorias.
+-   **Dicotômica** ou **Binária**: Apenas duas categorias.
 
 -   **Policotômica**: Mais que duas categorias.
 
@@ -65,10 +69,10 @@ Ou em função da escala de mensuração em:
 ::: callout-note
 Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.
 
-Em geral, variáveis qualitativas são representadas no R com o tipo fatores "factors".
+Em geral, variáveis **qualitativas** são representadas no ggplot com o tipo **fatores** (factors) ou **caracteres**(chr).
 :::
 
-#### **Quantitativas**
+#### Quantitativa
 
 Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.
 
@@ -82,14 +86,18 @@ Ou em função da escala de mensuração em:
 
 -   **Intervalar**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, não expressa ausência de quantidade. (ex: temperatura)
 
--   **Razão**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: temperatura)
+-   **Razão**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: distância percorrida)
 
 ::: callout-caution
 Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
 :::
 
-::: callout-note
-O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas. Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc.
+#### Discretas e Contínuas no GGPLOT
+
+O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas.
+
+::: callout-important
+Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc
 :::
 
 ## Gramática dos Gráficos
@@ -725,7 +733,7 @@ complete(mpg, class, cyl) |> ggplot () +
 
 Use para criar um gráfico boxplot (box e whiskers). Este gráfico é bastante interessante, pois mostra cinco estatísticas automaticamente (a mediana, primeiro e terceiro quartis e os limites max e min) e os pontos fora da curva individualmente (outlyers).
 
-Para este exemplo, iremos além de definir uma cor de preenchimento através do argumento fill = , iremos remover a legenda desta camada usando show.legend = FALSE. \
+Para este exemplo, iremos além de definir uma cor de preenchimento através do argumento fill = , iremos remover a legenda desta camada usando show.legend = FALSE.\
 
 ```{r}
 f + geom_boxplot(aes(fill = factor(class)), show.legend = FALSE)
@@ -766,17 +774,152 @@ e <- ggplot(mpg, aes(cty, hwy))
 
 #### geom_label
 
+Use para adicionar uma camada de texto (labels) no gráfico. Ela pode ser utilizada sozinha como em gráficos de dispersão, mas é mais comum, usá-la em conjunto com outras geometrias. Por exemplo, colocar os valores acima de cada barra em um geom_bar(). Por padrão, o texto a ser adicionado, tem um retângulo atrás para facilitar a leitura.
+
+O argumento nudge\_\* =, ajusta a posição casos textos estejam no mesmo ponto
+
+```{r}
+e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)
+```
+
+No exemplo acima, temos um gráfico com um texto em cada ponto de cruzamento entre a variável no eixo x e a correspondente no eixo y.
+
+Veja um uso do geom_label em conjunto com outra geom.
+
+**Exemplo 1:**
+
+Neste caso, iremos sumarizar os dados e obtermos um tabela contendo cada classe e a soma do consumo na estrada (hwy). Depois criaremos uma geometria de colunas e adicionaremos uma camada com o texto.
+
+::: panel-tabset
+## geom_label
+
+```{r}
+dados <- mpg |> group_by(class) |> summarise(hwy = sum(hwy))
+
+dados |> ggplot(aes(class, hwy, fill = class)) +
+  geom_col() +
+  geom_label(aes(label = hwy))
+```
+
+## dados
+
+```{r}
+dados
+```
+:::
+
+::: callout-tip
+Podemos utilizar o argumento position = e através da função position_stacked centralizar o ajuste vertical (vjust) para colocar o texto no centro da coluna e remover a camada da legenda:
+:::
+
+```{r}
+dados |> 
+  ggplot(aes(class, hwy, fill = class)) +
+  geom_col() +
+  geom_label(aes(label = hwy), 
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE)
+```
+
+**Exemplo 3:**
+
+Neste exemplo, seguiremos uma outra abordagem. Vimos na seção da geom_bar que ela calcula automaticamente a contagem dos valores para o eixo y, ou seja, nós não tinhamos esta contagem em nossos dados e não queremos preparar um tabela resumida com fizemos no exemplo anterior. Neste caso, podemos utilzar esta estatística calculada usando o parametro stat.
+
+Veremos mais detalhes sobre as estatisticas na seção [Estatísticas (stats)]
+
+```{r}
+ggplot(mpg, aes(x = fl, fill = fl))+
+  geom_bar() + 
+  geom_label(stat  = "count", 
+             aes(label = paste0("Total = ", after_stat(count))),
+             size = 2,
+             show.legend = FALSE)
+```
+
+::: callout-note
+Veja acima que podemos controlar o tamanho (size) e definirmos um string junto com a variável que colocamos no texto utilziando a função **paste0**().
+:::
+
 #### geom_point
+
+Use para gerar um gráfico de pontos ou dispersão. Este tipo de gráfico é muito úteil quando queremos mostrar relações entre as duas variáveis contínuas. Apesar dele também poder ser usado para comparar uma contínua com uma discreta, as opções de geometria como geom_jitter ou geom_count são mais apropriadas.
+
+```{r}
+e + geom_point()
+```
+
+::: callout-tip
+Um gráfico de bolhas (bubblechart) é um gráfico de pontos com uma terceira variável associada ao tamanho dos pontos.
+:::
+
+```{r}
+e + geom_point(aes(size = displ), alpha = 0.3)
+```
 
 #### geom_quantile
 
+Use para criar um gráfico de quantis. Seria o equivalente contínuo do boxplot.
+
+```{r}
+e + geom_quantile()
+```
+
+Podemos definir quantis quantis queremos obter, por exemplo, se quisermos obter uma quebra de 5% , 50% e 95% podemos fazer:
+
+```{r}
+e + geom_quantile(quantiles = c(0.05, .5, 0.95))
+```
+
 #### geom_rug
+
+Use para criar um gráfico de tapete (rug chart) com pequenas linhas para complementar uma visão 2Ds com duas visões de uma dimensão.
+
+O argumento sides é uma string que controla onde os tapetes irão aparecer no gráfico: "trbl" = top, right, bottom e left.
+
+```{r}
+e + geom_rug(sides = "bl")
+```
+
+Fica interessante colocar uma camada adicional com geom_point para entender melhor o que acontece neste tipo de gráfico. Veja que as linhas do tapete ficam mais próximas quando temos mais concentração de pontos. Como este gráfico mostra todos os pontos, ele faz mais sentido com pequenos conjuntos de dados.
+
+```{r}
+e + geom_rug(sides = "bl") +
+    geom_point()
+```
 
 #### geom_smooth
 
+Use para ajudar a encontrar padrões na visualização quando há muitos dados sobrepostos.
+
+```{r}
+e + geom_smooth(method = "lm")
+```
+
+Você pode usá-lo para traçar linhas de tendência também.
+
+```{r}
+e + geom_point() +
+    geom_smooth(method = "lm", se= FALSE)
+```
+
 #### geom_text
 
-#### 
+Use para criar uma geometria com textos. É similar ao geom_label, porém não tem um quadrado envolta do texto por padrão:
+
+```{r}
+e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1)
+```
+
+Assim como aocntece no geom_label, podemos utilizar como camada adicional à outras geometrias. Veja:
+
+```{r}
+dados |> 
+  ggplot(aes(class, hwy, fill = class)) +
+  geom_col() +
+  geom_text(aes(label = hwy), 
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE)
+```
 
 ### Duas Variáveis Distribuição Bivariada Contínua
 

@@ -271,8 +271,9 @@ div.csl-indent {
   </ul></li>
   <li><a href="#tipos-de-variáveis" id="toc-tipos-de-variáveis" class="nav-link" data-scroll-target="#tipos-de-variáveis"> <span class="header-section-number">6.2</span> Tipos de Variáveis</a>
   <ul class="collapse">
-  <li><a href="#qualitativas" id="toc-qualitativas" class="nav-link" data-scroll-target="#qualitativas"> <span class="header-section-number">6.2.0.1</span> <strong>Qualitativas</strong></a></li>
-  <li><a href="#quantitativas" id="toc-quantitativas" class="nav-link" data-scroll-target="#quantitativas"> <span class="header-section-number">6.2.0.2</span> <strong>Quantitativas</strong></a></li>
+  <li><a href="#qualitativas" id="toc-qualitativas" class="nav-link" data-scroll-target="#qualitativas"> <span class="header-section-number">6.2.0.1</span> Qualitativas</a></li>
+  <li><a href="#quantitativa" id="toc-quantitativa" class="nav-link" data-scroll-target="#quantitativa"> <span class="header-section-number">6.2.0.2</span> Quantitativa</a></li>
+  <li><a href="#discretas-e-contínuas-no-ggplot" id="toc-discretas-e-contínuas-no-ggplot" class="nav-link" data-scroll-target="#discretas-e-contínuas-no-ggplot"> <span class="header-section-number">6.2.0.3</span> Discretas e Contínuas no GGPLOT</a></li>
   </ul></li>
   <li><a href="#gramática-dos-gráficos" id="toc-gramática-dos-gráficos" class="nav-link" data-scroll-target="#gramática-dos-gráficos"> <span class="header-section-number">6.3</span> Gramática dos Gráficos</a></li>
   <li><a href="#modelo-para-construção-de-um-gráfico" id="toc-modelo-para-construção-de-um-gráfico" class="nav-link" data-scroll-target="#modelo-para-construção-de-um-gráfico"> <span class="header-section-number">6.4</span> Modelo para Construção de um Gráfico</a>
@@ -342,7 +343,6 @@ div.csl-indent {
   <li><a href="#geom_rug" id="toc-geom_rug" class="nav-link" data-scroll-target="#geom_rug"> <span class="header-section-number">6.6.7.4</span> geom_rug</a></li>
   <li><a href="#geom_smooth" id="toc-geom_smooth" class="nav-link" data-scroll-target="#geom_smooth"> <span class="header-section-number">6.6.7.5</span> geom_smooth</a></li>
   <li><a href="#geom_text" id="toc-geom_text" class="nav-link" data-scroll-target="#geom_text"> <span class="header-section-number">6.6.7.6</span> geom_text</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">6.6.7.7</span> </a></li>
   </ul></li>
   <li><a href="#duas-variáveis-distribuição-bivariada-contínua" id="toc-duas-variáveis-distribuição-bivariada-contínua" class="nav-link" data-scroll-target="#duas-variáveis-distribuição-bivariada-contínua"> <span class="header-section-number">6.6.8</span> Duas Variáveis Distribuição Bivariada Contínua</a></li>
   <li><a href="#duas-variáveis-discretas-1" id="toc-duas-variáveis-discretas-1" class="nav-link" data-scroll-target="#duas-variáveis-discretas-1"> <span class="header-section-number">6.6.9</span> Duas Variáveis Discretas</a></li>
@@ -433,20 +433,22 @@ Aviso
 <section id="exemplos-da-folha-de-referência" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">6.1.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf"><strong>Folha de Referência</strong></a> do stringr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
+<p><img src="images/cheatsheet-01.png" class="img-fluid"></p>
+<p><img src="images/cheatsheet-02.png" class="img-fluid"></p>
 <hr>
 </section>
 </section>
 <section id="tipos-de-variáveis" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="tipos-de-variáveis"><span class="header-section-number">6.2</span> Tipos de Variáveis</h2>
-<p>Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados.</p>
+<p>Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados e do ggplot.</p>
 <p>Este conhecimento é importante, pois iremos nos referir a eles, principalmente quando tratarmos das funções de <a href="#geometrias-geoms">Geometrias (geoms)</a>.</p>
-<p>Podemos categorizar as variáveis em Qualitativas ou Quantitativas. <span class="citation" data-cites="favero">(<a href="#ref-favero" role="doc-biblioref">Fávero 2021</a>)</span></p>
+<p>Podemos categorizar as variáveis em <strong>Qualitativas</strong> ou <strong>Quantitativas</strong>. <span class="citation" data-cites="favero">(<a href="#ref-favero" role="doc-biblioref">Fávero 2021</a>)</span></p>
 <section id="qualitativas" class="level4" data-number="6.2.0.1">
-<h4 data-number="6.2.0.1" class="anchored" data-anchor-id="qualitativas"><span class="header-section-number">6.2.0.1</span> <strong>Qualitativas</strong></h4>
+<h4 data-number="6.2.0.1" class="anchored" data-anchor-id="qualitativas"><span class="header-section-number">6.2.0.1</span> Qualitativas</h4>
 <p>Representam as características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas.</p>
 <p>As variáveis <strong>qualitativas</strong>, também poder ser classificadas em função do número de categorias em:</p>
 <ul>
-<li><p><strong>Dicotômica</strong> ou Binária: Apenas duas categorias.</p></li>
+<li><p><strong>Dicotômica</strong> ou <strong>Binária</strong>: Apenas duas categorias.</p></li>
 <li><p><strong>Policotômica</strong>: Mais que duas categorias.</p></li>
 </ul>
 <p>Ou em função da escala de mensuração em:</p>
@@ -465,12 +467,12 @@ Nota
 </div>
 <div class="callout-body-container callout-body">
 <p>Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.</p>
-<p>Em geral, variáveis qualitativas são representadas no R com o tipo fatores “factors”.</p>
+<p>Em geral, variáveis <strong>qualitativas</strong> são representadas no ggplot com o tipo <strong>fatores</strong> (factors) ou <strong>caracteres</strong>(chr).</p>
 </div>
 </div>
 </section>
-<section id="quantitativas" class="level4" data-number="6.2.0.2">
-<h4 data-number="6.2.0.2" class="anchored" data-anchor-id="quantitativas"><span class="header-section-number">6.2.0.2</span> <strong>Quantitativas</strong></h4>
+<section id="quantitativa" class="level4" data-number="6.2.0.2">
+<h4 data-number="6.2.0.2" class="anchored" data-anchor-id="quantitativa"><span class="header-section-number">6.2.0.2</span> Quantitativa</h4>
 <p>Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.</p>
 <p>As variáveis <strong>quantitativas</strong>, também podem ser classificadas em função da escala de precisão.</p>
 <ul>
@@ -480,7 +482,7 @@ Nota
 <p>Ou em função da escala de mensuração em:</p>
 <ul>
 <li><p><strong>Intervalar</strong>: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, não expressa ausência de quantidade. (ex: temperatura)</p></li>
-<li><p><strong>Razão</strong>: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: temperatura)</p></li>
+<li><p><strong>Razão</strong>: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: distância percorrida)</p></li>
 </ul>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -495,17 +497,21 @@ Cuidado
 <p>Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+</section>
+<section id="discretas-e-contínuas-no-ggplot" class="level4" data-number="6.2.0.3">
+<h4 data-number="6.2.0.3" class="anchored" data-anchor-id="discretas-e-contínuas-no-ggplot"><span class="header-section-number">6.2.0.3</span> Discretas e Contínuas no GGPLOT</h4>
+<p>O ggplot2, em geral irá tratar as variáveis <strong>caractere</strong> (char) e <strong>fatores</strong> (factors) em escalas <strong>discretas</strong>. Já as variáveis <strong>numéricas</strong> com escalas <strong>contínuas</strong>. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Nota
+Importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O ggplot2, em geral irá tratar as variáveis <strong>caractere</strong> (char) e <strong>fatores</strong> (factors) em escalas <strong>discretas</strong>. Já as variáveis <strong>numéricas</strong> com escalas <strong>contínuas</strong>. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas. Quando tivermos variáveis que não seguem este padrão, devemos “transformá-las, usando funções como as_factor(), as.integer(), as.double, etc.</p>
+<p>Quando tivermos variáveis que não seguem este padrão, devemos “transformá-las, usando funções como as_factor(), as.integer(), as.double, etc</p>
 </div>
 </div>
 </section>
@@ -1403,24 +1409,204 @@ Dica
 </div>
 <section id="geom_label" class="level4" data-number="6.6.7.1">
 <h4 data-number="6.6.7.1" class="anchored" data-anchor-id="geom_label"><span class="header-section-number">6.6.7.1</span> geom_label</h4>
+<p>Use para adicionar uma camada de texto (labels) no gráfico. Ela pode ser utilizada sozinha como em gráficos de dispersão, mas é mais comum, usá-la em conjunto com outras geometrias. Por exemplo, colocar os valores acima de cada barra em um geom_bar(). Por padrão, o texto a ser adicionado, tem um retângulo atrás para facilitar a leitura.</p>
+<p>O argumento nudge_* =, ajusta a posição casos textos estejam no mesmo ponto</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> cty), <span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">nudge_y =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-69-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>No exemplo acima, temos um gráfico com um texto em cada ponto de cruzamento entre a variável no eixo x e a correspondente no eixo y.</p>
+<p>Veja um uso do geom_label em conjunto com outra geom.</p>
+<p><strong>Exemplo 1:</strong></p>
+<p>Neste caso, iremos sumarizar os dados e obtermos um tabela contendo cada classe e a soma do consumo na estrada (hwy). Depois criaremos uma geometria de colunas e adicionaremos uma camada com o texto.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">geom_label</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">dados</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">hwy =</span> <span class="fu">sum</span>(hwy))</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, hwy, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> hwy))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-70-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>dados</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["hwy"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"2seater","2":"124"},{"1":"compact","2":"1330"},{"1":"midsize","2":"1119"},{"1":"minivan","2":"246"},{"1":"pickup","2":"557"},{"1":"subcompact","2":"985"},{"1":"suv","2":"1124"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Podemos utilizar o argumento position = e através da função position_stacked centralizar o ajuste vertical (vjust) para colocar o texto no centro da coluna e remover a camada da legenda:</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, hwy, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> hwy), </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-72-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Exemplo 3:</strong></p>
+<p>Neste exemplo, seguiremos uma outra abordagem. Vimos na seção da geom_bar que ela calcula automaticamente a contagem dos valores para o eixo y, ou seja, nós não tinhamos esta contagem em nossos dados e não queremos preparar um tabela resumida com fizemos no exemplo anterior. Neste caso, podemos utilzar esta estatística calculada usando o parametro stat.</p>
+<p>Veremos mais detalhes sobre as estatisticas na seção <a href="#estatísticas-stats">Estatísticas (stats)</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> fl, <span class="at">fill =</span> fl))<span class="sc">+</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">stat  =</span> <span class="st">"count"</span>, </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Total = "</span>, <span class="fu">after_stat</span>(count))),</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-73-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Veja acima que podemos controlar o tamanho (size) e definirmos um string junto com a variável que colocamos no texto utilziando a função <strong>paste0</strong>().</p>
+</div>
+</div>
 </section>
 <section id="geom_point" class="level4" data-number="6.6.7.2">
 <h4 data-number="6.6.7.2" class="anchored" data-anchor-id="geom_point"><span class="header-section-number">6.6.7.2</span> geom_point</h4>
+<p>Use para gerar um gráfico de pontos ou dispersão. Este tipo de gráfico é muito úteil quando queremos mostrar relações entre as duas variáveis contínuas. Apesar dele também poder ser usado para comparar uma contínua com uma discreta, as opções de geometria como geom_jitter ou geom_count são mais apropriadas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um gráfico de bolhas (bubblechart) é um gráfico de pontos com uma terceira variável associada ao tamanho dos pontos.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> displ), <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-75-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="geom_quantile" class="level4" data-number="6.6.7.3">
 <h4 data-number="6.6.7.3" class="anchored" data-anchor-id="geom_quantile"><span class="header-section-number">6.6.7.3</span> geom_quantile</h4>
+<p>Use para criar um gráfico de quantis. Seria o equivalente contínuo do boxplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_quantile</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Podemos definir quantis quantis queremos obter, por exemplo, se quisermos obter uma quebra de 5% , 50% e 95% podemos fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_quantile</span>(<span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, .<span class="dv">5</span>, <span class="fl">0.95</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-77-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="geom_rug" class="level4" data-number="6.6.7.4">
 <h4 data-number="6.6.7.4" class="anchored" data-anchor-id="geom_rug"><span class="header-section-number">6.6.7.4</span> geom_rug</h4>
+<p>Use para criar um gráfico de tapete (rug chart) com pequenas linhas para complementar uma visão 2Ds com duas visões de uma dimensão.</p>
+<p>O argumento sides é uma string que controla onde os tapetes irão aparecer no gráfico: “trbl” = top, right, bottom e left.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-78-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Fica interessante colocar uma camada adicional com geom_point para entender melhor o que acontece neste tipo de gráfico. Veja que as linhas do tapete ficam mais próximas quando temos mais concentração de pontos. Como este gráfico mostra todos os pontos, ele faz mais sentido com pequenos conjuntos de dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-79-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="geom_smooth" class="level4" data-number="6.6.7.5">
 <h4 data-number="6.6.7.5" class="anchored" data-anchor-id="geom_smooth"><span class="header-section-number">6.6.7.5</span> geom_smooth</h4>
+<p>Use para ajudar a encontrar padrões na visualização quando há muitos dados sobrepostos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Você pode usá-lo para traçar linhas de tendência também.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-81-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="geom_text" class="level4" data-number="6.6.7.6">
 <h4 data-number="6.6.7.6" class="anchored" data-anchor-id="geom_text"><span class="header-section-number">6.6.7.6</span> geom_text</h4>
-</section>
-<section id="section" class="level4" data-number="6.6.7.7">
-<h4 data-number="6.6.7.7" class="anchored" data-anchor-id="section"><span class="header-section-number">6.6.7.7</span> </h4>
+<p>Use para criar uma geometria com textos. É similar ao geom_label, porém não tem um quadrado envolta do texto por padrão:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>e <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> cty), <span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">nudge_y =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Assim como aocntece no geom_label, podemos utilizar como camada adicional à outras geometrias. Veja:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, hwy, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> hwy), </span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-83-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="duas-variáveis-distribuição-bivariada-contínua" class="level3" data-number="6.6.8">
