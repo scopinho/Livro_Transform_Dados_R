@@ -825,7 +825,7 @@ dados |>
 
 Neste exemplo, seguiremos uma outra abordagem. Vimos na seção da geom_bar que ela calcula automaticamente a contagem dos valores para o eixo y, ou seja, nós não tinhamos esta contagem em nossos dados e não queremos preparar um tabela resumida com fizemos no exemplo anterior. Neste caso, podemos utilzar esta estatística calculada usando o parametro stat.
 
-Veremos mais detalhes sobre as estatisticas na seção [Estatísticas (stats)]
+Veremos mais detalhes sobre as estatisticas na seção [Estatísticas (stats)](#estatísticas-stats)
 
 ```{r}
 ggplot(mpg, aes(x = fl, fill = fl))+
@@ -921,15 +921,207 @@ dados |>
              show.legend = FALSE)
 ```
 
-### Duas Variáveis Distribuição Bivariada Contínua
+### **Mapas de Calor e Densidade**
+
+En alguns casos, precisamos mostrar como as duas variáveis contínuas se relacionam, dividindo o plano em retângulos e plotando os número de casos em cada retãngulo e preenchendo a cor de acordo com o número de casos. Para os exemplos a seguir, usaremos novamente a base "**diamonds**" em um objeto "**h**" .
+
+```{r}
+h <- ggplot(diamonds, aes(carat, price))
+```
+
+#### geom_bind2d
+
+Use para gerar um mapa de calor com classe de contagem 2d. O gráfico é formado dividindo o plano em retângulos e plotando os número de casos em cada retangulo e preenchendo a cor de acordo com o número de casos.
+
+```{r}
+h + geom_bin2d(binwidth = c(0.25, 500))
+
+```
+
+#### geom_density_2d
+
+Use para gerar um gráfico de contorno. É um gráfico de densidade (ver [geom_density]) só que para duas variáveis.
+
+```{r}
+h + geom_density_2d()
+```
+
+#### geom_hex
+
+Use para gerar um mapa de calor hexagonal. O gráfico é formado dividindo o plano em hexagonos e plotando os número de casos em cada retangulo e preenchendo a cor de acordo com o número de casos.
+
+```{r}
+h + geom_hex(bins = 40)
+
+```
 
 ### Duas Variáveis Discretas
 
+Quando precisamos analisar duas variáveis contínuas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nosso objeto básico para evitar repetição de código. Agora teremos um objeto "**g**" e "**e**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente, só que agora usando a base de dados **mpg e diamonds**. Utilizaremos as variáveis de mpg consumo na cidade (cty) e consumo na estrada (hwy) e de diamonds (cut e color).
+
+```{r}
+g <- ggplot(diamonds, aes(cut, color))
+e <- ggplot(mpg, aes(cty, hwy))
+```
+
+#### geom_count
+
+Esta geometria é uma variante da geom_point que conta o número de observações para cada localização do gráfico e então mapeia o número da contagem com cada ponto.
+
+```{r}
+g + geom_count()
+```
+
+#### geom_jitter
+
+Use para criar um gráfico de pontos com o uma dispersão aleatória em cada ponto sobreescrito. É similar a escrever geom_point(position = "jitter").
+
+```{r}
+e + geom_jitter(height = 1, width = 1)
+```
+
+Para entender como esta dispersão aleatória funciona, compare uma geometria de pontos onde temos vaŕios pontos no mesmo local (sem a dispersão em vermelho) e com a dispersão (jitter).
+
+```{r}
+e +
+  geom_jitter(alpha = 0.4, height = 1, width = 1) +
+  geom_point(color = "red")
+  
+```
+
 ### Mapas
+
+O ggplot2 também pode gerar gráficos de mapas.
+
+Para isso iremos criar um conjunto de dados à partir da base "**USArrests**", contendo onúmero de assassinatos por estado americano. Depois iremos usar usar a função **map_data**() para criar um data frame com as iformações para o mapa (latitude e longitude). Depois usaremos este data frame para a geometria de mapas (geom_map).
+
+::: panel-tabset
+## mapa
+
+```{r}
+data <- data.frame(murder = USArrests$Murder,
+state = tolower(rownames(USArrests)))
+
+map <- map_data("state")
+k <- ggplot(data, aes(fill = murder))
+
+k + geom_map(aes(map_id = state), map = map) +
+    expand_limits(x = map$long, y = map$lat)
+
+```
+
+## data frame
+
+```{r}
+data
+```
+
+## data frame de mapa
+
+```{r}
+map
+```
+:::
 
 ### Visualizando Erros
 
+Quando precisamos analisar intervalos verticais, com linhas, barras e barras de erros, podemos usar as seguintes geometrias abaix. Porém, como nas demais seções, iremos preparar nosso objeto básico para evitar repetição de código.
+
+Agora teremos um objeto "**j**" ao qual iremos adicionar novas camadas. Similar ao que fizemos anteriormente, só que agora usando a base "**df**" que criaremos a seguir.
+
+```{r}
+df <- data.frame(grp = c("A", "B"), fit = 4:5, se = 1:2)
+j <- ggplot(df, aes(grp, fit, ymin = fit - se, ymax = fit + se))
+```
+
+Vamos entender como é a base de dados "df" criada.
+
+```{r}
+df
+```
+
+::: callout-note
+A coluna "SE", significa "standard error" ou erro padrão.
+:::
+
+Já o objeto ggplot base que criamos tem a variável grp no eixo x, fit no eixo y. Também definimos o y-min como fit - se (erro padrão) e o ymax como fit + se.
+
+```{r}
+#| eval: false
+j <- ggplot(df, aes(grp, fit, ymin = fit - se, ymax = fit + se))
+```
+
+#### geom_crossbar
+
+Use para criar uma barra no intervalo vertical. Esta função criará duas barras com um ponto central baseado em ymin, x e ymax. o argumento fatten = , é um fator multiplicador para o separador do meio.
+
+```{r}
+j + geom_crossbar(fatten = 5)
+```
+
+Veja que a distância do ponto central de A até seu limite de baixo é definido por fit + se em nossa tabela de dados e nosso objeto "j". O mesmo ocorre para o limite inferior.
+
+#### geom_errorbar
+
+Use para traçar barras de erro. Similar ao geom_crossbar, mas não mostra o ponto central ou as linhas laterais.
+
+```{r}
+j + geom_errorbar()
+```
+
+#### geom_linerange
+
+Similar a geom_errorbar, mas sem as linha superior ou inferior.
+
+```{r}
+j + geom_linerange()
+```
+
+#### geom_pointrange
+
+Similar à geom_linerange, porém monstrando o ponto central.
+
+```{r}
+j + geom_pointrange()
+```
+
 ### Três Variáveis
+
+O ggplot não consegue criar gráficos 3D verdadeiros, porém permite visualizar superfícies 3D em 2 duas dimensões. Quando precisamos criar tais gráficos, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
+
+Novamente, iremos preparar nossos objetos básicos para evitar repetição de código. Agora teremos um objeto "**l**" ao qual iremos adicionar novas camadas. Isto é similar ao que fizemos anteriormente, só que agora usando a base de dados **seals**. Faremos um ajuste, criando uma coluna "z", que será a raiz quadrada das somas dos quadrados de delta_long e delta_lat. Mapearemos nosso objeto ggplot base com x = long e y = lat:
+
+```{r}
+seals$z <- with(seals, sqrt(delta_long^2 + delta_lat^2))
+l <- ggplot(seals, aes(long, lat))
+```
+
+#### geom_contour
+
+```{r}
+l + geom_contour(aes(z = z))
+```
+
+#### geom_contour_filled
+
+```{r}
+l + geom_contour_filled(aes(z = z, color = z))
+```
+
+#### geom_raster
+
+```{r}
+l + geom_raster(aes(fill = z), hjust = 0.5,
+vjust = 0.5, interpolate = FALSE)
+```
+
+#### geom_tile
+
+```{r}
+l + geom_tile(aes(fill = z))
+```
 
 ## Estatísticas (stats) {#estatísticas-stats}
 
