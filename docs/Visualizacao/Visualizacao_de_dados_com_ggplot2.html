@@ -384,11 +384,22 @@ div.csl-indent {
   <li><a href="#scale__date" id="toc-scale__date" class="nav-link" data-scroll-target="#scale__date"> <span class="header-section-number">6.8.1.6</span> scale_*_date</a></li>
   <li><a href="#scale__datetime" id="toc-scale__datetime" class="nav-link" data-scroll-target="#scale__datetime"> <span class="header-section-number">6.8.1.7</span> scale_*_datetime</a></li>
   </ul></li>
-  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">6.8.2</span> Escalas de Localização X &amp; Y</a></li>
-  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">6.8.3</span> Escalas de Cor e Preenchimento</a></li>
-  <li><a href="#variáveis-discretas" id="toc-variáveis-discretas" class="nav-link" data-scroll-target="#variáveis-discretas"> <span class="header-section-number">6.8.4</span> Variáveis Discretas</a></li>
-  <li><a href="#variáveis-contínuas" id="toc-variáveis-contínuas" class="nav-link" data-scroll-target="#variáveis-contínuas"> <span class="header-section-number">6.8.5</span> Variáveis Contínuas</a></li>
-  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"> <span class="header-section-number">6.8.6</span> Escalas de Forma e Tamanho</a></li>
+  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">6.8.2</span> Escalas de Localização X &amp; Y</a>
+  <ul class="collapse">
+  <li><a href="#scale__log10" id="toc-scale__log10" class="nav-link" data-scroll-target="#scale__log10"> <span class="header-section-number">6.8.2.1</span> scale_*_log10</a></li>
+  <li><a href="#scale__reverse" id="toc-scale__reverse" class="nav-link" data-scroll-target="#scale__reverse"> <span class="header-section-number">6.8.2.2</span> scale_*_reverse</a></li>
+  <li><a href="#scale__sqrt" id="toc-scale__sqrt" class="nav-link" data-scroll-target="#scale__sqrt"> <span class="header-section-number">6.8.2.3</span> scale_*_sqrt</a></li>
+  </ul></li>
+  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">6.8.3</span> Escalas de Cor e Preenchimento</a>
+  <ul class="collapse">
+  <li><a href="#geom_fill_brewer" id="toc-geom_fill_brewer" class="nav-link" data-scroll-target="#geom_fill_brewer"> <span class="header-section-number">6.8.3.1</span> geom_fill_brewer</a></li>
+  <li><a href="#geom_fill_grey" id="toc-geom_fill_grey" class="nav-link" data-scroll-target="#geom_fill_grey"> <span class="header-section-number">6.8.3.2</span> geom_fill_grey</a></li>
+  <li><a href="#geom_fill_distiller" id="toc-geom_fill_distiller" class="nav-link" data-scroll-target="#geom_fill_distiller"> <span class="header-section-number">6.8.3.3</span> geom_fill_distiller</a></li>
+  <li><a href="#geom_fill_gradient" id="toc-geom_fill_gradient" class="nav-link" data-scroll-target="#geom_fill_gradient"> <span class="header-section-number">6.8.3.4</span> geom_fill_gradient</a></li>
+  <li><a href="#geom_fill_gradient2" id="toc-geom_fill_gradient2" class="nav-link" data-scroll-target="#geom_fill_gradient2"> <span class="header-section-number">6.8.3.5</span> geom_fill_gradient2</a></li>
+  <li><a href="#geom_fill_gradientn" id="toc-geom_fill_gradientn" class="nav-link" data-scroll-target="#geom_fill_gradientn"> <span class="header-section-number">6.8.3.6</span> geom_fill_gradientn</a></li>
+  </ul></li>
+  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"> <span class="header-section-number">6.8.4</span> Escalas de Forma e Tamanho</a></li>
   </ul></li>
   <li><a href="#sistema-de-coordenadas" id="toc-sistema-de-coordenadas" class="nav-link" data-scroll-target="#sistema-de-coordenadas"> <span class="header-section-number">6.9</span> Sistema de Coordenadas</a></li>
   <li><a href="#ajuste-de-posição" id="toc-ajuste-de-posição" class="nav-link" data-scroll-target="#ajuste-de-posição"> <span class="header-section-number">6.10</span> Ajuste de Posição</a></li>
@@ -2283,18 +2294,116 @@ Nota
 </section>
 <section id="escalas-de-localização-x-y" class="level3" data-number="6.8.2">
 <h3 data-number="6.8.2" class="anchored" data-anchor-id="escalas-de-localização-x-y"><span class="header-section-number">6.8.2</span> Escalas de Localização X &amp; Y</h3>
+<p>Algumas escalas alteram a estética dos eixos x e/ou y. O</p>
+<section id="scale__log10" class="level4" data-number="6.8.2.1">
+<h4 data-number="6.8.2.1" class="anchored" data-anchor-id="scale__log10"><span class="header-section-number">6.8.2.1</span> scale_*_log10</h4>
+<p>Use para plotar o eixo x em escala de log10.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-125-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__reverse" class="level4" data-number="6.8.2.2">
+<h4 data-number="6.8.2.2" class="anchored" data-anchor-id="scale__reverse"><span class="header-section-number">6.8.2.2</span> scale_*_reverse</h4>
+<p>Use para inverter a ordem da escala.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-126-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scale__sqrt" class="level4" data-number="6.8.2.3">
+<h4 data-number="6.8.2.3" class="anchored" data-anchor-id="scale__sqrt"><span class="header-section-number">6.8.2.3</span> scale_*_sqrt</h4>
+<p>Use para plotar o eixo x em escala quadrática.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>c <span class="sc">+</span> <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_sqrt</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-127-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
 </section>
 <section id="escalas-de-cor-e-preenchimento" class="level3" data-number="6.8.3">
 <h3 data-number="6.8.3" class="anchored" data-anchor-id="escalas-de-cor-e-preenchimento"><span class="header-section-number">6.8.3</span> Escalas de Cor e Preenchimento</h3>
+<p>As escala de cor (color e fill) possuem características semelhas, tanto para variáveis discretas quanto contínuas. A seguir, usar a cor de preenchimento com funções <strong>scale_fill_*</strong>, porém as mesmas características estão disponíveis para as funções <strong>scale_color_*</strong> .</p>
+<p><u><strong>Variáveis Discretas</strong></u></p>
+<section id="geom_fill_brewer" class="level4" data-number="6.8.3.1">
+<h4 data-number="6.8.3.1" class="anchored" data-anchor-id="geom_fill_brewer"><span class="header-section-number">6.8.3.1</span> geom_fill_brewer</h4>
+<p>Use esta escala de cores para aplicar paletas qualitativas nas cores. As paletas são provenientes do pacote <strong>RColorBrewer</strong>. Este pacotes possui paletas para cores <strong>sequenciais</strong>, <strong>divergentes</strong> e <strong>qualitativas</strong>.</p>
+<p>Para ver as paletas disponíveis use:</p>
+<div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>(<span class="at">type =</span> <span class="st">"qual"</span>)</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>(<span class="at">type =</span> <span class="st">"seq"</span>)</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>(<span class="at">type =</span> <span class="st">"div"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-128-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-128-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-128-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para visualizar apenas as paletas amigáveis à pessoas com sensíveis à diferenciação de cores (colorblind), usa o parametro <strong>colorblindFriendly</strong> = TRUE</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-129-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
-<section id="variáveis-discretas" class="level3" data-number="6.8.4">
-<h3 data-number="6.8.4" class="anchored" data-anchor-id="variáveis-discretas"><span class="header-section-number">6.8.4</span> Variáveis Discretas</h3>
+<section id="geom_fill_grey" class="level4" data-number="6.8.3.2">
+<h4 data-number="6.8.3.2" class="anchored" data-anchor-id="geom_fill_grey"><span class="header-section-number">6.8.3.2</span> geom_fill_grey</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">scale_fill_grey</span> (<span class="at">start =</span> <span class="fl">0.2</span>, <span class="at">end =</span> <span class="fl">0.8</span>, <span class="at">na.value =</span> <span class="st">"red"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-130-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><u><strong>Variáveis Contínuas</strong></u></p>
 </section>
-<section id="variáveis-contínuas" class="level3" data-number="6.8.5">
-<h3 data-number="6.8.5" class="anchored" data-anchor-id="variáveis-contínuas"><span class="header-section-number">6.8.5</span> Variáveis Contínuas</h3>
+<section id="geom_fill_distiller" class="level4" data-number="6.8.3.3">
+<h4 data-number="6.8.3.3" class="anchored" data-anchor-id="geom_fill_distiller"><span class="header-section-number">6.8.3.3</span> geom_fill_distiller</h4>
 </section>
-<section id="escalas-de-forma-e-tamanho" class="level3" data-number="6.8.6">
-<h3 data-number="6.8.6" class="anchored" data-anchor-id="escalas-de-forma-e-tamanho"><span class="header-section-number">6.8.6</span> Escalas de Forma e Tamanho</h3>
+<section id="geom_fill_gradient" class="level4" data-number="6.8.3.4">
+<h4 data-number="6.8.3.4" class="anchored" data-anchor-id="geom_fill_gradient"><span class="header-section-number">6.8.3.4</span> geom_fill_gradient</h4>
+</section>
+<section id="geom_fill_gradient2" class="level4" data-number="6.8.3.5">
+<h4 data-number="6.8.3.5" class="anchored" data-anchor-id="geom_fill_gradient2"><span class="header-section-number">6.8.3.5</span> geom_fill_gradient2</h4>
+</section>
+<section id="geom_fill_gradientn" class="level4" data-number="6.8.3.6">
+<h4 data-number="6.8.3.6" class="anchored" data-anchor-id="geom_fill_gradientn"><span class="header-section-number">6.8.3.6</span> geom_fill_gradientn</h4>
+</section>
+</section>
+<section id="escalas-de-forma-e-tamanho" class="level3" data-number="6.8.4">
+<h3 data-number="6.8.4" class="anchored" data-anchor-id="escalas-de-forma-e-tamanho"><span class="header-section-number">6.8.4</span> Escalas de Forma e Tamanho</h3>
 </section>
 </section>
 <section id="sistema-de-coordenadas" class="level2" data-number="6.9">

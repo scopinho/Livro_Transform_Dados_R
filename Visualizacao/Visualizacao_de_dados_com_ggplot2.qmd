@@ -1373,7 +1373,7 @@ ggplot(mpg, aes(class, hwy)) +
 
 #### scale\_\*\_date
 
-Use para tratar uma escala como data. Neste exemplo, iremos utilizar o conjunto de dados "**billboard**" também modificar os labels da escala e quantas paradas ela terá.  
+Use para tratar uma escala como data. Neste exemplo, iremos utilizar o conjunto de dados "**billboard**" também modificar os labels da escala e quantas paradas ela terá.
 
 ```{r}
 billboard |> 
@@ -1383,15 +1383,134 @@ billboard |>
 ```
 
 #### scale\_\*\_datetime
-Similar a scale_\*_date , porém ela lida com data e **hora**.
+
+Similar a scale\_\*\_date , porém ela lida com data e **hora**.
 
 ### Escalas de Localização X & Y
 
+Algumas escalas alteram a estética dos eixos x e/ou y. O
+
+#### scale\_\*\_log10
+
+Use para plotar o eixo x em escala de log10.
+
+```{r}
+c + geom_line(stat = "count")+
+  scale_y_log10()
+```
+
+#### scale\_\*\_reverse
+
+Use para inverter a ordem da escala.
+
+```{r}
+c + geom_line(stat = "count")+
+  scale_x_reverse()
+```
+
+#### scale\_\*\_sqrt
+
+Use para plotar o eixo x em escala quadrática.
+
+```{r}
+c + geom_area(stat = "count") +
+  scale_y_sqrt()
+```
+
 ### Escalas de Cor e Preenchimento
 
-### Variáveis Discretas
+As escala de cor (color e fill) possuem características semelhas, tanto para variáveis discretas quanto contínuas. A seguir, usar a cor de preenchimento com funções **scale_fill\_\***, porém as mesmas características estão disponíveis para as funções **scale_color\_\*** .
 
-### Variáveis Contínuas
+[**Variáveis Discretas**]{.underline}
+
+#### scale_fill_brewer
+
+Use esta escala de cores para aplicar paletas qualitativas nas cores. As paletas são provenientes do pacote **RColorBrewer**. Este pacotes possui paletas para cores **sequenciais**, **divergentes** e **qualitativas**.
+
+Para ver as paletas disponíveis use:
+
+```{r}
+#| layout-nrow: 3
+
+RColorBrewer::display.brewer.all(type = "qual")
+RColorBrewer::display.brewer.all(type = "seq")
+RColorBrewer::display.brewer.all(type = "div")
+```
+
+::: callout-tip
+Para visualizar apenas as paletas amigáveis à pessoas com sensíveis à diferenciação de cores (colorblind), usa o parametro **colorblindFriendly** = TRUE
+:::
+
+```{r}
+n + scale_fill_brewer(palette = "Blues")
+```
+
+#### scale_fill_grey
+
+Use para gerar escalas de cores em diferentes níveis de cinza, com valores de 0 até 1.
+
+```{r}
+n + scale_fill_grey (start = 0.2, end = 0.8)
+```
+
+[**Variáveis Contínuas**]{.underline}
+
+Para demonstrar algumas escalas de cores para variáveis contínuas, criaremos um objeto ggplot "**o**", adicionando a estética de preenchimento para a mesma variável mapeada em na estética "x".
+
+```{r}
+o <- c + geom_dotplot(aes(fill = ..x..))
+```
+
+#### scale_fill_distiller
+
+Use para extender as escalas "brewer" das variáveis discretas para variáveis contínuas, adicionando 7 outras cores por interpolação.
+
+```{r}
+o + scale_fill_distiller(palette = "Blues")
+```
+
+#### scale_fill_gradient
+
+Use para criar escalas de cores contínuas com gradiente de duas cores.
+
+```{r}
+o + scale_fill_gradient(low="red", high="yellow")
+```
+
+#### scale_fill_gradient2
+
+Use para criar escalas de cores contínuas com gradiente de três cores (início, meio e fim).
+
+```{r}
+o + scale_fill_gradient2(low = "red", high = "blue",
+mid = "white", midpoint = 25)
+```
+
+#### scale_fill_gradientn
+
+Use para criar escalas de cores contínuas com gradiente de múltiplas cores.
+
+```{r}
+o + scale_fill_gradientn(colors = topo.colors(6))
+```
+
+Além da paleta topo.colors(), podemos ainda usar heat.colors(), terrain.colors, rainbow() e cm.colors() para criar um vetor de tamanho específico com cada elemento com uma cor seguindo o padrão de espaço de cores HSV.
+
+Exemplo:
+
+```{r}
+#|layout-ncol: 2
+#|layout-nrow: 2
+
+o + scale_fill_gradientn(colors = rainbow(6))
+o + scale_fill_gradientn(colors = cm.colors(4))
+o + scale_fill_gradientn(colors = heat.colors(3))
+o + scale_fill_gradientn(colors = terrain.colors(4))
+```
+
+::: callout-tip
+Para criar novas paletas de cor, podemos usar a função **RColorBrewer::brewer.pal**()
+:::
 
 ### Escalas de Forma e Tamanho
 
