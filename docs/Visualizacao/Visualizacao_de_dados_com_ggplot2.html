@@ -3135,91 +3135,71 @@ Dica
 <p><strong>Exemplo</strong>:</p>
 <p>Vamos criar nosso gráfico inicial:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>g_barras <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
 <span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb188-4"><a href="#cb188-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
+<span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb188-4"><a href="#cb188-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
 <span id="cb188-5"><a href="#cb188-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
 <span id="cb188-6"><a href="#cb188-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb188-7"><a href="#cb188-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
-<span id="cb188-8"><a href="#cb188-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
-<span id="cb188-9"><a href="#cb188-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_linedraw</span>() <span class="sc">+</span> </span>
-<span id="cb188-10"><a href="#cb188-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb188-11"><a href="#cb188-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb188-12"><a href="#cb188-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">angle =</span> <span class="dv">90</span>))</span>
-<span id="cb188-13"><a href="#cb188-13" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb188-14"><a href="#cb188-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-15"><a href="#cb188-15" aria-hidden="true" tabindex="-1"></a>g_barras</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb188-7"><a href="#cb188-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
+<span id="cb188-8"><a href="#cb188-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
+<span id="cb188-9"><a href="#cb188-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb188-10"><a href="#cb188-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
+<span id="cb188-11"><a href="#cb188-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
+<span id="cb188-12"><a href="#cb188-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
+<span id="cb188-13"><a href="#cb188-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb188-14"><a href="#cb188-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb188-15"><a href="#cb188-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-182-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
-<span id="cb189-5"><a href="#cb189-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
-<span id="cb189-6"><a href="#cb189-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb189-7"><a href="#cb189-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
-<span id="cb189-8"><a href="#cb189-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
-<span id="cb189-9"><a href="#cb189-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb189-10"><a href="#cb189-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
-<span id="cb189-11"><a href="#cb189-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
-<span id="cb189-12"><a href="#cb189-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
-<span id="cb189-13"><a href="#cb189-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb189-14"><a href="#cb189-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
-<span id="cb189-15"><a href="#cb189-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-183-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
 <p>Após termos o gráfico com as customizações que desejamos, podemos criar uma função. Neste caso, ela irá receber apenas os dados, a variável do eixo x e de preenchimento.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função para gerar o gráfico</span></span>
-<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>cria_grafico_barras <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, eixo_x, preenchimento) {</span>
-<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a>  g_barras <span class="ot">&lt;-</span> </span>
-<span id="cb190-5"><a href="#cb190-5" aria-hidden="true" tabindex="-1"></a>    {{dados}} <span class="sc">|&gt;</span> </span>
-<span id="cb190-6"><a href="#cb190-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> {{eixo_x}}, <span class="at">fill =</span> {{preenchimento}})) <span class="sc">+</span></span>
-<span id="cb190-7"><a href="#cb190-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb190-8"><a href="#cb190-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
-<span id="cb190-9"><a href="#cb190-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
-<span id="cb190-10"><a href="#cb190-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb190-11"><a href="#cb190-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
-<span id="cb190-12"><a href="#cb190-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
-<span id="cb190-13"><a href="#cb190-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb190-14"><a href="#cb190-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
-<span id="cb190-15"><a href="#cb190-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
-<span id="cb190-16"><a href="#cb190-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
-<span id="cb190-17"><a href="#cb190-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb190-18"><a href="#cb190-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
-<span id="cb190-19"><a href="#cb190-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span>
-<span id="cb190-20"><a href="#cb190-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-21"><a href="#cb190-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-22"><a href="#cb190-22" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(g_barras)</span>
-<span id="cb190-23"><a href="#cb190-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-24"><a href="#cb190-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função para gerar o gráfico</span></span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>cria_grafico_barras <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, eixo_x, preenchimento) {</span>
+<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a>  g_barras <span class="ot">&lt;-</span> </span>
+<span id="cb189-5"><a href="#cb189-5" aria-hidden="true" tabindex="-1"></a>    {{dados}} <span class="sc">|&gt;</span> </span>
+<span id="cb189-6"><a href="#cb189-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> {{eixo_x}}, <span class="at">fill =</span> {{preenchimento}})) <span class="sc">+</span></span>
+<span id="cb189-7"><a href="#cb189-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb189-8"><a href="#cb189-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
+<span id="cb189-9"><a href="#cb189-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
+<span id="cb189-10"><a href="#cb189-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb189-11"><a href="#cb189-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
+<span id="cb189-12"><a href="#cb189-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
+<span id="cb189-13"><a href="#cb189-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb189-14"><a href="#cb189-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
+<span id="cb189-15"><a href="#cb189-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
+<span id="cb189-16"><a href="#cb189-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
+<span id="cb189-17"><a href="#cb189-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb189-18"><a href="#cb189-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb189-19"><a href="#cb189-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span>
+<span id="cb189-20"><a href="#cb189-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-21"><a href="#cb189-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-22"><a href="#cb189-22" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(g_barras)</span>
+<span id="cb189-23"><a href="#cb189-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-24"><a href="#cb189-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais “inteligente”.</p>
 <div>
-<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada</span></span>
-<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb191-3"><a href="#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cria_grafico_barras</span>(manufacturer, class)</span>
-<span id="cb191-4"><a href="#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada. </span></span>
-<span id="cb191-5"><a href="#cb191-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-6"><a href="#cb191-6" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb191-7"><a href="#cb191-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">year =</span> <span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span>  <span class="co">#Alterando a variável year para factor antes para torná-la discreta.</span></span>
-<span id="cb191-8"><a href="#cb191-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cria_grafico_barras</span>(class, year)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cria_grafico_barras</span>(manufacturer, class)</span>
+<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada. </span></span>
+<span id="cb190-5"><a href="#cb190-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-6"><a href="#cb190-6" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb190-7"><a href="#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">year =</span> <span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span>  <span class="co">#Alterando a variável year para factor antes para torná-la discreta.</span></span>
+<span id="cb190-8"><a href="#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cria_grafico_barras</span>(class, year)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-185-1.png" class="img-fluid" width="672"></p>
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-184-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-185-2.png" class="img-fluid" width="672"></p>
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-184-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>

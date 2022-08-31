@@ -1997,24 +1997,6 @@ A idéia não é esclarecer os detalhes de criação de funções no R, mas sim,
 Vamos criar nosso gráfico inicial:
 
 ```{r}
-g_barras <- mpg |> 
-  ggplot(aes(x = manufacturer, fill = class)) +
-      geom_bar() +
-      geom_text(stat = "count", 
-              aes(label = ..count..), 
-              position = position_stack(vjust = 0.5), size = 3) +
-      labs(y = "Quantidade" ) +
-      guides(fill = guide_legend(nrow = 3))  +
-      theme_linedraw() + 
-      theme(legend.position = "bottom") +
-      theme(axis.text.x = element_text(
-        angle = 90))
-      
-
-g_barras
-```
-
-```{r}
 
 mpg |> 
   ggplot(aes(x = manufacturer, fill = class)) +
