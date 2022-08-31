@@ -44,7 +44,7 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 ## Tipos de Variáveis
 
-Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados e do ggplot.
+Não é intuito deste tópico aprofundar neste tema, porém como a natureza de cada gráfico pode estar relacionada ao tipo de variável que ele irá representar, vamos rever de forma resumida os tipos de variáveis aleatórias no contexto de análise de dados e do ggplot.
 
 Este conhecimento é importante, pois iremos nos referir a eles, principalmente quando tratarmos das funções de [Geometrias (geoms)](#geometrias-geoms).
 
@@ -94,7 +94,7 @@ Vale lembrar que nem sempre uma variável representada por um número é quantit
 
 #### Discretas e Contínuas no GGPLOT
 
-O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de gráficos e escalas.
+O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de geometrias, transformações estatísticas e escalas.
 
 ::: callout-important
 Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc
@@ -128,7 +128,7 @@ No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sin
 
 A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência. Adicione uma geometria (geom) para cada camada.
 
-Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela **mtcars**. Para maiores informação sobre as colunas e dados do mtcars, digite ?mtcars.
+Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela **mtcars**. Para maiores informação sobre as variáveis (colunas) e observações (linhas) do mtcars, digite ?mtcars.
 
 ```{r}
 
@@ -180,9 +180,37 @@ Por exemplo, para salvar o diretório atual um arquivo com o gráfico chamado "p
 ggsave("plot-01.png", width = 5, height = 5, units = "cm")
 ```
 
-## Estética (aes)
+## Camadas
 
-Cada estética possui valores padrões que serão usados por determinada função de geometria ou de estatística. Mas existem valores que são comuns a quase todas as geom/stat(), a seguir veremos alguns deles:
+### Introdução
+
+A seguir iremos apresentar as principais camadas do ggplot e suas principais funções.
+
+::: callout-note
+Para a camada de **dados**, o ggplot aceitará qualquer conjunto de dados (data frame). Para facilitar a criação do gráfico recomenda-se que os dados já estejam organizados (tidy) com observações em linhas e variáveis em colunas.
+:::
+
+-   Estéticas
+
+-   Geometrias
+
+-   Estatísticas
+
+-   Escalas
+
+-   Coordenadas
+
+-   Facetas
+
+-   Tema
+
+### Estéticas
+
+Podemos mapear a estética de uma camada à variáveis em nossos dados ou até definí-las manualmente. Se não especificarmos de forma explícita, o ggplot tentará assumir valores padrões que serão usados por determinada função outras camadas, como a de geometria ou de estatística.
+
+Existem estéticas que são comuns a quase todas as camadas, como cor, forma, tamanho, etc. A estética é vinculada à uma variável através da função *aes*(). É comum, apesar de não ser mandatório para todas as estéticas, que determinemos os valores para x e y.
+
+A seguir veremos algumas delas:
 
 #### color e fill
 
@@ -193,10 +221,12 @@ ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg, color = "red"))
 ```
 
-Na string de color =, podemos usar valores de cores em inglês, como "red" ou "blue", ou também códigos RGB, como ""#00ABFF" ou "FF00AA".
+No exemplo acima, definimos que a estética "**x**", assumirá valores provenientes da variável que existe em noddos dados chamada "**hp**". Já a estética "**y**", assumirá valores provenientes da variável "**mpg**".
+
+Já a estética "color" assumirá o valor constante "red". Na string de color =, podemos usar valores de cores em inglês, como "red" ou "blue", ou também códigos RGB, como ""#00ABFF" ou "FF00AA".
 
 ::: callout-important
-Observe que o valor definido da cor, dentro fora dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da cor com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.
+Observe que o valor definido da cor, foi dentro dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da cor com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.
 :::
 
 ```{r}
@@ -311,17 +341,17 @@ ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg), shape = 5, size = 3)
 ```
 
-## Geometrias (geoms) {#geometrias-geoms}
+### Geometrias {#geometrias-geoms}
 
-Use as funções de geometria para representar os pontos de dados. Use as estéticas das geometrias para representar as variáveis.
+O ggplot nos permite selecionar para o mesmo gráfico uma ou mais formas geométrias. Por exemplo, eu posso ter o mesmo gráfico final, mas ao invés de ter pontos representando os dados, podemos ter barras e assim por diante.
 
 ::: callout-warning
 Lembre-se que cada função retornará uma camada, portanto, a ordem de criação das camadas afeta o resultado do gráfico, pois uma será criada sobre a anterior.
 :::
 
-### Gráficos Primitivos
+#### **Gráficos Primitivos**
 
-Para os exemplos a seguir, utilizaremos duas bases de dados, uma chamada **economics** e outra **chamada** seals.
+Para os exemplos a seguir, utilizaremos duas bases de dados, uma chamada **economics** e outra chamada **seals**.
 
 ::: panel-tabset
 ## Economics
@@ -339,11 +369,11 @@ seals
 
 Para simplificar o código dos próximos exemplos, iremos criar dois objetos gráfico do ggplot:
 
-O primeiro chamado "**a**", irá conter um objeto ggplot com os dados de **economics**, mapeando a estética de x para a variável "date" e y para a variável "unemployed".
+O primeiro chamado "**a**", irá conter um objeto ggplot com os dados de **economics**, mapeando a estética de **x** para a variável "**date**" e **y** para a variável "**unemployed**".
 
-O segundo chamado "**b**", irá conter um objeto ggplot com os dados de **seals**, mapeando a estética de x para a variável "long" e y para a variável "lat".
+O segundo chamado "**b**", irá conter um objeto ggplot com os dados de **seals**, mapeando a estética de **x** para a **variável** "**long**" e **y** para a variável "**lat**".
 
-Desta forma trabalharemos com os mesmos objetos base e adicionaremos apenas novas camadas afim de identificar os detalhes das diversas funções de geometria.
+Desta forma trabalharemos com os mesmos objetos base e adicionaremos apenas novas camadas utilizando o operador "**+**" a fim de identificar os detalhes das diversas funções de geometria e não precisarmos repetir o código das camadas iniciais do gráfico.
 
 ```{r}
 a <- ggplot(economics, aes(date, unemploy))
@@ -351,7 +381,7 @@ b <- ggplot(seals, aes(x = long, y = lat))
 ```
 
 ::: callout-note
-Para simplificar o código, em algum momentos podemos omitir o argumento, como data=, mapping = , x = , y = . Isto porque já estamos os valores na ordem da função.
+Para simplificar o código, em algum momentos podemos omitir o argumento, como data=, mapping = , x = , y = . Isto porque já estamos os valores na ordem que a função nos pede.
 :::
 
 Agora com os objetos inicialmente criados, iremos adicionar novas camadas afim de obtermos os gráficos e entendermos algumas das funções de geometria para gráficos primitivos.
@@ -418,7 +448,7 @@ a + geom_ribbon (aes(ymin = unemploy - 900,
 ymax = unemploy + 900))
 ```
 
-### Segmentos de Linhas
+#### **Segmentos de Linhas**
 
 Estas funções de geometrias, permitem criar diversos tipo de segmentos de linha e são úteis quando precisamos "marcar" ou definir algo no gráfico, com linhas verticais ou horizontais por exemplo.
 
@@ -470,7 +500,7 @@ Use para criar um segmento, parametrizado pela localização, direção e distâ
 b + geom_spoke(aes(angle = 1:1155, radius = 1))
 ```
 
-### Uma Variável Contínua
+#### **Uma Variável Contínua**
 
 Quando precisamos analisar um varíavel contínua, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -566,7 +596,7 @@ Use para criar um gráfico de quantil-quantil. Em geral utilizado para confirmar
 c2 + geom_qq(aes(sample = hwy))
 ```
 
-### Uma Variável Discreta
+#### **Uma Variável Discreta**
 
 Quando precisamos analisar um varíavel discreta, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -643,7 +673,7 @@ As geometrias podem ter valores calculados autometicamente "computed variables".
 Para saber quais varíaveis são computadas automaticamente para cada geometria, veja a ajuda com ?geom_bar.
 :::
 
-### Duas Variáveis Discretas
+#### **Duas Variáveis Discretas**
 
 Quando precisamos analisar um duas varáveis discretas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -676,7 +706,7 @@ Como várias outras geometrias, podemos adicionar uma cor na estética do geom_j
 g + geom_jitter(aes(color = cut), height = 2, width = 2)
 ```
 
-### Uma Variável Contínua e Outra Discreta
+#### **Uma Variável Contínua e Outra Discreta**
 
 Quando precisamos analisar uma varável contínua e outra discreta, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -762,7 +792,7 @@ Use para criar um gráfico de violino. Ele mostra de forma compacta a distribui�
 f + geom_violin(aes(fill = class), scale = "area")
 ```
 
-### Duas Variáveis Contínuas
+#### **Duas Variáveis Contínuas**
 
 Quando precisamos analisar duas variáveis contínuas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -921,7 +951,7 @@ dados |>
              show.legend = FALSE)
 ```
 
-### Mapas de Calor e Densidade
+#### **Mapas de Calor e Densidade**
 
 En alguns casos, precisamos mostrar como as duas variáveis contínuas se relacionam, dividindo o plano em retângulos e plotando os número de casos em cada retãngulo e preenchendo a cor de acordo com o número de casos. Para os exemplos a seguir, usaremos novamente a base "**diamonds**" em um objeto "**h**" .
 
@@ -955,7 +985,7 @@ h + geom_hex(bins = 40)
 
 ```
 
-### Duas Variáveis Discretas
+#### **Duas Variáveis Discretas**
 
 Quando precisamos analisar duas variáveis contínuas, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -991,7 +1021,7 @@ e +
   
 ```
 
-### Mapas
+#### **Mapas**
 
 O ggplot2 também pode gerar gráficos de mapas.
 
@@ -1025,7 +1055,18 @@ map
 ```
 :::
 
-### Visualizando Erros
+Para uma utilização mais moderna e e precisa de gráficos geográficos/mapas, recomenda-se o uso de uma geometria chamada **geom_sf**. Ela é capaz de mapear objetos do tipo "**Simple Feature"** do pacote"**sf**" diretamento no ggplot2. Este é um assunto bastante complexo, mas apenas como carater ilustrativo, veja como seria o plot do estado de São Paulo.
+
+```{r}
+library (sf)
+
+sp <- st_read(dsn = "shapefile_sp/estado_sp.shp")
+
+ggplot (sp) +
+  geom_sf(color = "Blue")
+```
+
+#### **Visualizando Erros**
 
 Quando precisamos analisar intervalos verticais, com linhas, barras e barras de erros, podemos usar as seguintes geometrias abaix. Porém, como nas demais seções, iremos preparar nosso objeto básico para evitar repetição de código.
 
@@ -1087,7 +1128,7 @@ Similar à geom_linerange, porém monstrando o ponto central.
 j + geom_pointrange()
 ```
 
-### Três Variáveis
+#### **Três Variáveis**
 
 O ggplot não consegue criar gráficos 3D verdadeiros, porém permite visualizar superfícies 3D em 2 duas dimensões. Quando precisamos criar tais gráficos, as geometrias a seguir ajudam a fornecer um gráfico apropriado.
 
@@ -1123,7 +1164,7 @@ vjust = 0.5, interpolate = FALSE)
 l + geom_tile(aes(fill = z))
 ```
 
-## Estatísticas (stats) {#estatísticas-stats}
+### Estatísticas {#estatísticas-stats}
 
 Podemos dizer que as estatísticas, ou mais precisamente, uma transformação estatística, é uma maneira diferente de construirmos uma camada.
 
@@ -1189,12 +1230,26 @@ A seguir teremos uma sequência, demonstrando a criação de diversas camadas ut
 Para maiores detalhes dos argumentos, variáveis computadas e geometrias padrão, digite ?\<nome_função_estatística\> (ex: ?stat_count)
 :::
 
+#### stat_bin
+
+#### stat_count
+
+#### stat_density
+
 ```{r}
 #| layout-ncol: 3
 c + stat_bin(binwidth = 1, boundary = 10)
 c + stat_count(width = 1)
 c + stat_density(adjust = 1, kernel = "gaussian")
 ```
+
+#### stat_bin_2d
+
+#### stat_hex
+
+#### stat_density_2d
+
+#### stat_ellipse
 
 ```{r}
 #| layout-ncol: 2
@@ -1204,6 +1259,16 @@ e + stat_bin_hex(bins = 30)
 e + stat_density_2d(contour = TRUE, n = 100)
 e + stat_ellipse(level = 0.95, segments = 51, type = "t")
 ```
+
+#### stat_contour
+
+#### stat_summary_hex
+
+#### stat_summary_2d
+
+#### stat_boxplot
+
+#### sta_ydensity
 
 ```{r}
 #| layout-ncol: 3
@@ -1215,6 +1280,12 @@ l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)
 f + stat_boxplot(coef = 1.5)
 f + stat_ydensity(kernel = "gaussian", scale = "area")
 ```
+
+#### stat_ecdf
+
+#### stat_quantile
+
+#### stat_smooth
 
 ```{r}
 #| layout-ncol: 3
@@ -1228,6 +1299,18 @@ e + stat_smooth(method = "lm", formula = y ~ x, se = T,
 level = 0.95)
 
 ```
+
+#### stat_function
+
+#### stat_qq
+
+#### stat_sum
+
+#### stat_summary
+
+#### stat_identity
+
+#### stat_unique
 
 ```{r}
 #| layout-ncol: 3
@@ -1249,7 +1332,7 @@ e + stat_unique()
 
 ```
 
-## Escalas (scales)
+### Escalas
 
 As escalas mapeiam os valores dos dados em um valor visual de uma estética. Quando criamos uma gráfico, o ggplot adiciona escala para cada mapeamento de forma automática. Mas é possível alterar as escalas padrão.
 
@@ -1281,7 +1364,7 @@ name = "fuel", labels = c("D", "E", "P", "R"))
 Lembre-se que já existe uma configuração de escala par o eixo x criada por padrão. Quando estamos sobrescrevendo com novos valores, se estes valores não sobrepoem os antigos, os valore anteriores ficam valendo. Por isso, a cor não foi alterada para o combustível (fl = c), já que deinifmos os limites da nova escala apenas para (d, e, p , r).
 :::
 
-### Escalas de Propósito Geral
+#### **Escalas de Propósito Geral**
 
 Estas escalas são usadas na maioria das estéticas para mapear valores para os eixos x e y, preenchimento, cores, tipos de linhas, etc.
 
@@ -1386,7 +1469,7 @@ billboard |>
 
 Similar a scale\_\*\_date , porém ela lida com data e **hora**.
 
-### Escalas de Localização X & Y
+#### **Escalas de Localização X & Y**
 
 Algumas escalas alteram a estética dos eixos x e/ou y. O
 
@@ -1417,7 +1500,7 @@ c + geom_area(stat = "count") +
   scale_y_sqrt()
 ```
 
-### Escalas de Cor e Preenchimento
+#### **Escalas de Cor e Preenchimento**
 
 As escala de cor (color e fill) possuem características semelhas, tanto para variáveis discretas quanto contínuas. A seguir, usar a cor de preenchimento com funções **scale_fill\_\***, porém as mesmas características estão disponíveis para as funções **scale_color\_\*** .
 
@@ -1512,16 +1595,485 @@ o + scale_fill_gradientn(colors = terrain.colors(4))
 Para criar novas paletas de cor, podemos usar a função **RColorBrewer::brewer.pal**()
 :::
 
-### Escalas de Forma e Tamanho
+#### **Escalas de Forma e Tamanho**
 
-## Sistema de Coordenadas
+Assim como nas demais escala vistas até aqui, temos como definir escalar para forma e tamanho. Vamos criar um objeto "**p**" com um gráfico de pontos para ver os exemplos:
+
+```{r}
+p <- e + geom_point(aes(shape=fl, size = cyl))
+```
+
+#### scale_shape
+
+Use para controlar a escala da forma. Ela mapeia variáveis discretas em 6 formas facilmente identificáveis.
+
+::: callout-important
+Se você tiver mais que 6 valores em sua variável discreta, uma mensagem de aviso iŕa aparecer e NÃO serão mostradas no gráfico. Use scale_shape_manual para fornecer seus próprios valores.
+:::
+
+```{r}
+p + scale_shape()
+```
+
+#### scale_size
+
+Use para alterar a escala de tamanho da área. Use scale_radius() para alterar o tamanho do raio. Veja no exemplo abaixo, que a variável "cyl" estava mapeada para a estética de tamanho (size) quando criamos o objeto "p":
+
+```{r}
+#| eval: false
+p <- e + geom_point(aes(shape=fl, size = cyl))
+```
+
+Com isto, o ggplot entendeu que por ser uma variável numérica, deveria aplicar um distribuição contínua quando montou a distribuição de tamanho.
+
+Já no gráfico da direito, alteramos a escala do tamanho e definimos o número de quebras em 4, 5, 6 e 8 cilindros.
+
+```{r}
+#| layout-ncol: 2
+p + scale_size()
+p + scale_size(breaks = c(4,5,6,8) )
+```
+
+Aepsar de não ser recomendados, mas apenas para carater ilustrativo, vemos que cyl é uma variável discreta, e portanto poderíamos ajustá-la como tal para que o ggplot automaticamente definisse uma escala de tamanho discreta. Veja o que acontece quando utilizamos as função as_factor() na estética de tamnho para a variável cyl.
+
+```{r}
+p2 <- e + geom_point(aes(shape=fl, size = as_factor(cyl)))
+```
+
+### Sistema de Coordenadas
+
+Apesar do sistema de coordenadas cartesiano ser o mais comum no mundo dos gráficos, o ggplot aferece uma série de outros sistemas, como coordenadas polares, maps ou até mesmo uma coordenada cartesiana invertendo o eixo x com o y. A seguir verremos alguns exemplos seguindo o modelo padrão, onde criaremos um objeto "**r**" com uma geometria de barras para iniciar e evitar repetição do código.
+
+```{r}
+r <- d + geom_bar()
+```
+
+#### coord_cartesian
+
+Use para definir e configurar um sistema de coordenadas cartesiano. Este é o sistema padrão do ggplot.
+
+```{r}
+r + coord_cartesian(xlim = c(0,5))
+```
+
+#### coord_fixed
+
+Use par criar um sistema de coordenada cartesiano com a proporção de aspecto entro os eixos x e y.
+
+```{r}
+r + coord_fixed(ratio = 1/8)
+```
+
+#### coord_polar
+
+Use para mudar o sistema de coordenadas para polar.
+
+```{r}
+r + coord_polar(theta = "x", direction = 1)
+```
+
+#### coord_trans
+
+Use para transformar as coordenadas cartesianas. Por exemplo, se quisermos alterar o eixo y, para que fique como raiz quadrada, faremos:
+
+```{r}
+r + coord_trans(y = "sqrt")
+```
+
+::: callout-note
+Como vimos anteriormente, poreriamos transformar a escala do eixo y atraves das funçoes scale_y\*. A diferença e que a alteraçao na escala acontece ANTES das transformaçoes estatisticas enquanto as coordenadas ocorrem DEPOIS. Mudanças de coordenadas também alterar a forma das geometrias.
+:::
+
+### Facetas
+
+O ggplot usa o conceito de "facetas" para dividir um gráfico em sub-gráficos com base em uma variável discreta.
+
+Vamos crir um objeto "**t**" base para exemplificar o uso de facetas:
+
+```{r}
+t <- ggplot (mpg, aes(cty, hwy)) + geom_point()
+```
+
+#### facet_grid
+
+Use para criar um grid de facetas:
+
+```{r}
+t + facet_grid(cols = vars(fl))
+```
+
+Neste exemplo, criamos um gráfico, com vários sub-gráficos em colunas, usando a variável "fl" como separador das facetas.
+
+Podemos criar as facetas em linhas também:
+
+```{r}
+t + facet_grid(rows = vars(year))
+```
+
+Ou em um grid de linhas e colunas?:
+
+```{r}
+t + facet_grid(rows = vars(year), cols = vars(fl))
+```
+
+#### facet_wrap
+
+Use para agrupar uma faixa de facetas em 2d.
+
+```{r}
+t + facet_wrap (vars(fl))
+```
+
+::: callout-tip
+Por padrão o ggplot irá usar a mesma escala do eixos para cada faceta. Podemos usar o argumento scales = pafra mudar este comportamento.
+:::
+
+Veja um exemplo:
+
+```{r}
+t + facet_grid(rows = vars(drv), cols = vars(fl), scales = "free")
+```
+
+::: callout-tip
+Podemos usar os argumento "free_x" e "free_y" para ajustar os limites dos respectivos eixos.
+:::
+
+Podemos também nomear cada faceta utilzando o argumento labeller =. Veja alguns exemplos:
+
+```{r}
+#| layout-nrow: 2
+t + facet_grid(cols = vars(fl), labeller = label_both)
+
+t + facet_grid(rows = vars(fl),labeller = label_bquote(alpha ^ .(fl)))
+```
+
+### Temas
+
+A camada de temas, permite uma customização final ao gráfico, permitindo ajustes nas propriedades dos eixos, legendas, painéis e facetas.
+
+O ggplot vem com alguns temas pré-definidos, mas você pode customizá-los de acordo com sua necessidade. A recomendação é que você parte de um tema que mais se aproxime da sua necessidade e mude os elementos faltantes. Veja alguns exemplo:
+
+::: panel-tabset
+#### theme_bw
+
+```{r}
+r + theme_bw()
+```
+
+#### theme_gray
+
+```{r}
+r + theme_gray()
+```
+
+#### theme_dark
+
+```{r}
+r + theme_dark()
+```
+
+#### theme_classic
+
+```{r}
+r + theme_classic()
+```
+
+#### theme_light
+
+```{r}
+r + theme_light()
+```
+
+#### theme_linedraw
+
+```{r}
+r + theme_linedraw()
+```
+
+#### theme_minimal
+
+```{r}
+r + theme_minimal()
+```
+
+#### theme_void
+
+```{r}
+r + theme_void()
+```
+:::
+
+Digamos que precisamos alinhar o título do gráfico com todo o gráfico. Neste caso, podemos usar o tema e ajusar o argumento **plot.title.position** =
+
+```{r}
+#| layout-ncol: 2
+r + ggtitle("Titulo")  
+  
+r + ggtitle("Titulo") + 
+  theme(plot.title.position = "plot")
+```
+
+Ou digamos que precisamos alterar a cor de fundo do gráfico:
+
+```{r}
+r + theme(panel.background = element_rect(fill = "lightblue"))
+```
+
+São muitas as possibilidades de customização. Veja ?theme para todos os detalhes.
 
 ## Ajuste de Posição
 
-## Temas
+Em alguns casos, precisamos alterar a posição de algumas geometrias que ocupariam o mesmo local no gráfico.
 
-## Facetas
+Em geral, utilizamos o argumento "position =" nas geometrias para alterar a definição padrão.
 
-## Texto e Legendas
+Para entender melhor a diferença dos tipos de posições mais comuns, vamos criar um objeto ggplot chamado "**s**" e comparar estes tipos:
+
+```{r}
+s <- ggplot(mpg, aes(fl, fill = drv))
+```
+
+#### Position Stack
+
+Use para colocar as geometrias empilhada uma sobre a outra.
+
+```{r}
+s + geom_bar(position = "stack")
+```
+
+Para a geometria de barras (geom_bar), esta é a posição padrão.
+
+#### Position Dodge
+
+Use para colocar as geometrias lado a lado.
+
+```{r}
+s + geom_bar(position = "dodge")
+```
+
+#### Position Fill
+
+Use para colocar as geometrias empilhadas normalizando a altura.
+
+```{r}
+s + geom_bar(position = "fill")
+```
+
+#### Position Jitter
+
+Use para adicoinar um mudança aleatória em X e Y para evitar sobreposição do pontos.
+
+```{r}
+e + geom_point(position = "jitter")
+```
+
+#### Position Nudge
+
+Use para deslocar textos fora dos pontos.
+
+```{r}
+e + geom_text(aes(label = cty), position = position_nudge(1,2)) +
+  geom_point() +
+  scale_x_continuous(limits = c(25,40))
+```
+
+::: callout-note
+Neste caso, ao invés de usarmos a string "**nudge**" , usamos a função position_nudge para passar os parametros de deslocamento. As funções "**position\_\*** funcoinam para ajuster de forma mais refinada o posicionamento. Em geral aceitam os argumento de altura (width) e largura (height).
+:::
+
+```{r}
+s + geom_bar(position = position_dodge(width = 1))
+```
+
+## Títulos e Legendas
+
+#### labs
+
+Por ser muito comum termos que alterar os títulos dos elementos de um gráficos, o ggplot oferece a função **labs**().
+
+Podemos alterar o título do gráfico, o sub-título, o título de rodapé, o nome alternativo e uma estética (por exemplo, x ou y).
+
+Veja o exemplo no objeto "t" criado previamente.
+
+```{r}
+t + (aes (color = "fl")) +
+  labs(x = "Texto do eixo X", y = "Texto do eixo Y",
+title ="Título geral do gráfico",
+subtitle = "Sub-título do gráfico",
+caption = "Texto de rodapé",
+alt = "Texto alternativo do gráfico para representação em texto",
+color = "Título da Legenda")
+```
+
+#### guides
+
+Use para definir os texto das guias. Guias são parte do gráfico que ajudam em sua interpretação. Por exemplo, a legenda é uma guia. As próprias marcas nos eixos são outro tipo de guias. As barras de tamanho ou forma, são outra forma de guias.
+
+Por exemplo, se quisermos alterar a posição das guias do eixo x a cada duas marcas, podemos fazer usando a função **guide**():
+
+```{r}
+p + guides(x = guide_axis(n.dodge = 2))
+```
+
+Para alterar o título da legenda da estética de tamanho (size) e colocá-la à direita da legenda, podemos fazer:
+
+```{r}
+p + guides(size = guide_legend(title = "Novo Título", title.position = "right"))
+```
+
+::: callout-tip
+Podemos também remover um determinada guia fazendo = "none".
+:::
+
+```{r}
+n + guides(fill = "none")
+```
+
+#### annotate
+
+Use para gerar alguma anotação no gráfico, criando uma camada adicional. Você pode criar uma anotação de qualquer geométria. No exemplo abaixo, usaremos a geometria de texto (text) e de reta (segment) para escrever o texto e a seta.
+
+```{r}
+t + annotate(geom = "text", 
+             x = 34, y = 30, 
+             label = "Anotação", 
+             color = "red") +
+  
+annotate(geom = "segment",
+         x = 31, xend = 29, y = 32-2, yend = 34-2, 
+         arrow = arrow(type = "closed", length = unit(0.02, "npc")),  
+         color = "red")
+```
+
+#### theme
+
+Podemos também através do tema, definir a posição da legenda por exemplo:
+
+```{r}
+n + theme(legend.position = "bottom")
+```
+
+Podemos definir também atraǘes da escala o título e os texto de cada item da estética. Por exemplo, para alterar a legenda do preenchimento atraveś da escala, podemos fazer:
+
+```{r}
+n +  scale_fill_discrete(name = "Title",
+labels = c("A", "B", "C", "D", "E"))
+```
 
 ## Zoom
+
+**Use para dar um zoom no gráfico**. Podemos fazer o zoom removendo os valores que não serão vistos no gráfico, ou mantendo-os (preferencial).
+
+Zoom mantendo os pontos (preferencial):
+
+```{r}
+t
+t + coord_cartesian(xlim = c(0, 25), ylim = c(10, 20))
+```
+
+**Zoom excluindo os pontos não visíveis**:
+
+Fazemos este zoom, definindo limites das escalas:
+
+```{r}
+t + xlim(0, 25) + ylim(10, 20)
+```
+
+Ou fazendo o equilavente de forma mais explícita:
+
+```{r}
+t + scale_x_continuous(limits = c(0, 25)) +
+scale_y_continuous(limits = c(10, 20))
+```
+
+## Bônus
+
+Como vimos, há uma infinidade de possibilidades para criação de gráficos com o pacote ggplot, porém seus códigos podem se tornam com muitas linhas dado ao grau de customização que você precisa. Nossa recomendação é criar um gráfico com os ajustes nas principais camadas e depois uma função mais simplificada para chamar este código de forma repetida.
+
+A idéia não é esclarecer os detalhes de criação de funções no R, mas sim, dar um exemplo para otimizar o código criado para o ggplot.
+
+**Exemplo**:
+
+Vamos criar nosso gráfico inicial:
+
+```{r}
+g_barras <- mpg |> 
+  ggplot(aes(x = manufacturer, fill = class)) +
+      geom_bar() +
+      geom_text(stat = "count", 
+              aes(label = ..count..), 
+              position = position_stack(vjust = 0.5), size = 3) +
+      labs(y = "Quantidade" ) +
+      guides(fill = guide_legend(nrow = 3))  +
+      theme_linedraw() + 
+      theme(legend.position = "bottom") +
+      theme(axis.text.x = element_text(
+        angle = 90))
+      
+
+g_barras
+```
+
+```{r}
+
+mpg |> 
+  ggplot(aes(x = manufacturer, fill = class)) +
+    geom_bar() +
+    geom_text(stat = "count", 
+              aes(label = ..count..), 
+              position = position_stack(vjust = 0.5), size = 3) +
+    scale_fill_brewer(type = "qual", 
+                      palette = 2, 
+                      direction = -1) +
+    labs(y = "Quantidade" ) +
+    guides(fill = guide_legend(nrow = 3))  +
+    theme_grey() + 
+    theme(legend.position = "bottom") +
+    theme(axis.text.x = element_text(angle = 90)) +
+    theme(panel.background = element_rect(fill = "#E5F3F7"))
+```
+
+Após termos o gráfico com as customizações que desejamos, podemos criar uma função. Neste caso, ela irá receber apenas os dados, a variável do eixo x e de preenchimento.
+
+```{r}
+# Função para gerar o gráfico
+cria_grafico_barras <- function(dados, eixo_x, preenchimento) {
+  
+  g_barras <- 
+    {{dados}} |> 
+    ggplot(aes(x = {{eixo_x}}, fill = {{preenchimento}})) +
+    geom_bar() +
+    geom_text(stat = "count", 
+              aes(label = ..count..), 
+              position = position_stack(vjust = 0.5), size = 3) +
+    scale_fill_brewer(type = "qual", 
+                      palette = 2, 
+                      direction = -1) +
+    labs(y = "Quantidade" ) +
+    guides(fill = guide_legend(nrow = 3))  +
+    theme_grey() + 
+    theme(legend.position = "bottom") +
+    theme(axis.text.x = element_text(angle = 90)) +
+    theme(panel.background = element_rect(fill = "#E5F3F7"))
+
+
+return(g_barras)
+
+}
+```
+
+Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais "inteligente".
+
+```{r}
+#| layout-nrow: 2
+
+#Usando a função criada
+mpg |> 
+cria_grafico_barras(manufacturer, class)
+
+#Usando a função criada. 
+
+mpg |> 
+  mutate (year = as_factor(year)) |>  #Alterando a variável year para factor antes para torná-la discreta.
+  cria_grafico_barras(class, year)
+```
