@@ -18,6 +18,10 @@ Para melhor utilizar o conteúdo deste livro, é importante que você já possua
 Para mais informações acesse:
 
 <https://education.rstudio.com/learn/beginner/>.
+
+ou
+
+<https://livro.curso-r.com/>
 :::
 
 **Os temas abordados neste livro são:**
