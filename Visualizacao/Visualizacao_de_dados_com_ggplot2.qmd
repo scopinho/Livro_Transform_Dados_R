@@ -2,7 +2,7 @@
 
 ## Introdução
 
-A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.
+A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R. Este é um pacote muito flexível para gerar diversos tipos de gráficos.
 
 ::: callout-note
 Apesar de visualização de dados não ser especificamente parte das etapas de transformação e manipulação de dados, acreditamos ser importante um conhecimento básico sobre o tema, pois muitas vezes, para explicarmos aquilo que estamos transformando ou manipulando, o fazemos de forma gráfica para melhor compreensão.
@@ -34,11 +34,7 @@ library (gt)
 
 ### Exemplos da Folha de Referência
 
-A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
-
-![](images/cheatsheet-01.png)
-
-![](images/cheatsheet-02.png)
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf) do stringr disponível no site do [RStudio](rstudio.com).
 
 ------------------------------------------------------------------------
 
@@ -94,10 +90,14 @@ Vale lembrar que nem sempre uma variável representada por um número é quantit
 
 #### Discretas e Contínuas no GGPLOT
 
-O ggplot2, em geral irá tratar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas**. Já as variáveis **numéricas** com escalas **contínuas**. A separação nas seções adiante, seguem estas definições para segregar os tipos de geometrias, transformações estatísticas e escalas.
+O ggplot2, em geral irá associar as variáveis **caractere** (char) e **fatores** (factors) em escalas **discretas** de forma automática. Já as variáveis **numéricas,** o ggplot irá associar automaticamente com escalas **contínuas**.
+
+Você verá nas seções seguintes este tipo de segregação, ou seja, um gráfico para variáveis discretas, contínuas ou um mix de ambas e assim por diante.
 
 ::: callout-important
-Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc
+Quando tivermos variáveis que não seguem este padrão, devemos "transformá-las, usando funções como as_factor(), as.integer(), as.double, etc.
+
+Por exemplo, para representar uma variável que é do tipo inteiro, porém é discreta, deveremos antes alterá-la para um fator antes de submeter ao ggplot preferencialmente.
 :::
 
 ## Gramática dos Gráficos
@@ -106,13 +106,13 @@ O pacote ggplot2 é uma implementação do livro "***Grammar of Graphics***", qu
 
 ![](images/grammar-01.jpg){width="354"}
 
-De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um **conjunto de dados**, um **sistema de coordenadas** e **geoms**, que seriam marcas visuais que representas os pontos dos dados.
+De uma forma bem resumida, a idéia é que você possa construir minimamente qualquer gráfico com base nestes mesmos elementos: um **conjunto de dados**, um **sistema de coordenadas** e **geometrias**, que seriam marcas visuais que representas os pontos dos dados.
 
 ![](images/ggplot-01.jpg){width="475"}
 
-No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados são **mapeadas** em propriedadas visuais da geometria (geom).
+No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados podem ser **mapeadas** em propriedadas visuais da geometria (geom).
 
-Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor ou tamanho.
+Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor, tamanho, forma, etc.
 
 ![](images/ggplot-02.jpg){width="475"}
 
@@ -122,13 +122,17 @@ No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sin
 
 ![](images/ggplot_template-01.jpg){width="556"}
 
+Vejamos a seguir uma introdução ao uso do modelo visto acima:
+
 ------------------------------------------------------------------------
 
 #### ggplot
 
-A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência. Adicione uma geometria (geom) para cada camada.
+A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência, como uma geometria, um sistema de coordenada ou até um tema.
 
-Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela **mtcars**. Para maiores informação sobre as variáveis (colunas) e observações (linhas) do mtcars, digite ?mtcars.
+Usando o modelo acima, vamos gerar nosso primeiro gráfico.
+
+Como base de dados usaremos a tabela **mtcars**. Para maiores informação sobre as **variáveis** (colunas) e **observações** (linhas) do mtcars, digite ?mtcars.
 
 ```{r}
 
@@ -141,7 +145,9 @@ ggplot(data = mtcars) +
 ```
 
 ::: callout-note
-Observe que mesmo sem definirmos escalas, temas, estatísticas ou outras camadas, o gráfico ainda assim foi gerado. Isto é porque o ggplot tem valores padrões dinâmicos que tentam prover o melhor resultado possível com o mínimo de esforço.
+Observe que mesmo sem definirmos escalas, temas, transformações estatísticas ou outras camadas, o gráfico ainda assim foi gerado.
+
+Isto acontece porque o ggplot tem valores padrões dinâmicos que tentam prover o melhor resultado possível com o mínimo de esforço.
 :::
 
 ::: callout-tip
@@ -187,7 +193,7 @@ ggsave("plot-01.png", width = 5, height = 5, units = "cm")
 A seguir iremos apresentar as principais camadas do ggplot e suas principais funções.
 
 ::: callout-note
-Para a camada de **dados**, o ggplot aceitará qualquer conjunto de dados (data frame). Para facilitar a criação do gráfico recomenda-se que os dados já estejam organizados (tidy) com observações em linhas e variáveis em colunas.
+Para a camada de **dados**, o ggplot aceitará qualquer conjunto de dados (data frame). Para facilitar a criação do gráfico recomenda-se que os dados já estejam organizados (**tidy**) com observações em linhas e variáveis em colunas.
 :::
 
 -   Estéticas
@@ -206,27 +212,29 @@ Para a camada de **dados**, o ggplot aceitará qualquer conjunto de dados (data 
 
 ### Estéticas
 
-Podemos mapear a estética de uma camada à variáveis em nossos dados ou até definí-las manualmente. Se não especificarmos de forma explícita, o ggplot tentará assumir valores padrões que serão usados por determinada função outras camadas, como a de geometria ou de estatística.
+Podemos mapear a estética de uma camada à variáveis presentes em nossa camada de dados até definí-las manualmente. Se não especificarmos de forma explícita, o ggplot tentará assumir valores padrões que serão usados por determinada função outras camadas, como a de geometria ou de estatística.
 
-Existem estéticas que são comuns a quase todas as camadas, como cor, forma, tamanho, etc. A estética é vinculada à uma variável através da função *aes*(). É comum, apesar de não ser mandatório para todas as estéticas, que determinemos os valores para x e y.
+Existem estéticas que são comuns a quase todas as camadas, como **cor**, **forma**, **tamanho**, etc.
+
+A estética é vinculada à uma variável através da função ***aes***(). É comum, apesar de não ser mandatório para todas as estéticas, que determinemos os valores para x e y.
 
 A seguir veremos algumas delas:
 
 #### color e fill
 
-Use para definir a cor (color) ou preenchimento (fill) para a estética.
+Use para definir a **cor** (color) ou **preenchimento** (fill) para a estética.
 
 ```{r}
 ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg, color = "red"))
 ```
 
-No exemplo acima, definimos que a estética "**x**", assumirá valores provenientes da variável que existe em noddos dados chamada "**hp**". Já a estética "**y**", assumirá valores provenientes da variável "**mpg**".
+No exemplo acima, definimos que a estética "**x**", assumirá valores provenientes da variável que existe em nossos dados chamada "**hp**". Já a estética "**y**", assumirá valores provenientes da variável "**mpg**".
 
 Já a estética "color" assumirá o valor constante "red". Na string de color =, podemos usar valores de cores em inglês, como "red" ou "blue", ou também códigos RGB, como ""#00ABFF" ou "FF00AA".
 
 ::: callout-important
-Observe que o valor definido da cor, foi dentro dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da cor com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.
+Observe que o valor definido da cor, foi dentro dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da estética cor (color) com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.
 :::
 
 ```{r}
@@ -236,12 +244,16 @@ ggplot(mtcars)+
 
 Apesar do resultado ser similar, observe que no exemplo anterior tivemos color como um mapeamento da estética, como definimos o valor fixo com a cor "red", seria como tivessemos em nossos dados uma coluna onde todas as linhas tivessem o valor "red". Já no exemplo acima, estamos simplemente dizendo à função da geometria que queremos a cor vermelha para ela.
 
-Vejamos um outro exemplo para que fique claro este ponto. Vamos gerar o mesmo gráfico onde colocamos "red" como parte da estética, porém agora, iremos mapeá-la com a coluna "qsec" de nossos dados mtcars:
+Vejamos um outro exemplo para que fique claro este ponto.
+
+Vamos gerar o mesmo gráfico onde colocamos "red" como parte da estética, porém agora, iremos mapeá-la com a coluna "qsec" de nossos dados mtcars:
 
 ```{r}
 ggplot(mtcars)+
   geom_point(aes(x = hp, y = mpg, color = qsec))
 ```
+
+Observe que neste caso a estética de cor foi mapeada com a variável qsec. Por se tratar de uma variável contínua, o ggplot escolheu autometicamente uma sequência de cores, neste caso do azul claro para o azul escuro, para representar este tipo de variável. Veremos mais adiante como customizar esta e outras escolhar automáticas feitas nas escalas.
 
 #### linetype
 
@@ -1998,12 +2010,14 @@ Vamos criar nosso gráfico inicial:
 
 ```{r}
 
-mpg |> 
+g_barras <- 
+  mpg |> 
   ggplot(aes(x = manufacturer, fill = class)) +
     geom_bar() +
     geom_text(stat = "count", 
               aes(label = ..count..), 
-              position = position_stack(vjust = 0.5), size = 3) +
+              position = position_stack(vjust = 0.5), 
+              size = 3) +
     scale_fill_brewer(type = "qual", 
                       palette = 2, 
                       direction = -1) +
@@ -2012,7 +2026,15 @@ mpg |>
     theme_grey() + 
     theme(legend.position = "bottom") +
     theme(axis.text.x = element_text(angle = 90)) +
-    theme(panel.background = element_rect(fill = "#E5F3F7"))
+    theme(panel.background = element_rect(fill = "#E5F3F7")) 
+
+maior_valor <- mpg |> 
+  count(manufacturer, class, sort = TRUE) |> 
+  slice_head(n = 1) #Identificamos o grupo com maior qtd
+
+g_barras + labs(
+    title = "Exemplo de gráfico dinâmico com função",
+    subtitle = paste0(maior_valor[[1]], " / ", maior_valor[[2]], " tem a maior qtd com ", maior_valor$n, " unidades.")) # Criamos um subtitulo para o grpo com maior Qtd dinamicamente.
 ```
 
 Após termos o gráfico com as customizações que desejamos, podemos criar uma função. Neste caso, ela irá receber apenas os dados, a variável do eixo x e de preenchimento.
@@ -2038,13 +2060,22 @@ cria_grafico_barras <- function(dados, eixo_x, preenchimento) {
     theme(axis.text.x = element_text(angle = 90)) +
     theme(panel.background = element_rect(fill = "#E5F3F7"))
 
+maior_valor <- {{dados}} |> 
+  count({{eixo_x}}, {{preenchimento}} , sort = TRUE) |> 
+  slice_head(n = 1)
+
+g_barras <- 
+  g_barras + labs(
+    title = "Exemplo de gráfico dinâmico com função",
+    subtitle = paste0(maior_valor[[1]], " / ", maior_valor[[2]], " tem a maior qtd com ", maior_valor$n, " unidades."))
+
 
 return(g_barras)
 
 }
 ```
 
-Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais "inteligente".
+Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se' passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais "inteligente".
 
 ```{r}
 #| layout-nrow: 2

@@ -456,7 +456,7 @@ div.csl-indent {
 
 <section id="introdução" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
-<p>A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R.</p>
+<p>A seguir temos vários exemplos de visualização de dados utilizando o pacote GGPLOT2 do R. Este é um pacote muito flexível para gerar diversos tipos de gráficos.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -498,9 +498,7 @@ Aviso
 </div>
 <section id="exemplos-da-folha-de-referência" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">6.1.1</span> Exemplos da Folha de Referência</h3>
-<p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt_br.pdf"><strong>Folha de Referência</strong></a> do stringr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
-<p><img src="images/cheatsheet-01.png" class="img-fluid"></p>
-<p><img src="images/cheatsheet-02.png" class="img-fluid"></p>
+<p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf"><strong>Folha de Referência</strong></a> do stringr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
 <hr>
 </section>
 </section>
@@ -566,7 +564,8 @@ Cuidado
 </section>
 <section id="discretas-e-contínuas-no-ggplot" class="level4" data-number="6.2.0.3">
 <h4 data-number="6.2.0.3" class="anchored" data-anchor-id="discretas-e-contínuas-no-ggplot"><span class="header-section-number">6.2.0.3</span> Discretas e Contínuas no GGPLOT</h4>
-<p>O ggplot2, em geral irá tratar as variáveis <strong>caractere</strong> (char) e <strong>fatores</strong> (factors) em escalas <strong>discretas</strong>. Já as variáveis <strong>numéricas</strong> com escalas <strong>contínuas</strong>. A separação nas seções adiante, seguem estas definições para segregar os tipos de geometrias, transformações estatísticas e escalas.</p>
+<p>O ggplot2, em geral irá associar as variáveis <strong>caractere</strong> (char) e <strong>fatores</strong> (factors) em escalas <strong>discretas</strong> de forma automática. Já as variáveis <strong>numéricas,</strong> o ggplot irá associar automaticamente com escalas <strong>contínuas</strong>.</p>
+<p>Você verá nas seções seguintes este tipo de segregação, ou seja, um gráfico para variáveis discretas, contínuas ou um mix de ambas e assim por diante.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -577,7 +576,8 @@ Importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Quando tivermos variáveis que não seguem este padrão, devemos “transformá-las, usando funções como as_factor(), as.integer(), as.double, etc</p>
+<p>Quando tivermos variáveis que não seguem este padrão, devemos “transformá-las, usando funções como as_factor(), as.integer(), as.double, etc.</p>
+<p>Por exemplo, para representar uma variável que é do tipo inteiro, porém é discreta, deveremos antes alterá-la para um fator antes de submeter ao ggplot preferencialmente.</p>
 </div>
 </div>
 </section>
@@ -586,21 +586,23 @@ Importante
 <h2 data-number="6.3" class="anchored" data-anchor-id="gramática-dos-gráficos"><span class="header-section-number">6.3</span> Gramática dos Gráficos</h2>
 <p>O pacote ggplot2 é uma implementação do livro “<strong><em>Grammar of Graphics</em></strong>”, que apresenta um conceito de quais seriam os elementos de um gráfico e suas interconexões. O modelo teórico proposto no livro é que através de camadas definidas qualquer gráfico pode ser construído. Abaixo o modelo, que deve ser interpretado de baixo para cima.</p>
 <p><img src="images/grammar-01.jpg" class="img-fluid" width="354"></p>
-<p>De uma forma bem resumida, a idéia é que você possa construir qualquer gráfico com base nestes mesmos elementos: um <strong>conjunto de dados</strong>, um <strong>sistema de coordenadas</strong> e <strong>geoms</strong>, que seriam marcas visuais que representas os pontos dos dados.</p>
+<p>De uma forma bem resumida, a idéia é que você possa construir minimamente qualquer gráfico com base nestes mesmos elementos: um <strong>conjunto de dados</strong>, um <strong>sistema de coordenadas</strong> e <strong>geometrias</strong>, que seriam marcas visuais que representas os pontos dos dados.</p>
 <p><img src="images/ggplot-01.jpg" class="img-fluid" width="475"></p>
-<p>No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados são <strong>mapeadas</strong> em propriedadas visuais da geometria (geom).</p>
-<p>Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor ou tamanho.</p>
+<p>No caso do ggplot2, para mostrar valores no gráfico, as varíaveis do conjunto de dados podem ser <strong>mapeadas</strong> em propriedadas visuais da geometria (geom).</p>
+<p>Este mapeamento de estética (aesthetic) é feito através da função aes() e podemos fazer mapeamentos estéticos como cor, tamanho, forma, etc.</p>
 <p><img src="images/ggplot-02.jpg" class="img-fluid" width="475"></p>
 </section>
 <section id="modelo-para-construção-de-um-gráfico" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="modelo-para-construção-de-um-gráfico"><span class="header-section-number">6.4</span> Modelo para Construção de um Gráfico</h2>
 <p>No caso do ggplot2, podemos definir uma espécie de modelo (template) para a sintaxe de construção de gráficos:</p>
 <p><img src="images/ggplot_template-01.jpg" class="img-fluid" width="556"></p>
+<p>Vejamos a seguir uma introdução ao uso do modelo visto acima:</p>
 <hr>
 <section id="ggplot" class="level4" data-number="6.4.0.1">
 <h4 data-number="6.4.0.1" class="anchored" data-anchor-id="ggplot"><span class="header-section-number">6.4.0.1</span> ggplot</h4>
-<p>A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência. Adicione uma geometria (geom) para cada camada.</p>
-<p>Usando o modelo anterior e o que vimos até aqui, vamos gerar nosso primeiro gráfico. Como base de dados usaremos a tabela <strong>mtcars</strong>. Para maiores informação sobre as variáveis (colunas) e observações (linhas) do mtcars, digite ?mtcars.</p>
+<p>A função ggplot() inicia um gráfico que será completado com as camadas adicionadas na sequência, como uma geometria, um sistema de coordenada ou até um tema.</p>
+<p>Usando o modelo acima, vamos gerar nosso primeiro gráfico.</p>
+<p>Como base de dados usaremos a tabela <strong>mtcars</strong>. Para maiores informação sobre as <strong>variáveis</strong> (colunas) e <strong>observações</strong> (linhas) do mtcars, digite ?mtcars.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -629,7 +631,8 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Observe que mesmo sem definirmos escalas, temas, estatísticas ou outras camadas, o gráfico ainda assim foi gerado. Isto é porque o ggplot tem valores padrões dinâmicos que tentam prover o melhor resultado possível com o mínimo de esforço.</p>
+<p>Observe que mesmo sem definirmos escalas, temas, transformações estatísticas ou outras camadas, o gráfico ainda assim foi gerado.</p>
+<p>Isto acontece porque o ggplot tem valores padrões dinâmicos que tentam prover o melhor resultado possível com o mínimo de esforço.</p>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -696,7 +699,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Para a camada de <strong>dados</strong>, o ggplot aceitará qualquer conjunto de dados (data frame). Para facilitar a criação do gráfico recomenda-se que os dados já estejam organizados (tidy) com observações em linhas e variáveis em colunas.</p>
+<p>Para a camada de <strong>dados</strong>, o ggplot aceitará qualquer conjunto de dados (data frame). Para facilitar a criação do gráfico recomenda-se que os dados já estejam organizados (<strong>tidy</strong>) com observações em linhas e variáveis em colunas.</p>
 </div>
 </div>
 <ul>
@@ -711,12 +714,13 @@ Nota
 </section>
 <section id="estéticas" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="estéticas"><span class="header-section-number">6.5.2</span> Estéticas</h3>
-<p>Podemos mapear a estética de uma camada à variáveis em nossos dados ou até definí-las manualmente. Se não especificarmos de forma explícita, o ggplot tentará assumir valores padrões que serão usados por determinada função outras camadas, como a de geometria ou de estatística.</p>
-<p>Existem estéticas que são comuns a quase todas as camadas, como cor, forma, tamanho, etc. A estética é vinculada à uma variável através da função <em>aes</em>(). É comum, apesar de não ser mandatório para todas as estéticas, que determinemos os valores para x e y.</p>
+<p>Podemos mapear a estética de uma camada à variáveis presentes em nossa camada de dados até definí-las manualmente. Se não especificarmos de forma explícita, o ggplot tentará assumir valores padrões que serão usados por determinada função outras camadas, como a de geometria ou de estatística.</p>
+<p>Existem estéticas que são comuns a quase todas as camadas, como <strong>cor</strong>, <strong>forma</strong>, <strong>tamanho</strong>, etc.</p>
+<p>A estética é vinculada à uma variável através da função <strong><em>aes</em></strong>(). É comum, apesar de não ser mandatório para todas as estéticas, que determinemos os valores para x e y.</p>
 <p>A seguir veremos algumas delas:</p>
 <section id="color-e-fill" class="level4" data-number="6.5.2.1">
 <h4 data-number="6.5.2.1" class="anchored" data-anchor-id="color-e-fill"><span class="header-section-number">6.5.2.1</span> color e fill</h4>
-<p>Use para definir a cor (color) ou preenchimento (fill) para a estética.</p>
+<p>Use para definir a <strong>cor</strong> (color) ou <strong>preenchimento</strong> (fill) para a estética.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars)<span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg, <span class="at">color =</span> <span class="st">"red"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -724,7 +728,7 @@ Nota
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>No exemplo acima, definimos que a estética “<strong>x</strong>”, assumirá valores provenientes da variável que existe em noddos dados chamada “<strong>hp</strong>”. Já a estética “<strong>y</strong>”, assumirá valores provenientes da variável “<strong>mpg</strong>”.</p>
+<p>No exemplo acima, definimos que a estética “<strong>x</strong>”, assumirá valores provenientes da variável que existe em nossos dados chamada “<strong>hp</strong>”. Já a estética “<strong>y</strong>”, assumirá valores provenientes da variável “<strong>mpg</strong>”.</p>
 <p>Já a estética “color” assumirá o valor constante “red”. Na string de color =, podemos usar valores de cores em inglês, como “red” ou “blue”, ou também códigos RGB, como ““#00ABFF” ou “FF00AA”.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -736,7 +740,7 @@ Importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Observe que o valor definido da cor, foi dentro dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da cor com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.</p>
+<p>Observe que o valor definido da cor, foi dentro dos parênteses da função aes(), ou seja, ela está fazendo o mapeamento da estética cor (color) com os dados. Se utilizarmos o argumento color = da função geom_point(),estaremos definindo um valor fora do mapeamento.</p>
 </div>
 </div>
 <div class="cell">
@@ -747,7 +751,8 @@ Importante
 </div>
 </div>
 <p>Apesar do resultado ser similar, observe que no exemplo anterior tivemos color como um mapeamento da estética, como definimos o valor fixo com a cor “red”, seria como tivessemos em nossos dados uma coluna onde todas as linhas tivessem o valor “red”. Já no exemplo acima, estamos simplemente dizendo à função da geometria que queremos a cor vermelha para ela.</p>
-<p>Vejamos um outro exemplo para que fique claro este ponto. Vamos gerar o mesmo gráfico onde colocamos “red” como parte da estética, porém agora, iremos mapeá-la com a coluna “qsec” de nossos dados mtcars:</p>
+<p>Vejamos um outro exemplo para que fique claro este ponto.</p>
+<p>Vamos gerar o mesmo gráfico onde colocamos “red” como parte da estética, porém agora, iremos mapeá-la com a coluna “qsec” de nossos dados mtcars:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars)<span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg, <span class="at">color =</span> qsec))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -755,6 +760,7 @@ Importante
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Observe que neste caso a estética de cor foi mapeada com a variável qsec. Por se tratar de uma variável contínua, o ggplot escolheu autometicamente uma sequência de cores, neste caso do azul claro para o azul escuro, para representar este tipo de variável. Veremos mais adiante como customizar esta e outras escolhar automáticas feitas nas escalas.</p>
 </section>
 <section id="linetype" class="level4" data-number="6.5.2.2">
 <h4 data-number="6.5.2.2" class="anchored" data-anchor-id="linetype"><span class="header-section-number">6.5.2.2</span> linetype</h4>
@@ -3135,21 +3141,31 @@ Dica
 <p><strong>Exemplo</strong>:</p>
 <p>Vamos criar nosso gráfico inicial:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb188-4"><a href="#cb188-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
-<span id="cb188-5"><a href="#cb188-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
-<span id="cb188-6"><a href="#cb188-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb188-7"><a href="#cb188-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
-<span id="cb188-8"><a href="#cb188-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
-<span id="cb188-9"><a href="#cb188-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb188-10"><a href="#cb188-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
-<span id="cb188-11"><a href="#cb188-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
-<span id="cb188-12"><a href="#cb188-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
-<span id="cb188-13"><a href="#cb188-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb188-14"><a href="#cb188-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
-<span id="cb188-15"><a href="#cb188-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>g_barras <span class="ot">&lt;-</span> </span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">|&gt;</span> </span>
+<span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb188-4"><a href="#cb188-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb188-5"><a href="#cb188-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, </span>
+<span id="cb188-6"><a href="#cb188-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> ..count..), </span>
+<span id="cb188-7"><a href="#cb188-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), </span>
+<span id="cb188-8"><a href="#cb188-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb188-9"><a href="#cb188-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, </span>
+<span id="cb188-10"><a href="#cb188-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">palette =</span> <span class="dv">2</span>, </span>
+<span id="cb188-11"><a href="#cb188-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb188-12"><a href="#cb188-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Quantidade"</span> ) <span class="sc">+</span></span>
+<span id="cb188-13"><a href="#cb188-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">3</span>))  <span class="sc">+</span></span>
+<span id="cb188-14"><a href="#cb188-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>() <span class="sc">+</span> </span>
+<span id="cb188-15"><a href="#cb188-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb188-16"><a href="#cb188-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb188-17"><a href="#cb188-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>)) </span>
+<span id="cb188-18"><a href="#cb188-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-19"><a href="#cb188-19" aria-hidden="true" tabindex="-1"></a>maior_valor <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
+<span id="cb188-20"><a href="#cb188-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(manufacturer, class, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb188-21"><a href="#cb188-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="co">#Identificamos o grupo com maior qtd</span></span>
+<span id="cb188-22"><a href="#cb188-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-23"><a href="#cb188-23" aria-hidden="true" tabindex="-1"></a>g_barras <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb188-24"><a href="#cb188-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exemplo de gráfico dinâmico com função"</span>,</span>
+<span id="cb188-25"><a href="#cb188-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(maior_valor[[<span class="dv">1</span>]], <span class="st">" / "</span>, maior_valor[[<span class="dv">2</span>]], <span class="st">" tem a maior qtd com "</span>, maior_valor<span class="sc">$</span>n, <span class="st">" unidades."</span>)) <span class="co"># Criamos um subtitulo para o grpo com maior Qtd dinamicamente.</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-182-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -3176,12 +3192,21 @@ Dica
 <span id="cb189-18"><a href="#cb189-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
 <span id="cb189-19"><a href="#cb189-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#E5F3F7"</span>))</span>
 <span id="cb189-20"><a href="#cb189-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-21"><a href="#cb189-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-22"><a href="#cb189-22" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(g_barras)</span>
-<span id="cb189-23"><a href="#cb189-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-24"><a href="#cb189-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb189-21"><a href="#cb189-21" aria-hidden="true" tabindex="-1"></a>maior_valor <span class="ot">&lt;-</span> {{dados}} <span class="sc">|&gt;</span> </span>
+<span id="cb189-22"><a href="#cb189-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>({{eixo_x}}, {{preenchimento}} , <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb189-23"><a href="#cb189-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb189-24"><a href="#cb189-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-25"><a href="#cb189-25" aria-hidden="true" tabindex="-1"></a>g_barras <span class="ot">&lt;-</span> </span>
+<span id="cb189-26"><a href="#cb189-26" aria-hidden="true" tabindex="-1"></a>  g_barras <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb189-27"><a href="#cb189-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exemplo de gráfico dinâmico com função"</span>,</span>
+<span id="cb189-28"><a href="#cb189-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(maior_valor[[<span class="dv">1</span>]], <span class="st">" / "</span>, maior_valor[[<span class="dv">2</span>]], <span class="st">" tem a maior qtd com "</span>, maior_valor<span class="sc">$</span>n, <span class="st">" unidades."</span>))</span>
+<span id="cb189-29"><a href="#cb189-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-30"><a href="#cb189-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-31"><a href="#cb189-31" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(g_barras)</span>
+<span id="cb189-32"><a href="#cb189-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-33"><a href="#cb189-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais “inteligente”.</p>
+<p>Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se’ passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais “inteligente”.</p>
 <div>
 <div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada</span></span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
