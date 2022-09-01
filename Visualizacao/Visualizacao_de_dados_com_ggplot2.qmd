@@ -36,6 +36,10 @@ library (gt)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf) do stringr disponível no site do [RStudio](rstudio.com).
 
+![](images/cs-ggplot-01.png)
+
+![](images/cs-ggplot-02.png)
+
 ------------------------------------------------------------------------
 
 ## Tipos de Variáveis
