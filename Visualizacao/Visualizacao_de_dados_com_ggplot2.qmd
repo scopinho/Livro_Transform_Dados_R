@@ -2078,13 +2078,15 @@ return(g_barras)
 Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se' passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais "inteligente".
 
 ```{r}
-#| layout-nrow: 2
 
-#Usando a função criada
+#Usando a função criada.
 mpg |> 
 cria_grafico_barras(manufacturer, class)
 
-#Usando a função criada. 
+```
+
+```{r}
+#Usando a função criada om outros parametros.
 
 mpg |> 
   mutate (year = as_factor(year)) |>  #Alterando a variável year para factor antes para torná-la discreta.

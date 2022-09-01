@@ -3207,26 +3207,22 @@ Dica
 <span id="cb189-33"><a href="#cb189-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Agora podemos usar a função com as mesmas ou outras variáveis. Apenas devemos observer o tipo das variáveis. Se sua função cria gráfico com variáveis discretas, ela pode não funcionar devidamente se’ passar variável contínua. Talvez você possa criar outra função, ou deixá-la mais “inteligente”.</p>
-<div>
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada.</span></span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cria_grafico_barras</span>(manufacturer, class)</span>
-<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada. </span></span>
-<span id="cb190-5"><a href="#cb190-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-6"><a href="#cb190-6" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
-<span id="cb190-7"><a href="#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">year =</span> <span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span>  <span class="co">#Alterando a variável year para factor antes para torná-la discreta.</span></span>
-<span id="cb190-8"><a href="#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cria_grafico_barras</span>(class, year)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cria_grafico_barras</span>(manufacturer, class)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 <p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-184-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-184-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usando a função criada om outros parametros.</span></span>
+<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-3"><a href="#cb191-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb191-4"><a href="#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">year =</span> <span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span>  <span class="co">#Alterando a variável year para factor antes para torná-la discreta.</span></span>
+<span id="cb191-5"><a href="#cb191-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cria_grafico_barras</span>(class, year)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Visualizacao_de_dados_com_ggplot2_files/figure-html/unnamed-chunk-185-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
