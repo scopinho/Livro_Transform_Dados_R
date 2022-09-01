@@ -1,4 +1,5 @@
 # Transformação de Dados com DPLYR
+
 ## Introdução
 
 A seguir temos vários exemplos de transformação de dados utilizando o pacote DYPLR do R. Para saber mais sobre este pacote, acesse:
@@ -25,6 +26,10 @@ library (gt)
 ### Exemplos da Folha de Referência
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf) do dyplr disponível no site do [RStudio](rstudio.com).
+
+[![](images/cs-dplyr-01.png)](images/cs-dplyr-01.png)
+
+[![](images/cs-dplyr-02.png)](images/cs-dplyr-02.png)
 
 Para a maioria dos exemplos utilizaremos as bases de dados **mtcars** e **starwars** provenientes do pacote **datasets e dplyr**.
 

@@ -1,7 +1,9 @@
 ---
 always_allow_html: yes
 ---
+
 # Manipulacao de Strings com STRINGR
+
 ## Introdução
 
 A seguir temos vários exemplos de manipulação de strings (cadeia de caracteres) utilizando o pacote STRINGR do R. Para saber mais sobre este pacote, acesse:
@@ -43,6 +45,10 @@ minha_string
 ### Exemplos da Folha de Referência
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
+
+[![](images/cs-stringr-01.png)](images/cs-stringr-01.png)
+
+[![](images/cs-stringr-02.png)](images/cs-stringr-02.png)
 
 Para a maioria dos exemplos utilizaremos as bases de dados **fruit** (frutas) que será criado a seguir.
 
@@ -589,7 +595,7 @@ Str_Teste
 ```
 
 | String Regex no R | Busca por                                               |
-|-----------------------|-------------------------------------------------|
+|-----------------------|------------------------------------------------|
 | a                 | a (etc.)                                                |
 | \\\\.             | .                                                       |
 | \\\\!             | \\!                                                     |

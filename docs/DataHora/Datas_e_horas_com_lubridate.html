@@ -426,6 +426,16 @@ Dica
 <section id="exemplos-da-folha-de-referência" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">5.2.1</span> Exemplos da Folha de Referência</h3>
 <p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf"><strong>Folha de Referência</strong></a> do lubridate disponível no site do <a href="rstudio.com">RStudio</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/cs-lubridate-01.png"><img src="images/cs-lubridate-01.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/cs-lubridate-02.png"><img src="images/cs-lubridate-02.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 <hr>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -593,7 +603,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"America/Sao_Paulo"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2022-09-01 11:14:37 -03"</code></pre>
+<pre><code>[1] "2022-09-01 12:44:48 -03"</code></pre>
 </div>
 </div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -1344,14 +1354,14 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_flip</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-09-01 14:14:38 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-09-01 15:44:48 UTC</code></pre>
 </div>
 </div>
 <p>Para colocar em ordem padrão um intervalo de acordo com a linha do tempo, podemos usar a função <strong>int_standardize</strong>().</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_standardize</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2017-11-01 UTC--2022-09-01 14:14:38 UTC</code></pre>
+<pre><code>[1] 2017-11-01 UTC--2022-09-01 15:44:48 UTC</code></pre>
 </div>
 </div>
 </section>
@@ -1361,7 +1371,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_length</span>(i)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -152547279</code></pre>
+<pre><code>[1] -152552689</code></pre>
 </div>
 </div>
 </section>
@@ -1372,7 +1382,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">int_shift</span>(i, <span class="fu">days</span>(<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-08-31 11:14:38 -03--2017-10-30 22:00:00 -02</code></pre>
+<pre><code>[1] 2022-08-31 12:44:48 -03--2017-10-30 22:00:00 -02</code></pre>
 </div>
 </div>
 </section>
@@ -1383,7 +1393,7 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.interval</span>(<span class="fu">days</span>(<span class="dv">1</span>), <span class="at">start =</span> <span class="fu">now</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2022-09-01 11:14:38 -03--2022-09-02 11:14:38 -03</code></pre>
+<pre><code>[1] 2022-09-01 12:44:49 -03--2022-09-02 12:44:49 -03</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">

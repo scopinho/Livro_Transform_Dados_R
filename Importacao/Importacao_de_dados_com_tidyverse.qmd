@@ -1,4 +1,5 @@
 # Importação de Dados com TIDYVERSE
+
 ## Introdução
 
 A seguir temos vários exemplos de importação de dados utilizando o pacote TIDYVERSE do R. O pacote tidyverse possui vários pacotes de importação de dados, aqui iremos cobrir três deles (readr, readxl e googlesheets4). Para saber mais sobre estes pacotes, acesse:
@@ -54,6 +55,10 @@ library (openxlsx)
 ### Exemplos da Folha de Referência
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf) de importação de dados com tidyverse disponível no site do [RStudio](rstudio.com).
+
+[![](images/cs-import-01.png)](images/cs-import-01.png)
+
+[![](images/cs-import-02.png)](images/cs-import-02.png)
 
 ### Arquivos
 

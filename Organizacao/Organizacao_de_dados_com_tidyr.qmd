@@ -1,4 +1,5 @@
 # Organização de Dados com TIDYR
+
 ## Introdução
 
 A seguir temos vários exemplos de organização de dados utilizando o pacote TIDYR do R. Para saber mais sobre este pacote, acesse:
@@ -26,6 +27,10 @@ library (gt)
 ### Exemplos da Folha de Referência
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf) do tidyr disponível no site do [RStudio](rstudio.com).
+
+[![](images/cs-tidyr-01.png)](images/cs-tidyr-01.png)
+
+[![](images/cs-tidyr-02.png)](images/cs-tidyr-02.png)
 
 ### Conjunto de Dados
 

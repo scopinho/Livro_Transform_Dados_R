@@ -1,4 +1,5 @@
 # Datas e horas com LUBRIDATE
+
 ## Introdução
 
 A seguir temos vários exemplos de manipulação de **variáveis** **data e hora** utilizando o pacote LUBRIDATE do R. Para saber mais sobre este pacote, acesse:
@@ -64,6 +65,10 @@ POSIXct: armazena segundos desde 01-01-1970 00:00:00 (Unix epoch) POSIXlt: armaz
 ### Exemplos da Folha de Referência
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf) do lubridate disponível no site do [RStudio](rstudio.com).
+
+[![](images/cs-lubridate-01.png)](images/cs-lubridate-01.png)
+
+[![](images/cs-lubridate-02.png)](images/cs-lubridate-02.png)
 
 ------------------------------------------------------------------------
 
