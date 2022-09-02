@@ -18,10 +18,6 @@ Para melhor utilizar o conteúdo deste livro, é importante que você já possua
 Para mais informações acesse:
 
 <https://education.rstudio.com/learn/beginner/>.
-
-ou
-
-<https://livro.curso-r.com/>
 :::
 
 **Os temas abordados neste livro são:**
@@ -37,6 +33,10 @@ ou
 -   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folha da referência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
 -   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2**. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf).
+
+::: {.callout-note appearance="simple"}
+Este livro é gerado à partir do sitema de publicação [Quarto](https://www.quarto.org).
+:::
 
 ## Licença
 
