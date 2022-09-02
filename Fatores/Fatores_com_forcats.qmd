@@ -1,0 +1,154 @@
+# Fatores com FORCATS
+
+## Introdução
+
+## ESTE CAPÍTULO ESTA EM CONSTRUÇÃO !!!!
+
+A seguir temos vários exemplos de tratamento de variáveis qualitativas o pacote FORCTAS do R.
+
+Para saber mais sobre este pacote, acesse:
+
+<https://cran.r-project.org/package=forcats>.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos, iremos carregar o seguinte pacote:
+
+-   **tidyverse**
+
+```{r}
+#| echo: true
+library (tidyverse)
+```
+
+### Exemplos da Folha de Referência
+
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
+
+------------------------------------------------------------------------
+
+## Introdução
+
+**Fatores** são estruturas de dados da linguagem R utilizadas para representar **variáveis qualitativas** (categóricas). Apesar de todo o suporte da linguagem para este tipo de dados, o pacotes forcats facilita muito este trabalho, principalmente quando precisamos definir níveis, alterar sua ordem, etc.
+
+::: {.callout-note appearance="simple"}
+Para uma breve explicação do que são variáveis qualitativas, também chamadas de categóricas, veja a seção: [Tipos de Variáveis](http://localhost:3613/Visualizacao/Visualizacao_de_dados_com_ggplot2.html#tipos-de-vari%C3%A1veis).
+:::
+
+## Fatores
+
+A linguagem R representa **dados categóricos** através de um tipo de dados chamado **Fator** (factor). Um fator é um vetor de inteiros com um atributo de **nível** (level) associado à ele. Este nível armazena um conjunto de mapeamentos entre o inteiro e o valor categórico. Quando você visualiza um fator, o R não mostra os inteiros, mas sim, os níveis associados à eles.
+
+![](images/factors-01.png){width="253"}
+
+#### factor
+
+Use esta função para criar um fator.
+
+```{r}
+f <- factor(c("a", "c", "b", "a"), levels = c("a", "b", "c"))
+f
+```
+
+No exemplos acima, criamos um fator à partir de um vetor (a,b,c,a) e definimos os níveis 1, 2 e 3 como "a,b,c".
+
+::: callout-note
+Se os **níveis** de um fator **não forem especificados**, o R irá pegar os caracteres únicos do vetor e colocá-los em ordem alfabética.
+
+```{r}
+f <- factor(c("a", "c", "b", "a"))
+f
+```
+:::
+
+#### as_fator
+
+Podemos também converter um outro tipo de dado para fator utilzando a função as_factor.
+
+```{r}
+vetor <- c("a", "b", "c", "a")
+as_factor(vetor)
+```
+
+#### levels
+
+Use para retornar ou definir os níveis de um fator.
+
+```{r}
+# para retornar os níveis:
+levels(f)
+
+# Para definir os níveis:
+levels (f) <- c("x", "y", "z")
+f
+levels (f) <- c("a", "b", "c")
+f
+```
+
+## Inspecionando Fatores
+
+#### fct_count
+
+Use para contar os valores de cada nível.
+
+```{r}
+fct_count(f)
+```
+
+#### fct_match
+
+Use para encontrar níveis.
+
+```{r}
+fct_match(f, "a")
+```
+
+#### fct_unique
+
+Use para retornar valores únicos de um fator, removendo os duplicados.
+
+```{r}
+fct_unique(f)
+```
+
+## Combinando Fatores
+
+#### fct_c
+
+Use para combinar fatores com níveis diferentes.
+
+```{r}
+f1 <- factor(c("a", "b", "c"))
+f2 <- factor(c("b", "a"))
+```
+
+```{r}
+f1
+f2
+```
+
+```{r}
+fct_c(f1,f2)
+```
+
+::: callout-tip
+Use **fct_cross**() para criar um fator à partir de dois ou mais fatores, gerando níveis para todas as combinações possíveis.
+:::
+
+#### fct_unify
+
+Use para padronizar os níveis à partir de uma lista de fatores.
+
+```{r}
+list(f1, f2)
+```
+
+```{r}
+fct_unify(list(f2, f1))
+```
+
+Veja que no exemplo acima, os níveis de ambas as listas possuem os mesmos valores.
