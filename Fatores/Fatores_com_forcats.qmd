@@ -4,7 +4,7 @@
 
 ## ESTE CAPÍTULO ESTA EM CONSTRUÇÃO !!!!
 
-A seguir temos vários exemplos de tratamento de variáveis qualitativas o pacote FORCTAS do R.
+A seguir temos vários exemplos de tratamento de variáveis qualitativas o pacote FORCATS do R.
 
 Para saber mais sobre este pacote, acesse:
 
@@ -38,6 +38,38 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 ::: {.callout-note appearance="simple"}
 Para uma breve explicação do que são variáveis qualitativas, também chamadas de categóricas, veja a seção: [Tipos de Variáveis](http://localhost:3613/Visualizacao/Visualizacao_de_dados_com_ggplot2.html#tipos-de-vari%C3%A1veis).
 :::
+
+## Base de Dados
+
+Par os exemplos a seguir usaremos algumas tabelas já instaladas com o R ou o pacote tidyverse como:
+
+::: panel-tabset
+## gss_cats
+
+```{r}
+gss_cat
+```
+
+## diamonds
+
+```{r}
+diamonds  
+```
+
+## starwars
+
+```{r}
+starwars
+```
+
+## PlantGrowth
+
+```{r}
+PlantGrowth
+```
+:::
+
+Note que as variáveis do tipo **fator** são marcadas como "**fct**" nas tabelas acima.
 
 ## Fatores
 
