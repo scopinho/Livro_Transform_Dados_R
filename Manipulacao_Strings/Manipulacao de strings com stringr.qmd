@@ -2,7 +2,7 @@
 always_allow_html: yes
 ---
 
-# Manipulacao de Strings com STRINGR
+# Manipulação de Strings com STRINGR
 
 ## Introdução
 
@@ -10,29 +10,20 @@ A seguir temos vários exemplos de manipulação de strings (cadeia de caractere
 
 <https://cran.r-project.org/package=stringr>.
 
-::: callout-warning
-Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
-
-<https://education.rstudio.com/learn/beginner/>.
-:::
-
 Para os exemplos, iremos carregar os seguintes pacotes:
 
 -   **tidyverse**
-
--   **gt**
 
 -   **htmlwidgets**
 
 ```{r}
 #| echo: true
 library (tidyverse)
-library (gt)
 library (htmlwidgets)
 ```
 
 ::: callout-note
-**String:** O termo string, ou cadeia de caracteres, é uma s**equência de caracteres** interpretadas como uma constante literal ou até mesmo uma variável.
+**String:** O termo string, ou cadeia de caracteres, é uma s**equência de caracteres** interpretadas como uma constante literal ou até mesmo uma variável. No R, podemos criar uma string com aspas simples ou duplas.
 :::
 
 Por exemplo:
@@ -40,6 +31,8 @@ Por exemplo:
 ```{r}
 minha_string <- "Isto é uma string"
 minha_string
+minha_outra_string <- 'Isto também é uma string'
+minha_outra_string
 ```
 
 ### Exemplos da Folha de Referência
@@ -50,9 +43,9 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 [![](images/cs-stringr-02.png)](images/cs-stringr-02.png)
 
-Para a maioria dos exemplos utilizaremos as bases de dados **fruit** (frutas) que será criado a seguir.
-
 ------------------------------------------------------------------------
+
+Para a maioria dos exemplos utilizaremos as bases de dados **fruit** (frutas) que será criado a seguir.
 
 **FRUIT:** Tabela com nome de frutas (em inglês).
 
@@ -63,39 +56,33 @@ fruit
 
 ------------------------------------------------------------------------
 
-::: callout-note
-*Ao final de algum comando, você verá a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
-
-Em alguns casos usaremos funções de manipulação de dados do pacote **dplyr,** como **mutate** () ou **count**()**.**
-:::
-
-::: callout-note
-*O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
-:::
-
 ## Detectando Combinações
 
-O pacote stringr possui uma série de funções para identificar a ocorrência ou não de padrões de caracteres (patterns).
+O pacote stringr possui uma série de funções para identificar a ocorrência ou não de **padrões** de caracteres (patterns).
 
-Na maioria das vezes o mecanismo de interpretação padrão é o de "Expressão Regular" (regex). Isto significa que podemos construir um padrão de caracteres não somente com letras ou números, mas criando expressões que significam uma combinação mais flexivel no padrão de busca. Para maiores informações veja: [Expressões Regulares].
+Na maioria das vezes o mecanismo de interpretação padrão é o de "Expressão Regular" (regex). Isto significa que podemos construir um padrão de caracteres não somente com letras ou números, mas criando expressões que significam uma combinação mais flexivel no padrão de busca.
+
+Para maiores informações veja: [Expressões Regulares].
+
+O pacote stringr, possui uma série de funções para manipulação de strings que veremos a seguir:
 
 #### str_detect
 
 Use para **detectar** a presença de um **padrão** em uma **string**.
 
-Por exemplo, para detectar quais frutas tem a letra "a", podemos usar:
+Por exemplo, para detectar quais frutas tem a letra "**a**", podemos usar:
 
 ```{r}
 str_detect(fruit$name, "a") 
 ```
 
-No exemplo acima, temos TRUE para todas as linhas que contém a letra "a" e FALSE para aquelas que não tem a letra "a".
+No exemplo acima, temos **TRUE** para todas as linhas que contém a letra "**a**" e **FALSE** para aquelas que **não** tem a letra "**a**".
 
 ::: callout-important
 Observe que o R é sensível à letras maiúsculas e minúsculas. Como definimos a letra "a" (minúscula) como nosso **padrão** de busca, ele não retorna TRUE para palavras como "Apple" que possui a letra "A" maiúscula.
 :::
 
-Se quisermos criar uma coluna ao lado para facilitar a visualização, podemos usar a função **mutate**():
+Se quisermos criar uma coluna ao lado para facilitar a visualização, podemos usar a função **mutate**() do pacote dplyr:
 
 ```{r}
 fruit |> 
@@ -106,7 +93,7 @@ fruit |>
 
 Use para determinar **se há o padrão definido** **no início** da string.
 
-Por exemplo, se quisermos identificar quais frutas que começam com o padrão "Bl", usamos:
+Por exemplo, se quisermos identificar quais frutas que começam com o padrão "**Bl**", usamos:
 
 ```{r}
 fruit |> 
@@ -532,13 +519,15 @@ cat(str_wrap(thanks, width = 60, indent = 2), "\n")
 
 ## Expressões Regulares
 
-Padrões de buscas são interpretados na funções do pacote stringr como Expressões Regulares (regex). Ou seja, quando uma função possui o parametro pattern =, significa que o interpretador irá entendem como uma expressão regular. Você pode alterar o interpretadores para outros tipos se necessário. Para saber mais sobre isso, acesse [Outras Interpretações].
+Padrões de buscas são interpretados na funções do pacote stringr como Expressões Regulares (regex). Ou seja, quando uma função possui o parametro **pattern =**, significa que o interpretador irá entendem como uma expressão regular por padrão. Você pode alterar o interpretadores para outros tipos se necessário. Para saber mais sobre isso, acesse [Outras Interpretações].
 
-**Expressão Regular** é uma sequencia de caracteres que especificam um padrão de busca em uma string.
+**Expressão Regular** é uma sequência de caracteres que especificam um padrão de busca em uma string.
 
-No R, você escreve uma expressão regular como um string, ou seja, uma sequencia de caracteres entre asps simples ' ou duplas ".
+Lembre-se que no R, você escreve uma expressão regular como um string, ou seja, uma sequência de caracteres entre aspas simples ' ou duplas ".
 
-Alguns caracteres de uma expressão regular não podem ser representados diretamente como uma string no R. Estes são conhecidos como caracteres especiais e são uma sequencia de caracteres que tem um significado específico.
+Alguns caracteres de uma expressão regular não podem ser representados diretamente como uma string no R.
+
+Estes são conhecidos como caracteres especiais e são uma sequência de caracteres que tem um significado específico.
 
 Por exemplo:
 
@@ -568,13 +557,13 @@ writeLines("\\")
 
 Como exemplo inicial, vamos utilizar a função **str_extract**() que recebe um string como parametro e também aceita o padrão de busca como outro parametro.
 
-Iremos definir nosso **padrão** de busca como a letra "a". Desta forma, se passarmos para a função str_detect a string "Banana" e o padrão "a", ele deve retornar a letra "a", pois a string Banana possui a letra "a".
+Iremos definir nosso **padrão** de busca como a letra "**a**". Desta forma, se passarmos para a função **str_extract**() a string "**Banana**" e o padrão "**a**", ele deve retornar a letra "**a**", pois a string Banana possui a letra "a".
 
 ```{r}
 str_extract ("Banana", "a")
 ```
 
-Por outro lado, se passarmos a string "Fig" com o mesmo padrão de busca, teremos NA como retorno, pois a string "Fig" não possui a letra "a".
+Por outro lado, se passarmos a string "**Fig**" com o mesmo padrão de busca, teremos **NA** como retorno, pois a string "Fig" **não possui a letra "a".**
 
 ```{r}
 str_extract ("Fig", "a")
@@ -584,7 +573,7 @@ str_extract ("Fig", "a")
 
 No exemplo anterior utilizamos apenas um caractere como padrão de busca, no caso a letra "a".
 
-Quando desejamos combinar diversos caracteres (letras, numeros, simbolos, espaços, etc) utilizamos a expressões na tabela abaixo:
+Quando desejamos **combinar diversos caracteres** (letras, numeros, simbolos, espaços, etc) utilizamos a expressões na tabela abaixo:
 
 Para facilitar o entendimento, utilizaremos uma string com letras maiúsculas, minúsculas, símbolos e números:
 
@@ -595,7 +584,7 @@ Str_Teste
 ```
 
 | String Regex no R | Busca por                                               |
-|-----------------------|------------------------------------------------|
+|------------------------|------------------------------------------------|
 | a                 | a (etc.)                                                |
 | \\\\.             | .                                                       |
 | \\\\!             | \\!                                                     |
@@ -622,23 +611,27 @@ Str_Teste
 | \[:blank:\]       | espaço em branco e barra de espaço (mas não nova linha) |
 | .                 | qualquer caractere exceto nova linha (ENTER)            |
 
-Vamos mostrar como usar a tabela acima com alguns exemplos. Para isso, iremos usar a string criada anteriormente chamada "Str_Teste".
+Vamos mostrar como usar a tabela acima com alguns exemplos. Para isso, iremos usar a string criada anteriormente chamada "**Str_Teste**".
 
 **Exemplo 1:**
 
-Vamos buscar em nossa string de teste (Str_Teste) a letra minúscula "a".
+Vamos buscar em nossa string de teste (**Str_Teste**) a letra minúscula "**a**".
 
-Na coluna da tabela acima chamada **String**, encontramos oque devemos digitar para construir o padrão de busca. Neste caso, seria "a".
+Na coluna da tabela acima chamada **String**, encontramos oque devemos digitar para construir o padrão de busca. Neste caso, seria "**a**".
 
-Se usarmos a função **str_view_all**() pssando nossa "Str_Teste" e o padrão de busca "a", observamos que teremos marcado apenas a letra "a" na string. Isto significa que o padrão de busca foi encontrado na string.
+Se usarmos a função **str_view_all**() passando nossa "Str_Teste" e o padrão de busca "a", observamos que teremos marcado apenas a letra "a" na string. Isto significa que o padrão de busca foi encontrado na string.
 
 ```{r}
 str_view_all (Str_Teste, "a")
 ```
 
+::: callout-note
+As funções **str_view**() e **str_view_all**() mostram em HTML o encontro de uma expressão regular. São muito úteis para criar/validar sua expressão. A str_view, mostra o primeiro encontro e para a busca, a str_view_all, mostra todos os encontros.
+:::
+
 **Exemplo 2:**
 
-Vamos buscar agora pelo padrão do símbolo de ponto de interrogação "?". Similar ao exemplo anterior, vemos que apenas o ponto de interrogação foi encontrado.
+Vamos buscar agora pelo padrão do símbolo de ponto de interrogação "**?**". Similar ao exemplo anterior, vemos que apenas o ponto de interrogação foi encontrado.
 
 ```{r}
 str_view_all (Str_Teste, "\\?")
@@ -646,14 +639,14 @@ str_view_all (Str_Teste, "\\?")
 
 **Exemplo 3:**
 
-Vamos criar agora um padrão que busque por todos os digitos em nossa string.
+Vamos criar agora um padrão que busque por **todos os digitos** em nossa string.
 
 ```{r}
 str_view_all (Str_Teste, "\\d")
 ```
 
 ::: callout-tip
-Para buscarmos pelo inverso do caso anterior, ou seja, todos os caracteres que NÃO são digitos, usamos a letra "D" maiúscula. Isto é válido também para os casos de "\\\\S" e "\\\\W" que seriam o inverso de "\\\\s" e "\\\\w" respectivamente.
+Para buscarmos pelo inverso do caso anterior, ou seja, todos os caracteres que **NÃO são digitos**, usamos a letra "**D**" maiúscula. Isto é válido também para os casos de "\\\\S" e "\\\\W" que seriam o inverso de "\\\\s" e "\\\\w" respectivamente.
 :::
 
 ```{r}
@@ -662,7 +655,7 @@ str_view_all (Str_Teste, "\\D")
 
 **Exemplo 4:**
 
-Vamos criar agora um padrão que busque por todos os digitos e letras em nossa string.
+Vamos criar agora um padrão que busque por t**odos os digitos e letras** em nossa string.
 
 ```{r}
 str_view_all (Str_Teste, "[:alnum:]")
@@ -670,7 +663,7 @@ str_view_all (Str_Teste, "[:alnum:]")
 
 ### Quantificadores
 
-Agora que já saber como criar padrões de busca para identificar diversos tipos de caracteres, veremos como difinir a quantidade desses caracteres em nosso padrão. Veja a tabela abaixo:
+Agora que já sabemos como criar padrões de busca para identificar diversos tipos de caracteres, veremos como definir a quantidade desses caracteres em nosso padrão. Veja a tabela abaixo:
 
 | Regex       | Busca               |
 |-------------|---------------------|
@@ -683,7 +676,7 @@ Agora que já saber como criar padrões de busca para identificar diversos tipos
 
 Vamos ver como utilizamos estes quantificadores juntamente com os caracteres especiais vistos anteriormente (ver [Combinando Caracteres]).
 
-Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_2 = ".a.aa.aaa"
+Para os exemplos a seguir utilizaremos a seguinte string de teste: **Str_Teste_2** = "**.a.aa.aaa**"
 
 ```{r}
 Str_Teste_2 <- ".a.aa.aaa"
@@ -691,16 +684,16 @@ Str_Teste_2 <- ".a.aa.aaa"
 
 **Exemplo 1:**
 
-Digamos que queremos buscar em nossa string de teste "Str_Teste" a letra "a" zero ou uma vez, para isso faremos:
+Digamos que queremos buscar em nossa string de teste "**Str_Teste_2**" a letra "**a**" **zero ou uma vez**, para isso faremos:
 
 ```{r}
 str_view_all(Str_Teste_2, "a?")
 ```
 
-Neste caso, todas as vezes que a funções encontrar a letra "a" zero ou uma vez, elá irá marcar.
+Neste caso, **todas as vezes** que a funções encontrar a **letra "a" zero ou uma vez**, elá irá marcar.
 
 ::: callout-warning
-Se usarmos a função **str_view**() ela irá utilizar o padrão apenas até o primeiro encontro e depois irá para a busca, veja:
+Como visto, se usarmos a função **str_view**() ela irá utilizar o padrão apenas até o primeiro encontro e depois irá para a busca, veja:
 :::
 
 ```{r}
@@ -711,7 +704,7 @@ Observe que a busca para logo no primeiro caractere, pois estamos buscando pela 
 
 **Exemplo 2:**
 
-Agora vamos iremos buscar pela letra "a" **UMA** ou mais vezes, porém iremos utilizar a função str_view() ou invés da str_view_all(), parando a busca assim que o primeiro encontro ocorra:
+Agora vamos iremos buscar pela letra "a" **UMA** **ou mais vezes**, porém iremos utilizar a função str_view() ou invés da str_view_all(), parando a busca assim que o primeiro encontro ocorra:
 
 ```{r}
 str_view(Str_Teste_2, "a+")
@@ -719,13 +712,13 @@ str_view(Str_Teste_2, "a+")
 
 **Exemplo 3:**
 
-Neste exemplo, queremos criar um padrão de busca pela letra "a", mas que ela ocorra **DUAS** a **TRÊS** vezes.
+Neste exemplo, queremos criar um padrão de busca pela letra "**a**", mas que ela ocorra **DUAS** a **TRÊS** vezes.
 
 ```{r}
 str_view(Str_Teste_2, "a{2,3}")
 ```
 
-Veja que ele localizou apenas as duas letras "aa" e não marcou as letras "aaa". Isto é porque utilizamos a função str_view(), que parou a busca assim que a primeiro encontro ocorreu. Se quisermos continuar a busca, devemos utilizar a função str_view_all().
+Veja que ele localizou apenas as duas letras "**aa**" e não marcou as letras "**aaa**". Isto é porque utilizamos a função **str_view**(), que parou a busca assim que a primeiro encontro ocorreu. Se quisermos continuar a busca, devemos utilizar a função **str_view_all**().
 
 ```{r}
 str_view_all(Str_Teste_2, "a{2,3}")
@@ -733,16 +726,16 @@ str_view_all(Str_Teste_2, "a{2,3}")
 
 **Exemplo 4:**
 
-Neste exemplo, usaremos a tabela frutas, criada quando descrevemos a função [str_c](). Veja com ela era para se recordar:
+Neste exemplo, usaremos a tabela frutas, criada quando descrevemos a função [str_c](). Veja como ela é para se recordar:
 
 ```{r}
 frutas |> 
   head() 
 ```
 
-Digamos que precisamos extrair apenas os numeros da coluna "nova_string". E colocá-los em uma nova coluna chamda "numeros".
+Digamos que precisamos extrair apenas os números da coluna "**nova_string**". E colocá-los em uma nova coluna chamda "**numeros**".
 
-Neste caso, podemos usar a função str_extract() com um padrão que encontre um número de **0 até 9**, seguido por **um ou mais** "qualquer caractere" e depois outro número de 0 até 9.
+Neste caso, podemos usar a função **str_extract**() com um padrão que encontre um número de **0 até 9**, seguido por **um ou mais** "qualquer caractere" e depois outro número de 0 até 9.
 
 Este padrão irá encontrar padrões como "1_1" ou "2_2".
 
@@ -756,7 +749,9 @@ frutas |>
 
 ### Alternadores
 
-Até aqui, utilizamos os caracteres especiais ([Combinando Caracteres]) e sabemos como localizá-los em diversas quantidades ([Quantificadores]). Mas em muitos casos precisamos organizá-los de forma lógica, possibilitando utilizá-los em combinações mais flexíveis. Para isto, utilizamos os símbolos de alternadores, veja:
+Até aqui, utilizamos os caracteres especiais ([Combinando Caracteres]) e sabemos como localizá-los em diversas quantidades ([Quantificadores]). Mas em muitos casos precisamos organizá-los de forma **lógica**, possibilitando utilizá-los em combinações mais flexíveis.
+
+Para isto, utilizamos os símbolos de alternadores, veja:
 
 | Regex           | Busca       |
 |-----------------|-------------|
@@ -765,7 +760,7 @@ Até aqui, utilizamos os caracteres especiais ([Combinando Caracteres]) e sabemo
 | **\[\^** **\]** | Tudo exceto |
 | **\[ - \]**     | Range       |
 
-: Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_3 = "abcde"
+: Para os exemplos a seguir utilizaremos a seguinte string de teste: **Str_Teste_3** = "**abcde**"
 
 ```{r}
 Str_Teste_3 <- "abcde"
@@ -789,7 +784,7 @@ str_view_all(Str_Teste_3, "[abe]")
 
 **Exemplo 3:**
 
-Digamos que desejamos criar um padrão que busque qualquer um **range** de letras entre as letras "a" até a "c", para isto podemos usar:
+Digamos que desejamos criar um padrão que busque dentre um **range** de letras entre as letras "a" até a "c", para isto podemos usar:
 
 ```{r}
 str_view_all(Str_Teste_3, "[a-c]")
@@ -799,9 +794,11 @@ str_view_all(Str_Teste_3, "[a-c]")
 
 Neste exemplo, usaremos novamente a tabela **frutas**, criada quando descrevemos a função [str_c]().
 
-Digamos que precisamos filtrar nesta tabela, apenas as frutas que possuem nomes compostos, ou seja, separados por espaço ou uma pontuação (ex "-").
+Digamos que precisamos **filtrar** nesta tabela, apenas as frutas que possuem nomes compostos, ou seja, **separados por espaço** ou uma **pontuação** (ex "-").
 
-Podemos usar a função filter() passando o resultado da função str_detect() junto com um padrão. Há diversas maneiras de construir este padrão. Aqui optar por buscar por caracteres alfa-numéricos (letras e números) e usamos o alternador \[\^ \] para negar tais caracteres, portanto, iremos identificar se a string NÃO possui letras ou números.
+Podemos usar a função **filter**() passando o resultado da função **str_detect**() junto com um padrão.
+
+Há diversas maneiras de construir este padrão. Aqui optar por buscar por caracteres alfa-numéricos (letras e números) e usamos o alternador \[\^ \] para negar tais caracteres, portanto, iremos identificar se a string **NÃO** possui letras ou números.
 
 ```{r}
 frutas |> 
@@ -810,14 +807,14 @@ frutas |>
 
 ### Ancoragem
 
-Para definir se a sequência do padrão de busca está no início ou fim da string, utilizamos as expressões de ancoragem:
+Para definir se a sequência do padrão de busca está no **início** ou **fim** da string, utilizamos as expressões de **ancoragem**:
 
 | Regex  | Busca            |
 |--------|------------------|
 | **\^** | Início da string |
 | **\$** | Fim da string    |
 
-Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_4 = "aaa"
+Para os exemplos a seguir utilizaremos a seguinte string de teste: **Str_Teste_4** = "**aaa**"
 
 ```{r}
 Str_Teste_4 <- "aaa"
@@ -854,7 +851,7 @@ frutas |>
 
 Você pode utilizar **parênteses** **(** **)** para definir expressões de **precedência** ou para serem **referenciados** posteriormente através da **ordem de criação**.
 
-Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_5 = "abbaab"
+Para os exemplos a seguir utilizaremos a seguinte string de teste: **Str_Teste_5** = "**abbaab**"
 
 ```{r}
 Str_Teste_5 <- "abbaab"
@@ -862,15 +859,15 @@ Str_Teste_5 <- "abbaab"
 
 **Exemplo 1:**
 
-Digamos que tenhamos a string "Blueberry" e você queira criar um padrão que busque pela letra "e" precedida das letras "lu" OU "b".
+Digamos que tenhamos a string "Blueberry" e você queira criar um padrão que contenha as letras "lu" OU "b" seguidas pela letra "e".
 
-Neste caso, devemos criar um grupo de precedência para "lu" OU "b". Para isto iremos colocar esta parte da expressão entre parênteses (lu\|b). agora podemos utilzar este grupo e concluir o padrão de busca conforme a seguir:
+Neste caso, devemos criar um grupo de precedência para "lu" OU "b". Para isto iremos colocar esta parte da expressão entre parênteses (lu\|b). agora podemos utilizar este grupo e concluir o padrão de busca conforme a seguir:
 
 ```{r}
 str_view_all("Blueberry", "(lu|b)e")
 ```
 
-Veja que se nossa string fosse "Blueberry is special", a letra "e" de "special" não seria encontrada:
+Veja que se nossa string fosse "**Blueberry is special**", a letra "**e**" de "**special**" não seria encontrada:
 
 ```{r}
 str_view_all("Blueberry is special", "(lu|b)e")
@@ -884,7 +881,7 @@ str_view_all("Blueberry is special", "([:alpha:])e")
 
 **Exemplo 2:**
 
-Ao criar um grupo, como vimos no exemplo anterior, podemos fazer referência à este grupo usando **\\\\*n*,** on ***n*** é a ordem de criação do grupo.
+Ao criar um grupo, como vimos no exemplo anterior, podemos fazer referência à este grupo usando **\\\\*n*,** on ***n*** é a **ordem de criação do grupo**.
 
 Por exemplo, digamos que criamos um grupo utilizando os parênteses ( ) que contenha apenas letra "a". Seu código ficaria **(a)**, e ele poderia ser referenciado com \\**\\1**, pois foi o primeiro grupo a ser criado.
 
@@ -900,7 +897,7 @@ Neste exemplo, nosso padrão busca por "ba", atraveś de \\\\2\\\\1, desde que t
 
 **Exemplo 3:**
 
-Digamos que tenhamos a string "Tem uma banana na mesa". Queremos criar uma padrão que busque as letras "nana". Apesar de termos soluções mais simples, poderíamos criar um grupo contendo "na" e usar a ordem de referência para concluir a expressão:
+Digamos que tenhamos a string "**Tem uma banana na mesa**". Queremos criar uma padrão que busque as letras "**nana**". Apesar de termos soluções mais simples, poderíamos criar um grupo contendo "**na**" e usar a ordem de referência para concluir a expressão:
 
 ```{r}
 str_view_all("Tem uma banana na mesa", "(na)\\1")
@@ -910,9 +907,9 @@ str_view_all("Tem uma banana na mesa", "(na)\\1")
 
 Neste exemplo, usaremos novamente a tabela **frutas**, criada quando descrevemos a função [str_c]().
 
-Aqui iremos obter o mesmo resultado para o Problema 4 descrito na seção [Quantificadores].
+Aqui iremos obter o mesmo resultado para o **Exemplo 4** descrito na seção [Quantificadores].
 
-Porém agora vamos usar a função **str_replace**() e o suporte à **grupos** que acabamos de ver para atingir o mesmo resultado, ou seja, extrair apenas os números da coluna nova_string.
+Porém agora vamos usar a função **str_replace**() e o suporte a **grupos** que acabamos de ver para atingir o mesmo resultado, ou seja, extrair apenas os números da coluna nova_string.
 
 ```{r}
 frutas |> 
@@ -921,11 +918,15 @@ frutas |>
 
 **Detalhes do exemplo acima:**
 
-Observe que a função **str_replace**(), recebe dois padrões, sendo o primeiro de busca e o segundo daquilo que iremos substituir o primeiro.
+Observe que a função **str_replace**(), recebe dois argumentos separados por vígula, sendo o primeiro, o padrão de busca e o segundo, o padrão daquilo que iremos substituir o primeiro.
 
-Neste caso, nosso padrão de busca, encontra "qualquer caractere" "uma ou mais vezes", depois cria um "grupo com números de 0 a 9", seguido por "qualquer caractere zero ou uma vez" e depois cria o segundo "grupo com números de 0 à 9" e conclui com "qualquer caractere uma ou mais vezes".
+Neste caso, nosso padrão de busca, encontra "qualquer caractere" "uma ou mais vezes", depois cria um "grupo com números de 0 a 9", seguido por "qualquer caractere zero ou uma vez".
 
-Com nosso padrão de busca criado, iremos criar nosso padrão de substituição, ou seja, aquilo que for encontrado pelo padrão de busca, será substituído pelo padrão de substituição.
+Depois cria o segundo "grupo com números de 0 à 9" e conclui com "qualquer caractere uma ou mais vezes".
+
+Veja que este padrão de busca, na verdade encontra todos os caracteres de nossa string, mas guarda em dois grupos apenas os números.
+
+Com nosso padrão de busca criado, iremos criar nosso **padrão de substituição**, ou seja, aquilo que for encontrado pelo padrão de busca, será substituído pelo padrão de substituição.
 
 Nosso padrão de substituição ficou simples ("\\\\1\\\\2"). Veja que ele apenas pega o conteúdo do grupo 1 e grupo 2 criados no padrão de busca usando parênteses para substituir.
 
@@ -944,7 +945,7 @@ Veja a tabela:
 | (**?\<=** ) | Precedido por     |
 | (**?\<!** ) | Não precedido por |
 
-: Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_6 = "bacad"
+: Para os exemplos a seguir utilizaremos a seguinte string de teste: **Str_Teste_6** = "**bacad**"
 
 ```{r}
 Str_Teste_6 <- "bacad"
@@ -972,7 +973,7 @@ str_view_all(Str_Teste_6, "(?<=b)a")
 
 Neste exemplo, usaremos novamente a tabela **frutas**, criada quando descrevemos a função [str_c]().
 
-Digamos que iremos filter as frutas que comecem com as letras "B" e "P" se forem seguidas das letras "e" e "l". Desta forma, não teremos na saída frutas como "Banana" ou "Pineapple"
+Digamos que iremos filtrar as frutas que comecem com as letras "B" e "P" se forem seguidas das letras "e" e "l". Desta forma, não teremos na saída frutas como "Banana" ou "Pineapple"
 
 ```{r}
 frutas |> 

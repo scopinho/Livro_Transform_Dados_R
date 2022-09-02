@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transformação e Manipulação de Dados com a linguagem R - 4&nbsp; Manipulacao de Strings com STRINGR</title>
+<title>Transformação e Manipulação de Dados com a linguagem R - 4&nbsp; Manipulação de Strings com STRINGR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulação de Strings com STRINGR</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -216,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></a>
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulação de Strings com STRINGR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -330,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulacao de Strings com STRINGR</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulação de Strings com STRINGR</span></h1>
 </div>
 
 
@@ -348,30 +348,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="4.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">4.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de manipulação de strings (cadeia de caracteres) utilizando o pacote STRINGR do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=stringr" class="uri">https://cran.r-project.org/package=stringr</a>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Aviso
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:</p>
-<p><a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a>.</p>
-</div>
-</div>
 <p>Para os exemplos, iremos carregar os seguintes pacotes:</p>
 <ul>
 <li><p><strong>tidyverse</strong></p></li>
-<li><p><strong>gt</strong></p></li>
 <li><p><strong>htmlwidgets</strong></p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (gt)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (htmlwidgets)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (htmlwidgets)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -383,7 +367,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>String:</strong> O termo string, ou cadeia de caracteres, é uma s<strong>equência de caracteres</strong> interpretadas como uma constante literal ou até mesmo uma variável.</p>
+<p><strong>String:</strong> O termo string, ou cadeia de caracteres, é uma s<strong>equência de caracteres</strong> interpretadas como uma constante literal ou até mesmo uma variável. No R, podemos criar uma string com aspas simples ou duplas.</p>
 </div>
 </div>
 <p>Por exemplo:</p>
@@ -392,6 +376,11 @@ Nota
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Isto é uma string"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>minha_outra_string <span class="ot">&lt;-</span> <span class="st">'Isto também é uma string'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>minha_outra_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Isto também é uma string"</code></pre>
 </div>
 </div>
 <section id="exemplos-da-folha-de-referência" class="level3" data-number="4.1.1">
@@ -407,12 +396,12 @@ Nota
 <p><a href="images/cs-stringr-02.png"><img src="images/cs-stringr-02.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<p>Para a maioria dos exemplos utilizaremos as bases de dados <strong>fruit</strong> (frutas) que será criado a seguir.</p>
 <hr>
+<p>Para a maioria dos exemplos utilizaremos as bases de dados <strong>fruit</strong> (frutas) que será criado a seguir.</p>
 <p><strong>FRUIT:</strong> Tabela com nome de frutas (em inglês).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"Apricot"</span>, <span class="st">"Avocado"</span>, <span class="st">"Banana"</span>, <span class="st">"Blackberry"</span>, <span class="st">"Blueberry"</span>, <span class="st">"Cherry"</span>, <span class="st">"Coconut"</span>, <span class="st">"Custard-Apple"</span>, <span class="st">"Dragonfruit"</span>, <span class="st">"Fig"</span>, <span class="st">"Gooseberry"</span>, <span class="st">"Grapes"</span>, <span class="st">"Guava"</span>, <span class="st">"Jackfruit"</span>, <span class="st">"Java Plum"</span>, <span class="st">"Kiwifruit"</span>, <span class="st">"Lime"</span>, <span class="st">"Mango"</span>, <span class="st">"MuskMelon"</span>, <span class="st">"Olives"</span>, <span class="st">"Orange"</span>, <span class="st">"Papaya"</span>, <span class="st">"Peach"</span>, <span class="st">"Pear"</span>, <span class="st">"Pineapple"</span>, <span class="st">"Pomegranate"</span>, <span class="st">"Strawberry"</span>, <span class="st">"Tamarind"</span>, <span class="st">"Watermelon"</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fruit </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"Apricot"</span>, <span class="st">"Avocado"</span>, <span class="st">"Banana"</span>, <span class="st">"Blackberry"</span>, <span class="st">"Blueberry"</span>, <span class="st">"Cherry"</span>, <span class="st">"Coconut"</span>, <span class="st">"Custard-Apple"</span>, <span class="st">"Dragonfruit"</span>, <span class="st">"Fig"</span>, <span class="st">"Gooseberry"</span>, <span class="st">"Grapes"</span>, <span class="st">"Guava"</span>, <span class="st">"Jackfruit"</span>, <span class="st">"Java Plum"</span>, <span class="st">"Kiwifruit"</span>, <span class="st">"Lime"</span>, <span class="st">"Mango"</span>, <span class="st">"MuskMelon"</span>, <span class="st">"Olives"</span>, <span class="st">"Orange"</span>, <span class="st">"Papaya"</span>, <span class="st">"Peach"</span>, <span class="st">"Pear"</span>, <span class="st">"Pineapple"</span>, <span class="st">"Pomegranate"</span>, <span class="st">"Strawberry"</span>, <span class="st">"Tamarind"</span>, <span class="st">"Watermelon"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fruit </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -423,52 +412,27 @@ Nota
 </div>
 </div>
 <hr>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Ao final de algum comando, você verá a chamada à função <strong>gt()</strong>. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função <strong>head()</strong> para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função <strong>select()</strong> para selecionar apenas algumas colunas.</em></p>
-<p>Em alguns casos usaremos funções de manipulação de dados do pacote <strong>dplyr,</strong> como <strong>mutate</strong> () ou <strong>count</strong>()<strong>.</strong></p>
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>O termo <u>data-frame</u> descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.</em></p>
-</div>
-</div>
 </section>
 </section>
 <section id="detectando-combinações" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="detectando-combinações"><span class="header-section-number">4.2</span> Detectando Combinações</h2>
-<p>O pacote stringr possui uma série de funções para identificar a ocorrência ou não de padrões de caracteres (patterns).</p>
-<p>Na maioria das vezes o mecanismo de interpretação padrão é o de “Expressão Regular” (regex). Isto significa que podemos construir um padrão de caracteres não somente com letras ou números, mas criando expressões que significam uma combinação mais flexivel no padrão de busca. Para maiores informações veja: <a href="#expressões-regulares">Expressões Regulares</a>.</p>
+<p>O pacote stringr possui uma série de funções para identificar a ocorrência ou não de <strong>padrões</strong> de caracteres (patterns).</p>
+<p>Na maioria das vezes o mecanismo de interpretação padrão é o de “Expressão Regular” (regex). Isto significa que podemos construir um padrão de caracteres não somente com letras ou números, mas criando expressões que significam uma combinação mais flexivel no padrão de busca.</p>
+<p>Para maiores informações veja: <a href="#expressões-regulares">Expressões Regulares</a>.</p>
+<p>O pacote stringr, possui uma série de funções para manipulação de strings que veremos a seguir:</p>
 <section id="str_detect" class="level4" data-number="4.2.0.1">
 <h4 data-number="4.2.0.1" class="anchored" data-anchor-id="str_detect"><span class="header-section-number">4.2.0.1</span> str_detect</h4>
 <p>Use para <strong>detectar</strong> a presença de um <strong>padrão</strong> em uma <strong>string</strong>.</p>
-<p>Por exemplo, para detectar quais frutas tem a letra “a”, podemos usar:</p>
+<p>Por exemplo, para detectar quais frutas tem a letra “<strong>a</strong>”, podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(fruit<span class="sc">$</span>name, <span class="st">"a"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(fruit<span class="sc">$</span>name, <span class="st">"a"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
 [13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
 [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
-<p>No exemplo acima, temos TRUE para todas as linhas que contém a letra “a” e FALSE para aquelas que não tem a letra “a”.</p>
+<p>No exemplo acima, temos <strong>TRUE</strong> para todas as linhas que contém a letra “<strong>a</strong>” e <strong>FALSE</strong> para aquelas que <strong>não</strong> tem a letra “<strong>a</strong>”.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -482,10 +446,10 @@ Importante
 <p>Observe que o R é sensível à letras maiúsculas e minúsculas. Como definimos a letra “a” (minúscula) como nosso <strong>padrão</strong> de busca, ele não retorna TRUE para palavras como “Apple” que possui a letra “A” maiúscula.</p>
 </div>
 </div>
-<p>Se quisermos criar uma coluna ao lado para facilitar a visualização, podemos usar a função <strong>mutate</strong>():</p>
+<p>Se quisermos criar uma coluna ao lado para facilitar a visualização, podemos usar a função <strong>mutate</strong>() do pacote dplyr:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Padrao_Encontrado =</span> <span class="fu">str_detect</span>(fruit<span class="sc">$</span>name, <span class="st">"a"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Padrao_Encontrado =</span> <span class="fu">str_detect</span>(fruit<span class="sc">$</span>name, <span class="st">"a"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -499,10 +463,10 @@ Importante
 <section id="str_starts" class="level4" data-number="4.2.0.2">
 <h4 data-number="4.2.0.2" class="anchored" data-anchor-id="str_starts"><span class="header-section-number">4.2.0.2</span> str_starts</h4>
 <p>Use para determinar <strong>se há o padrão definido</strong> <strong>no início</strong> da string.</p>
-<p>Por exemplo, se quisermos identificar quais frutas que começam com o padrão “Bl”, usamos:</p>
+<p>Por exemplo, se quisermos identificar quais frutas que começam com o padrão “<strong>Bl</strong>”, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Padrao_Encontrado_Inicio =</span> <span class="fu">str_starts</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Padrao_Encontrado_Inicio =</span> <span class="fu">str_starts</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -515,8 +479,8 @@ Importante
 <p>Veja que apenas as frutas “Blackberry” e “Bluberry” retornaram verdadeiro (TRUE).</p>
 <p>É comum utilizar a função filter() para filtrar apenas as linhas que retornam verdadeiro (TRUE) nas funções de detecção de padrão com o str_detect, str_starts, etc. Veja o exemplo abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_starts</span>(name, <span class="st">"Bl"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_starts</span>(name, <span class="st">"Bl"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -532,7 +496,7 @@ Importante
 <p>Use para retornar em <strong>qual linha</strong> o pdrão foi encontrado.</p>
 <p>Por exemplo, supondo que o padrão sejam as letras “Bl” (B maiúscula e l minúscula), usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 6</code></pre>
 </div>
@@ -545,8 +509,8 @@ Importante
 <p>Por exemplo, se criarmos uma coluna contendo onde, em cada nome de fruta, o padrão de busca “er” é encontrado, usamos:<br>
 </p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (Localização<span class="at">_na_string =</span> <span class="fu">str_locate</span>(name, <span class="st">"er"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (Localização<span class="at">_na_string =</span> <span class="fu">str_locate</span>(name, <span class="st">"er"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -576,8 +540,8 @@ Dica
 <p>Use para identificar o número de vez que o padrão foi encontrado na string.</p>
 <p>Por exemplo, se buscarmos pelo padrão “na”, identificamos que a fruta <em>banana</em>, possui o padrão três vezes, enquanto a fruta <em>pomegranade</em> apenas uma vez.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Vezes_padrao_encontrado =</span> <span class="fu">str_count</span>(name, <span class="st">"na"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Vezes_padrao_encontrado =</span> <span class="fu">str_count</span>(name, <span class="st">"na"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -597,8 +561,8 @@ Dica
 <p>Use para <strong>extrair</strong> ou <strong>substituir</strong> partes de uma string a partir de um vetor de caracteres.</p>
 <p>Por exemplo, para <strong>extrair</strong> do segundo até o quarto caractere dos nomes das frutas, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Segundo_ao_Quarto_Caractere =</span> <span class="fu">str_sub</span>(name, <span class="dv">2</span>, <span class="dv">4</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Segundo_ao_Quarto_Caractere =</span> <span class="fu">str_sub</span>(name, <span class="dv">2</span>, <span class="dv">4</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -614,7 +578,7 @@ Dica
 <h4 data-number="4.3.0.2" class="anchored" data-anchor-id="str_subset"><span class="header-section-number">4.3.0.2</span> str_subset</h4>
 <p>Use para retornar as strings que contém o padrão. É equivalente a fazer str_detect(x, pattern), porém ao invés de retornar verdadeiro ou falso, retorna a string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit<span class="sc">$</span>name, <span class="st">"Bl"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Blackberry" "Blueberry" </code></pre>
 </div>
@@ -625,8 +589,8 @@ Dica
 <p>Use para obter o padrão encontrado na string.</p>
 <p>Por exemplo, queremos obter parte da string que atenda ao padrão “erry”. Neste caso, a função irá retornar NA para as strings que não contém o padrão e o padrão para aquelas que o contém.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Str_Extract =</span> <span class="fu">str_extract</span>(name, <span class="st">"erry"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Str_Extract =</span> <span class="fu">str_extract</span>(name, <span class="st">"erry"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -642,8 +606,8 @@ Dica
 <p>Use para obter os grupos identificados pelo padrão de busca. Ela retorna uma matriz, onde a primeira coluna retorna a combinação (match) toda e as demais colunas será uma para cada grupo identificado.</p>
 <p>Por exemplo, se buscarmos por dois grupos, sendo o primeiro (Ba) e o segundo grupo (na), teremos o seguinte resultado:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(fruit<span class="sc">$</span>name, <span class="st">"(Ba)(na)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(fruit<span class="sc">$</span>name, <span class="st">"(Ba)(na)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -675,8 +639,8 @@ Nota
 <p>Use para obter o tamanho da string.</p>
 <p>Por exemplo, para obtermos o tamanho das strings correspondentes aos nomes das frutas e adicioná-las em uma coluna chamada “Tamanho”, podemos fazer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_length</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_length</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -692,7 +656,7 @@ Nota
 <p>Use para adicionar espaços em branco ao lado (esquerdo, direito, ambos) da string.</p>
 <p>Por exemplo, para adicionar espaços em branco para ajustar em 20 caracteres os nomes das frutas, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_pad</span>(name, <span class="dv">20</span>, <span class="st">"left"</span>)) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_pad</span>(name, <span class="dv">20</span>, <span class="st">"left"</span>)) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      name            Tamanho               
  [1,] "Apple"         "               Apple"
@@ -733,7 +697,7 @@ Nota
 <p>Use para truncar a string em um número fixo de caracteres.</p>
 <p>Por exemplo, para truncar os nomes das frutas em até 8 caracteres, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_trunc</span>(name, <span class="dv">8</span>, <span class="st">"right"</span>)) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Tamanho =</span> <span class="fu">str_trunc</span>(name, <span class="dv">8</span>, <span class="st">"right"</span>)) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      name            Tamanho   
  [1,] "Apple"         "Apple"   
@@ -786,8 +750,8 @@ Dica
 <h4 data-number="4.4.0.4" class="anchored" data-anchor-id="str_trim"><span class="header-section-number">4.4.0.4</span> str_trim</h4>
 <p>Use para remover os espaços em brancos do início em final da string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em branco no início e no final   "</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_trim</span>(string)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em branco no início e no final   "</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_trim</span>(string)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Aqui temos espaços em branco no início e no final"</code></pre>
 </div>
@@ -797,8 +761,8 @@ Dica
 <h4 data-number="4.4.0.5" class="anchored" data-anchor-id="str_squish"><span class="header-section-number">4.4.0.5</span> str_squish</h4>
 <p>Use para remover espaços em branco no início e final da string e também espaços em brancos repetidos no meio da string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em       branco no início, no final e repetidos no meio   "</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_squish</span>(string)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"  Aqui temos espaços em       branco no início, no final e repetidos no meio   "</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_squish</span>(string)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Aqui temos espaços em branco no início, no final e repetidos no meio"</code></pre>
 </div>
@@ -812,11 +776,11 @@ Dica
 <p>Use para <strong>extrair</strong> ou <strong>substituir</strong> partes de uma string a partir de um vetor de caracteres.</p>
 <p>Por exemplo, para <strong>substituir</strong> do segundo até o quarto caractere dos nomes das frutas, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="st">"Esta é minha string"</span>; minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="st">"Esta é minha string"</span>; minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Esta é minha string"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(minha_string, <span class="dv">2</span>, <span class="dv">4</span>) <span class="ot">&lt;-</span> <span class="st">"XXX"</span>; minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(minha_string, <span class="dv">2</span>, <span class="dv">4</span>) <span class="ot">&lt;-</span> <span class="st">"XXX"</span>; minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "EXXX é minha string"</code></pre>
 </div>
@@ -837,13 +801,13 @@ Dica
 </div>
 <p>Por exemplo, vamos criar uma função chamada “substitui_string”. Esta função irá utilizar a função str_sub() de acordo com os parametros recebidos de str_troca, inicio e fim. Utilizando a função purrr::map() iremos iterar através dos nomes das frutas e utilizar a função substitui_string() para trocar por “XX” os caracteres -2 a -3 de todos os nomes em uma coluna ao lado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>substitui_string <span class="ot">&lt;-</span> <span class="cf">function</span>(str_origin, str_troca, inicio, fim){</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(str_origin, inicio, fim) <span class="ot">&lt;-</span> str_troca</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (str_origin)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Segundo_ao_Quarto_Caracteres =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span> (name, substitui_string, <span class="at">str_troca =</span> <span class="st">"XX"</span>, <span class="at">inicio =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">fim =</span> <span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>substitui_string <span class="ot">&lt;-</span> <span class="cf">function</span>(str_origin, str_troca, inicio, fim){</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(str_origin, inicio, fim) <span class="ot">&lt;-</span> str_troca</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (str_origin)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">Segundo_ao_Quarto_Caracteres =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span> (name, substitui_string, <span class="at">str_troca =</span> <span class="st">"XX"</span>, <span class="at">inicio =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">fim =</span> <span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -885,8 +849,8 @@ Dica
 </div>
 <p>Por exemplo, vamos definir inicialmente que nosso padrão de busca são as letras “er”. Agora vamos substituir este padrão pela string ” XX ” colocando em uma coluna ao lado usando a função mutate().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">nomes_substituidos =</span> <span class="fu">str_replace</span>(name, <span class="st">"er"</span>, <span class="st">" XX "</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">nomes_substituidos =</span> <span class="fu">str_replace</span>(name, <span class="st">"er"</span>, <span class="st">" XX "</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -915,8 +879,8 @@ Nota
 <p>Use para substituir partes de uma string por outra string de acordo com o padrão de busca (ex: regex) definido em TODAS as vezes que o padrão for encontrado.</p>
 <p>Por exemplo, vamos definir inicialmente que nosso padrão de busca são as letras “na”. Agora vamos substituir este padrão pela string ” XX ” colocando em uma coluna ao lado usando a função mutate().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">nomes_substituidos =</span> <span class="fu">str_replace_all</span>(name, <span class="st">"an"</span>, <span class="st">" XX "</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">nomes_substituidos =</span> <span class="fu">str_replace_all</span>(name, <span class="st">"an"</span>, <span class="st">" XX "</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -932,8 +896,8 @@ Nota
 <h4 data-number="4.5.0.4" class="anchored" data-anchor-id="str_to_lower"><span class="header-section-number">4.5.0.4</span> str_to_lower</h4>
 <p>Use para colocar a string em letras minúsculas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">tolowe =</span> <span class="fu">str_to_lower</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">tolowe =</span> <span class="fu">str_to_lower</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -948,8 +912,8 @@ Nota
 <h4 data-number="4.5.0.5" class="anchored" data-anchor-id="str_to_upper"><span class="header-section-number">4.5.0.5</span> str_to_upper</h4>
 <p>Use para colocar a string em letras maiúsculas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">toupper =</span> <span class="fu">str_to_upper</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">toupper =</span> <span class="fu">str_to_upper</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -964,8 +928,8 @@ Nota
 <h4 data-number="4.5.0.6" class="anchored" data-anchor-id="str_to_title"><span class="header-section-number">4.5.0.6</span> str_to_title</h4>
 <p>Use para colocar a string com a primeira letra maiúscula e as demais em letras minúsculas de cada palavra.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">totitle=</span> <span class="fu">str_to_title</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">totitle=</span> <span class="fu">str_to_title</span>(name)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -984,16 +948,16 @@ Nota
 <p>Use para juntar várias strings em uma única string.</p>
 <p>Para exemplificar, vamos criar uma segunda coluna em nossa tabela de frutas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nova coluna com uma string qualquer </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>col_nova <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="fu">c</span>(letters, LETTERS), <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>), <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>), <span class="fu">c</span>(letters, LETTERS))</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>col_nova <span class="ot">&lt;-</span> col_nova <span class="sc">|&gt;</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(nova_string, <span class="fu">names</span>(col_nova)) <span class="sc">|&gt;</span> </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span> (<span class="at">n =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>) </span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>frutas <span class="ot">&lt;-</span> <span class="fu">bind_cols</span> (fruit, col_nova)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenando ambas colunas</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  frutas <span class="sc">|&gt;</span> </span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">str_c =</span> <span class="fu">str_c</span>(name, nova_string)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nova coluna com uma string qualquer </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>col_nova <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="fu">c</span>(letters, LETTERS), <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>), <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>), <span class="fu">c</span>(letters, LETTERS))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>col_nova <span class="ot">&lt;-</span> col_nova <span class="sc">|&gt;</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(nova_string, <span class="fu">names</span>(col_nova)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span> (<span class="at">n =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>) </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>frutas <span class="ot">&lt;-</span> <span class="fu">bind_cols</span> (fruit, col_nova)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenando ambas colunas</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  frutas <span class="sc">|&gt;</span> </span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">str_c =</span> <span class="fu">str_c</span>(name, nova_string)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1022,16 +986,16 @@ Dica
 <p>Use para “achatar” o vetor de string. O parametro collapse = “” pode ser alterado para incluir um caractere específico enquanto ocorre o processo.</p>
 <p>Por exemplo, temos uma string “Bom dia”. Neste caso, temos um vetor de caracteres de tamanho 7 (“B” “o” “m” ” ” “d” “i” “a”). A função flatten irá achatar este vetor e retornar apenas uma string com um único vetor (“Bom dia”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B"</span>,<span class="st">"o"</span>,<span class="st">"m"</span>,<span class="st">" "</span>,<span class="st">"d"</span>,<span class="st">"i"</span>,<span class="st">"a"</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (minha_string); minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B"</span>,<span class="st">"o"</span>,<span class="st">"m"</span>,<span class="st">" "</span>,<span class="st">"d"</span>,<span class="st">"i"</span>,<span class="st">"a"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (minha_string); minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "B" "o" "m" " " "d" "i" "a"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="fu">str_flatten</span>(minha_string)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (minha_string); minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>minha_string <span class="ot">&lt;-</span> <span class="fu">str_flatten</span>(minha_string)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span> (minha_string); minha_string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -1044,8 +1008,8 @@ Dica
 <h4 data-number="4.6.0.3" class="anchored" data-anchor-id="str_dup"><span class="header-section-number">4.6.0.3</span> str_dup</h4>
 <p>Use para duplicar uma string determinado número de vezes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">str_dup =</span> <span class="fu">str_dup</span>(name, <span class="dv">3</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">str_dup =</span> <span class="fu">str_dup</span>(name, <span class="dv">3</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1061,9 +1025,9 @@ Dica
 <p>Use para “quebrar” um string em partes. A funçao <strong>str_split</strong>() retorna uma string dividida enquanto a funçao <strong>str_split_fixed</strong>() retorna uma matriz de caracteres com número fixo de colunas.</p>
 <p>Por exemplo, vamos usar a mesma tabela usada no exemplo da funçao <a href="#str_c">str_c</a> chamada frutas (na fruit). Iremos “quebrar as strings da coluna”nova_string” usando oseparator “_”. Como temos exatamente o mesmo número de sperador em todas as strings, a funções irá nos retornar um vetor de caracteres de tamanho 4.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">str_split =</span> <span class="fu">str_split</span>(nova_string, <span class="st">"_"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(str_split)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">str_split =</span> <span class="fu">str_split</span>(nova_string, <span class="st">"_"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(str_split)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "a" "1" "1" "a"
@@ -1163,18 +1127,18 @@ Dica
 <p>Use para interpolar/formatar uma string.</p>
 <p>Por exemplo, se tivermos duas strings: s1 = “Fulano” e s2 = “da Silva”. Podemos “colar” estas strings usando a função <strong>str_glue</strong>().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="st">"Fulano"</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="st">"da Silva"</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"{s1}"</span>,<span class="st">" "</span>, <span class="st">"{s2}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="st">"Fulano"</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="st">"da Silva"</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"{s1}"</span>,<span class="st">" "</span>, <span class="st">"{s2}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fulano da Silva</code></pre>
 </div>
 </div>
 <p>Podemos também juntar strings fixas e variáveis como no exemplo abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="st">"Fulano"</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="st">"da Silva"</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"Meu nome é {s1}"</span>,<span class="st">" "</span>, <span class="st">"{s2}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="st">"Fulano"</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="st">"da Silva"</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(<span class="st">"Meu nome é {s1}"</span>,<span class="st">" "</span>, <span class="st">"{s2}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Meu nome é Fulano da Silva</code></pre>
 </div>
@@ -1185,7 +1149,7 @@ Dica
 <p>É similar a função <a href="">str_glue</a>, mas adequada a objetos de dados.</p>
 <p>Por exemplo, vamos juntar o nome das frutas, o nome da linha da tabela que ela está e mais uma string fixa:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">str_glue_data</span>(<span class="st">"A {name} é uma fruta."</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="sc">|&gt;</span> <span class="fu">str_glue_data</span>(<span class="st">"A {name} é uma fruta."</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A Apple é uma fruta.
 A Apricot é uma fruta.
@@ -1228,7 +1192,7 @@ A Watermelon é uma fruta.</code></pre>
 <p>Use para sequenciar um vetor de caracteres.</p>
 <p>Por exemplo, para colocar em sequência de forma decrescente os nomes da frutas, podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_order</span>(fruit<span class="sc">$</span>name, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_order</span>(fruit<span class="sc">$</span>name, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6
 [26]  5  4  3  2  1</code></pre>
@@ -1241,8 +1205,8 @@ A Watermelon é uma fruta.</code></pre>
 <p>Use para ordenar um vetor de caracteres.</p>
 <p>Por exemplo, para ordenar de forma decrescente os nomes da frutas, podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(fruit<span class="sc">$</span>name, <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(fruit<span class="sc">$</span>name, <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1260,16 +1224,16 @@ A Watermelon é uma fruta.</code></pre>
 <h4 data-number="4.8.0.1" class="anchored" data-anchor-id="str_conv"><span class="header-section-number">4.8.0.1</span> str_conv</h4>
 <p>Use para converter o “encode” de uma string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(<span class="fu">as.raw</span>(<span class="dv">177</span>))</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(<span class="fu">as.raw</span>(<span class="dv">177</span>))</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "\xb1"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_conv</span>(x, <span class="st">"ISO-8859-2"</span>) <span class="co"># Polones a com cedilha"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_conv</span>(x, <span class="st">"ISO-8859-2"</span>) <span class="co"># Polones a com cedilha"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ą"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_conv</span>(x, <span class="st">"ISO-8859-1"</span>) <span class="co"># Mais-Menos</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_conv</span>(x, <span class="st">"ISO-8859-1"</span>) <span class="co"># Mais-Menos</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "±"</code></pre>
 </div>
@@ -1280,10 +1244,10 @@ A Watermelon é uma fruta.</code></pre>
 <p>Use para ver os valores encontrados na string de acordo com um padrão de busca.</p>
 <p>Por exemplo, se tivermos o padrão de busca como “er”, podemos ver onde na strings ele é encontrado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"Banana"</span>, <span class="st">"Blueberry"</span>, <span class="st">"Blackberry"</span>), <span class="st">"er"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"Banana"</span>, <span class="st">"Blueberry"</span>, <span class="st">"Blackberry"</span>), <span class="st">"er"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-d0b2ad361a75b9c7fd5d" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d0b2ad361a75b9c7fd5d">{"x":{"html":"<ul>\n  <li>Banana<\/li>\n  <li>Blueb<span class='match'>er<\/span>ry<\/li>\n  <li>Blackb<span class='match'>er<\/span>ry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7b62d37845c80c754a49" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b62d37845c80c754a49">{"x":{"html":"<ul>\n  <li>Banana<\/li>\n  <li>Blueb<span class='match'>er<\/span>ry<\/li>\n  <li>Blackb<span class='match'>er<\/span>ry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -1304,10 +1268,10 @@ Nota
 <h4 data-number="4.8.0.3" class="anchored" data-anchor-id="str_wrap"><span class="header-section-number">4.8.0.3</span> str_wrap</h4>
 <p>Use para formatar uma string em parágrafos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>thanks_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">"doc"</span>), <span class="st">"THANKS"</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>thanks <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="fu">readLines</span>(thanks_path), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>thanks <span class="ot">&lt;-</span> <span class="fu">word</span>(thanks, <span class="dv">1</span>, <span class="dv">3</span>, <span class="fu">fixed</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>))</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">str_wrap</span>(thanks, <span class="at">width =</span> <span class="dv">60</span>, <span class="at">indent =</span> <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>thanks_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">"doc"</span>), <span class="st">"THANKS"</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>thanks <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="fu">readLines</span>(thanks_path), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>thanks <span class="ot">&lt;-</span> <span class="fu">word</span>(thanks, <span class="dv">1</span>, <span class="dv">3</span>, <span class="fu">fixed</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>))</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">str_wrap</span>(thanks, <span class="at">width =</span> <span class="dv">60</span>, <span class="at">indent =</span> <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  R would not be what it is today without the invaluable
 help of these people outside of the (former and current)
@@ -1338,10 +1302,11 @@ acknowledged in the code files, including </code></pre>
 </section>
 <section id="expressões-regulares" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="expressões-regulares"><span class="header-section-number">4.9</span> Expressões Regulares</h2>
-<p>Padrões de buscas são interpretados na funções do pacote stringr como Expressões Regulares (regex). Ou seja, quando uma função possui o parametro pattern =, significa que o interpretador irá entendem como uma expressão regular. Você pode alterar o interpretadores para outros tipos se necessário. Para saber mais sobre isso, acesse <a href="#outras-interpretações">Outras Interpretações</a>.</p>
-<p><strong>Expressão Regular</strong> é uma sequencia de caracteres que especificam um padrão de busca em uma string.</p>
-<p>No R, você escreve uma expressão regular como um string, ou seja, uma sequencia de caracteres entre asps simples ’ ou duplas “.</p>
-<p>Alguns caracteres de uma expressão regular não podem ser representados diretamente como uma string no R. Estes são conhecidos como caracteres especiais e são uma sequencia de caracteres que tem um significado específico.</p>
+<p>Padrões de buscas são interpretados na funções do pacote stringr como Expressões Regulares (regex). Ou seja, quando uma função possui o parametro <strong>pattern =</strong>, significa que o interpretador irá entendem como uma expressão regular por padrão. Você pode alterar o interpretadores para outros tipos se necessário. Para saber mais sobre isso, acesse <a href="#outras-interpretações">Outras Interpretações</a>.</p>
+<p><strong>Expressão Regular</strong> é uma sequência de caracteres que especificam um padrão de busca em uma string.</p>
+<p>Lembre-se que no R, você escreve uma expressão regular como um string, ou seja, uma sequência de caracteres entre aspas simples ’ ou duplas “.</p>
+<p>Alguns caracteres de uma expressão regular não podem ser representados diretamente como uma string no R.</p>
+<p>Estes são conhecidos como caracteres especiais e são uma sequência de caracteres que tem um significado específico.</p>
 <p>Por exemplo:</p>
 <table class="table">
 <thead>
@@ -1382,28 +1347,28 @@ Dica
 <p>Isto é uma particularidade do R e outras linguagens isto pode não ser necessário.</p>
 <p>Use a função <strong>writeLines</strong>() para ver como o R vê sua string depois dos caracteres especiais forem lido.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>\.</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>\</code></pre>
 </div>
 </div>
 <p>Como exemplo inicial, vamos utilizar a função <strong>str_extract</strong>() que recebe um string como parametro e também aceita o padrão de busca como outro parametro.</p>
-<p>Iremos definir nosso <strong>padrão</strong> de busca como a letra “a”. Desta forma, se passarmos para a função str_detect a string “Banana” e o padrão “a”, ele deve retornar a letra “a”, pois a string Banana possui a letra “a”.</p>
+<p>Iremos definir nosso <strong>padrão</strong> de busca como a letra “<strong>a</strong>”. Desta forma, se passarmos para a função <strong>str_extract</strong>() a string “<strong>Banana</strong>” e o padrão “<strong>a</strong>”, ele deve retornar a letra “<strong>a</strong>”, pois a string Banana possui a letra “a”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span> (<span class="st">"Banana"</span>, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span> (<span class="st">"Banana"</span>, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a"</code></pre>
 </div>
 </div>
-<p>Por outro lado, se passarmos a string “Fig” com o mesmo padrão de busca, teremos NA como retorno, pois a string “Fig” não possui a letra “a”.</p>
+<p>Por outro lado, se passarmos a string “<strong>Fig</strong>” com o mesmo padrão de busca, teremos <strong>NA</strong> como retorno, pois a string “Fig” <strong>não possui a letra “a”.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span> (<span class="st">"Fig"</span>, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span> (<span class="st">"Fig"</span>, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -1411,19 +1376,19 @@ Dica
 <section id="combinando-caracteres" class="level3" data-number="4.9.1">
 <h3 data-number="4.9.1" class="anchored" data-anchor-id="combinando-caracteres"><span class="header-section-number">4.9.1</span> Combinando Caracteres</h3>
 <p>No exemplo anterior utilizamos apenas um caractere como padrão de busca, no caso a letra “a”.</p>
-<p>Quando desejamos combinar diversos caracteres (letras, numeros, simbolos, espaços, etc) utilizamos a expressões na tabela abaixo:</p>
+<p>Quando desejamos <strong>combinar diversos caracteres</strong> (letras, numeros, simbolos, espaços, etc) utilizamos a expressões na tabela abaixo:</p>
 <p>Para facilitar o entendimento, utilizaremos uma string com letras maiúsculas, minúsculas, símbolos e números:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>Str_Teste <span class="ot">&lt;-</span> <span class="st">"abc ABC 123</span><span class="sc">\t</span><span class="st">.!?</span><span class="sc">\\</span><span class="st">(){}</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>Str_Teste</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>Str_Teste <span class="ot">&lt;-</span> <span class="st">"abc ABC 123</span><span class="sc">\t</span><span class="st">.!?</span><span class="sc">\\</span><span class="st">(){}</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>Str_Teste</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abc ABC 123\t.!?\\(){}\n"</code></pre>
 </div>
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
+<col style="width: 33%">
+<col style="width: 66%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1534,34 +1499,47 @@ Dica
 </tr>
 </tbody>
 </table>
-<p>Vamos mostrar como usar a tabela acima com alguns exemplos. Para isso, iremos usar a string criada anteriormente chamada “Str_Teste”.</p>
+<p>Vamos mostrar como usar a tabela acima com alguns exemplos. Para isso, iremos usar a string criada anteriormente chamada “<strong>Str_Teste</strong>”.</p>
 <p><strong>Exemplo 1:</strong></p>
-<p>Vamos buscar em nossa string de teste (Str_Teste) a letra minúscula “a”.</p>
-<p>Na coluna da tabela acima chamada <strong>String</strong>, encontramos oque devemos digitar para construir o padrão de busca. Neste caso, seria “a”.</p>
-<p>Se usarmos a função <strong>str_view_all</strong>() pssando nossa “Str_Teste” e o padrão de busca “a”, observamos que teremos marcado apenas a letra “a” na string. Isto significa que o padrão de busca foi encontrado na string.</p>
+<p>Vamos buscar em nossa string de teste (<strong>Str_Teste</strong>) a letra minúscula “<strong>a</strong>”.</p>
+<p>Na coluna da tabela acima chamada <strong>String</strong>, encontramos oque devemos digitar para construir o padrão de busca. Neste caso, seria “<strong>a</strong>”.</p>
+<p>Se usarmos a função <strong>str_view_all</strong>() passando nossa “Str_Teste” e o padrão de busca “a”, observamos que teremos marcado apenas a letra “a” na string. Isto significa que o padrão de busca foi encontrado na string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-e4b2ec7dd03c436a5ad5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e4b2ec7dd03c436a5ad5">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>bc ABC 123\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a00c4275316432dc38f7" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a00c4275316432dc38f7">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>bc ABC 123\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As funções <strong>str_view</strong>() e <strong>str_view_all</strong>() mostram em HTML o encontro de uma expressão regular. São muito úteis para criar/validar sua expressão. A str_view, mostra o primeiro encontro e para a busca, a str_view_all, mostra todos os encontros.</p>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
-<p>Vamos buscar agora pelo padrão do símbolo de ponto de interrogação “?”. Similar ao exemplo anterior, vemos que apenas o ponto de interrogação foi encontrado.</p>
+<p>Vamos buscar agora pelo padrão do símbolo de ponto de interrogação “<strong>?</strong>”. Similar ao exemplo anterior, vemos que apenas o ponto de interrogação foi encontrado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-e26c01ceefafa96ce9cb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e26c01ceefafa96ce9cb">{"x":{"html":"<ul>\n  <li>abc ABC 123\t.!<span class='match'>?<\/span>\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-856f16ca708664633987" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-856f16ca708664633987">{"x":{"html":"<ul>\n  <li>abc ABC 123\t.!<span class='match'>?<\/span>\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
-<p>Vamos criar agora um padrão que busque por todos os digitos em nossa string.</p>
+<p>Vamos criar agora um padrão que busque por <strong>todos os digitos</strong> em nossa string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-83c24e87647376802a6c" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-83c24e87647376802a6c">{"x":{"html":"<ul>\n  <li>abc ABC <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-567295413716a049fb5e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-567295413716a049fb5e">{"x":{"html":"<ul>\n  <li>abc ABC <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -1574,29 +1552,29 @@ Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Para buscarmos pelo inverso do caso anterior, ou seja, todos os caracteres que NÃO são digitos, usamos a letra “D” maiúscula. Isto é válido também para os casos de “\\S” e “\\W” que seriam o inverso de “\\s” e “\\w” respectivamente.</p>
+<p>Para buscarmos pelo inverso do caso anterior, ou seja, todos os caracteres que <strong>NÃO são digitos</strong>, usamos a letra “<strong>D</strong>” maiúscula. Isto é válido também para os casos de “\\S” e “\\W” que seriam o inverso de “\\s” e “\\w” respectivamente.</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">D"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"</span><span class="sc">\\</span><span class="st">D"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-64b096c48a5de475cb15" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-64b096c48a5de475cb15">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span><span class='match'> <\/span><span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span><span class='match'> <\/span>123<span class='match'>\t<\/span><span class='match'>.<\/span><span class='match'>!<\/span><span class='match'>?<\/span><span class='match'>\\<\/span><span class='match'>(<\/span><span class='match'>)<\/span><span class='match'>{<\/span><span class='match'>}<\/span><span class='match'>\n<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6c6d21cbc8792b87b9bf" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6c6d21cbc8792b87b9bf">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span><span class='match'> <\/span><span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span><span class='match'> <\/span>123<span class='match'>\t<\/span><span class='match'>.<\/span><span class='match'>!<\/span><span class='match'>?<\/span><span class='match'>\\<\/span><span class='match'>(<\/span><span class='match'>)<\/span><span class='match'>{<\/span><span class='match'>}<\/span><span class='match'>\n<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
-<p>Vamos criar agora um padrão que busque por todos os digitos e letras em nossa string.</p>
+<p>Vamos criar agora um padrão que busque por t<strong>odos os digitos e letras</strong> em nossa string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"[:alnum:]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span> (Str_Teste, <span class="st">"[:alnum:]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-b7c05ab1557cd8719012" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b7c05ab1557cd8719012">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span> <span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span> <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c5da874090389f1906bc" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c5da874090389f1906bc">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span> <span class='match'>A<\/span><span class='match'>B<\/span><span class='match'>C<\/span> <span class='match'>1<\/span><span class='match'>2<\/span><span class='match'>3<\/span>\t.!?\\(){}\n<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="quantificadores" class="level3" data-number="4.9.2">
 <h3 data-number="4.9.2" class="anchored" data-anchor-id="quantificadores"><span class="header-section-number">4.9.2</span> Quantificadores</h3>
-<p>Agora que já saber como criar padrões de busca para identificar diversos tipos de caracteres, veremos como difinir a quantidade desses caracteres em nosso padrão. Veja a tabela abaixo:</p>
+<p>Agora que já sabemos como criar padrões de busca para identificar diversos tipos de caracteres, veremos como definir a quantidade desses caracteres em nosso padrão. Veja a tabela abaixo:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1632,20 +1610,20 @@ Dica
 </tbody>
 </table>
 <p>Vamos ver como utilizamos estes quantificadores juntamente com os caracteres especiais vistos anteriormente (ver <a href="#combinando-caracteres">Combinando Caracteres</a>).</p>
-<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_2 = “.a.aa.aaa”</p>
+<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: <strong>Str_Teste_2</strong> = “<strong>.a.aa.aaa</strong>”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_2 <span class="ot">&lt;-</span> <span class="st">".a.aa.aaa"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_2 <span class="ot">&lt;-</span> <span class="st">".a.aa.aaa"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Exemplo 1:</strong></p>
-<p>Digamos que queremos buscar em nossa string de teste “Str_Teste” a letra “a” zero ou uma vez, para isso faremos:</p>
+<p>Digamos que queremos buscar em nossa string de teste “<strong>Str_Teste_2</strong>” a letra “<strong>a</strong>” <strong>zero ou uma vez</strong>, para isso faremos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-6426191b0e847e8370dc" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6426191b0e847e8370dc">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ea631755ac455d6e5f1b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ea631755ac455d6e5f1b">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span>.<span class='match'>a<\/span><span class='match'>a<\/span><span class='match'>a<\/span><span class='match'><\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Neste caso, todas as vezes que a funções encontrar a letra “a” zero ou uma vez, elá irá marcar.</p>
+<p>Neste caso, <strong>todas as vezes</strong> que a funções encontrar a <strong>letra “a” zero ou uma vez</strong>, elá irá marcar.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1656,48 +1634,48 @@ Aviso
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se usarmos a função <strong>str_view</strong>() ela irá utilizar o padrão apenas até o primeiro encontro e depois irá para a busca, veja:</p>
+<p>Como visto, se usarmos a função <strong>str_view</strong>() ela irá utilizar o padrão apenas até o primeiro encontro e depois irá para a busca, veja:</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a?"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-825ef1737cda6d92b8ff" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-825ef1737cda6d92b8ff">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.a.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-403ceef13bdf0c05dd6d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-403ceef13bdf0c05dd6d">{"x":{"html":"<ul>\n  <li><span class='match'><\/span>.a.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Observe que a busca para logo no primeiro caractere, pois estamos buscando pela letra “a” <strong>ZERO</strong> ou mais vezes.</p>
 <p><strong>Exemplo 2:</strong></p>
-<p>Agora vamos iremos buscar pela letra “a” <strong>UMA</strong> ou mais vezes, porém iremos utilizar a função str_view() ou invés da str_view_all(), parando a busca assim que o primeiro encontro ocorra:</p>
+<p>Agora vamos iremos buscar pela letra “a” <strong>UMA</strong> <strong>ou mais vezes</strong>, porém iremos utilizar a função str_view() ou invés da str_view_all(), parando a busca assim que o primeiro encontro ocorra:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a+"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a+"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-4fa19e11413fc8ac6549" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4fa19e11413fc8ac6549">{"x":{"html":"<ul>\n  <li>.<span class='match'>a<\/span>.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-074522d3b77d615200db" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-074522d3b77d615200db">{"x":{"html":"<ul>\n  <li>.<span class='match'>a<\/span>.aa.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
-<p>Neste exemplo, queremos criar um padrão de busca pela letra “a”, mas que ela ocorra <strong>DUAS</strong> a <strong>TRÊS</strong> vezes.</p>
+<p>Neste exemplo, queremos criar um padrão de busca pela letra “<strong>a</strong>”, mas que ela ocorra <strong>DUAS</strong> a <strong>TRÊS</strong> vezes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-53128bf5fced30a41ca4" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-53128bf5fced30a41ca4">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e15f828b989f88ce627e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e15f828b989f88ce627e">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.aaa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Veja que ele localizou apenas as duas letras “aa” e não marcou as letras “aaa”. Isto é porque utilizamos a função str_view(), que parou a busca assim que a primeiro encontro ocorreu. Se quisermos continuar a busca, devemos utilizar a função str_view_all().</p>
+<p>Veja que ele localizou apenas as duas letras “<strong>aa</strong>” e não marcou as letras “<strong>aaa</strong>”. Isto é porque utilizamos a função <strong>str_view</strong>(), que parou a busca assim que a primeiro encontro ocorreu. Se quisermos continuar a busca, devemos utilizar a função <strong>str_view_all</strong>().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_2, <span class="st">"a{2,3}"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3f3c172b7339be4f3650" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f3c172b7339be4f3650">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.<span class='match'>aaa<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9962cc4c93940b3ab80c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9962cc4c93940b3ab80c">{"x":{"html":"<ul>\n  <li>.a.<span class='match'>aa<\/span>.<span class='match'>aaa<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
-<p>Neste exemplo, usaremos a tabela frutas, criada quando descrevemos a função <a href="">str_c</a>. Veja com ela era para se recordar:</p>
+<p>Neste exemplo, usaremos a tabela frutas, criada quando descrevemos a função <a href="">str_c</a>. Veja como ela é para se recordar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1707,14 +1685,14 @@ Aviso
 </div>
 </div>
 </div>
-<p>Digamos que precisamos extrair apenas os numeros da coluna “nova_string”. E colocá-los em uma nova coluna chamda “numeros”.</p>
-<p>Neste caso, podemos usar a função str_extract() com um padrão que encontre um número de <strong>0 até 9</strong>, seguido por <strong>um ou mais</strong> “qualquer caractere” e depois outro número de 0 até 9.</p>
+<p>Digamos que precisamos extrair apenas os números da coluna “<strong>nova_string</strong>”. E colocá-los em uma nova coluna chamda “<strong>numeros</strong>”.</p>
+<p>Neste caso, podemos usar a função <strong>str_extract</strong>() com um padrão que encontre um número de <strong>0 até 9</strong>, seguido por <strong>um ou mais</strong> “qualquer caractere” e depois outro número de 0 até 9.</p>
 <p>Este padrão irá encontrar padrões como “1_1” ou “2_2”.</p>
 <p>Em seguida, usamos um outro padrão <strong>[:punct:]</strong> na função str_remove para remover a pontuação.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_extract</span>(nova_string, <span class="st">"[0-9].+[0-9]"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_remove</span>(numeros, <span class="st">"[:punct:]"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_extract</span>(nova_string, <span class="st">"[0-9].+[0-9]"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_remove</span>(numeros, <span class="st">"[:punct:]"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1727,9 +1705,10 @@ Aviso
 </section>
 <section id="alternadores" class="level3" data-number="4.9.3">
 <h3 data-number="4.9.3" class="anchored" data-anchor-id="alternadores"><span class="header-section-number">4.9.3</span> Alternadores</h3>
-<p>Até aqui, utilizamos os caracteres especiais (<a href="#combinando-caracteres">Combinando Caracteres</a>) e sabemos como localizá-los em diversas quantidades (<a href="#quantificadores">Quantificadores</a>). Mas em muitos casos precisamos organizá-los de forma lógica, possibilitando utilizá-los em combinações mais flexíveis. Para isto, utilizamos os símbolos de alternadores, veja:</p>
+<p>Até aqui, utilizamos os caracteres especiais (<a href="#combinando-caracteres">Combinando Caracteres</a>) e sabemos como localizá-los em diversas quantidades (<a href="#quantificadores">Quantificadores</a>). Mas em muitos casos precisamos organizá-los de forma <strong>lógica</strong>, possibilitando utilizá-los em combinações mais flexíveis.</p>
+<p>Para isto, utilizamos os símbolos de alternadores, veja:</p>
 <table class="table">
-<caption>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_3 = “abcde”</caption>
+<caption>Para os exemplos a seguir utilizaremos a seguinte string de teste: <strong>Str_Teste_3</strong> = “<strong>abcde</strong>”</caption>
 <thead>
 <tr class="header">
 <th>Regex</th>
@@ -1756,42 +1735,43 @@ Aviso
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_3 <span class="ot">&lt;-</span> <span class="st">"abcde"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_3 <span class="ot">&lt;-</span> <span class="st">"abcde"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Exemplo 1:</strong></p>
 <p>Digamos que desejamos criar um padrão que busque pela letras “ab” <strong>OU</strong> a letra “d”, para isto podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"ab|d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"ab|d"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-1cc734be5b9705efd707" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1cc734be5b9705efd707">{"x":{"html":"<ul>\n  <li><span class='match'>ab<\/span>c<span class='match'>d<\/span>e<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cb40aa4659aae6188d92" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb40aa4659aae6188d92">{"x":{"html":"<ul>\n  <li><span class='match'>ab<\/span>c<span class='match'>d<\/span>e<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
 <p>Digamos que desejamos criar um padrão que busque qualquer <strong>um dos</strong> caracteres “abe”, para isto podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[abe]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[abe]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-856a25ab23ca5dca4aee" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-856a25ab23ca5dca4aee">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span>cd<span class='match'>e<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7569bda7c65203eaaa04" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7569bda7c65203eaaa04">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span>cd<span class='match'>e<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
-<p>Digamos que desejamos criar um padrão que busque qualquer um <strong>range</strong> de letras entre as letras “a” até a “c”, para isto podemos usar:</p>
+<p>Digamos que desejamos criar um padrão que busque dentre um <strong>range</strong> de letras entre as letras “a” até a “c”, para isto podemos usar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[a-c]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_3, <span class="st">"[a-c]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-95c4dd69c051ae5c085e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-95c4dd69c051ae5c085e">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span>de<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ebae5bd8cf139fbd8bba" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ebae5bd8cf139fbd8bba">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span><span class='match'>b<\/span><span class='match'>c<\/span>de<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
 <p>Neste exemplo, usaremos novamente a tabela <strong>frutas</strong>, criada quando descrevemos a função <a href="">str_c</a>.</p>
-<p>Digamos que precisamos filtrar nesta tabela, apenas as frutas que possuem nomes compostos, ou seja, separados por espaço ou uma pontuação (ex “-”).</p>
-<p>Podemos usar a função filter() passando o resultado da função str_detect() junto com um padrão. Há diversas maneiras de construir este padrão. Aqui optar por buscar por caracteres alfa-numéricos (letras e números) e usamos o alternador [^ ] para negar tais caracteres, portanto, iremos identificar se a string NÃO possui letras ou números.</p>
+<p>Digamos que precisamos <strong>filtrar</strong> nesta tabela, apenas as frutas que possuem nomes compostos, ou seja, <strong>separados por espaço</strong> ou uma <strong>pontuação</strong> (ex “-”).</p>
+<p>Podemos usar a função <strong>filter</strong>() passando o resultado da função <strong>str_detect</strong>() junto com um padrão.</p>
+<p>Há diversas maneiras de construir este padrão. Aqui optar por buscar por caracteres alfa-numéricos (letras e números) e usamos o alternador [^ ] para negar tais caracteres, portanto, iremos identificar se a string <strong>NÃO</strong> possui letras ou números.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_detect</span>(name, <span class="st">"[^[:alnum:]]"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_detect</span>(name, <span class="st">"[^[:alnum:]]"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1804,7 +1784,7 @@ Aviso
 </section>
 <section id="ancoragem" class="level3" data-number="4.9.4">
 <h3 data-number="4.9.4" class="anchored" data-anchor-id="ancoragem"><span class="header-section-number">4.9.4</span> Ancoragem</h3>
-<p>Para definir se a sequência do padrão de busca está no início ou fim da string, utilizamos as expressões de ancoragem:</p>
+<p>Para definir se a sequência do padrão de busca está no <strong>início</strong> ou <strong>fim</strong> da string, utilizamos as expressões de <strong>ancoragem</strong>:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1823,34 +1803,34 @@ Aviso
 </tr>
 </tbody>
 </table>
-<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_4 = “aaa”</p>
+<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: <strong>Str_Teste_4</strong> = “<strong>aaa</strong>”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_4 <span class="ot">&lt;-</span> <span class="st">"aaa"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_4 <span class="ot">&lt;-</span> <span class="st">"aaa"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Exemplo 1:</strong></p>
 <p>Para criar um padrão que busque a letra “a” apenas no <strong>fim</strong> da string, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"a$"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"a$"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-5f18ad4ca981b1ed6095" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5f18ad4ca981b1ed6095">{"x":{"html":"<ul>\n  <li>aa<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-93aa08f569120276aed2" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-93aa08f569120276aed2">{"x":{"html":"<ul>\n  <li>aa<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
 <p>Para criar um padrão que busque a letra “a” apenas no <strong>início</strong> da string, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"^a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_4, <span class="st">"^a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-a5ca5f7f40145bc6ea23" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5ca5f7f40145bc6ea23">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>aa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-00af5f568f04521d0fb6" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-00af5f568f04521d0fb6">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>aa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 3:</strong></p>
 <p>Neste exemplo, usaremos novamente a tabela <strong>frutas</strong>, criada quando descrevemos a função <a href="">str_c</a>.</p>
 <p>Digamos que queremos filtrar apenas as frutas que <strong>terminem</strong> com a letra “<strong>a</strong>” <strong>E</strong> também que terminem com a letra “<strong>o</strong>”. Podemos fazer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_detect</span>(name, <span class="st">"[ao]$"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">str_detect</span>(name, <span class="st">"[ao]$"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1864,65 +1844,65 @@ Aviso
 <section id="grupos" class="level3" data-number="4.9.5">
 <h3 data-number="4.9.5" class="anchored" data-anchor-id="grupos"><span class="header-section-number">4.9.5</span> Grupos</h3>
 <p>Você pode utilizar <strong>parênteses</strong> <strong>(</strong> <strong>)</strong> para definir expressões de <strong>precedência</strong> ou para serem <strong>referenciados</strong> posteriormente através da <strong>ordem de criação</strong>.</p>
-<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_5 = “abbaab”</p>
+<p>Para os exemplos a seguir utilizaremos a seguinte string de teste: <strong>Str_Teste_5</strong> = “<strong>abbaab</strong>”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_5 <span class="ot">&lt;-</span> <span class="st">"abbaab"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_5 <span class="ot">&lt;-</span> <span class="st">"abbaab"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Exemplo 1:</strong></p>
-<p>Digamos que tenhamos a string “Blueberry” e você queira criar um padrão que busque pela letra “e” precedida das letras “lu” OU “b”.</p>
-<p>Neste caso, devemos criar um grupo de precedência para “lu” OU “b”. Para isto iremos colocar esta parte da expressão entre parênteses (lu|b). agora podemos utilzar este grupo e concluir o padrão de busca conforme a seguir:</p>
+<p>Digamos que tenhamos a string “Blueberry” e você queira criar um padrão que contenha as letras “lu” OU “b” seguidas pela letra “e”.</p>
+<p>Neste caso, devemos criar um grupo de precedência para “lu” OU “b”. Para isto iremos colocar esta parte da expressão entre parênteses (lu|b). agora podemos utilizar este grupo e concluir o padrão de busca conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-a163534ceb2c95088b2c" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a163534ceb2c95088b2c">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-427b1f148f7d67fd666b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-427b1f148f7d67fd666b">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Veja que se nossa string fosse “Blueberry is special”, a letra “e” de “special” não seria encontrada:</p>
+<p>Veja que se nossa string fosse “<strong>Blueberry is special</strong>”, a letra “<strong>e</strong>” de “<strong>special</strong>” não seria encontrada:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"(lu|b)e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-43f04104ed3bf2b8a6a0" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-43f04104ed3bf2b8a6a0">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry is special<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3285c838bed710b00681" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3285c838bed710b00681">{"x":{"html":"<ul>\n  <li>B<span class='match'>lue<\/span><span class='match'>be<\/span>rry is special<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Se quisermos criar um padrão que encontre a letra “e” precedida de qualquer letra, podemos fazer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"([:alpha:])e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Blueberry is special"</span>, <span class="st">"([:alpha:])e"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-a0cdac6191ac867d9577" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a0cdac6191ac867d9577">{"x":{"html":"<ul>\n  <li>Bl<span class='match'>ue<\/span><span class='match'>be<\/span>rry is s<span class='match'>pe<\/span>cial<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5eb7aca1c295aa89d536" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5eb7aca1c295aa89d536">{"x":{"html":"<ul>\n  <li>Bl<span class='match'>ue<\/span><span class='match'>be<\/span>rry is s<span class='match'>pe<\/span>cial<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
-<p>Ao criar um grupo, como vimos no exemplo anterior, podemos fazer referência à este grupo usando <strong>\\<em>n</em>,</strong> on <strong><em>n</em></strong> é a ordem de criação do grupo.</p>
+<p>Ao criar um grupo, como vimos no exemplo anterior, podemos fazer referência à este grupo usando <strong>\\<em>n</em>,</strong> on <strong><em>n</em></strong> é a <strong>ordem de criação do grupo</strong>.</p>
 <p>Por exemplo, digamos que criamos um grupo utilizando os parênteses ( ) que contenha apenas letra “a”. Seu código ficaria <strong>(a)</strong>, e ele poderia ser referenciado com \<strong>\1</strong>, pois foi o primeiro grupo a ser criado.</p>
 <p>Digamos que agora, você crie um segundo grupo com a letra “b”, seu código ficaria <strong>(b)</strong> e poderia ser referenciado com <strong>\\2</strong>.</p>
 <p>Sabendo como criar os grupos e como referênciá-los, podemos montar um padrão de busca utilizando tanto os grupos quanto suas referência. Veja este exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_5, <span class="st">"(a)(b)</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_5, <span class="st">"(a)(b)</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-eb57da8093f16a5c29cb" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb57da8093f16a5c29cb">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span>ab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a88e6a8c779c7fd822c5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a88e6a8c779c7fd822c5">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span>ab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Neste exemplo, nosso padrão busca por “ba”, atraveś de \\2\\1, desde que tenham precedência de “ab”, através dos grupos (a)(b).</p>
 <p><strong>Exemplo 3:</strong></p>
-<p>Digamos que tenhamos a string “Tem uma banana na mesa”. Queremos criar uma padrão que busque as letras “nana”. Apesar de termos soluções mais simples, poderíamos criar um grupo contendo “na” e usar a ordem de referência para concluir a expressão:</p>
+<p>Digamos que tenhamos a string “<strong>Tem uma banana na mesa</strong>”. Queremos criar uma padrão que busque as letras “<strong>nana</strong>”. Apesar de termos soluções mais simples, poderíamos criar um grupo contendo “<strong>na</strong>” e usar a ordem de referência para concluir a expressão:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Tem uma banana na mesa"</span>, <span class="st">"(na)</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="st">"Tem uma banana na mesa"</span>, <span class="st">"(na)</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3db7796cb0729f261eec" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3db7796cb0729f261eec">{"x":{"html":"<ul>\n  <li>Tem uma ba<span class='match'>nana<\/span> na mesa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-14ee7ae12e6c612a1af7" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-14ee7ae12e6c612a1af7">{"x":{"html":"<ul>\n  <li>Tem uma ba<span class='match'>nana<\/span> na mesa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
 <p>Neste exemplo, usaremos novamente a tabela <strong>frutas</strong>, criada quando descrevemos a função <a href="">str_c</a>.</p>
-<p>Aqui iremos obter o mesmo resultado para o Problema 4 descrito na seção <a href="#quantificadores">Quantificadores</a>.</p>
-<p>Porém agora vamos usar a função <strong>str_replace</strong>() e o suporte à <strong>grupos</strong> que acabamos de ver para atingir o mesmo resultado, ou seja, extrair apenas os números da coluna nova_string.</p>
+<p>Aqui iremos obter o mesmo resultado para o <strong>Exemplo 4</strong> descrito na seção <a href="#quantificadores">Quantificadores</a>.</p>
+<p>Porém agora vamos usar a função <strong>str_replace</strong>() e o suporte a <strong>grupos</strong> que acabamos de ver para atingir o mesmo resultado, ou seja, extrair apenas os números da coluna nova_string.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_replace</span>(nova_string, <span class="st">".+([0-9]).?([0-9]).+"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1</span><span class="sc">\\</span><span class="st">2"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">numeros =</span> <span class="fu">str_replace</span>(nova_string, <span class="st">".+([0-9]).?([0-9]).+"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1</span><span class="sc">\\</span><span class="st">2"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1933,9 +1913,11 @@ Aviso
 </div>
 </div>
 <p><strong>Detalhes do exemplo acima:</strong></p>
-<p>Observe que a função <strong>str_replace</strong>(), recebe dois padrões, sendo o primeiro de busca e o segundo daquilo que iremos substituir o primeiro.</p>
-<p>Neste caso, nosso padrão de busca, encontra “qualquer caractere” “uma ou mais vezes”, depois cria um “grupo com números de 0 a 9”, seguido por “qualquer caractere zero ou uma vez” e depois cria o segundo “grupo com números de 0 à 9” e conclui com “qualquer caractere uma ou mais vezes”.</p>
-<p>Com nosso padrão de busca criado, iremos criar nosso padrão de substituição, ou seja, aquilo que for encontrado pelo padrão de busca, será substituído pelo padrão de substituição.</p>
+<p>Observe que a função <strong>str_replace</strong>(), recebe dois argumentos separados por vígula, sendo o primeiro, o padrão de busca e o segundo, o padrão daquilo que iremos substituir o primeiro.</p>
+<p>Neste caso, nosso padrão de busca, encontra “qualquer caractere” “uma ou mais vezes”, depois cria um “grupo com números de 0 a 9”, seguido por “qualquer caractere zero ou uma vez”.</p>
+<p>Depois cria o segundo “grupo com números de 0 à 9” e conclui com “qualquer caractere uma ou mais vezes”.</p>
+<p>Veja que este padrão de busca, na verdade encontra todos os caracteres de nossa string, mas guarda em dois grupos apenas os números.</p>
+<p>Com nosso padrão de busca criado, iremos criar nosso <strong>padrão de substituição</strong>, ou seja, aquilo que for encontrado pelo padrão de busca, será substituído pelo padrão de substituição.</p>
 <p>Nosso padrão de substituição ficou simples (“\\1\\2”). Veja que ele apenas pega o conteúdo do grupo 1 e grupo 2 criados no padrão de busca usando parênteses para substituir.</p>
 </section>
 <section id="pesquisa-ao-redor" class="level3" data-number="4.9.6">
@@ -1944,7 +1926,7 @@ Aviso
 <p>Há símbolos para definirmos grupos que estão <strong>precedendo</strong> o que buscamos e há símbolos para definirmos grupos que estão <strong>posteriores</strong> ao que buscamos. Há também símbolos para negar os casos anteriores e posteriores.</p>
 <p>Veja a tabela:</p>
 <table class="table">
-<caption>Para os exemplos a seguir utilizaremos a seguinte string de teste: Str_Teste_6 = “bacad”</caption>
+<caption>Para os exemplos a seguir utilizaremos a seguinte string de teste: <strong>Str_Teste_6</strong> = “<strong>bacad</strong>”</caption>
 <thead>
 <tr class="header">
 <th>Regex</th>
@@ -1971,33 +1953,33 @@ Aviso
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_6 <span class="ot">&lt;-</span> <span class="st">"bacad"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>Str_Teste_6 <span class="ot">&lt;-</span> <span class="st">"bacad"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Exemplo 1:</strong></p>
 <p>Vamos criar um padrão de busca que localize a letra “a”, mas queremos a(s) letra(s) “a” que são seguidas apenas pela letra “c”.</p>
 <p>Para isso iremos criar um grupo (“c”), mas como é um grupo que irá seguir aquilo que buscamos, ao invés dos parêntese apenas, iremos utilizar o símbolo da tabela anterior “?=”a fazer (?=c). Depois adicionamos a busca pela letra “a”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"a(?=c)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"a(?=c)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-c0b2223f1d2448604389" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c0b2223f1d2448604389">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-394a08f1ec239238e602" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-394a08f1ec239238e602">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 2:</strong></p>
 <p>Vamos criar um padrão de busca que localize a letra “a”, mas queremos a(s) letra(s) “a” que são precedidas pela letra “b”. Usando a mesma tabela e raciocínio do exemplo anterior, podemos criar o grupo com a letra b, mas como é um grupo de precedência, temos que adicionar os símbolos “?&lt;=” e fazer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"(?&lt;=b)a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(Str_Teste_6, <span class="st">"(?&lt;=b)a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-282778e3c9a52170c0c4" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-282778e3c9a52170c0c4">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3f406800e162cc014bcc" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f406800e162cc014bcc">{"x":{"html":"<ul>\n  <li>b<span class='match'>a<\/span>cad<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Exemplo 4:</strong></p>
 <p>Neste exemplo, usaremos novamente a tabela <strong>frutas</strong>, criada quando descrevemos a função <a href="">str_c</a>.</p>
-<p>Digamos que iremos filter as frutas que comecem com as letras “B” e “P” se forem seguidas das letras “e” e “l”. Desta forma, não teremos na saída frutas como “Banana” ou “Pineapple”</p>
+<p>Digamos que iremos filtrar as frutas que comecem com as letras “B” e “P” se forem seguidas das letras “e” e “l”. Desta forma, não teremos na saída frutas como “Banana” ou “Pineapple”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(name, <span class="st">"^[BP](?=[el])"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>frutas <span class="sc">|&gt;</span> </span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(name, <span class="st">"^[BP](?=[el])"</span>)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -2021,7 +2003,7 @@ Aviso
 <p>Para buscar bytes nativos (raw), podemos usar o interpretador fixed(). Esta opção é bastante rápida, mas pode perder alguns caracteres que podem estar representados de maneiras diferentes (ex não ASCII).</p>
 <p>Exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">"\u0130"</span>, <span class="fu">fixed</span>(<span class="st">"i"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">"\u0130"</span>, <span class="fu">fixed</span>(<span class="st">"i"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2032,7 +2014,7 @@ Aviso
 <p>Para comparar strings respeitando seu agrupamento. Interessante para strings com localização e não sensíveis a maiúsculas ou minúsculas.</p>
 <p>Exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">"\u0130"</span>, <span class="fu">coll</span>(<span class="st">"i"</span>, <span class="cn">TRUE</span>, <span class="at">locale =</span> <span class="st">"tr"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">"\u0130"</span>, <span class="fu">coll</span>(<span class="st">"i"</span>, <span class="cn">TRUE</span>, <span class="at">locale =</span> <span class="st">"tr"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
