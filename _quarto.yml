@@ -29,7 +29,7 @@ book:
       - Importacao/Importacao_de_dados_com_tidyverse.qmd
       - Organizacao/Organizacao_de_dados_com_tidyr.qmd
       - Transformacao/Transformacao_de_dados_com_dplyr.qmd
-  - part: "Parte 2 -Trabalhando com Strings, Fatores e Datas"
+  - part: "Parte 2 - Trabalhando com Strings, Fatores e Datas"
     chapters:
       - Manipulacao_Strings/Manipulacao de strings com stringr.qmd
       - Fatores/Fatores_com_forcats.qmd
