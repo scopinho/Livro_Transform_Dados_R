@@ -121,6 +121,28 @@ levels (f) <- c("a", "b", "c")
 f
 ```
 
+Veja outro exemplo:
+
+```{r}
+
+f_meses <- factor(c("Jan", "Fev", "Mar", "Abr"))
+f_meses
+```
+
+Como não definimos os níveis do factor, ele colocou em ordem alfabética à partir dos valores definidos.
+
+Para colocar os nível na ordem dos meses, podemos fazer:
+
+```{r}
+meses <- c("Jan", "Fev", "Mar", "Abr")
+levels (f_meses) <- meses
+f_meses
+```
+
+::: callout-tip
+Estas configurações adequadas dos meses, são importantes em diversas ocasiões, dentre elas, quando precisamos gerar um gráfico com a variáveis categórica no GGPLOT, pois este leva em consideração os níveis para definir a ordem no gráfico.
+:::
+
 ## Inspecionando Fatores
 
 #### fct_count
@@ -183,4 +205,76 @@ list(f1, f2)
 fct_unify(list(f2, f1))
 ```
 
-Veja que no exemplo acima, os níveis de ambas as listas possuem os mesmos valores.
+Veja que no exemplo acima, os níveis de ambas as listas agora possuem os mesmos valores.
+
+## Mudando as ordens dos Fatores
+
+#### fct_relevel
+
+Use para redefinir a **ordem dos níveis**.
+
+```{r}
+fct_relevel(f, c("b", "c", "a"))
+```
+
+#### fct_reorder
+
+Use para definir a **ordem dos níveis**, baseadas em **outra variável**. Ou seja, ela ordena os níveis de acordo com esta outra variável. Para explicar melhor, vamos criar um data frame (df) e definir a variavel color com fator:
+
+```{r}
+df <- tibble::tribble(
+  ~color,     ~a, ~b,
+  "blue",      1,  2,
+  "green",     6,  2,
+  "purple",    3,  3,
+  "red",       2,  3,
+  "yellow",    5,  1
+)
+
+df$color <- factor(df$color)
+df
+```
+
+Agora, vamos analisar os níveis de color e depois utilizar a função fct_order() para reordenar este níveis de acordo com os números definidos na variável "a".
+
+```{r}
+df$color
+```
+
+```{r}
+fct_reorder(df$color, df$a)
+```
+
+No próximo exemplo, utilzamos a função fct_reorder para ordenar os níveis da variável "group" em função dos valores da variável "weight".
+
+Veja como fica um gráfico de boxplot, sem e depois com os níveis reordenados:
+
+```{r}
+#| layout-ncol: 2
+
+#Sem ftc_reorder
+PlantGrowth |> ggplot(aes(group ,weight, fill = group)) + 
+  geom_boxplot()
+
+#Com fct_reorder
+PlantGrowth |> ggplot(aes(fct_reorder(group, weight) , weight, fill = group)) + 
+  geom_boxplot()
+```
+
+#### fct_reorder2
+
+Use para definir a **ordem do fator com base nos valores**
+
+#### fct_infreq
+
+Use para
+
+#### fct_inorder
+
+#### fct_rev
+
+#### fct_shift
+
+#### fct_shuffle
+
+#### 

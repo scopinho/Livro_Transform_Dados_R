@@ -276,6 +276,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#fct_c" id="toc-fct_c" class="nav-link" data-scroll-target="#fct_c"> <span class="header-section-number">5.7.0.1</span> fct_c</a></li>
   <li><a href="#fct_unify" id="toc-fct_unify" class="nav-link" data-scroll-target="#fct_unify"> <span class="header-section-number">5.7.0.2</span> fct_unify</a></li>
   </ul></li>
+  <li><a href="#mudando-as-ordens-dos-fatores" id="toc-mudando-as-ordens-dos-fatores" class="nav-link" data-scroll-target="#mudando-as-ordens-dos-fatores"> <span class="header-section-number">5.8</span> Mudando as ordens dos Fatores</a>
+  <ul class="collapse">
+  <li><a href="#fct_relevel" id="toc-fct_relevel" class="nav-link" data-scroll-target="#fct_relevel"> <span class="header-section-number">5.8.0.1</span> fct_relevel</a></li>
+  <li><a href="#fct_reorder" id="toc-fct_reorder" class="nav-link" data-scroll-target="#fct_reorder"> <span class="header-section-number">5.8.0.2</span> fct_reorder</a></li>
+  <li><a href="#fct_reorder2" id="toc-fct_reorder2" class="nav-link" data-scroll-target="#fct_reorder2"> <span class="header-section-number">5.8.0.3</span> fct_reorder2</a></li>
+  <li><a href="#fct_infreq" id="toc-fct_infreq" class="nav-link" data-scroll-target="#fct_infreq"> <span class="header-section-number">5.8.0.4</span> fct_infreq</a></li>
+  <li><a href="#fct_inorder" id="toc-fct_inorder" class="nav-link" data-scroll-target="#fct_inorder"> <span class="header-section-number">5.8.0.5</span> fct_inorder</a></li>
+  <li><a href="#fct_rev" id="toc-fct_rev" class="nav-link" data-scroll-target="#fct_rev"> <span class="header-section-number">5.8.0.6</span> fct_rev</a></li>
+  <li><a href="#fct_shift" id="toc-fct_shift" class="nav-link" data-scroll-target="#fct_shift"> <span class="header-section-number">5.8.0.7</span> fct_shift</a></li>
+  <li><a href="#fct_shuffle" id="toc-fct_shuffle" class="nav-link" data-scroll-target="#fct_shuffle"> <span class="header-section-number">5.8.0.8</span> fct_shuffle</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"> <span class="header-section-number">5.8.0.9</span> </a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -482,6 +494,39 @@ Levels: x y z</code></pre>
 Levels: a b c</code></pre>
 </div>
 </div>
+<p>Veja outro exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>f_meses <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Fev"</span>, <span class="st">"Mar"</span>, <span class="st">"Abr"</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>f_meses</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Jan Fev Mar Abr
+Levels: Abr Fev Jan Mar</code></pre>
+</div>
+</div>
+<p>Como não definimos os níveis do factor, ele colocou em ordem alfabética à partir dos valores definidos.</p>
+<p>Para colocar os nível na ordem dos meses, podemos fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>meses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Fev"</span>, <span class="st">"Mar"</span>, <span class="st">"Abr"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span> (f_meses) <span class="ot">&lt;-</span> meses</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>f_meses</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Mar Fev Abr Jan
+Levels: Jan Fev Mar Abr</code></pre>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estas configurações adequadas dos meses, são importantes em diversas ocasiões, dentre elas, quando precisamos gerar um gráfico com a variáveis categórica no GGPLOT, pois este leva em consideração os níveis para definir a ordem no gráfico.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="inspecionando-fatores" class="level2" data-number="5.6">
@@ -490,7 +535,7 @@ Levels: a b c</code></pre>
 <h4 data-number="5.6.0.1" class="anchored" data-anchor-id="fct_count"><span class="header-section-number">5.6.0.1</span> fct_count</h4>
 <p>Use para contar os valores de cada nível.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(f)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(f)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -505,7 +550,7 @@ Levels: a b c</code></pre>
 <h4 data-number="5.6.0.2" class="anchored" data-anchor-id="fct_match"><span class="header-section-number">5.6.0.2</span> fct_match</h4>
 <p>Use para encontrar níveis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_match</span>(f, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_match</span>(f, <span class="st">"a"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
@@ -515,7 +560,7 @@ Levels: a b c</code></pre>
 <h4 data-number="5.6.0.3" class="anchored" data-anchor-id="fct_unique"><span class="header-section-number">5.6.0.3</span> fct_unique</h4>
 <p>Use para retornar valores únicos de um fator, removendo os duplicados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unique</span>(f)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unique</span>(f)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] a b c
 Levels: a b c</code></pre>
@@ -529,23 +574,23 @@ Levels: a b c</code></pre>
 <h4 data-number="5.7.0.1" class="anchored" data-anchor-id="fct_c"><span class="header-section-number">5.7.0.1</span> fct_c</h4>
 <p>Use para combinar fatores com níveis diferentes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"a"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"a"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>f1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] a b c
 Levels: a b c</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>f2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>f2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] b a
 Levels: a b</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_c</span>(f1,f2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_c</span>(f1,f2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] a b c b a
 Levels: a b c</code></pre>
@@ -569,7 +614,7 @@ Dica
 <h4 data-number="5.7.0.2" class="anchored" data-anchor-id="fct_unify"><span class="header-section-number">5.7.0.2</span> fct_unify</h4>
 <p>Use para padronizar os níveis à partir de uma lista de fatores.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(f1, f2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(f1, f2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] a b c
@@ -581,7 +626,7 @@ Levels: a b</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unify</span>(<span class="fu">list</span>(f2, f1))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unify</span>(<span class="fu">list</span>(f2, f1))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] b a
@@ -592,7 +637,104 @@ Levels: a b c
 Levels: a b c</code></pre>
 </div>
 </div>
-<p>Veja que no exemplo acima, os níveis de ambas as listas possuem os mesmos valores.</p>
+<p>Veja que no exemplo acima, os níveis de ambas as listas agora possuem os mesmos valores.</p>
+</section>
+</section>
+<section id="mudando-as-ordens-dos-fatores" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="mudando-as-ordens-dos-fatores"><span class="header-section-number">5.8</span> Mudando as ordens dos Fatores</h2>
+<section id="fct_relevel" class="level4" data-number="5.8.0.1">
+<h4 data-number="5.8.0.1" class="anchored" data-anchor-id="fct_relevel"><span class="header-section-number">5.8.0.1</span> fct_relevel</h4>
+<p>Use para redefinir a <strong>ordem dos níveis</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_relevel</span>(f, <span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] a c b a
+Levels: b c a</code></pre>
+</div>
+</div>
+</section>
+<section id="fct_reorder" class="level4" data-number="5.8.0.2">
+<h4 data-number="5.8.0.2" class="anchored" data-anchor-id="fct_reorder"><span class="header-section-number">5.8.0.2</span> fct_reorder</h4>
+<p>Use para definir a <strong>ordem dos níveis</strong>, baseadas em <strong>outra variável</strong>. Ou seja, ela ordena os níveis de acordo com esta outra variável. Para explicar melhor, vamos criar um data frame (df) e definir a variavel color com fator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>color,     <span class="sc">~</span>a, <span class="sc">~</span>b,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"blue"</span>,      <span class="dv">1</span>,  <span class="dv">2</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"green"</span>,     <span class="dv">6</span>,  <span class="dv">2</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"purple"</span>,    <span class="dv">3</span>,  <span class="dv">3</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"red"</span>,       <span class="dv">2</span>,  <span class="dv">3</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"yellow"</span>,    <span class="dv">5</span>,  <span class="dv">1</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>color)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["color"],"name":[1],"type":["fct"],"align":["left"]},{"label":["a"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["b"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"blue","2":"1","3":"2"},{"1":"green","2":"6","3":"2"},{"1":"purple","2":"3","3":"3"},{"1":"red","2":"2","3":"3"},{"1":"yellow","2":"5","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Agora, vamos analisar os níveis de color e depois utilizar a função fct_order() para reordenar este níveis de acordo com os números definidos na variável “a”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>color</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] blue   green  purple red    yellow
+Levels: blue green purple red yellow</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_reorder</span>(df<span class="sc">$</span>color, df<span class="sc">$</span>a)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] blue   green  purple red    yellow
+Levels: blue red purple yellow green</code></pre>
+</div>
+</div>
+<p>No próximo exemplo, utilzamos a função fct_reorder para ordenar os níveis da variável “group” em função dos valores da variável “weight”.</p>
+<p>Veja como fica um gráfico de boxplot, sem e depois com os níveis reordenados:</p>
+<div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Sem ftc_reorder</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(group ,weight, <span class="at">fill =</span> group)) <span class="sc">+</span> </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Com fct_reorder</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">fct_reorder</span>(group, weight) , weight, <span class="at">fill =</span> group)) <span class="sc">+</span> </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Fatores_com_forcats_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Fatores_com_forcats_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="fct_reorder2" class="level4" data-number="5.8.0.3">
+<h4 data-number="5.8.0.3" class="anchored" data-anchor-id="fct_reorder2"><span class="header-section-number">5.8.0.3</span> fct_reorder2</h4>
+<p>Use para definir a <strong>ordem do fator com base nos valores</strong></p>
+</section>
+<section id="fct_infreq" class="level4" data-number="5.8.0.4">
+<h4 data-number="5.8.0.4" class="anchored" data-anchor-id="fct_infreq"><span class="header-section-number">5.8.0.4</span> fct_infreq</h4>
+<p>Use para</p>
+</section>
+<section id="fct_inorder" class="level4" data-number="5.8.0.5">
+<h4 data-number="5.8.0.5" class="anchored" data-anchor-id="fct_inorder"><span class="header-section-number">5.8.0.5</span> fct_inorder</h4>
+</section>
+<section id="fct_rev" class="level4" data-number="5.8.0.6">
+<h4 data-number="5.8.0.6" class="anchored" data-anchor-id="fct_rev"><span class="header-section-number">5.8.0.6</span> fct_rev</h4>
+</section>
+<section id="fct_shift" class="level4" data-number="5.8.0.7">
+<h4 data-number="5.8.0.7" class="anchored" data-anchor-id="fct_shift"><span class="header-section-number">5.8.0.7</span> fct_shift</h4>
+</section>
+<section id="fct_shuffle" class="level4" data-number="5.8.0.8">
+<h4 data-number="5.8.0.8" class="anchored" data-anchor-id="fct_shuffle"><span class="header-section-number">5.8.0.8</span> fct_shuffle</h4>
+</section>
+<section id="section" class="level4" data-number="5.8.0.9">
+<h4 data-number="5.8.0.9" class="anchored" data-anchor-id="section"><span class="header-section-number">5.8.0.9</span> </h4>
 
 
 </section>
