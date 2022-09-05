@@ -27,6 +27,8 @@ library (tidyverse)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
 
+[![](images/cs-factores-01.png){width="518"}](images/cs-factores-01.png)
+
 ------------------------------------------------------------------------
 
 ## Introdução
@@ -399,7 +401,26 @@ Este grupo de funções tem também:
 
 **fct_lowfreq**: Para agrupar em um único grupo valores com as menores frequências, garantindo que o grupo "other" tem o menor nível.
 
-**fct_lump_n**: Para agrupar em um único grupo valores exceto queles com o número de frequência maior que o argumento n=.
+**fct_lump_n**: Para agrupar em um único grupo valores exceto aqueles com o número de frequência maior que o argumento n=.
+
+Veja mais um exemplo, mesclando vários conceitos que vimos até aqui, mas com foco nas funções **fct_lummp_n**() e **fct_shift**():
+
+```{r}
+ starwars |> 
+   drop_na()|> 
+   ggplot(aes(
+     fill = fct_lump_n(homeworld, n = 3),
+     x = fct_shift(
+                fct_lump_n(homeworld, n = 3,other_level = "Outros"), 
+                n = -1L))) +
+   scale_fill_brewer(palette = "Dark2", guide = "none") + 
+   geom_bar()+
+   geom_label(stat = "count", aes(label = after_stat(count)))+
+   labs(x ="Mundo", y="Qtd de Personagens") + 
+   coord_flip()
+```
+
+Veja que neste exemplo, pedimos para a funções fct_lump_n agrupar tudo em um grupo, exceto os 3 maiores grupos. Veja que tivemos 4 grupo + 1 "other" pois ouve um empate no terceiro grupo. Depois, como queríamos que o grupo "other" ficava abaixo do gráfico, optamos por deslocar em -1 inteiro a nível deste fator, fazendo com o primeiro nível fosse para o último lugar.
 
 #### fct_other
 
