@@ -29,12 +29,15 @@ book:
       - Importacao/Importacao_de_dados_com_tidyverse.qmd
       - Organizacao/Organizacao_de_dados_com_tidyr.qmd
       - Transformacao/Transformacao_de_dados_com_dplyr.qmd
-  - part: "Parte 2 - Trabalhando com Strings, Fatores e Datas"
+  - part: "Parte 2 - Trabalhando com Strings e Fatores"
     chapters:
       - Manipulacao_Strings/Manipulacao de strings com stringr.qmd
       - Fatores/Fatores_com_forcats.qmd
+  - part: "Parte 3 - Trabalhando com Data e Programação Funcional"
+    chapters:
       - DataHora/Datas_e_horas_com_lubridate.qmd
-  - part: "Parte 3 - Gráficos"
+      - Funcional/Prog_Funcional_com_purrr.qmd
+  - part: "Parte 4 - Gráficos"
     chapters:
       - Visualizacao/Visualizacao_de_dados_com_ggplot2.qmd
 

@@ -25,7 +25,7 @@ library (tidyverse)
 
 ### Exemplos da Folha de Referência
 
-A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf) do stringr disponível no site do [RStudio](rstudio.com).
+A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf) do forcats disponível no site do [RStudio](rstudio.com).
 
 [![](images/cs-factores-01.png){width="518"}](images/cs-factores-01.png)
 

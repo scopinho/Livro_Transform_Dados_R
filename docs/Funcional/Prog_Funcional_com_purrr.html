@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Transformação e Manipulação de Dados com a linguagem R - 7&nbsp; Programação Funcional com PURRR</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" rel="next">
+<link href="../DataHora/Datas_e_horas_com_lubridate.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Programação Funcional com PURRR</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Bem-Vindo</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introdução</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Parte 1 - Obtendo e Manipulando os Dados</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Importacao/Importacao_de_dados_com_tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importação de Dados com TIDYVERSE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Organizacao/Organizacao_de_dados_com_tidyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organização de Dados com TIDYR</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Transformacao/Transformacao_de_dados_com_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformação de Dados com DPLYR</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Parte 2 - Trabalhando com Strings e Fatores</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Manipulacao_Strings/Manipulacao de strings com stringr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulação de Strings com STRINGR</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Fatores/Fatores_com_forcats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatores com FORCATS</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Parte 3 - Trabalhando com Data e Programação Funcional</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Funcional/Prog_Funcional_com_purrr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Programação Funcional com PURRR</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Parte 4 - Gráficos</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#em-construçâo" id="toc-em-construçâo" class="nav-link active" data-scroll-target="#em-construçâo"> <span class="header-section-number">7.1</span> EM CONSTRUÇÂO !!!!</a></li>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link" data-scroll-target="#introdução"> <span class="header-section-number">7.2</span> Introdução</a>
+  <ul class="collapse">
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">7.2.1</span> Exemplos da Folha de Referência</a></li>
+  </ul></li>
+  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">7.3</span> Introdução</a></li>
+  <li><a href="#mapeando-funções" id="toc-mapeando-funções" class="nav-link" data-scroll-target="#mapeando-funções"> <span class="header-section-number">7.4</span> Mapeando funções</a>
+  <ul class="collapse">
+  <li><a href="#uma-lista" id="toc-uma-lista" class="nav-link" data-scroll-target="#uma-lista"> <span class="header-section-number">7.4.1</span> Uma lista</a>
+  <ul class="collapse">
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"> <span class="header-section-number">7.4.1.1</span> map</a></li>
+  <li><a href="#map_dbl" id="toc-map_dbl" class="nav-link" data-scroll-target="#map_dbl"> <span class="header-section-number">7.4.1.2</span> map_dbl</a></li>
+  <li><a href="#map_int" id="toc-map_int" class="nav-link" data-scroll-target="#map_int"> <span class="header-section-number">7.4.1.3</span> map_int</a></li>
+  <li><a href="#map_chr" id="toc-map_chr" class="nav-link" data-scroll-target="#map_chr"> <span class="header-section-number">7.4.1.4</span> map_chr</a></li>
+  <li><a href="#map_lgl" id="toc-map_lgl" class="nav-link" data-scroll-target="#map_lgl"> <span class="header-section-number">7.4.1.5</span> map_lgl</a></li>
+  <li><a href="#map_dfc" id="toc-map_dfc" class="nav-link" data-scroll-target="#map_dfc"> <span class="header-section-number">7.4.1.6</span> map_dfc</a></li>
+  <li><a href="#map_dfr" id="toc-map_dfr" class="nav-link" data-scroll-target="#map_dfr"> <span class="header-section-number">7.4.1.7</span> map_dfr</a></li>
+  <li><a href="#walk" id="toc-walk" class="nav-link" data-scroll-target="#walk"> <span class="header-section-number">7.4.1.8</span> walk</a></li>
+  </ul></li>
+  <li><a href="#duas-listas" id="toc-duas-listas" class="nav-link" data-scroll-target="#duas-listas"> <span class="header-section-number">7.4.2</span> Duas listas</a>
+  <ul class="collapse">
+  <li><a href="#map2_dbl" id="toc-map2_dbl" class="nav-link" data-scroll-target="#map2_dbl"> <span class="header-section-number">7.4.2.1</span> map2_dbl</a></li>
+  <li><a href="#map2_int" id="toc-map2_int" class="nav-link" data-scroll-target="#map2_int"> <span class="header-section-number">7.4.2.2</span> map2_int</a></li>
+  <li><a href="#map2_chr" id="toc-map2_chr" class="nav-link" data-scroll-target="#map2_chr"> <span class="header-section-number">7.4.2.3</span> map2_chr</a></li>
+  <li><a href="#map2_lgl" id="toc-map2_lgl" class="nav-link" data-scroll-target="#map2_lgl"> <span class="header-section-number">7.4.2.4</span> map2_lgl</a></li>
+  <li><a href="#map2_dfc" id="toc-map2_dfc" class="nav-link" data-scroll-target="#map2_dfc"> <span class="header-section-number">7.4.2.5</span> map2_dfc</a></li>
+  <li><a href="#map2_dfr" id="toc-map2_dfr" class="nav-link" data-scroll-target="#map2_dfr"> <span class="header-section-number">7.4.2.6</span> map2_dfr</a></li>
+  <li><a href="#walk2" id="toc-walk2" class="nav-link" data-scroll-target="#walk2"> <span class="header-section-number">7.4.2.7</span> walk2</a></li>
+  </ul></li>
+  <li><a href="#várias-listas" id="toc-várias-listas" class="nav-link" data-scroll-target="#várias-listas"> <span class="header-section-number">7.4.3</span> Várias listas</a></li>
+  <li><a href="#listas-e-índices" id="toc-listas-e-índices" class="nav-link" data-scroll-target="#listas-e-índices"> <span class="header-section-number">7.4.4</span> Listas e índices</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Programação Funcional com PURRR</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="em-construçâo" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="em-construçâo"><span class="header-section-number">7.1</span> EM CONSTRUÇÂO !!!!</h2>
+</section>
+<section id="introdução" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="introdução"><span class="header-section-number">7.2</span> Introdução</h2>
+<p>A seguir temos uma série de facildades que o pacote PURRR do R trás para trabalharmos com listas, funções e um paradigma de programação funcional.</p>
+<p>Para saber mais sobre este pacote, acesse:</p>
+<p><a href="https://cran.r-project.org/package=purr" class="uri">https://cran.r-project.org/package=purr</a>.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Aviso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:</p>
+<p><a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a>.</p>
+</div>
+</div>
+<p>Para os exemplos, iremos carregar o seguinte pacote:</p>
+<ul>
+<li><strong>tidyverse</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (tidyverse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="exemplos-da-folha-de-referência" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="exemplos-da-folha-de-referência"><span class="header-section-number">7.2.1</span> Exemplos da Folha de Referência</h3>
+<p>A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf"><strong>Folha de Referência</strong></a> do purrr disponível no site do <a href="rstudio.com">RStudio</a>.</p>
+<!-- [![](images/cs-purrr-01.png){width="518"}](images/cs-purrr-01.png) [![](images/cs-purrr-02.png){width="518"}](images/cs-purrr-02.png) -->
+<hr>
+</section>
+</section>
+<section id="introdução-1" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="introdução-1"><span class="header-section-number">7.3</span> Introdução</h2>
+<p>Imagine que você já está familiarizado com algumas funções do R e decide começar a utilizá-lo. Após um certo tempo, chegará a conclusão que muitas vezes ao trabalhar com dados, precisamos utilizar a mesma função com alguns parêmtros diferentes para concluirmos nossa análise.</p>
+<p>Começando com um exemplo bem simples, digamos que precise da <strong>média e desvio padrão</strong> da variável peso (wt) da base de dados <strong>mtcars</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.620","7":"16.46","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4"},{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.875","7":"17.02","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4 Wag"},{"1":"22.8","2":"4","3":"108.0","4":"93","5":"3.85","6":"2.320","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"},{"1":"21.4","2":"6","3":"258.0","4":"110","5":"3.08","6":"3.215","7":"19.44","8":"1","9":"0","10":"3","11":"1","_rn_":"Hornet 4 Drive"},{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2","_rn_":"Hornet Sportabout"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4","_rn_":"Duster 360"},{"1":"24.4","2":"4","3":"146.7","4":"62","5":"3.69","6":"3.190","7":"20.00","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 240D"},{"1":"22.8","2":"4","3":"140.8","4":"95","5":"3.92","6":"3.150","7":"22.90","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 230"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280C"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SE"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SL"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SLC"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4","_rn_":"Cadillac Fleetwood"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4","_rn_":"Lincoln Continental"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4","_rn_":"Chrysler Imperial"},{"1":"32.4","2":"4","3":"78.7","4":"66","5":"4.08","6":"2.200","7":"19.47","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat 128"},{"1":"30.4","2":"4","3":"75.7","4":"52","5":"4.93","6":"1.615","7":"18.52","8":"1","9":"1","10":"4","11":"2","_rn_":"Honda Civic"},{"1":"33.9","2":"4","3":"71.1","4":"65","5":"4.22","6":"1.835","7":"19.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Toyota Corolla"},{"1":"21.5","2":"4","3":"120.1","4":"97","5":"3.70","6":"2.465","7":"20.01","8":"1","9":"0","10":"3","11":"1","_rn_":"Toyota Corona"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2","_rn_":"Dodge Challenger"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4","_rn_":"Camaro Z28"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2","_rn_":"Pontiac Firebird"},{"1":"27.3","2":"4","3":"79.0","4":"66","5":"4.08","6":"1.935","7":"18.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat X1-9"},{"1":"26.0","2":"4","3":"120.3","4":"91","5":"4.43","6":"2.140","7":"16.70","8":"0","9":"1","10":"5","11":"2","_rn_":"Porsche 914-2"},{"1":"30.4","2":"4","3":"95.1","4":"113","5":"3.77","6":"1.513","7":"16.90","8":"1","9":"1","10":"5","11":"2","_rn_":"Lotus Europa"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4","_rn_":"Ford Pantera L"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6","_rn_":"Ferrari Dino"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8","_rn_":"Maserati Bora"},{"1":"21.4","2":"4","3":"121.0","4":"109","5":"4.11","6":"2.780","7":"18.60","8":"1","9":"1","10":"4","11":"2","_rn_":"Volvo 142E"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Para isso poderíamos fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (mtcars<span class="sc">$</span>wt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.21725</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span> (mtcars<span class="sc">$</span>wt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9784574</code></pre>
+</div>
+</div>
+<p>Depois, você acaba precisando da méida e desvio padrão para outra variável, digmos potencia (hp) e depois para consumo (mpg)..</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (mtcars<span class="sc">$</span>hp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 146.6875</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span> (mtcars<span class="sc">$</span>hp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 68.56287</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (mtcars<span class="sc">$</span>mpg)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.09062</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span> (mtcars<span class="sc">$</span>mpg)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.026948</code></pre>
+</div>
+</div>
+<p>Veja que com simples funções como estas, seu código vai ficando repetitivo e com várias replicaões.</p>
+<p>É exatamente para este e alguns outros desafios, que o pacote purr vem ajudar. Ele, entre outras coisas, ajuda na redução de linhas similares de código.</p>
+</section>
+<section id="mapeando-funções" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="mapeando-funções"><span class="header-section-number">7.4</span> Mapeando funções</h2>
+<p>No pacote purrr, existem diversas funções que ajudam a mapear outras funções.</p>
+<section id="uma-lista" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="uma-lista"><span class="header-section-number">7.4.1</span> Uma lista</h3>
+<p>Seguindo o simples caso da média visto há pouco, poderíamos usar uma função de <strong>mapeamento</strong> (<strong>map</strong>) para aplicar as funções mean e sd para diversos items de uma lista e retornar um vetor de mesmo tamanho da lista.</p>
+<p><img src="images/map.png" class="img-fluid"></p>
+<p>Veja como ficaria:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Cria uma lista para a entrada</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">wt=</span>mtcars<span class="sc">$</span>wt, <span class="at">hp=</span>mtcars<span class="sc">$</span>hp, <span class="at">mpg=</span>mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Cria um mapeamento da lista e a função que iremos executar para cada elementos da lista.</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(lista, mean)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>desv_padrao <span class="ot">&lt;-</span> <span class="fu">map</span>(lista, sd)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(media, desv_padrao) <span class="co">#Esta linha é apenas para agrupar em um data frame e mostrar a saída. O mapeamento já ocorreu nas linhas anteriores.</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["wt"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mpg"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.2172500","2":"146.68750","3":"20.090625"},{"1":"0.9784574","2":"68.56287","3":"6.026948"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Espero que até aqui já dê para ter uma idéia do poder do uso de funções mapeadas. Iremos ver agora diversos sabores desta idéia para apenas uma lista de entrada.</p>
+<p>Para os próximos exemplos, iremos usar duas listas:</p>
+<p><strong>Listas x e l1:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[2]]
+ [1] 11 12 13 14 15 16 17 18 19 20
+
+[[3]]
+ [1] 21 22 23 24 25 26 27 28 29 30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"c"</span>, <span class="st">"d"</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>l1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+[1] "a" "b"
+
+$y
+[1] "c" "d"</code></pre>
+</div>
+</div>
+<section id="map" class="level4" data-number="7.4.1.1">
+<h4 data-number="7.4.1.1" class="anchored" data-anchor-id="map"><span class="header-section-number">7.4.1.1</span> map</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar uma lista</strong>.</p>
+<p>É o que fizemos no exemplo anterior. Vejamos outro exemplo, agora com argumento para a função a ser chamada.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l1, sort, <span class="at">decreasing  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+[1] "b" "a"
+
+$y
+[1] "d" "c"</code></pre>
+</div>
+</div>
+<p>Neste exemplo, aplicamos a função <strong>sort</strong>() para cada elemento da lista “<strong>l1</strong>”.</p>
+<p>Passamos também o argumento <strong>decreasing</strong> = TRUE para a função sort().</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Existem outras formas de declarar a função e passar os argumentos. As veremos mais adiante.</p>
+</div>
+</div>
+<p>Podemos usar a função str() para ver a estrutura da lista. Veja:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 2
+ $ x: chr [1:2] "a" "b"
+ $ y: chr [1:2] "c" "d"</code></pre>
+</div>
+</div>
+<p>As funções a seguir, fazem praticamente a mesma coisa que a função map(), porém retornam, ao invés de uma lista, outro tipo de dados.</p>
+</section>
+<section id="map_dbl" class="level4" data-number="7.4.1.2">
+<h4 data-number="7.4.1.2" class="anchored" data-anchor-id="map_dbl"><span class="header-section-number">7.4.1.2</span> map_dbl</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um vetor de double</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(x, mean)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5.5 15.5 25.5</code></pre>
+</div>
+</div>
+</section>
+<section id="map_int" class="level4" data-number="7.4.1.3">
+<h4 data-number="7.4.1.3" class="anchored" data-anchor-id="map_int"><span class="header-section-number">7.4.1.3</span> map_int</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um vetor de inteiro</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(x,length)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 10 10</code></pre>
+</div>
+</div>
+</section>
+<section id="map_chr" class="level4" data-number="7.4.1.4">
+<h4 data-number="7.4.1.4" class="anchored" data-anchor-id="map_chr"><span class="header-section-number">7.4.1.4</span> map_chr</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um vetor de caractere</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(l1, paste, <span class="at">collapse =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   x    y 
+"ab" "cd" </code></pre>
+</div>
+</div>
+</section>
+<section id="map_lgl" class="level4" data-number="7.4.1.5">
+<h4 data-number="7.4.1.5" class="anchored" data-anchor-id="map_lgl"><span class="header-section-number">7.4.1.5</span> map_lgl</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um vetor lógico</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(x, is.integer)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="map_dfc" class="level4" data-number="7.4.1.6">
+<h4 data-number="7.4.1.6" class="anchored" data-anchor-id="map_dfc"><span class="header-section-number">7.4.1.6</span> map_dfc</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um dataframe juntando em colunas.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(l1, rep, <span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["x"],"name":[1],"type":["chr"],"align":["left"]},{"label":["y"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"a","2":"c"},{"1":"b","2":"d"},{"1":"a","2":"c"},{"1":"b","2":"d"},{"1":"a","2":"c"},{"1":"b","2":"d"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Neste exemplo, aplicamos a função rep() para replicar em três vezes cada elemento da lista “l1” e retornar em um dataframe, juntando cada elemento em colunas.</p>
+</section>
+<section id="map_dfr" class="level4" data-number="7.4.1.7">
+<h4 data-number="7.4.1.7" class="anchored" data-anchor-id="map_dfr"><span class="header-section-number">7.4.1.7</span> map_dfr</h4>
+<p>Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e <strong>retornar um dataframe juntando em linhas.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(x, summary)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Min."],"name":[1],"type":["table"],"align":["right"]},{"label":["1st Qu."],"name":[2],"type":["table"],"align":["right"]},{"label":["Median"],"name":[3],"type":["table"],"align":["right"]},{"label":["Mean"],"name":[4],"type":["table"],"align":["right"]},{"label":["3rd Qu."],"name":[5],"type":["table"],"align":["right"]},{"label":["Max."],"name":[6],"type":["table"],"align":["right"]}],"data":[{"1":"1","2":"3.25","3":"5.5","4":"5.5","5":"7.75","6":"10"},{"1":"11","2":"13.25","3":"15.5","4":"15.5","5":"17.75","6":"20"},{"1":"21","2":"23.25","3":"25.5","4":"25.5","5":"27.75","6":"30"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="walk" class="level4" data-number="7.4.1.8">
+<h4 data-number="7.4.1.8" class="anchored" data-anchor-id="walk"><span class="header-section-number">7.4.1.8</span> walk</h4>
+<p>Use esta função para retornar a lista de <strong>entrada</strong> de forma <strong>silenciosa</strong>. Isto ajuda em situações com o pipe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(x, print)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10
+ [1] 11 12 13 14 15 16 17 18 19 20
+ [1] 21 22 23 24 25 26 27 28 29 30</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="duas-listas" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="duas-listas"><span class="header-section-number">7.4.2</span> Duas listas</h3>
+<p>O pacote purr tem um conjunto de funções similares ao map(), porém, ao invés de receber apenas uma única lista de entrada e retornar um vetor de mesmo tamanho, elas aceitam duas listas de entrada e retornam também um vetor de mesmo tamanho na saída.</p>
+<p><img src="images/map2.png" class="img-fluid" width="385"></p>
+<p>Vamos criar nossas listas para os próximos exemplos:</p>
+<p><strong>Listas y, z e l2:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"a"</span>, <span class="at">y =</span> <span class="st">"z"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>map2</p>
+<p>Use para aplicar uma função em um <strong>par de listas e retornar uma lista</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x,y,rep)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[2]]
+ [1] 11 12 13 14 15 16 17 18 19 20 11 12 13 14 15 16 17 18 19 20
+
+[[3]]
+ [1] 21 22 23 24 25 26 27 28 29 30 21 22 23 24 25 26 27 28 29 30 21 22 23 24 25
+[26] 26 27 28 29 30</code></pre>
+</div>
+</div>
+<p>Veja que neste exemplo, para cada elemento da lista “x”, aplicamos a função rep() para replicar em número de vezes cada elemento da lista “y”.</p>
+<p>O purr possui uma sintaxe, onde ao invés de termos explicitamente o nome de uma função, podemos criá-la no momento do mapeamento. Isto é conhecido como função anônima. O símbol “~” é utilizado para estes casos. Os nomes das listas podem ser referenciados com um “.”. Veja o caso abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x,y, <span class="sc">~</span> .x<span class="sc">*</span>.y)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[2]]
+ [1] 22 24 26 28 30 32 34 36 38 40
+
+[[3]]
+ [1] 63 66 69 72 75 78 81 84 87 90</code></pre>
+</div>
+</div>
+<p>Ao invés de usarmos uma função que multiplicasse dois números, simplesmente declaramos uma função anônima com o “~” e depois informamos o que esta função fará, neste caso, irá multiplicar “*” os elementos da lista “x” pelos da lista “y”.</p>
+<section id="map2_dbl" class="level4" data-number="7.4.2.1">
+<h4 data-number="7.4.2.1" class="anchored" data-anchor-id="map2_dbl"><span class="header-section-number">7.4.2.1</span> map2_dbl</h4>
+</section>
+<section id="map2_int" class="level4" data-number="7.4.2.2">
+<h4 data-number="7.4.2.2" class="anchored" data-anchor-id="map2_int"><span class="header-section-number">7.4.2.2</span> map2_int</h4>
+</section>
+<section id="map2_chr" class="level4" data-number="7.4.2.3">
+<h4 data-number="7.4.2.3" class="anchored" data-anchor-id="map2_chr"><span class="header-section-number">7.4.2.3</span> map2_chr</h4>
+</section>
+<section id="map2_lgl" class="level4" data-number="7.4.2.4">
+<h4 data-number="7.4.2.4" class="anchored" data-anchor-id="map2_lgl"><span class="header-section-number">7.4.2.4</span> map2_lgl</h4>
+</section>
+<section id="map2_dfc" class="level4" data-number="7.4.2.5">
+<h4 data-number="7.4.2.5" class="anchored" data-anchor-id="map2_dfc"><span class="header-section-number">7.4.2.5</span> map2_dfc</h4>
+</section>
+<section id="map2_dfr" class="level4" data-number="7.4.2.6">
+<h4 data-number="7.4.2.6" class="anchored" data-anchor-id="map2_dfr"><span class="header-section-number">7.4.2.6</span> map2_dfr</h4>
+</section>
+<section id="walk2" class="level4" data-number="7.4.2.7">
+<h4 data-number="7.4.2.7" class="anchored" data-anchor-id="walk2"><span class="header-section-number">7.4.2.7</span> walk2</h4>
+</section>
+</section>
+<section id="várias-listas" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="várias-listas"><span class="header-section-number">7.4.3</span> Várias listas</h3>
+<p>XXXX</p>
+<p><img src="images/pmap.png" class="img-fluid" width="388"></p>
+</section>
+<section id="listas-e-índices" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="listas-e-índices"><span class="header-section-number">7.4.4</span> Listas e índices</h3>
+<p>XXXX</p>
+<p><img src="images/imap.png" class="img-fluid" width="381"></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../DataHora/Datas_e_horas_com_lubridate.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datas e horas com LUBRIDATE</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

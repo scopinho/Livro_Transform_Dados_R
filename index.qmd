@@ -34,6 +34,8 @@ Para mais informações acesse:
 
 -   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folha da referência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
+-   [Programação Funcional](Funcional/Prog_Funcional_com_purrr.html): Sobre **programação funcional**, **listas** e **funções** com o pacote **purrr**. Ver folha da referência: [purrr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/purrr_pt_br.pdf).
+
 -   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2**. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf).
 
 ::: {.callout-note appearance="simple"}
