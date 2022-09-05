@@ -2,8 +2,6 @@
 
 ## Introdução
 
-## ESTE CAPÍTULO ESTA EM CONSTRUÇÃO !!!!
-
 A seguir temos vários exemplos de tratamento de variáveis qualitativas o pacote FORCATS do R.
 
 Para saber mais sobre este pacote, acesse:
@@ -207,7 +205,7 @@ fct_unify(list(f2, f1))
 
 Veja que no exemplo acima, os níveis de ambas as listas agora possuem os mesmos valores.
 
-## Mudando as ordens dos Fatores
+## Mudando as ordens dos Níveis
 
 #### fct_relevel
 
@@ -245,7 +243,7 @@ df$color
 fct_reorder(df$color, df$a)
 ```
 
-No próximo exemplo, utilzamos a função fct_reorder para ordenar os níveis da variável "group" em função dos valores da variável "weight".
+No próximo exemplo, utilzamos a função **fct_reorder** para ordenar os níveis da variável "**group**" em função dos valores da variável "**weight**".
 
 Veja como fica um gráfico de boxplot, sem e depois com os níveis reordenados:
 
@@ -253,28 +251,212 @@ Veja como fica um gráfico de boxplot, sem e depois com os níveis reordenados:
 #| layout-ncol: 2
 
 #Sem ftc_reorder
-PlantGrowth |> ggplot(aes(group ,weight, fill = group)) + 
+PlantGrowth |> 
+  ggplot(aes(group , weight, fill = group)) + 
   geom_boxplot()
 
 #Com fct_reorder
-PlantGrowth |> ggplot(aes(fct_reorder(group, weight) , weight, fill = group)) + 
+PlantGrowth |> 
+  ggplot(aes(fct_reorder(group, weight) , weight, fill = group)) + 
   geom_boxplot()
 ```
 
 #### fct_reorder2
 
-Use para definir a **ordem do fator com base nos valores**
+Use para definir a **ordem do fator com base nos valores**.
+
+Ainda usando o data frame (df) criado visto na função fct_reorder, vejamos a diferença para utilizar o fct_reorder2(). Neste caso, utilizamos duas variáveis (a e b) para reordenar a variável color.
+
+```{r}
+#| layout-nrow: 2
+df 
+fct_reorder2(df$color, df$a, df$b)
+```
+
+Em geral, utilzamos este tipo de reordenação de uma variável fator de acordo com duas variáveis, quando queremos visualizar uma estética não posicional em um gráfico, como color, size, fill, etc.
+
+```{r}
+#| layout-ncol: 2
+
+# Sem a reordenação de nível com fct_reorder2
+diamonds |> 
+  ggplot(aes(carat, 
+             price, color = color)) + 
+             #color = fct_reorder2 (color, carat, price))) + 
+  geom_smooth()
+
+# Com a reordenação de nível com fct_reorder2
+diamonds |> 
+  ggplot(aes(carat, 
+             price, 
+             color = fct_reorder2 (color, carat, price))) + 
+  labs(color = "color")+
+  geom_smooth()
+```
 
 #### fct_infreq
 
-Use para
+Use para reordenar os níveis de um fator, pela primeira ordem de **frequência** dos dados. Maior frequência aparece em primeiro.
+
+```{r}
+f3 <- factor(c("c", "c", "a"))
+fct_infreq(f3)
+```
+
+::: callout-tip
+Se quiser reordenar os níveis usando os valores numéricos dos níveis, use **fct_inseq**().
+:::
 
 #### fct_inorder
 
+Use para **reordenar** os níveis de um fator, pela **ordem** **de aparecimento** dos dados na linhas.
+
+```{r}
+f2
+fct_inorder(f2)
+```
+
 #### fct_rev
+
+Use para **inverter** a ordem dos níveis de um vetor.
+
+```{r}
+f4 <- factor(c("a","b","c"))
+f4
+fct_rev(f4)
+```
 
 #### fct_shift
 
+Use para **deslocar** a ordem dos níveis de um fator. Use o argumento n= para deslocar n casas.
+
+```{r}
+f
+fct_shift(f)
+```
+
 #### fct_shuffle
 
-#### 
+Use para embaralhar randomicamente dos níveis de um fator.
+
+```{r}
+fct_shuffle(f4)
+fct_shuffle(f4)
+```
+
+## Mudando os valores dos Níveis
+
+#### fct_recode
+
+Use para mudar manualmente os valores dos níveis de um fator.
+
+```{r}
+f
+fct_recode(f, v = "a", x = "b", z = "c")
+```
+
+#### fct_relabel
+
+Use para mudar **programaticamente** os nomes. Esta função aceita a sintaxe de funções do pacote purrr. Pode-se usar expressões regulares, etc.
+
+```{r}
+fct_relabel(f, ~ paste0("x", .x))
+```
+
+#### fct_anon
+
+Use para anonimizar os valores dos níveis com números randômicos.
+
+```{r}
+fct_anon(f)
+```
+
+#### fct_collapse
+
+Use para **agrupar** níveis definindo grupos **manualmente**.
+
+```{r}
+f
+fct_collapse(f, x = c("a", "b"))
+```
+
+#### fct_lump_min
+
+Use para agrupar em um único grupo os níveis de um fator que aparecem menos que n vezes.
+
+```{r}
+f
+fct_lump_min(f, min = 2)
+```
+
+::: callout-tip
+Use o argumento **other_level=** para dar um nome defierente de "Other" quando precisar.
+:::
+
+Este grupo de funções tem também:
+
+**fct_prop**: Para agrupar em um único grupo valores com proporções menores que n% vezes.
+
+**fct_lowfreq**: Para agrupar em um único grupo valores com as menores frequências, garantindo que o grupo "other" tem o menor nível.
+
+**fct_lump_n**: Para agrupar em um único grupo valores exceto queles com o número de frequência maior que o argumento n=.
+
+#### fct_other
+
+Use para definir **manualmente** os níveis que irão pertecer ao grupo "other".
+
+```{r}
+f
+fct_other(f, keep = c("a", "b"))
+```
+
+## Adicionando ou Removendo Níveis
+
+#### fct_drop
+
+Use para remover níveis que não estão sendo usados.
+
+```{r}
+f5 <- factor(c("a","b"),c("a","b","x"))
+f5
+f6 <- fct_drop(f5)
+f6
+```
+
+#### fct_expand
+
+Use para adicionar níveis a um fator.
+
+```{r}
+fct_expand(f6, "x")
+```
+
+#### fct_explicit_na
+
+Use para definir níveis "NA" como (Missing). Isto é útil quando quiser deixar explícito em gráficos os valores ausentes (Missings).
+
+```{r}
+fct_explicit_na(factor(c("a", "b", NA)))
+```
+
+```{r}
+#| layout-ncol: 2
+tb <- tribble(~x, ~y,
+        "A", 1,
+        "A", 2,
+        "A", 2,
+        "B", 3,
+        NA, NA,
+        "D", 5,
+        NA, NA,
+        "D", 4,)
+
+tb$x <- as_factor(tb$x)
+
+tb |> ggplot(aes(x)) +
+  geom_bar()
+
+tb |> ggplot(aes(fct_explicit_na(x, na_level = "Sem Valores"))) +
+  geom_bar()
+
+```
