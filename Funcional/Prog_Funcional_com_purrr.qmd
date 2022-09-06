@@ -35,9 +35,11 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 ## Programação Funcional
 
-Programação funcional é um paradigma de programação onde aplicações são construídas aplicando uma composição de funções. Para tentar deixar este tema mais simplificado, imagine que você já está familiarizado com algumas funções do R e decide começar a utilizá-lo. Após um certo tempo, chegará a conclusão que muitas vezes ao trabalhar com dados, precisamos utilizar a mesma função com alguns parêmtros diferentes para concluirmos nossa análise.
+Programação funcional é um paradigma de programação onde aplicações são construídas aplicando uma composição de funções. É um paradigma de programação declarativa, onde definições de funções são árvores de expressão que mapeam um valor para outro valor, ao invés de comandos imperativos que mudam o estado do programa.
 
-Começando com um exemplo bem simples, digamos que precise da **média e desvio padrão** da variável peso (wt) da base de dados **mtcars**:
+Para tentar deixar este tema mais simplificado, vamos imaginar um cenário bem simples. Você já está familiarizado com algumas funções do R e decide começar a utilizá-lo. Após um certo tempo, chegará a conclusão que muitas vezes ao trabalhar com dados, precisamos utilizar a mesma função com alguns parêmtros diferentes para concluirmos nossa análise.
+
+Dentro dessa ideia básica, digamos que precise da **média e desvio padrão** da variável peso (**wt**) da base de dados **mtcars**:
 
 ```{r}
 mtcars
@@ -50,7 +52,7 @@ mean (mtcars$wt)
 sd (mtcars$wt)
 ```
 
-Depois, você acaba precisando da méida e desvio padrão para outra variável, digmos potencia (hp) e depois para consumo (mpg)..
+Depois, você acaba precisando da **média** e **desvio padrão** para outra variável, digmos potencia (**hp**) e depois para consumo (**mpg**).
 
 ```{r}
 mean (mtcars$hp)
@@ -59,35 +61,43 @@ mean (mtcars$mpg)
 sd (mtcars$mpg)
 ```
 
-Veja que com simples funções como estas, seu código vai ficando repetitivo e com várias replicações.
+Veja que com simples funções como estas de média (mean) e desvio padrão (sd), seu código já está ficando **repetitivo** e com várias **replicações**.
 
-É exatamente para este e alguns outros desafios, que o pacote purr vem ajudar. Ele, entre outras coisas, ajuda na redução de linhas similares de código.
+É exatamente para este e alguns outros desafios, que o pacote purr vem ajudar. Ele, entre outras coisas, ajuda na redução de linhas similares de código, aplicando funções à conjuntos de dados, diminuindo as replicações de código e o deixando com maior entendimento.
 
 ## Mapeando funções
 
-No pacote purrr, existem diversas funções que ajudam a mapear outras funções.
+No pacote purrr, existem diversas funções que ajudam a **mapear** outras funções.
 
 ### Uma lista
 
-Seguindo o simples caso da média visto há pouco, poderíamos usar uma função de **mapeamento** (**map**) para aplicar as funções mean e sd para diversos items de uma lista e retornar um vetor de mesmo tamanho da lista.
+Seguindo o simples caso da **média** visto há pouco, poderíamos usar uma função de **mapeamento** (**map**) para aplicar as funções **mean**() e **sd**() para diversos items de uma lista e retornar um vetor de mesmo tamanho da lista. Nossa lista, pode conter o valor da variável **wt**, **hp**, **mpg** e muitas outras, mantendo-se com um código mais enxuto.
+
+Então, em resumo, a função map, recebe uma lista de valores, aplica um função a ser definida e retorna uma lista com o mesmo tamanho da lista de entrada.
 
 ![](images/map.png)
 
-Veja como ficaria:
+Veja como ficaria nosso exemplo das **médias** e **desvio padrão** com a função **map**():
 
 ```{r}
 #Cria uma lista para a entrada
 lista <- list(wt=mtcars$wt, hp=mtcars$hp, mpg=mtcars$mpg)
 
-#Cria um mapeamento da lista e a função que iremos executar para cada elementos da lista.
+#Cria um mapeamento da lista e a função que iremos executar para cada elemento da lista.
 
-media <- map_dfr(lista, mean)
+media <- map(lista, mean)
 desv_padrao <- map(lista, sd)
-
-bind_rows(media, desv_padrao) #Esta linha é apenas para agrupar em um data frame e mostrar a saída. O mapeamento já ocorreu nas linhas anteriores.
 ```
 
-Espero que até aqui já dê para ter uma idéia do poder do uso de funções mapeadas. Iremos ver agora diversos sabores desta idéia para apenas uma lista de entrada.
+Veja que se precisarmos a fazer a média e desvio padrão para 10 novas variáveis, precisamos apenas incluí-las na lista e nenhuma outra alteração no código seria necessária.
+
+Agora podemos juntar ambas as listas em um data frame para uma melhor visualização:
+
+```{r}
+bind_rows(media, desv_padrao) |> mutate (tipo = c("media", "sd"), .before = 1) #Esta linha é apenas para agrupar em um data frame e mostrar a saída. O mapeamento já ocorreu nas linhas anteriores.
+```
+
+Espero que até aqui já dê para ter uma idéia do poder do uso de funções mapeadas. Iremos ver agora diversos "sabores" desta idéia para apenas uma lista de entrada.
 
 Para os próximos exemplos, iremos usar duas listas:
 
@@ -102,9 +112,9 @@ l1
 
 #### map
 
-Use esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e **retornar uma lista**.
+Como já vimos, podemos usar esta função para aplicar uma função em cada elemento da lista ou vetor de entrada e **retornar uma lista**.
 
-É o que fizemos no exemplo anterior. Vejamos outro exemplo, agora com argumento para a função a ser chamada.
+Vejamos outro exemplo, só que desta vez, vamos passar **argumentos** para função mapeada.
 
 ```{r}
 map(l1, sort, decreasing  = TRUE)
@@ -115,7 +125,7 @@ Neste exemplo, aplicamos a função **sort**() para cada elemento da lista "**l1
 Passamos também o argumento **decreasing** = TRUE para a função sort().
 
 ::: callout-note
-Existem outras formas de declarar a função e passar os argumentos. As veremos mais adiante.
+Existem outras formas de declarar a função e passar os argumentos. Para maiores detalhes, veja a seção [Atalhos para funções].
 :::
 
 Podemos usar a função str() para ver a estrutura da lista. Veja:
@@ -124,7 +134,7 @@ Podemos usar a função str() para ver a estrutura da lista. Veja:
 str(l1)
 ```
 
-As funções a seguir, fazem praticamente a mesma coisa que a função map(), porém retornam, ao invés de uma lista, outro tipo de dados.
+As funções a seguir, fazem praticamente a mesma coisa que a função map(), porém retornam, ao invés de uma lista, outro tipo de dado.
 
 #### map_dbl
 
@@ -178,7 +188,7 @@ map_dfr(x, summary)
 
 #### walk
 
-Use esta função para retornar a lista de **entrada** de forma **silenciosa**. Isto ajuda em situações com o pipe.
+Use esta para executar uma atividade assim como a função map(), mas de forma **silenciosa**, ou seja, se houver mensagens de saída, elas não aparecerão. Ela também retorna a lista de **entrada**. Isto ajuda em situações com o pipe.
 
 ```{r}
 walk(x, print)
@@ -186,7 +196,7 @@ walk(x, print)
 
 ### Duas listas
 
-O pacote purr tem um conjunto de funções similares ao map(), porém, ao invés de receber apenas uma única lista de entrada e retornar um vetor de mesmo tamanho, elas aceitam duas listas de entrada e retornam também um vetor de mesmo tamanho na saída.
+O pacote purr tem um conjunto de funções similares ao map(), porém, ao invés de receber apenas uma única lista de entrada e retornar um vetor de mesmo tamanho, elas **aceitam duas listas de entrada** e **retornam também um vetor de mesmo tamanho na saída**.
 
 ![](images/map2.png){width="385"}
 
@@ -200,7 +210,7 @@ z <- list(4, 5, 6)
 l2 <- list(x = "a", y = "z")
 ```
 
-map2
+#### map2
 
 Use para aplicar uma função em um **par de listas e retornar uma lista**.
 
@@ -211,36 +221,221 @@ map2(x,y,rep)
 
 Veja que neste exemplo, para cada elemento da lista "x", aplicamos a função rep() para replicar em número de vezes cada elemento da lista "y".
 
-O purr possui uma sintaxe, onde ao invés de termos explicitamente o nome de uma função, podemos criá-la no momento do mapeamento. Isto é conhecido como função anônima. O símbol "\~" é utilizado para estes casos. Os nomes das listas podem ser referenciados com um ".". Veja o caso abaixo:
+O purr possui uma sintaxe, onde ao invés de termos explicitamente o nome de uma função, podemos criá-la no momento do mapeamento. Para maiores detalhes veja [Atalhos para funções].
 
 ```{r}
 map2(x,y, ~ .x*.y)
 ```
 
-Ao invés de usarmos uma função que multiplicasse dois números, simplesmente declaramos uma função anônima com o "\~" e depois informamos o que esta função fará, neste caso, irá multiplicar "\*" os elementos da lista "x" pelos da lista "y".
+Ao invés de usarmos uma função que multiplicasse dois números, simplesmente declaramos uma função com o "\~" e depois informamos o que esta função fará, neste caso, irá multiplicar "\*" os elementos da lista "x" pelos da lista "y".
 
 #### map2_dbl
 
+Use para aplicar uma função em um **par de listas e retornar um vetor double**.
+
+```{r}
+map2_dbl(y, z, ~ .x / .y)
+```
+
 #### map2_int
+
+Use para aplicar uma função em um **par de listas e retornar um vetor de inteiros**.
+
+```{r}
+map2_int(as.integer(y), as.integer(z), `+`)
+```
 
 #### map2_chr
 
+Use para aplicar uma função em um **par de listas e retornar um vetor de caracteres**.
+
+```{r}
+map2_chr(l1, l2, paste, collapse = ",", sep = ":")
+```
+
 #### map2_lgl
+
+Use para aplicar uma função em um **par de listas e retornar um vetor lógico**.
+
+```{r}
+map2_lgl(l2, l1, `%in%`)
+```
 
 #### map2_dfc
 
+Use para aplicar uma função em um **par de listas e retornar um data frame agrupado por colunas**.
+
+```{r}
+map2_dfc(l1, l2,~ as.data.frame(c(.x, .y)))
+```
+
 #### map2_dfr
+
+Use para aplicar uma função em um **par de listas e retornar um data frame agrupado por linhas**.
+
+```{r}
+map2_dfr(l1, l2,~ as.data.frame(c(.x, .y)))
+```
 
 #### walk2
 
+Use esta para executar uma atividade assim como a função map2(), mas de forma **silenciosa**, ou seja, se houver mensagens de saída, elas não aparecerão. Ela também retorna a primeira lista de **entrada**. Isto ajuda em situações com o pipe ou por exemplo, quando precisamos salvar multiplos arquivos mas não queremos as mensagens de saída em nosso processo.
+
+```{r}
+walk2(l1,l2, ~c(.x,.y))
+```
+
 ### Várias listas
 
-XXXX
+O pacote purr tem um conjunto de funções similares ao map(), porém, ao invés de receber apenas uma única lista de entrada e retornar um vetor de mesmo tamanho, elas **aceitam uma lista com outras listas ou vetores (com um data frame)** e **retornam também um vetor de mesmo tamanho na saída**.
 
 ![](images/pmap.png){width="388"}
 
+Vejamos as princpais funções deste tipo:
+
+#### pmap
+
+Diagmos que temos três listas (x,y e z) e precisamos aplicar uma função à elas. Neste caso,
+
+```{r}
+pmap(list(x,y,z), sum)
+```
+
+Assim como explicado com as funções map() e map2(), temos as variantes abaixo seguindo a mesma nomenclatura para pmap, sendo que cada uma delas retornam os respectivo tipo após o \_ . Por exemplo, a pmap_dbl() funciona similar ao pmap(), porém retorna uma lista de vetores double e assim por diante.
+
+-   **pmap_dbl**
+
+-   **pmap_int**
+
+-   **pmap_chr**
+
+-   **pmap_lgl**
+
+-   **pmap_dfc**
+
+-   **pmap_dfr**
+
+-   **pwalk**
+
 ### Listas e índices
 
-XXXX
+O pacote purr tem um conjunto de funções similares ao map(), porém, ao invés de receber apenas uma única lista de entrada e retornar um vetor de mesmo tamanho, elas **aplicam uma função para cada elemento e seu índice**.
+
+Usamos o símbolo \~ para declarar uma fórmula, .x para acessar os valores dos elementos e .y para acessar o índice do elemento.
 
 ![](images/imap.png){width="381"}
+
+#### imap
+
+```{r}
+imap(y, ~paste0(.y, ": ", .x))
+```
+
+Assim como explicado com as funções map() e map2(), temos as variantes abaixo seguindo a mesma nomenclatura para imap, sendo que cada uma delas retornam os respectivos tipo após o \_ .
+
+Por exemplo, a imap_dbl() funciona similar ao imap(), porém retorna uma lista de vetores double e assim por diante.
+
+-   **imap_dbl**
+
+-   **imap_int**
+
+-   **imap_chr**
+
+-   **imap_lgl**
+
+-   **imap_dfc**
+
+-   **imap_dfr**
+
+-   **iwalk**
+
+## Atalhos para funções
+
+Até o momento, na maioria dos casos, declaramos o nome da função durante o processo de mapeamento, mas o pacote purr possui alguns atalhos para faciliar este processo. Também não mencionamos, mas as funções vistas até aqui, não aceitam apenas **funções**, mas também **fórmulas** ou **vetores**.
+
+Temos atalhos de funções para cenários de uma, duas, várias e listas e índices.
+
+-   Atalho para **Uma Lista**, por exemplo, usando map() ou suas derivações:
+
+Use **\~.** para passar um argumento para a função:
+
+```{r}
+    map(y, ~.+2)
+```
+
+O atalho acima, é o mesmo que declararmos uma função x por exemplo:
+
+```{r}
+    map(y,function(x) x+2)
+```
+
+-   Atalho para **Duas Listas**, por exemplo, usando map2() ou suas derivações:
+
+Use \~.x.y para passar dois argumentos:
+
+    ```{r}
+    map2(y,z,~.x+.y)
+    ```
+
+O atalho acima, seria o mesmo que declararmos uma função passando dois argumentos como:
+
+    ```{r}
+    map2(y,z,function(a,b) a+b)
+    ```
+
+-   Atalho para **Várias Listas**, por exemplo, usando pmap() ou suas derivações:
+
+Use \~..1 ..2 ..3 etc para passar multiplos argumentos para a função sem declará-la:
+
+    ```{r}
+    pmap(list(x,y,z), ~..3 + ..1 - ..2)
+    ```
+
+O atalho acima, seria o mesmo que declararmos uma função com três argumentos
+
+    ```{r}
+    pmap(list(x,y,z), function(a,b,c) c+a-b)
+    ```
+
+-   Atalho para **Listas e Índices**, por exemplo, usando imap() ou suas derivações:
+
+Use \~ .x .y , sendo que .x retorna o valor da lista e .y o valor do índice.
+
+    ```{r}
+    imap(list(x, y, z), ~paste0(.y, ": ", .x))
+    ```
+
+O atalho acima, retornou \<índice\>:\<valor\>
+
+## Acessando os elementos
+
+Podemos usar uma string ou um inteiro com qualquer função map para indexar elementos das listas por nome ou posição.
+
+Vejamos um exemplo. Para obter o **segundo** valor de cada elemento na lista "l1", podemos usar
+
+    ```{r}
+    map(l1, 2)
+    ```
+
+O código acima, seria o mesmo que escrever:
+
+    ```{r}
+    map(l1, function(x)x[[2]])
+    ```
+
+## Trabalhando com Listas
+
+### Filtros
+
+### Índices
+
+### Formas
+
+### Modificações
+
+### Combinações
+
+### Reduções
+
+### Colunas de Lista
+
