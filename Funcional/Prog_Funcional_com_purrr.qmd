@@ -367,41 +367,50 @@ O atalho acima, é o mesmo que declararmos uma função x por exemplo:
     map(y,function(x) x+2)
 ```
 
+Apenas para ilustrar as possibildades, digamos que precisemos encurtar os nomes dos filmes de starwars que cada personagem participou. Para isto podemos fazer algo como:
+
+```{r}
+sw_trunc <- 
+  map(starwars$films, ~str_trunc(., width=15, side="right")) |> 
+  set_names(starwars$name) 
+sw_trunc[1:3]
+```
+
 -   Atalho para **Duas Listas**, por exemplo, usando map2() ou suas derivações:
 
 Use \~.x.y para passar dois argumentos:
 
-    ```{r}
+```{r}
     map2(y,z,~.x+.y)
-    ```
+```
 
 O atalho acima, seria o mesmo que declararmos uma função passando dois argumentos como:
 
-    ```{r}
+```{r}
     map2(y,z,function(a,b) a+b)
-    ```
+```
 
 -   Atalho para **Várias Listas**, por exemplo, usando pmap() ou suas derivações:
 
 Use \~..1 ..2 ..3 etc para passar multiplos argumentos para a função sem declará-la:
 
-    ```{r}
+```{r}
     pmap(list(x,y,z), ~..3 + ..1 - ..2)
-    ```
+```
 
 O atalho acima, seria o mesmo que declararmos uma função com três argumentos
 
-    ```{r}
+```{r}
     pmap(list(x,y,z), function(a,b,c) c+a-b)
-    ```
+```
 
 -   Atalho para **Listas e Índices**, por exemplo, usando imap() ou suas derivações:
 
 Use \~ .x .y , sendo que .x retorna o valor da lista e .y o valor do índice.
 
-    ```{r}
+```{r}
     imap(list(x, y, z), ~paste0(.y, ": ", .x))
-    ```
+```
 
 O atalho acima, retornou \<índice\>:\<valor\>
 
@@ -411,15 +420,15 @@ Podemos usar uma string ou um inteiro com qualquer função map para indexar ele
 
 Vejamos um exemplo. Para obter o **segundo** valor de cada elemento na lista "l1", podemos usar
 
-    ```{r}
+```{r}
     map(l1, 2)
-    ```
+```
 
 O código acima, seria o mesmo que escrever:
 
-    ```{r}
+```{r}
     map(l1, function(x)x[[2]])
-    ```
+```
 
 ## Trabalhando com Listas
 
@@ -645,18 +654,184 @@ set_names(y, toupper)
 ```
 
 ### Modificações
+
 O pacote purr possui uma série de funções para modificar elementos de uma lista. Vejamos algumas delas:
 
 #### modify
 
+Use para aplicar uma função à cada elemento de uma lista. Ela é similar à função map(), porém, diferente do map() que retorna uma lista ou um tipo específico quando utilizamos suas variantes (map_dbl, map_int, etc), a função modify retorna sempre o tipo do bjeto recebido (uma lista ou um vetor atômico).
+
+Por exemplo, ao passar uma lista para a função, assim como a função map(), elá irá aplicar uma função ou fórmula e retornará uma lista de mesmo tamanho:
+
+```{r}
+modify(x, ~.+2)
+```
+
+Se passarmos um vetor de inteiros, ela aplicará uma função e retornará um vetor de mesmo tamanho de inteiros:
+
+```{r}
+modify (mtcars$wt, ~.-2)
+```
+
 #### modify_at
+
+Use para modificar um elemento definido por seu índice ou nome.
+
+```{r}
+modify_at(x, "b", ~.*-1)
+```
 
 #### modify_if
 
+Use para modificar o(s) elemento(s) que passam por um teste lógico. Neste exemplo, iremos definir uma fórmula que testa se o valor máximo de um elemento é maior que 15. Para todos os elementos que passarem neste teste, iremos multiplicá-los por -1.
+
+```{r}
+modify_if(x, ~max(.)>15, ~.*-1)
+```
+
 #### modify_depth
+
+Use para aplicar uma função a cada elemento de uma lista que está à uma certa profundidade (certo nível). Em geral, utilizamos quando temos listas aninhadas (com outras listas dentro).
+
+No exemplo abaixo, iremos retornar o maior valor, mas somente do terceiro nível da lista. Como temos apenas um elemento neste nível (lista_mais_profunda\[\[1\]\]\[\[4\]\]), apenas este será usado para obter o maior valor atraveś da função max().
+
+```{r}
+modify_depth(lista_mais_profunda, 3, ~max(.))
+```
+
+::: callout-note
+A função map() tem variações como map_at() e map_if() que fazem o mesmo que as modify_at ou modify_if, porém retornando lista.
+:::
 
 ### Combinações
 
+O pacote purr possui uma série de funções para combinar elementos de diversas listas. Vejamos algumas delas:
+
+#### append
+
+Use para adicionar valores ao final de uma lista.
+
+```{r}
+append (x, list(seq(55:60),66,c("aaa", "zzz")))
+```
+
+::: callout-tip
+Use o argumento **after=** para especificar o índice a partir de onde os valores serão adicionados.
+:::
+
+#### prepend
+
+Use para adicionar valores ao começo da lista.
+
+```{r}
+prepend(x , list(d = 1))
+```
+
+::: callout-tip
+Use o argumento **before=** para determinar o índice ao qual iremos adicionar os valores antes.
+:::
+
+#### splice
+
+Use para combinar objetos em uma lista única.
+
+```{r}
+splice (x, "nova", c("a", "b"), list(seq(100:110)))
+```
+
 ### Reduções
 
+O pacote purr tem uma algumas funções para reduzir uma lista aplicado funções de forma recursivas. Vejamos algumas:
+
+#### reduce
+
+Use para reduzir uma lista em um único valor, aplicando uma função binária. Uma função binária, recebe dois valores e retorna apenas um valor.
+
+Por exemplo, utilziando nossa lista "x", iremos reduzí-la a um única valor, pegando o valor do primeiro e segundo elementos, pegando seu retorno, aplicando a mesma função com este resultado e o terceiro elemento, e assim por diante;
+
+```{r}
+# func(a,b) -- res1 --> func(res1, c) -- res_final
+x
+
+reduce (x, sum)
+
+```
+
+#### reduce2
+
+Use para reduzir uma lista em um único valor, aplicando uma função ternária, ou seja, receber duas listas ou vertores e aplica uma função que recebe três argumentos de forma recursiva.
+
+Para este exemplo iremos criar uma função ternãria chamada paste2. Esta função simplesmente recebe três argumentos, concatena usando a função paste e retorna uma valor.
+
+```{r}
+paste2 <- function(x, y, sep = ".") paste(x, y, sep = sep)
+```
+
+Através da função reduce2, podemos aplicar nossa função **paste2** e fazermos sua aplicação de forma recursiva através das duas listas de entrada "x" e "y".
+
+::: callout-important
+A segunda lista ou vetor de entrada (.y) deve ter um elemento a menos que o primeiro vertor (.x)
+:::
+
+```{r}
+reduce2 (x, c("-", "--"), paste2)
+```
+
+#### accumulate
+
+É similar a função **reduce**(), porém ela mostra o resultado de cada iteração.
+
+```{r}
+x
+
+accumulate (x, sum)
+```
+
+#### accumulate2
+
+```{r}
+accumulate2 (x, c("-", "--"), paste2)
+```
+
+É similar a função **reduce2**(), porém ela mostra o resultado de cada iteração.
+
 ### Colunas de Lista
+
+Colunas de listas, são colunas em um data frame onde cada elemento é uma lista ou vetor ao invés de um vetor atômico (coluna tipo inteiro ou caractere, por exemplo).
+
+Para maior detalhes sobre este tema, veja na seção sobre o pacote TIDYR:
+
+[../Organizacao/Organizacao_de_dados_com_tidyr.html#dados-aninhados](../Organizacao/Organizacao_de_dados_com_tidyr.html#dados-aninhados)
+
+Manipulamos colunas de listas como uma coluna qualquer usando funções dso pacotes dplyr como **mutate**() ou **transmute**().
+
+Usamos função do purr como map() para manipular os elementos dentro de cada lista da coluna.
+
+Como cada elemento retornado pelas principais funções do purr como map(), map2() e pmap(), é uma lista, ao criar uma nova coluna em um data frame, ela será uma coluna do tipo lista.
+
+Vejamos alguns exemplos:
+
+```{r}
+sw_ship <- 
+  starwars  |> 
+  transmute(name = name, 
+            ships = map2(vehicles, starships, append)) 
+sw_ship
+```
+
+Neste exemplo, usamos a função append() para juntar duas listas e aplicamos esta função a cada elemento destas listas através da função map(). O retorno desta iteração é uma lista que será colocada em uma nova coluna da tabela chamada "ships" contendo todos os transportes de cada personagem.
+
+Podemos usar a função unnest() do pacote tidyr para extrair os veículos (elementos da coluna de lista) de cada personagem.
+
+```{r}
+sw_ship |> unnest(ships)
+```
+
+Usando as funções derivadas de map() como map_int() e map_chr() retornar um vetor atômico e consequentemente a coluna a ser criada em um dataframe já será deste mesmo tipo. Veja um exemplo:
+
+```{r}
+starwars |> 
+  transmute (name = name,
+             n_filmes = map_int(films, length))
+```
+Neste caso, a coluna "n_filmes" já é do tipo inteiro, pois a função map_int já retorna um vertor deste tipo. Neste exemplo, usamos a função length para obter o tamanho de cada vetor e usamos a map_int para iterar por toda a coluna de lista "films", obtendo o número de filmes que cad personagem participou.
