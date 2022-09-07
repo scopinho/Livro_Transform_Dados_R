@@ -1,7 +1,5 @@
 # Programação Funcional com PURRR
 
-## EM CONSTRUÇÂO !!!!
-
 ## Introdução
 
 A seguir temos uma série de facildades que o pacote PURRR do R trás para trabalharmos com listas, funções e um paradigma de programação funcional.
@@ -37,9 +35,9 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 Programação funcional é um paradigma de programação onde aplicações são construídas aplicando uma composição de funções. É um paradigma de programação declarativa, onde definições de funções são árvores de expressão que mapeam um valor para outro valor, ao invés de comandos imperativos que mudam o estado do programa.
 
-Para tentar deixar este tema mais simplificado, vamos imaginar um cenário bem simples. Você já está familiarizado com algumas funções do R e decide começar a utilizá-lo. Após um certo tempo, chegará a conclusão que muitas vezes ao trabalhar com dados, precisamos utilizar a mesma função com alguns parêmtros diferentes para concluirmos nossa análise.
+Para tentar deixar este tema mais simplificado, vamos imaginar um cenário bem simples on você já está familiarizado com algumas funções do R e decide começar a utilizá-lo. Após um certo tempo, chegará a conclusão que muitas vezes ao trabalhar com dados, precisamos utilizar a mesma função com alguns parêmtros diferentes para concluirmos nossa análise.
 
-Dentro dessa ideia básica, digamos que precise da **média e desvio padrão** da variável peso (**wt**) da base de dados **mtcars**:
+Dentro dessa ideia básica, digamos que precise da **média e valor máximo** da variável peso (**wt**) da base de dados **mtcars**:
 
 ```{r}
 mtcars
@@ -52,7 +50,7 @@ mean (mtcars$wt)
 sd (mtcars$wt)
 ```
 
-Depois, você acaba precisando da **média** e **desvio padrão** para outra variável, digmos potencia (**hp**) e depois para consumo (**mpg**).
+Depois, você acaba precisando da **média** e **valor áximo** para outra variável, digmos potencia (**hp**) e depois para consumo (**mpg**).
 
 ```{r}
 mean (mtcars$hp)
@@ -61,13 +59,13 @@ mean (mtcars$mpg)
 sd (mtcars$mpg)
 ```
 
-Veja que com simples funções como estas de média (mean) e desvio padrão (sd), seu código já está ficando **repetitivo** e com várias **replicações**.
+Veja que com simples funções como estas de média (mean) e valor máximo (max), seu código já está ficando **repetitivo** e com várias **replicações**.
 
 É exatamente para este e alguns outros desafios, que o pacote purr vem ajudar. Ele, entre outras coisas, ajuda na redução de linhas similares de código, aplicando funções à conjuntos de dados, diminuindo as replicações de código e o deixando com maior entendimento.
 
 ## Mapeando funções
 
-No pacote purrr, existem diversas funções que ajudam a **mapear** outras funções.
+No pacote purrr, existem diversas funções que ajudam a **mapear** outras funções, onde ao receber uma, duas ou mais listas, iremos aplicar a mesma função para cada uma delas. Veremos à seguir como devemos proceder para estes cenários.
 
 ### Uma lista
 
@@ -77,24 +75,24 @@ Então, em resumo, a função map, recebe uma lista de valores, aplica um funç�
 
 ![](images/map.png)
 
-Veja como ficaria nosso exemplo das **médias** e **desvio padrão** com a função **map**():
+Veja como ficaria nosso exemplo das **médias** e **valor máximo** com a função **map**():
 
 ```{r}
 #Cria uma lista para a entrada
-lista <- list(wt=mtcars$wt, hp=mtcars$hp, mpg=mtcars$mpg)
+lista <- list("wt"=mtcars$wt, "hp"=mtcars$hp, "mpg"=mtcars$mpg)
 
 #Cria um mapeamento da lista e a função que iremos executar para cada elemento da lista.
 
 media <- map(lista, mean)
-desv_padrao <- map(lista, sd)
+maximo <- map(lista, max)
 ```
 
-Veja que se precisarmos a fazer a média e desvio padrão para 10 novas variáveis, precisamos apenas incluí-las na lista e nenhuma outra alteração no código seria necessária.
+Veja que se precisarmos a fazer a **média** e **valor máximo** para 10 novas variáveis, precisamos apenas incluí-las na lista e nenhuma outra alteração no código seria necessária.
 
 Agora podemos juntar ambas as listas em um data frame para uma melhor visualização:
 
 ```{r}
-bind_rows(media, desv_padrao) |> mutate (tipo = c("media", "sd"), .before = 1) #Esta linha é apenas para agrupar em um data frame e mostrar a saída. O mapeamento já ocorreu nas linhas anteriores.
+bind_rows(media, maximo) |> mutate (tipo = c("media", "maximo"), .before = 1) #Esta linha é apenas para agrupar em um data frame e mostrar a saída. O mapeamento já ocorreu nas linhas anteriores.
 ```
 
 Espero que até aqui já dê para ter uma idéia do poder do uso de funções mapeadas. Iremos ver agora diversos "sabores" desta idéia para apenas uma lista de entrada.
@@ -425,17 +423,240 @@ O código acima, seria o mesmo que escrever:
 
 ## Trabalhando com Listas
 
+Como vimos na função map(), map2(), pmap(), imap(), a estrutura de lista é essencial, pois é a entrada e saída destas funções, por isso, o pacote purr possui diversas funções que permitem manipular listas, com filtrar, remodelar, combinar, modificar e reduzí-las. Veremos a seguir diversas destas funções.
+
 ### Filtros
+
+#### keep
+
+Use para manter os elementos que passam em um teste lógico. Por exemplo, em nossa lista "x", temos 3 elementos.
+
+```{r}
+x
+```
+
+Digamos que precisamos manter na lista, apenas os vetores que tem a o valor máximo maior que 15. Para isso, podemos fazer:
+
+```{r}
+keep (x, function(x) max(x)>15)
+```
+
+Veja que apenas os dois últimos elementos de "x" passaram pelo teste (max \>15) e por isso, foram retornados pela função.
+
+Se quiser fazer o oposto, ou seja, ao invés de retornar os items que passaram pelo teste, manter os que não passaram, podemos usar a função discard().
+
+```{r}
+discard (x, function(x) max(x)>15)
+
+```
+
+Se usarmos o atalho para função como visto anteriormente, poderíamos reescrever o código anteior como:
+
+```{r}
+discard (x, ~max(.)>15)
+```
+
+#### compact
+
+Use para excluir elementos em branco. Por exemplo, digamos que temos uma lista "x_na" que possui 7 elementos, sendo que quarto é nulo:
+
+```{r}
+x_nulo <- splice(x, NULL, y)
+x_nulo
+```
+
+Usando a função compact() iremos remover os elementos ausentes:
+
+```{r}
+compact(x_nulo)
+```
+
+#### head_while
+
+Use para retornar os elementos do topo da lista, até encontrar o primeiro que não passa no teste lógico. No exemplo a seguir, iremos obter os valores do topo da lista até que um valor não passe no teste lógico, neste caso, não passe no teste de não ser numérico. Portanto, ao encontrar o elemento nulo, ele irá passar e retornar os elementos do topo encontrados até o momento.
+
+```{r}
+head_while(x_nulo, function (x) is.numeric(x))
+```
+
+Para fazer o mesmo processo, porém pegar os elementos do fim da lista, ao invés do topo use a função tail_while(). Por exemplo, quando precisamos obter os elementos do fim da lista, até encontrarmos um valor que não tenho mais que 1 caractere.
+
+```{r}
+tail_while(x_nulo, ~length(.<2))
+```
+
+#### detect
+
+Use para encontrar o primeiro elemento que passa no teste lógico. Usamos os argumentos "**dir=**" para definir se queremos buscar do início da lista até o fim (**forward**) (padrão) ou o inverso (**backward**). No exemplo a seguir, iremos encontrar o elemento que tem o valor máximo menor que 15, mas varrendo a lista de baixo para cima:
+
+```{r}
+detect (x_nulo, ~max(.)<15, dir="backward")
+```
+
+::: callout-tip
+Se quisermos obter o índice do elemento ao invés dos valores do elemento, podemos usar a função **detect_index**()
+:::
+
+```{r}
+detect_index(x_nulo, ~max(.)<15)
+```
+
+#### every
+
+Use para verificar se **todos os elementos** da lista passam no teste lógico.
+
+```{r}
+every(x_nulo, ~max(.)<15)
+```
+
+#### some
+
+Use para verificar se **algum elemento** da lista passam no teste lógico.
+
+```{r}
+some(x_nulo, ~max(.)<15)
+```
+
+#### none
+
+Use para verificar se **nenhum elemento** da lista passam no teste lógico.
+
+```{r}
+none(x_nulo, ~max(.)<15)
+```
+
+#### has_element
+
+Use para verificar se uma lista tem determinado elemento.
+
+```{r}
+elemento <- 2
+has_element(x_nulo, elemento)
+```
+
+#### vec_depth
+
+Use para obter a profundidade (número de níveis dos índices) de uma lista. Para exemplificar melhor, vamos criar uma lista com outras listas dentro:
+
+```{r}
+#Criamos uma lista "lista_profunda" que tem como primeiro elemento a lista "x" e como segundo elemento a lista "y".
+
+lista_profunda <- list(x, y)
+vec_depth(lista_profunda)
+
+# Se adicionarmos uma outra lista na lista "x", teremos um nível a mais:
+
+x_com_sublista <- append(x, list(list(1:5)))
+lista_mais_profunda <- list(x_com_sublista, y)
+vec_depth(lista_mais_profunda)
+```
+
+::: callout-note
+Temos sempre nível + 1, pois ele conta o nível 0 que é da própria lista.
+:::
 
 ### Índices
 
-### Formas
+O pacote purr tem uma série de funções para identificar elementos de uma lista, definí-los e/ou alterá-los por este índice. Vejamos algumas:
+
+#### pluck
+
+Use para selecionar um elemento por nome ou índice.
+
+```{r}
+pluck(x, 2)
+```
+
+Neste caso, usamos a função pluck para obter o elemento no índice 2. Vamos agora dar nome aos elementos da lista "x", usando a função **set_names**() do purr e depois obter o memos elemento por nome:
+
+```{r}
+x <- set_names(x, c("a", "b", "c"))
+pluck(x, "b")
+```
+
+#### assign_in
+
+Use para definir um **valor ao elemento** de acordo como a seleção feita na função **pluck**()
+
+```{r}
+assign_in(x, "b", 5)
+```
+
+#### modify_in
+
+Use para aplicar uma função de modificação nos valores do elemento selecionado como na função **pluck**().
+
+```{r}
+modify_in(x, "b", log)
+```
+
+### Remodelagem
+
+O pacote purr possui uma série de funções para remodelar a forma de uma lista. Vejamos algumas delas:
+
+#### flatten
+
+Use para remover um nível de índice (profundidade) de uma lista. Ver também a função [vec_depth] para obter o número de profundidade de uma lista.
+
+```{r}
+flatten (lista_profunda)
+```
+
+#### array_tree
+
+Use para transformar um array (estrutura de uma ou mais dimensão que contém o mesmo tipo de dados) em uma lista. É útil para permitir ouso de arrays em funções com as do purr, que aceitam listas.
+
+```{r}
+meu_array <- array(1:3, c(2,4))
+array_tree(meu_array)
+```
+
+#### cross2
+
+Use para gerar as combinações possíveis entre os elementos duas listas. Neste caso, iremos gerar um elemento de saída com o primeiro elemento de x e o primeiro de y. Depois iremos ter o segundo elemento contendo o primeiro elemento de x e segundo de y e assim por diante.
+
+```{r}
+cross2 (x,y)
+```
+
+::: callout-tip
+Para combinar três listas usando a função **cross3**(). Para mais listas, usamos a função **cross_df**().
+:::
+
+#### transpose
+
+Use para transpor (mudar de linhas para colunas) a ordem dos índices em uma lista muti-nível:
+
+```{r}
+transpose(lista_profunda)
+```
+
+#### set_names
+
+Use para definir nomes de um vetor/lista diretamente ou atraveś de uma função:
+
+```{r}
+y <- set_names (y, c("a", "b", "c"))
+y
+
+set_names(y, letters[4:6])
+
+set_names(y, toupper)
+```
 
 ### Modificações
+O pacote purr possui uma série de funções para modificar elementos de uma lista. Vejamos algumas delas:
+
+#### modify
+
+#### modify_at
+
+#### modify_if
+
+#### modify_depth
 
 ### Combinações
 
 ### Reduções
 
 ### Colunas de Lista
-
