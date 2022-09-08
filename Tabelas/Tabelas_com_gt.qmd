@@ -230,18 +230,28 @@ gt_tbl
 Como movemos a coluna "date" para a área de resumo, a primeira coluna referenciada pela função cells-body() é a coluna "open".
 :::
 
-tab_row_group
+#### tab_row_group
 
-Podemos agrupar linhas em grupos utilizando a função tab_row_group. Veja este exemplo onde criaremos os grupos de forma manual.
+Podemos agrupar linhas em grupos utilizando a função **tab_row_group**(). Veja este exemplo onde criaremos dois grupos de forma manual. O primeiro referenciando os índices das linhas e o outro usando a função auxilar "contains()" para referenciar as linhas pelos nomes:
 
 ```{r}
 gt_tbl |> 
   tab_row_group(
     label = "5 últimos dias",
     rows = 1:5
-  )
-# tab_row_group(
-#   label = "Demais dias do período",
-#   rows = c(seq(ymd("2010-12-23"), ymd("2010-12-01")))
-# )
+  ) |> 
+tab_row_group(
+  label = "Demais dias do período",
+  rows = contains(
+    as.character.Date(
+    c(seq.Date(from = as.Date("2010-12-16"), 
+               to = as.Date("2010-12-23"), 
+               by= "day"))))
+)
 ```
+
+::: callout-tip
+Um outro jeito de utilizar os grupos de linhas, é agrupando antes na tabela de dados. Se tivéssemos em nossa tabela de dados uma coluna que identificasse os último 5 dias do período e os demais dias, poderíamos informá-la para a função gt() através do argumento "**groupname_col =**" e elas seriam automaticamente adicionadas à area de resumo. Com esta abordagem, **não** precisaríamos definí-las usando **tab_row_group**().
+:::
+
+## Título de colunas
