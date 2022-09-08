@@ -1,0 +1,247 @@
+# Criação de Tabelas com GT
+
+## Introdução
+
+A seguir temos vários exemplos de criação de tabelas utilizando o pacote GT do R. Este é um pacote muito flexível para gerar diversos tipos de tabelas. Diferente do que vimos até aqui, o termo **tabela**, não diz respeito somente à tabela de dados, mas sim, como o produto final da visualização de alguns dados. São como as tabelas que vemos em artigos científicos ou nos relatórios ou jornais.
+
+::: callout-note
+Apesar de não haver ainda uma Folha de Referência para este pacote, entendemos a criação de tabelas, assim como os gráficos ajudam na visualização de dados. Apesar da visualização de dados não ser especificamente parte das etapas de transformação e manipulação de dados, acreditamos ser importante um conhecimento básico sobre o tema, pois muitas vezes, para explicarmos aquilo que estamos transformando ou manipulando, o fazemos de forma resumida para melhor compreensão.
+:::
+
+Para saber mais sobre este pacote, acesse:
+
+<https://cran.r-project.org/package=gt>.
+
+::: callout-warning
+Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+
+<https://education.rstudio.com/learn/beginner/>.
+:::
+
+Para os exemplos, iremos carregar os seguintes pacotes:
+
+-   **tidyverse**
+
+-   **gt**
+
+-   **glue**
+
+-   **lubridate**
+
+```{r}
+#| echo: true
+library (tidyverse)
+library (gt)
+library (glue)
+library (lubridate)
+```
+
+## Anatomia de uma tabela
+
+O pacote **gt** segue uma filosofia similar ao pacote ggplot2 para gráficos, ou seja, criamos um objeto gt a partir de uma tabela de dados e atraveś de camadas que iremos complementando ou alterando até chegar no resultado final. A saída pode ser em formato HTML, RTF ou LaTex.
+
+Para este pacote, uma tabela possui as seguintes partes:
+
+![](images/gt-table-01.png){width="576"}
+
+## Dados
+
+O pacote GT vem com alguns conjuntos de dados que iremos utilizar para demonstrar algumas das funcionnalidades deste pacote. Iremos trabalhar com a tabela chamada "**sp500"**.
+
+```{r}
+# Este conjunto de dados possui entradas diárias da bolsa S&P 500 de 1950 até 2015
+sp500
+```
+
+Para gerar uma tabela com o pacote gt, basta termos um data frame e passarmos como entrada para a função gt(). Iremos filtrar apenas os dias da segunda quinzena de Dezembro de 2010
+
+```{r}
+#Filtrando dez de 2010
+sp500a <- sp500 |> filter(date <= "2010-12-31" & date > "2010-12-15" )  
+
+#Criando o objeto gt
+sp500a |> gt()
+
+```
+
+Nada mal para uma simples função, não é mesmo?
+
+Mas em geral, as tabelas de relatórios precisam de alguns ajustes.
+
+## Cabeçalho e Rodapé
+
+Vamos começar com o cabeçalho:
+
+#### gt_header
+
+Use esta função para definir o Título e o Sub-Título da tabela:
+
+```{r}
+sp500a |> 
+  gt() |> 
+  tab_header(title = "SP&500 - 2a Quinzena de Dezembro de 2010",
+             subtitle = "Operações diárias da SP&500 durante a 2a Quinzena de Dezembro de 2010")
+```
+
+::: callout-tip
+Você pode estilizar o texto da área de cabeçalho usando marcadores (markdown) com a função md()
+:::
+
+```{r}
+gt_tbl <- 
+  sp500a |> 
+  gt() |> 
+  tab_header(title = md("**SP&500 - 2a Quinzena de Dezembro de 2010**"),
+             subtitle = md("Operações *diárias* da SP&500 durante **2a Quinzena** de *Dezembro de 2010*"))
+
+gt_tbl
+```
+
+#### tab_source_note
+
+Na área de rodapé, podemos descrever a Fonte dos dados. Veja o exemplo:
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_source_note(
+    source_note = md("**Fonte**: Iannone R, Cheng J, Schloerke B, Hughes E (2022). gt: Easily Create Presentation-Ready Display Tables. *https://gt.rstudio.com/, https://github.com/rstudio/gt*")
+  )
+
+gt_tbl
+```
+
+#### tab_footnotes
+
+Use para adicionar **notas** **de rodapé**. Podemos usar as função auxiliar **cell_body**() com argumento **location** para definir onde a nota de rodapé será referenciada.
+
+A função **cell_body**() possui dois argumento (columns e rows) (colunas e linhas). Para cada um desses argumento podemos passar:
+
+1.  Um vetor de colunas e linhas
+
+2.  Um vetor de colunas e índices de linhas
+
+3.  Títulos das colunas ou linhas usando c()
+
+4.  Uma função auxiliar seleção (starts_with(), ends_with(), contains(), matches() one_of() ou everything())
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_footnote(
+    footnote = "Último dia do mês",
+    location = cells_body(columns = date, rows = 1)
+  )
+
+gt_tbl
+```
+
+Vejamos um exemplo um pouco mais complexo adicoinando nota de rodapé.
+
+Vamos usar a função para dinamicamente encontrar o dia que a bolsa abriu com o maior valor e colocar uma nota de rodapé neste dia. Há formas mais simples de fazer esta operação, mas vamos deixá-las assim por ser mais didático.
+
+```{r}
+abertura <- 
+  sp500a |> arrange(desc(open)) |> pull(open) 
+
+gt_tbl <- gt_tbl |> 
+  tab_footnote(
+    footnote = md("**Maior** abertura do mês"),
+    location = cells_body(columns = open, rows = open == max(abertura))
+  ) |> 
+  tab_footnote(
+    footnote = md("**Menor** abertura do mês"),
+    location = cells_body(columns = open, rows = open == min(abertura))
+  )
+
+gt_tbl
+```
+
+## Resumo
+
+A área de **resumo** (*stub*) é a área ao lado esquerdo da tabela que contém **títulos das linhas** e pode conter o t**ítulo do grupo de linhas** ou **título do resumo**. Estas sub-partes podem ser agrupadas em sequências de grupo de linhas.
+
+O **topo do resumo** fornece a localização para um título que descreve o resumo.
+
+O resumo é uma área opcional, já que temos casos onde ele pode não ser útil. Por exemplo, na tabela apresentada até aqui, não temos a seção de resumo definida.
+
+Um jeito fácil de criar uma área de resumo é usar o argumento "**rownname_col**=" da função gt():
+
+```{r}
+gt_tbl <- sp500a |> 
+  gt(rowname_col = "date")
+
+gt_tbl
+```
+
+::: callout-note
+Notou que a datas à esquerda da tabela foram movidas para uma área nova fora das colunas? Esta é a área de resumo.
+:::
+
+#### tab_stubhead
+
+Nós podemos aplicar o título para a área de resumo:
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_stubhead(label = "Dias no Período")
+
+gt_tbl
+```
+
+Vamos juntar tudo que vimos até o momento com o código abaixo:
+
+```{r}
+abertura <-
+  sp500a |> arrange(desc(open)) |> pull(open)
+
+gt_tbl <-
+  sp500a |>
+  gt(rowname_col = "date") |>
+  
+  tab_header(title = md("**SP&500 - 2a Quinzena de Dezembro de 2010**"),
+             subtitle = md("Operações *diárias* da SP&500 durante **2a Quinzena** de *Dezembro de 2010*")) |> 
+  
+  tab_source_note(
+    source_note = md("**Fonte**: Iannone R, Cheng J, Schloerke B, Hughes E (2022). gt: Easily Create Presentation-Ready Display Tables. *https://gt.rstudio.com/, https://github.com/rstudio/gt*")
+  ) |> 
+  
+  tab_footnote(
+    footnote = "Último dia do mês",
+    location = cells_body(columns = date, rows = 1)
+  ) |> 
+  
+  tab_footnote(
+    footnote = md("**Maior** abertura do mês"),
+    location = cells_body(columns = open, rows = open == max(abertura))
+  ) |>
+  
+  tab_footnote(
+    footnote = md("**Menor** abertura do mês"),
+    location = cells_body(columns = open, rows = open == min(abertura))
+  ) |> 
+  
+  tab_stubhead(label = "Dias no Período")
+
+gt_tbl
+
+
+```
+
+::: callout-caution
+Como movemos a coluna "date" para a área de resumo, a primeira coluna referenciada pela função cells-body() é a coluna "open".
+:::
+
+tab_row_group
+
+Podemos agrupar linhas em grupos utilizando a função tab_row_group. Veja este exemplo onde criaremos os grupos de forma manual.
+
+```{r}
+gt_tbl |> 
+  tab_row_group(
+    label = "5 últimos dias",
+    rows = 1:5
+  )
+# tab_row_group(
+#   label = "Demais dias do período",
+#   rows = c(seq(ymd("2010-12-23"), ymd("2010-12-01")))
+# )
+```

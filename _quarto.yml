@@ -37,9 +37,10 @@ book:
     chapters:
       - DataHora/Datas_e_horas_com_lubridate.qmd
       - Funcional/Prog_Funcional_com_purrr.qmd
-  - part: "Parte 4 - Gráficos"
+  - part: "Parte 4 - Gráficos e Tabelas"
     chapters:
       - Visualizacao/Visualizacao_de_dados_com_ggplot2.qmd
+      - Tabelas/Tabelas_com_gt.qmd
 
 bibliography: references.bib
 
