@@ -39,11 +39,9 @@ Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos s
 
 Apesar de comumente associarmos o termo **variável** à valores do campo da matemática, como álgebra, ela também é usado em muitos outros campos do conhecimento, como o da computação, estatística, etc.
 
-Neste livro utilizaremos o termo "**variável**" para o que é formalmente conhecida "**variável aleatória**". Em probabilidade e estatística, uma variável aleatória é submetida à aleatoriedade da entidade descrita pela variável.
+Neste livro utilizaremos o termo "**variável**" no contexto de ciência de dados e estatística. Iremos definí-la como uma característica da populução que pode ser categorizada, medida ou contada .
 
-Sem entrarmos nos detalhes, o que é relevante para os entendimento deste conteúdo é que utilizaremos o termo **variável** para representar, dentre nosso conjunto de dados, variáveis aleatórias presentes na amostra.
-
-Simplificando este entendimento, pense em uma **tabela**, com **colunas** e **linhas**. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as **variáveis são colocadas em colunas**. Já nas **linhas** da tabela, teremos o que é conhecido como casos, ou **observações**.
+Sem entrarmos em maiores detalhes e simplificando para o melhor entendimento deste conteúdo, pense em uma **tabela**, com **colunas** e **linhas**. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as **variáveis são colocadas em colunas**. Já nas **linhas** da tabela, teremos o que é conhecido como casos, ou **observações**.
 
 Apesar de não serem sinônimos, ou não representarem o mesmo objeto, utilizaremos de forma intercambiável e sem o rigor acadêmico, os termos: **coluna** e **variável** assim como **observações** e **linhas**.
 
