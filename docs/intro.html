@@ -78,6 +78,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -268,6 +287,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#folhas-de-referências" id="toc-folhas-de-referências" class="nav-link active" data-scroll-target="#folhas-de-referências">Folhas de Referências</a></li>
+  <li><a href="#variáveis-e-observações" id="toc-variáveis-e-observações" class="nav-link" data-scroll-target="#variáveis-e-observações">Variáveis e Observações</a></li>
+  <li><a href="#tipos-de-variáveis" id="toc-tipos-de-variáveis" class="nav-link" data-scroll-target="#tipos-de-variáveis">Tipos de Variáveis</a>
+  <ul class="collapse">
+  <li><a href="#qualitativas" id="toc-qualitativas" class="nav-link" data-scroll-target="#qualitativas">Qualitativas</a></li>
+  <li><a href="#quantitativa" id="toc-quantitativa" class="nav-link" data-scroll-target="#quantitativa">Quantitativa</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -321,8 +347,75 @@ Nota
 <p><em>Ao final de cada seção de código, você poderá encontrar a chamada à função <strong>gt()</strong>. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função <strong>head()</strong> para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função <strong>select()</strong> para selecionar apenas algumas colunas. A função <strong>print()</strong> também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.</em></p>
 </div>
 </div>
+<p>Ao longo das apresentações das <strong>Folhas de Resumo</strong> e respectivos capítulos sobre os pacotes, iremos lidar com nomenclaturas que são muito comuns no âmbito da ciência de dados e estatística, mas podem não ser comuns para outras áreas da ciência ou dos negócios, poranto, iremos apresentar algumas delas brevemente para que você possa acompanhar de forma mais clara os capítulos seguintes.</p>
+</section>
+<section id="variáveis-e-observações" class="level2">
+<h2 class="anchored" data-anchor-id="variáveis-e-observações">Variáveis e Observações</h2>
+<p>Apesar de comumente associarmos o termo <strong>variável</strong> à valores do campo da matemática, como álgebra, ela também é usado em muitos outros campos do conhecimento, como o da computação, estatística, etc.</p>
+<p>Neste livro utilizaremos o termo “<strong>variável</strong>” para o que é formalmente conhecida “<strong>variável aleatória</strong>”. Em probabilidade e estatística, uma variável aleatória é submetida à aleatoriedade da entidade descrita pela variável.</p>
+<p>Sem entrarmos nos detalhes, o que é relevante para os entendimento deste conteúdo é que utilizaremos o termo <strong>variável</strong> para representar, dentre nosso conjunto de dados, variáveis aleatórias presentes na amostra.</p>
+<p>Simplificando este entendimento, pense em uma <strong>tabela</strong>, com <strong>colunas</strong> e <strong>linhas</strong>. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as <strong>variáveis são colocadas em colunas</strong>. Já nas <strong>linhas</strong> da tabela, teremos o que é conhecido como casos, ou <strong>observações</strong>.</p>
+<p>Apesar de não serem sinônimos, ou não representarem o mesmo objeto, utilizaremos de forma intercambiável e sem o rigor acadêmico, os termos: <strong>coluna</strong> e <strong>variável</strong> assim como <strong>observações</strong> e <strong>linhas</strong>.</p>
+<p>Portanto, quando em alguma parte do texto, você ler algo como “<strong>a variável xyz</strong>”, pode traduzir em sua mente para algo como “<strong>a coluna xyz</strong>”. Quando ler algo como “<strong>as 10 primeiras observações</strong>” , poder traduzir para “<strong>as 10 primeiras linhas</strong>” e assim por diante.</p>
+<p>Entendemos que desta forma, o leitor mais inciantes entenderá o conceito daquilo que estamos apresentando, e o leitor mais avançado, o fará da mesma forma.</p>
+</section>
+<section id="tipos-de-variáveis" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-variáveis">Tipos de Variáveis</h2>
+<p>Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao <strong>tipo de variável</strong> que ele irá representar, vamos rever de forma resumida os tipos de variáveis aleatórias no contexto de análise de dados.</p>
+<p>Podemos categorizar as variáveis em <strong>Qualitativas</strong> ou <strong>Quantitativas</strong>. <span class="citation" data-cites="favero">(<a href="#ref-favero" role="doc-biblioref">Fávero 2021</a>)</span></p>
+<section id="qualitativas" class="level4">
+<h4 class="anchored" data-anchor-id="qualitativas">Qualitativas</h4>
+<p>Representam as características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas.</p>
+<p>As variáveis <strong>qualitativas</strong>, também poder ser classificadas em função do número de categorias em:</p>
+<ul>
+<li><p><strong>Dicotômica</strong> ou <strong>Binária</strong>: Apenas duas categorias.</p></li>
+<li><p><strong>Policotômica</strong>: Mais que duas categorias.</p></li>
+</ul>
+<p>Ou em função da escala de mensuração em:</p>
+<ul>
+<li><p><strong>Nominal</strong>: As unidades são classificadas em categorias em relação à características representadas. Sem ordem ou relação entre si. (ex: sexo)</p></li>
+<li><p><strong>Ordinal</strong>: As unidades são classificadas em categorias em relação à características representadas. Há uma ordem ou relação entre si. (ex: grau de escolaridade)</p></li>
+</ul>
+<p>Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.</p>
+<p>Em geral, variáveis <strong>qualitativas</strong> são representadas no ggplot com o tipo <strong>fatores</strong> (factors) ou <strong>caracteres</strong>(chr).</p>
+</section>
+<section id="quantitativa" class="level4">
+<h4 class="anchored" data-anchor-id="quantitativa">Quantitativa</h4>
+<p>Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.</p>
+<p>As variáveis <strong>quantitativas</strong>, também podem ser classificadas em função da escala de precisão.</p>
+<ul>
+<li><p><strong>Discreta</strong>: Assumem conjunto finito de valores, frequentemente de uma contagem (ex: número de filhos, quantidade de carros, etc)</p></li>
+<li><p><strong>Contínua</strong>: Assumem conjunto infinito de valores, frequentemente com resultado de uma mensuração (ex: peso, altura, salário, etc)</p></li>
+</ul>
+<p>Ou em função da escala de mensuração em:</p>
+<ul>
+<li><p><strong>Intervalar</strong>: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, não expressa ausência de quantidade. (ex: temperatura)</p></li>
+<li><p><strong>Razão</strong>: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: distância percorrida)</p></li>
+</ul>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Cuidado
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.</p>
+</div>
+</div>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-favero" class="csl-entry" role="doc-biblioentry">
+Fávero, Belfiore, Luiz P. 2021. <span>«Manual de Análise de Dados»</span>. <em>Comput. J.</em>, dezembro.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

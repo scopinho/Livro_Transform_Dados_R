@@ -32,3 +32,69 @@ A seguir, um exemplo de uma "**Folha de Referência**" do pacote **DPLYR**:
 ::: callout-note
 *Ao final de cada seção de código, você poderá encontrar a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas. A função **print()** também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.*
 :::
+
+Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos sobre os pacotes, iremos lidar com nomenclaturas que são muito comuns no âmbito da ciência de dados e estatística, mas podem não ser comuns para outras áreas da ciência ou dos negócios, poranto, iremos apresentar algumas delas brevemente para que você possa acompanhar de forma mais clara os capítulos seguintes.
+
+## Variáveis e Observações
+
+Apesar de comumente associarmos o termo **variável** à valores do campo da matemática, como álgebra, ela também é usado em muitos outros campos do conhecimento, como o da computação, estatística, etc.
+
+Neste livro utilizaremos o termo "**variável**" para o que é formalmente conhecida "**variável aleatória**". Em probabilidade e estatística, uma variável aleatória é submetida à aleatoriedade da entidade descrita pela variável.
+
+Sem entrarmos nos detalhes, o que é relevante para os entendimento deste conteúdo é que utilizaremos o termo **variável** para representar, dentre nosso conjunto de dados, variáveis aleatórias presentes na amostra.
+
+Simplificando este entendimento, pense em uma **tabela**, com **colunas** e **linhas**. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as **variáveis são colocadas em colunas**. Já nas **linhas** da tabela, teremos o que é conhecido como casos, ou **observações**.
+
+Apesar de não serem sinônimos, ou não representarem o mesmo objeto, utilizaremos de forma intercambiável e sem o rigor acadêmico, os termos: **coluna** e **variável** assim como **observações** e **linhas**.
+
+Portanto, quando em alguma parte do texto, você ler algo como "**a variável xyz**", pode traduzir em sua mente para algo como "**a coluna xyz**". Quando ler algo como "**as 10 primeiras observações**" , poder traduzir para "**as 10 primeiras linhas**" e assim por diante.
+
+Entendemos que desta forma, o leitor mais inciantes entenderá o conceito daquilo que estamos apresentando, e o leitor mais avançado, o fará da mesma forma.
+
+## Tipos de Variáveis
+
+Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao **tipo de variável** que ele irá representar, vamos rever de forma resumida os tipos de variáveis aleatórias no contexto de análise de dados.
+
+Podemos categorizar as variáveis em **Qualitativas** ou **Quantitativas**. [@favero]
+
+#### Qualitativas
+
+Representam as características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas.
+
+As variáveis **qualitativas**, também poder ser classificadas em função do número de categorias em:
+
+-   **Dicotômica** ou **Binária**: Apenas duas categorias.
+
+-   **Policotômica**: Mais que duas categorias.
+
+Ou em função da escala de mensuração em:
+
+-   **Nominal**: As unidades são classificadas em categorias em relação à características representadas. Sem ordem ou relação entre si. (ex: sexo)
+
+-   **Ordinal**: As unidades são classificadas em categorias em relação à características representadas. Há uma ordem ou relação entre si. (ex: grau de escolaridade)
+
+Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.
+
+Em geral, variáveis **qualitativas** são representadas no ggplot com o tipo **fatores** (factors) ou **caracteres**(chr).
+
+#### Quantitativa
+
+Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.
+
+As variáveis **quantitativas**, também podem ser classificadas em função da escala de precisão.
+
+-   **Discreta**: Assumem conjunto finito de valores, frequentemente de uma contagem (ex: número de filhos, quantidade de carros, etc)
+
+-   **Contínua**: Assumem conjunto infinito de valores, frequentemente com resultado de uma mensuração (ex: peso, altura, salário, etc)
+
+Ou em função da escala de mensuração em:
+
+-   **Intervalar**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, não expressa ausência de quantidade. (ex: temperatura)
+
+-   **Razão**: As unidades são ordenadas em relação à características mensurada e possui um unidade de constante. A origem, ou ponto zero, é única e expressa ausência de quantidade.(ex: distância percorrida)
+
+::: callout-caution
+Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
+:::
+
+#### 
