@@ -39,8 +39,6 @@ Para os exemplos, iremos carregar os seguintes pacotes:
 
 -   **googlesheets4**
 
--   **gt**
-
 -   **openxlsx**
 
 ```{r}
@@ -48,7 +46,6 @@ Para os exemplos, iremos carregar os seguintes pacotes:
 library (tidyverse)
 library (readxl)
 library (googlesheets4)
-library (gt)
 library (openxlsx)
 ```
 

@@ -31,6 +31,8 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 
 [![](images/cs-dplyr-02.png)](images/cs-dplyr-02.png)
 
+### Base de Dados
+
 Para a maioria dos exemplos utilizaremos as bases de dados **mtcars** e **starwars** provenientes do pacote **datasets e dplyr**.
 
 ::: callout-note
@@ -44,8 +46,7 @@ Para a maioria dos exemplos utilizaremos as bases de dados **mtcars** e **starwa
 ```{r}
 #| output: true
 
-mtcars |> 
-  head () 
+mtcars 
 ```
 
 ------------------------------------------------------------------------
@@ -53,10 +54,7 @@ mtcars |>
 **STARWARS**: Dados dos personagens de STAR WARS
 
 ```{r}
-starwars |> 
-  select(1:8) |> 
-  head() 
-
+starwars 
 ```
 
 ::: callout-note
@@ -71,9 +69,15 @@ Cada **variável** está em sua própria **coluna** e cada **observação** est�
 
 ![](images/tidy_data01.png)
 
-Canalização (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto. O símbolo **\|\>** ou **%\>%** podem ser utilizados para esta finalidade.
+Canalização (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto.
+
+O símbolo **\|\>** é utilizado utilizado para esta finalidade.
 
 **Exemplo**: x \|\> f(y), é o mesmo que f(x,y)
+
+::: callout-note
+O símbolo **%\>%** do pacote magrittr também faz a função similar de pipe como o \|\> do R basico, porém com algumas vantagens. Como não precisamos utilizar nada além do pipe básico, a maioria do código deste conteúdo utiliza o \|\>.
+:::
 
 ## Resumindo Observações
 
@@ -89,7 +93,7 @@ Cria um novo data-frame. Ele gera uma linha para cada combinação de grupos de 
 
 No exemplo acima, não especificamos nenhum grupo (mais na seção [Agrupando Observações]), por isso, ele retorna apenas uma linha resumindo todas as observações de mtcars. Como também especificamos a função de **mean(**), o valor retornado será a média da coluna **mpg** para todas as observações do data frame em uma única variável (coluna) chamada **média**.
 
-Outra format de se escrever o comando acima, utilizando a canalização ("pinping") descrita acima, seria:
+Outra forma de se escrever o comando acima, utilizando a canalização ("pinping") descrita acima, seria:
 
 ```{r, results= FALSE}
 mtcars |> 
@@ -126,15 +130,16 @@ Isto significa que o agrupamento só afetará o resultado de saída se utilizado
 Por exemplo, **ANTES** de agruparmos pela variável **cyl** (group_by(cyl)) temos:
 
 ```{r}
+#| output: raw
 mtcars |> 
-  as_tibble()
+  as_tibble() |> glimpse()
 ```
 
 **DEPOIS** do group_by:
 
 ```{r}
 mtcars |> 
-  group_by(cyl) 
+  group_by(cyl) |> glimpse()
 ```
 
 Veja que, exceto pela informação :

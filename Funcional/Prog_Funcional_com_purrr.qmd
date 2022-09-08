@@ -27,7 +27,7 @@ library (tidyverse)
 
 A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções encontradas na [**Folha de Referência**](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf) do purrr disponível no site do [RStudio](rstudio.com).
 
-<!-- [![](images/cs-purrr-01.png){width="518"}](images/cs-purrr-01.png) [![](images/cs-purrr-02.png){width="518"}](images/cs-purrr-02.png) -->
+[![](images/cs-purrr-01.png){width="518"}](images/cs-purrr-01.png) [![](images/cs-purrr-02.png){width="518"}](images/cs-purrr-02.png)
 
 ------------------------------------------------------------------------
 
@@ -834,4 +834,5 @@ starwars |>
   transmute (name = name,
              n_filmes = map_int(films, length))
 ```
+
 Neste caso, a coluna "n_filmes" já é do tipo inteiro, pois a função map_int já retorna um vertor deste tipo. Neste exemplo, usamos a função length para obter o tamanho de cada vetor e usamos a map_int para iterar por toda a coluna de lista "films", obtendo o número de filmes que cad personagem participou.

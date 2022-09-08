@@ -16,12 +16,9 @@ Para os exemplos, iremos carregar os seguintes pacotes:
 
 -   **tidyverse**
 
--   **gt**
-
 ```{r}
 #| echo: true
 library (tidyverse)
-library (gt)
 ```
 
 ### Exemplos da Folha de Referência
@@ -612,7 +609,7 @@ starwars |>
 ```
 
 ::: callout-tip
-Veja o pacote **purrr** para outras funções que manipulam listas.
+Veja o pacote **purrr** para outras funções que manipulam listas em [Programação Funcional](../Funcional/Prog_Funcional_com_purrr.html).
 :::
 
 Observe pelos exemplos anteriores que quando temos uma função que retorna uma lista, devemos usar a função list() para criar uma coluna de lista. Se a função retorna um valor (ex um inteiro), a coluna criada será um coluna "normal", neste caso um coluna de inteiros.

@@ -8,17 +8,16 @@ Para saber mais sobre este pacote, acesse:
 
 [https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}
 
-Para os exemplos, iremos carregar inicialmente os seguintes pacotes:
+Para os exemplos, estamos assumindo que você já possui o R instalado (e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.
 
--   **tidyverse e gt**
+O código a seguir iré carregar inicialmente o seguinte pacote:
 
-O pacote **gt** será utilizado apenas para eventualmente a formatação de tabelas, de modo a deixar a saída de alguns comandos mais clara.
+-   **tidyverse**
 
 ```{r}
 #| echo: true
 #| eval: false
 library (tidyverse)
-library (gt)
 ```
 
 ### Folhas de Referências
@@ -28,10 +27,6 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 A seguir, um exemplo de uma "**Folha de Referência**" do pacote **DPLYR**:
 
 ![](images/data-transformation-cheatsheet01.jpg){width="663"}
-
-::: callout-note
-*Ao final de cada seção de código, você poderá encontrar a chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas. A função **print()** também pode estar presente afim de apresentar o resultado de alguma linha de código relevante para o entendimento.*
-:::
 
 Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos sobre os pacotes, iremos lidar com nomenclaturas que são muito comuns no âmbito da ciência de dados e estatística, mas podem não ser comuns para outras áreas da ciência ou dos negócios, poranto, iremos apresentar algumas delas brevemente para que você possa acompanhar de forma mais clara os capítulos seguintes.
 
