@@ -70,7 +70,9 @@ Mas em geral, as tabelas de relatórios precisam de alguns ajustes.
 
 ## Cabeçalho e Rodapé
 
-Vamos começar com o cabeçalho:
+Vamos começar com o **cabeçalho**:
+
+![](images/gt-table-header-01.png)
 
 #### gt_header
 
@@ -97,9 +99,13 @@ gt_tbl <-
 gt_tbl
 ```
 
+Agora vejamos os items do **rodapé**:
+
+![](images/gt-table-footer-01.png)
+
 #### tab_source_note
 
-Na área de rodapé, podemos descrever a Fonte dos dados. Veja o exemplo:
+Na área de rodapé, podemos descrever a **Fonte** dos dados. Veja o exemplo:
 
 ```{r}
 gt_tbl <- gt_tbl |> 
@@ -159,6 +165,8 @@ gt_tbl
 
 A área de **resumo** (*stub*) é a área ao lado esquerdo da tabela que contém **títulos das linhas** e pode conter o t**ítulo do grupo de linhas** ou **título do resumo**. Estas sub-partes podem ser agrupadas em sequências de grupo de linhas.
 
+![](images/gt-table-stub-01.png)
+
 O **topo do resumo** fornece a localização para um título que descreve o resumo.
 
 O resumo é uma área opcional, já que temos casos onde ele pode não ser útil. Por exemplo, na tabela apresentada até aqui, não temos a seção de resumo definida.
@@ -178,11 +186,11 @@ Notou que a datas à esquerda da tabela foram movidas para uma área nova fora d
 
 #### tab_stubhead
 
-Nós podemos aplicar o título para a área de resumo:
+Nós podemos aplicar o **título** para a área de **resumo**:
 
 ```{r}
 gt_tbl <- gt_tbl |> 
-  tab_stubhead(label = "Dias no Período")
+  tab_stubhead(label = "Período")
 
 gt_tbl
 ```
@@ -232,26 +240,468 @@ Como movemos a coluna "date" para a área de resumo, a primeira coluna referenci
 
 #### tab_row_group
 
-Podemos agrupar linhas em grupos utilizando a função **tab_row_group**(). Veja este exemplo onde criaremos dois grupos de forma manual. O primeiro referenciando os índices das linhas e o outro usando a função auxilar "contains()" para referenciar as linhas pelos nomes:
+Podemos agrupar **linhas em grupos** utilizando a função **tab_row_group**(). Veja este exemplo onde criaremos dois grupos de forma manual. O primeiro referenciando os índices das linhas e o outro usando a função auxilar "contains()" para referenciar as linhas pelos nomes:
 
 ```{r}
 gt_tbl |> 
+  
   tab_row_group(
     label = "5 últimos dias",
     rows = 1:5
   ) |> 
-tab_row_group(
-  label = "Demais dias do período",
-  rows = contains(
-    as.character.Date(
-    c(seq.Date(from = as.Date("2010-12-16"), 
+  
+  tab_row_group(
+    label = "Demais dias do período",
+    rows = contains(
+      as.character.Date(
+      c(seq.Date(from = as.Date("2010-12-16"), 
                to = as.Date("2010-12-23"), 
                by= "day"))))
 )
 ```
 
 ::: callout-tip
-Um outro jeito de utilizar os grupos de linhas, é agrupando antes na tabela de dados. Se tivéssemos em nossa tabela de dados uma coluna que identificasse os último 5 dias do período e os demais dias, poderíamos informá-la para a função gt() através do argumento "**groupname_col =**" e elas seriam automaticamente adicionadas à area de resumo. Com esta abordagem, **não** precisaríamos definí-las usando **tab_row_group**().
+Um outro jeito de utilizar os grupos de linhas, é **agrupando antes na tabela de dados**. Se tivéssemos em nossa tabela de dados uma coluna que identificasse os último 5 dias do período e os demais dias, poderíamos informá-la para a função gt() através do argumento "**groupname_col =**" e elas seriam automaticamente adicionadas à area de resumo. Com esta abordagem, **não** precisaríamos definí-las usando **tab_row_group**().
 :::
 
-## Título de colunas
+Veja este exemplo. Iremos criar uma coluna chamada "ultimos 5 dias" atraveś de funções de manipulação de dados do pacote dplyr.
+
+```{r}
+ultimo_dia <- max(sp500a$date)
+quinto_dia_anterior <- ultimo_dia - ddays(5) 
+
+sp500a <- sp500a |> 
+  mutate(ultimos_5_dias = case_when(
+                                    date >= quinto_dia_anterior & 
+                                    date <= ultimo_dia ~ "Últimos 5 dias",
+                                    TRUE ~ "Demais dias do período"
+),) |> group_by(ultimos_5_dias)
+
+sp500a
+```
+
+Agora que temos esta nova colunas, iremos usá-la em nossa função gt() no argumento **groupname_col =**.
+
+Observe também que não precisamos da coluna que foi agrupada para gerar nossa tabela. Para demonstrar isso, usaremos a função select() para removê-la.
+
+```{r}
+abertura <-
+  sp500a |> arrange(desc(open)) |> pull(open)
+
+gt_tbl <-
+  sp500a |> 
+  select(-ultimos_5_dias) |>
+  gt(rowname_col = "date",
+     groupname_col = "ultimos_5_dias") |>
+  
+  tab_header(title = md("**SP&500 - 2a Quinzena de Dezembro de 2010**"),
+             subtitle = md("Operações *diárias* da SP&500 durante **2a Quinzena** de *Dezembro de 2010*")) |> 
+  
+  tab_source_note(
+    source_note = md("**Fonte**: Iannone R, Cheng J, Schloerke B, Hughes E (2022). gt: Easily Create Presentation-Ready Display Tables. *https://gt.rstudio.com/, https://github.com/rstudio/gt*")
+  ) |> 
+  
+  tab_footnote(
+    footnote = "Último dia do mês",
+    location = cells_body(columns = date, rows = 1)
+  ) |> 
+  
+  tab_footnote(
+    footnote = md("**Maior** abertura do mês"),
+    location = cells_body(columns = open, rows = open == max(abertura))
+  ) |>
+  
+  tab_footnote(
+    footnote = md("**Menor** abertura do mês"),
+    location = cells_body(columns = open, rows = open == min(abertura))
+  ) |> 
+  
+  tab_stubhead(label = "Dias no Período")
+
+gt_tbl
+```
+
+Veja que não precisamos de neum código na **tab_row_group** para agrupar.
+
+#### summary_rows
+
+Para adicionar **títulos de resumo** na seção de resumo, usamos a função **summary_rows**(). Pense nestas linhas, como linhas que resumem as linhas do grupo associado. Podemos usá-las, por exemplo para criar linhas de **sub-totais** ou outras informações relevantes.
+
+Vejamos este exemplo:
+
+Digamos que gostaríamos de saber a média do valor de abertura (open) e fechamento (close) da bolsa durante os último 5 dias e também para os demais períodos. Lembre-se que este foram os grupos que criamos na seção de resumo anteriormente.
+
+::: callout-tip
+Para fazer qualquer tipo de agregação para estas linhas, devemos usar mean(), sum(), min(), max() ou mais utilizando uma lista (list()).
+:::
+
+Para isto podemos fazer:
+
+```{r}
+
+gt_tbl <- gt_tbl |> 
+  summary_rows(
+    groups = c("Demais dias do período", "Últimos 5 dias"),
+    columns = c(open, close),
+    fns = list("Média" = "mean"),
+  ) 
+  
+
+gt_tbl
+```
+
+::: callout-tip
+Observe que pudemos selecionar qual a coluna aplicamos o agregador da média. Como fizemos columns = c(open, close) apenas as colunas opens foram agregadas. Podemos definir manualmente as colunas ou utilizar **funções auxiliares** como **ends_with**(), **everything**(), **starts_with**(), etc.
+:::
+
+O argumento fns recebe uma lista, e portanto podemos passar várias funções nesta lista. Por exemplo. Se ao invés da média, queremos mostrar a média e a soma de todas as colunas.
+
+::: callout-tip
+Podemos também usar **groups =TRUE** ao invés de passarmos os nomes dos grupos manualmente, para pegamros todos os grupos automaticamente.
+:::
+
+Veja com ficaria:
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  summary_rows(
+    groups = TRUE,
+    columns = everything(),
+    fns = list("Média" = "mean",
+               "Sub-total" = "sum"),
+  ) 
+  
+
+gt_tbl
+```
+
+Na lista passada para o argumento fns = , podemos passar o nome da função (ex. mean) ou usarmos fórmulas com o símbolo \~.
+
+Poderíamos fazer algo como:
+
+```{r}
+#| eval: false
+gt_tbl |> 
+  summary_rows(
+    groups = TRUE,
+    columns = everything(),
+    fns = list("Média" = ~mean(.),
+               "Sub-total" = ~sum(.)),
+  ) 
+```
+
+Para maiores informações veja a seção: [Atalhos para funções - PURRR](../Funcional/Prog_Funcional_com_purrr.html#atalhos-para-funções)
+
+#### grand_summary_rows
+
+Para adicionar **títulos de resumo geral** na seção de resumo, usamos a função **grand_summary_rows**(). Pense nestas linhas, como linhas que resumem as linhas de resumo dos do grupo associados. Podemos usá-las, por exemplo para criar linhas de **totais gerais** ou outras informações relevantes.
+
+Como temos mais que uma linha para título do resumo, podemos ainda ter uma linha agregando todos os grupos. Observe ao final da tabela as linhas de total geral adicionadas.
+
+```{r}
+gt_tbl <- gt_tbl |>
+  grand_summary_rows(
+    columns = everything(),
+    fns = list("Média" = ~mean(.),
+               "Total" = ~sum(.))
+  )
+
+gt_tbl
+```
+
+## Colunas
+
+A área de **títulos das** **colunas** é a área ao lado direito da tabela, logo abaixo do cabeçalho.
+
+![](images/gt-table-columns-01.png)
+
+Esta área, contém no mínimo os títulos das colunas, mas podemos configurá-las com outras informações, como largura, título, etc e também movê-las ou mesclá-las, ou seja, juntando duas colunas em uma.
+
+#### gt_spanner 
+
+Esta função permite mesclar colunas de forma a organizarmos melhor nossa tabela. Como exemplo, iremos mesclar as colunas "high" e "low" em uma colunas chamada "picos do dia".
+
+::: callout-tip
+Assim como no cabeçalho e outros textos da tabela, o texto da mescla também aceita **markdown** ou tags **html**.
+:::
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_spanner(
+    label = md("**Abertura/Fechamento**"),
+    columns = c(open, close)
+  ) |> 
+  tab_spanner(
+    label = html("<b>Picos do dia</b>"),
+    columns = c(high, low)
+  )
+gt_tbl
+```
+
+#### cols_move
+
+Podemos **mover** as colunas usando as funções **col_move**() e seus atalhos **col_move_to_end**() e **col_move_to_start**().
+
+Vejamos um exemplo, onde trocamos a ordem das colunas "volume" e "adj_close".
+
+```{r}
+
+gt_tbl |> 
+  cols_move(
+    columns = volume,
+    after = adj_close
+  )
+```
+
+#### cols_label
+
+Para melhor apresentação de nossa tabela, podemos também **ajustar os textos** das colunas usando a função cols_label().
+
+::: callout-tip
+Use tags html ou markdown para formatar o texto.
+:::
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  
+  cols_label(
+  open = md("*Abertura*"),
+  close = html ("<i>Fechamento</i>"),
+  high = "Máximo",
+  low = "Mínimo",
+  volume = html("<b>Volume</b><br>(<i>Comercializado no dia</i>)")
+) 
+
+gt_tbl
+```
+
+#### cols_hide
+
+Use para ocultar uma ou mais colunas.
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  cols_hide(
+    columns = "adj_close"
+  )
+gt_tbl
+```
+
+## Formatação
+
+O pacote gt() oferece uma série de funções para a formatação em todos os casos elas se iniciam com **fmt\_\***().
+
+Essas funções formatam números ou textos nos campos da tabela.
+
+Vejamos um simple exemplo, formatando a coluna "volume" como Reais \$:
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  fmt_currency(
+    columns = volume,
+    currency = "BRL",
+    decimals = 0,
+  )
+
+gt_tbl
+```
+
+Veja que neste caso, as linhas de resumo não forma formatadas da mesma maneira. Nestes casos, devemos passar a formatação quando criamos estes linhas.
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  summary_rows(
+    groups = TRUE,
+    columns = volume,
+    fns = list("Média" = "mean",
+               "Sub-total" = "sum"),
+    formatter = fmt_currency,
+    currency = "BRL",
+                   decimals = 0,
+    )
+
+gt_tbl
+```
+
+O mesmo devemos fazer se quisermos formatar as linhas de resumo totais ao final da tabela:
+
+```{r}
+gt_tbl <- gt_tbl |> grand_summary_rows(
+    columns = volume,
+    fns = list("Média" = "mean",
+               "Total" = "sum"),
+    formatter = fmt_currency,
+    currency = "BRL",
+    decimals = 0,
+    )
+
+gt_tbl
+```
+
+É claro que podemos salvar estes configurações de formatação em um objeto e usá-las repetidas vezes.
+
+Por exemplo, vamos formar melhor os valores de abertura e fechamento, só que desta vez, usando um objeto de formatação.
+
+```{r}
+#Criando os parametros de formatação:
+
+formatos <- list (
+  decimals = 2,
+  locale = "pt_BR",
+  currency = "BRL"
+)
+
+```
+
+Agora vamos utilizá-lo nas formatações com a função fmt_currency().
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  fmt_currency(
+  columns = c(open, close),
+  currency = formatos$currency,
+  locale = formatos$locale,
+) |> 
+  
+  summary_rows(
+    groups = TRUE,
+    columns = c(open, close),
+    fns = list("Média" = "mean",
+               "Sub-total" = "sum"),
+    formatter = fmt_currency,
+    decimals = formatos$decimals,
+    locale = formatos$locale
+  ) |> 
+  
+    grand_summary_rows(
+    columns = c(open, close),
+    fns = list("Média" = "mean",
+               "Total" = "sum"),
+    formatter = fmt_currency,
+    decimals = formatos$decimals,
+    locale = formatos$locale
+  )
+  
+gt_tbl
+  
+```
+
+Para exeplificar outra função da famĺia **fmt\_\***(), vamos usar o fmt_number() nas colunas "high" e "low" para trocar o caractere da casa decimal e separador de milhar no formato brasileiro.
+
+```{r}
+gt_tbl <- gt_tbl |>   
+  fmt_number(
+    columns = c(high, low),
+    locale = "pt_BR"
+    # sep_mark = ".",
+    # dec_mark = ","
+  )
+
+gt_tbl
+```
+
+## Estilos e Alinhamentos
+
+O pacote gt possui um série de opções para formatação de estilos da tabela e alinhamentos das linhas e colunas. Vejamos algumas delas.
+
+#### cols_align
+
+Use esta função para alinhar as colunas da tabela. Neste exemplo, iremos alinhar as coluna "volume" ao centro.
+
+```{r}
+gt_tbl |> 
+  cols_align(
+    align = "center",
+    columns = volume
+    )
+```
+
+#### tab_style
+
+Podemos também definir o estilo padrão das células da tabela. Esta função recebe dois argumentos chaves. Um objeto de estilo (style) e um objeto de localização (location).
+
+Podemos criar um objeto de estilo através de funções como cell_text(), cell_border(),cell_fill(), etc. E um objeto de localização através da função cells_body() como vimos quando definimos as notas de rodapé da tabela para o maior e menor valor de abertura.
+
+Vejamos o exemplo a seguir, onde iremos reduzir o tamanho da fonte das colunas "high" e "low" deixando-as em itálico.
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_style(
+    style = cell_text(size = px(14), style = "italic"),
+    locations = cells_body(columns = c(high, low))
+    )
+
+gt_tbl
+```
+
+Podemos usar uma lista para definir os estilos de célula, preenchimento, borda, etc. Vejamos um exemplo, onde iremos ressaltar com cores nossos valores de abertura mínimo e máximo para o período:
+
+```{r}
+gt_tbl <- gt_tbl |> 
+  tab_style(
+    style = list(cell_text(color = "green", weight = "bolder"),
+                 cell_borders(color = "darkgreen")),
+    locations = cells_body(columns = open, rows = open == max(abertura))
+  ) |> 
+
+  tab_style(
+    style = list(cell_text(color = "red", weight = "bolder"),
+                 cell_borders(color = "darkred")),
+    locations = cells_body(columns = open, rows = open == min(abertura))
+  ) 
+
+gt_tbl
+```
+
+Observer que assim como as formatações para valor monetário, observe que as linhas de resumo e resumo geral não foram afetadas. Para definir um estilo, temos que alterar através da própria função **tab_options**().
+
+#### tab_options
+
+Para exemplificar, vamos alterar a cor de preenchimento destas linhas de resumo e resumo geral:
+
+```{r}
+gt_tbl <- gt_tbl |>
+  tab_options(
+    summary_row.background.color = "lightskyblue1",
+    grand_summary_row.background.color = "lightskyblue4",
+  )
+
+gt_tbl
+```
+
+Como a formatação de uma tabela é algum sem fim, vamos deixar com mais alguns exemplos na tabela abaixo:
+
+```{r}
+gt_tbl |> 
+  
+  tab_style(style = list(cell_fill(color = "dodgerblue4"),
+                         cell_text(weight = "bolder", color = "white")),
+            locations = cells_row_groups()) |> 
+  
+  tab_style(style = list(cell_fill(color = "dodgerblue3"),
+                         cell_text(weight = "bolder", color = "white")),
+            locations = list(cells_stubhead(), cells_stub_summary())) |> 
+  
+  tab_style(style = list(cell_text(weight = "bolder")),
+            locations = cells_stub())
+
+
+```
+
+## gtExtras
+
+Como vimos, o pacote gt tem muitas opções para geração de tabelas.
+
+Há outros pacotes caso este não atenda suas necessidade. Se gostou da filosofia e possibildades, há um outro pacote escrito sobre esta plataforma chamado gt-extras. Este pacote já vem com um série de temas para facilitar a criação da tabela.
+
+Apelnas para ilustrar, deixamos um pequeno exemplo, onde formatamos nossa pequena tabela com o tema PFF.
+
+```{r}
+library (gtExtras)
+
+gt_tbl |> gt_theme_pff()
+```
+
+Apresentamos aqui apenas algumas funções básicas deste poderoso pacote da R. Para maiores informações acesse:
+
+<https://cran.r-project.org/package=gt>.
