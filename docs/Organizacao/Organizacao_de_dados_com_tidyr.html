@@ -276,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">2.1.1</span> Exemplos da Folha de Referência</a></li>
   <li><a href="#conjunto-de-dados" id="toc-conjunto-de-dados" class="nav-link" data-scroll-target="#conjunto-de-dados"> <span class="header-section-number">2.1.2</span> Conjunto de Dados</a></li>
-  <li><a href="#dados-organizados-e-canalização" id="toc-dados-organizados-e-canalização" class="nav-link" data-scroll-target="#dados-organizados-e-canalização"> <span class="header-section-number">2.1.3</span> Dados Organizados e Canalização</a></li>
+  <li><a href="#dados-organizados" id="toc-dados-organizados" class="nav-link" data-scroll-target="#dados-organizados"> <span class="header-section-number">2.1.3</span> Dados Organizados</a></li>
   </ul></li>
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"> <span class="header-section-number">2.2</span> Tibbles</a>
   <ul class="collapse">
@@ -367,20 +367,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="2.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">2.1</span> Introdução</h2>
 <p>A seguir temos vários exemplos de organização de dados utilizando o pacote TIDYR do R. Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=tidyr" class="uri">https://cran.r-project.org/package=tidyr</a>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Aviso
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:</p>
-<p><a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a>.</p>
-</div>
-</div>
 <p>Para os exemplos, iremos carregar os seguintes pacotes:</p>
 <ul>
 <li><strong>tidyverse</strong></li>
@@ -546,9 +532,9 @@ Nota
 </div>
 </div>
 </section>
-<section id="dados-organizados-e-canalização" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="dados-organizados-e-canalização"><span class="header-section-number">2.1.3</span> Dados Organizados e Canalização</h3>
-<p>Dados organizados (<em>tidy</em>) são estruturados onde:</p>
+<section id="dados-organizados" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="dados-organizados"><span class="header-section-number">2.1.3</span> Dados Organizados</h3>
+<p>Conforme visto anteriorment, dados organizados (<em>tidy</em>) são estruturados onde:</p>
 <p>Cada <strong>variável</strong> está em sua própria <strong>coluna</strong> e cada <strong>observação</strong> está em sua própria <strong>linha</strong>.</p>
 <p><img src="images/tidy_data01.png" class="img-fluid"></p>
 <p>As <strong>variáveis</strong> (ou colunas) são acessadas como vetores.</p>
@@ -647,7 +633,7 @@ Nota
 </section>
 <section id="reformatando-dados" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="reformatando-dados"><span class="header-section-number">2.3</span> Reformatando Dados</h2>
-<p>Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira como vimos na seção <a href="#dados-organizados-e-canalização">Dados Organizados e Canalização</a>. Para casos onde temos, por exemplo, as variáveis em linhas e/ou observações em colunas, etc, precisamos fazer uma ação conhecida como “pivotagem”. Pivotar dados, no contexto do tidyr, significa ajustar linhas em colunas e/ou colunas em linhas, de forma a obtermos nossos dados da maneira organizada (tidy).</p>
+<p>Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira como vimos na seção [Dados Organizados e Canalização]. Para casos onde temos, por exemplo, as variáveis em linhas e/ou observações em colunas, etc, precisamos fazer uma ação conhecida como “pivotagem”. Pivotar dados, no contexto do tidyr, significa ajustar linhas em colunas e/ou colunas em linhas, de forma a obtermos nossos dados da maneira organizada (tidy).</p>
 <p>Veja, por exemplo, nossa tabela 1 (table1). Ela está em um formato organizado, pois possui cada variável em uma coluna e cada observações em sua linha, com os valores nas células.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>

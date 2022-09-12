@@ -6,12 +6,6 @@ A seguir temos vários exemplos de organização de dados utilizando o pacote TI
 
 <https://cran.r-project.org/package=tidyr>.
 
-::: callout-warning
-Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
-
-<https://education.rstudio.com/learn/beginner/>.
-:::
-
 Para os exemplos, iremos carregar os seguintes pacotes:
 
 -   **tidyverse**
@@ -103,17 +97,15 @@ table4b
 ```{r}
 table5
 ```
-
-
 :::
 
 ::: callout-note
 *O termo [data-frame]{.underline} descrito ao longo deste texto, é utilizado de forma livre para objetos do tipo data.frame, tibble, entre outros. Pense como se fosse uma tabela de um banco de dados e/ou uma planilha do MS Excel, contendo linhas e colunas. Apesar de não ser rigorosamente igual à uma tabela, muitas vezes usaremos estes termos de forma intercambiável para facilitar o entendimento de iniciantes.*
 :::
 
-### Dados Organizados e Canalização
+### Dados Organizados
 
-Dados organizados (*tidy*) são estruturados onde:
+Conforme visto anteriorment, dados organizados (*tidy*) são estruturados onde:
 
 Cada **variável** está em sua própria **coluna** e cada **observação** está em sua própria **linha**.
 

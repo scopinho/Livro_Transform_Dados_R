@@ -2,7 +2,7 @@
 
 Neste livro teremos vários exemplos de transformação e manipulação de dados utilizando os pacotes da linguagem R. O principal pacote que iremos utilizar chamado **tidyverse**. Ele é uma espécie de "super pacote" para ciência de dados e contém outros pacotes que auxiliam nas atividades relativas à esta prática, como importação, transformação, manipulação, modelagem e visualização de dados.
 
-![](images/tidyverse-hex-stiker.jpg){width="196"}
+![](images/tidyverse-hex-stiker.jpg){fig-align="center" width="177"}
 
 Para saber mais sobre este pacote, acesse:
 
@@ -10,13 +10,19 @@ Para saber mais sobre este pacote, acesse:
 
 Para os exemplos, estamos assumindo que você já possui o R instalado e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.
 
-O código a seguir iré carregar inicialmente o seguinte pacote para seguirmos com os exemplos posteriores:
+Para instalar o pacote, digite:
 
--   **tidyverse**
+```{r}
+#| eval: false
+
+install.packages("tidyverse")
+```
+
+Uma vez o pacote instalado, precisamos referenciá-lo em nossos scripts, ou no jargão do R, devemos carregar o pacote **tidyverse**. Para isto, digite o código a seguir:
 
 ```{r}
 #| echo: true
-#| eval: false
+#| output: false
 library (tidyverse)
 ```
 
@@ -28,7 +34,7 @@ A seguir, um exemplo de uma "**Folha de Referência**" do pacote **DPLYR**:
 
 ![](images/data-transformation-cheatsheet01.jpg){width="663"}
 
-Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos sobre os pacotes, iremos lidar com nomenclaturas que são muito comuns no âmbito da ciência de dados e estatística, mas podem não ser comuns para outras áreas da ciência ou dos negócios, poranto, iremos apresentar algumas delas brevemente para que você possa acompanhar de forma mais clara os capítulos seguintes.
+Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos sobre os pacotes, iremos lidar com nomenclaturas que são muito comuns no âmbito da ciência de dados e estatística, mas podem não ser comuns para outras áreas da ciência ou dos negócios, portanto, iremos apresentar algumas delas brevemente para que você possa acompanhar de forma mais clara os capítulos seguintes.
 
 ## Variáveis e Observações
 
@@ -68,8 +74,6 @@ Ou em função da escala de mensuração em:
 
 Tipicamente, um dado qualitativo em natureza representa valores discretos que pertencem a um conjunto finito de classes. Estes valores discretos podem ser representados através de um número ou textos.
 
-Em geral, variáveis **qualitativas** são representadas no ggplot com o tipo **fatores** (factors) ou **caracteres**(chr).
-
 #### Quantitativa
 
 Representam as características de um indivíduo, objeto ou elemento resultantes de uma contagem ou mensuração.
@@ -90,4 +94,130 @@ Ou em função da escala de mensuração em:
 Vale lembrar que nem sempre uma variável representada por um número é quantitativa. O número da carteira de identidade é um exemplo disso. Apesar dos números ela é uma variável qualitativa.
 :::
 
-#### 
+#### Exemplo
+
+Para ficar mais claro como estas classificações de variáveis serão utilizadas ao longo do livro, vejamos alguns exemplos utilziando a tabela chamada "MPG" abaixo:
+
+```{r}
+mpg
+```
+
+Esta tabela, possui dados de economia de combustíveis entre 1999 a 2008 de 38 modelos populares de carros.
+
+Ela possui 234 observações (linhas) e 11 variáveis (colunas).
+
+Vejamos algumas delas.
+
+```{r}
+glimpse(mpg)
+```
+
+Dentre as variáveis, observamos uma variável **qualitativa** nominal chamada "**manufacturer**" que categoriza o fabricante do veículo.
+
+Já a variável "hwy", que representa o consumo na estrada (em milhas por galão), pode ser categorizada como uma variavel **quantitativa** continua. Por exemplo, determinado veículo consegue fazer 25.73 milhas por galão.
+
+::: callout-note
+No caso específico desta base de dados MPG, vemos que, a variável "**hwy**" está representada por um tipo inteiro \<int\>, ao invés de um tipo double \<dbl\>, isto nos leva a supor que ela foi "**arredondada**" para o valor mais próximo de milhas e portanto, devemos classificá-la como **quantitativa** **discreta** para sermos mais precisos.
+:::
+
+## Dados Organizados (Tidy)
+
+Dados organizados (*tidy*) são estruturados onde:
+
+Cada **variável** está em sua própria **coluna** e cada **observação** está em sua própria **linha**.
+
+![](./Organizacao/images/tidy_data01.png)
+
+## Canalização (Piping)
+
+A **canalização** (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto.
+
+O símbolo **\|\>** é utilizado para esta finalidade.
+
+**Exemplo**: x \|\> f(y), é o mesmo que f(x,y)
+
+::: callout-note
+O símbolo **%\>%** do pacote **magrittr** também faz a função similar de pipe como o \|\> do R básico, porém com algumas vantagens. Como não precisamos utilizar nada além do pipe básico, a maioria do código deste conteúdo utiliza o \|\>.
+:::
+
+Exemplo:
+
+```{r}
+#| eval: false
+# Escrever este código sem o Pipe (|>)
+head(mtcars, 5)
+
+#É o mesmo que escrever com o Pipe desta forma:
+mtcars |> head(5)
+```
+
+No exemplo acima, pode não parecer muito vantajoso, mas quando nosso código faz diversas manipulações, o uso da canalização (pipe) ajuda na leitura e interpretação do código.
+
+## Vetores
+
+Vetores é um tipo básico de objeto na linguagem R. Existem seis tipos de vetores atômicos no R:
+
+-   lógicos (*logical*)
+
+-   inteiros (*integer*)
+
+-   duplos (*doubles*)
+
+-   complexos (*complex*)
+
+-   caractere (*character*)
+
+-   bruto (*raw*)
+
+Quando criamos apenas um valor, ele retorna um vetor de tamanho = 1.
+
+Por exemplo:
+
+```{r}
+# Vetor atômico de caractere
+print("abc")
+
+# Vetor atômico de inteiro
+print(90L)
+```
+
+**Vetore com múltiplos valores:**
+
+Podemos criar vetores de múltiplos valores com algumas funções. Por exemplo, para criar um vetor duplo em uma sequência númerica de 1.00 até 2.00, incrementando as cada 0.25, podemos usar a função **seq**():
+
+```{r}
+seq(1.00, 2.00, by = 0.25)
+```
+
+::: callout-tip
+Podemos utilizar dois-pontos (:) para criar uma vetor de múltiplos valores númerico no R também:
+:::
+
+```{r}
+5:10
+```
+
+Para criarmos um vetor múltiplo, onde valores que não são do tipo caractere são convertidos para caratectere, podemos usar a função **c()**.
+
+```{r}
+c(5, TRUE, "banana")
+```
+
+Veja que as aspas acima em "5" e "TRUE", definem um tipo caractere e não mais inteiro ou lógico.
+
+Para acessar elementos de um vetor, podemos usar colchetes e o respectivo índice do elemento (começando em 1).
+
+```{r}
+dia_semana <- c("Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom")
+dia_semana_num <- dia_semana[c(1,2,5)]
+
+dia_semana_num
+```
+
+Podemos acessar também passando um vetor lógico. Veja o exemplo:
+
+```{r}
+dia_semana[c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)]
+```
+
+Estas informações introdutórias farão mais sentido quando as utilzarmos mais adiante nos capítulos seguintes. Por hora, basta conhecê-las para entendê-las quando elas aparecerem nos códigos seguintes.

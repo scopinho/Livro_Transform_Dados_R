@@ -30,7 +30,7 @@ Para mais informações acesse:
 
 -   [Manipulação de strings](./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html): Fala sobre **manipulação de strings** (textos) com o pacote **stringr**. Apresenta também um bom conteúdo sobre **expressões** **regulares** (**regex**). Ver folha de referência: [stringr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf)
 
--   [Fatores](./Fatores/Fatores_com_forcats.html): Fala sobre **manipulação de strings** (textos) com o pacote **stringr**. Apresenta também um bom conteúdo sobre **expressões** **regulares** (**regex**). Ver folha de referência: [factors cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf)
+-   [Fatores](./Fatores/Fatores_com_forcats.html): Fala sobre **manipulação de fatores** (estruturas de dados para variáveis qualitativas) com o pacote **forcats**. Ver folha de referência: [factors cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf)
 
 -   [Datas e horas](./DataHora/Datas_e_horas_com_lubridate.html): Sobre a formatação e cálculos de **variáveis** com **datas** e **horas** com o pacote **lubridate**. Ver folha da referência: [lubridate cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf).
 
@@ -39,7 +39,7 @@ Para mais informações acesse:
 -   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2** e também uma introdução ao pacote **gt** para criação de tabelas de relatórios. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf).
 
 ::: {.callout-note appearance="simple"}
-Este livro é gerado à partir do sitema de publicação [Quarto](https://www.quarto.org).
+Conteúdo gerado à partir do sitema de publicação [Quarto](https://www.quarto.org).
 :::
 
 ## Licença

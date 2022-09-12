@@ -6,21 +6,15 @@ A seguir temos vários exemplos de transformação de dados utilizando o pacote 
 
 <https://cran.r-project.org/package=dplyr>.
 
-::: callout-warning
-Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
-
-<https://education.rstudio.com/learn/beginner/>.
-:::
-
-Para os exemplos à seguir, iremos usar os seguintes pacotes:
+Para os exemplos à seguir, iremos usar o pacote:
 
 -   **tidyverse**
--   **gt**
+
+O pacote tidyverse, já contém o pacote **dplyr**, que será o objeto principal deste capítulo.
 
 ```{r}
 #| echo: true
 library(tidyverse)
-library (gt)
 ```
 
 ### Exemplos da Folha de Referência
@@ -36,7 +30,7 @@ A maioria dos exemplos, visam ajudar na interpretação dos exemplos e funções
 Para a maioria dos exemplos utilizaremos as bases de dados **mtcars** e **starwars** provenientes do pacote **datasets e dplyr**.
 
 ::: callout-note
-*Em geral, ao final de cada comando, você poderá ver uma chamada à função **gt()**. Isto é apenas para a formatação da tabela de saída e não é necessário para que você entenda os comandos precedentes. Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** para selecionar apenas algumas colunas.*
+*Em alguns casos, onde o volume de dados de saída pode ser extenso, usamos também a função **head()** para mostrar apenas as linhas iniciais. Quando o exemplo possui muitas colunas de saída, eventualmente utilizamos a função **select()** do pacote dplyr para selecionar apenas algumas colunas.*
 :::
 
 ------------------------------------------------------------------------
@@ -63,25 +57,23 @@ starwars
 
 ### Dados Organizados e Canalização
 
-Dados organizados (*tidy*) são estruturados onde:
+Relembrando o que visto anteriormente, dados organizados (*tidy*) são estruturados onde:
 
 Cada **variável** está em sua própria **coluna** e cada **observação** está em sua própria **linha**.
 
 ![](images/tidy_data01.png)
 
-Canalização (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto.
+**Canalização** (*Piping*) é uma forma de sequenciar as funções, facilitando a leitura de várias funções em conjunto.
 
-O símbolo **\|\>** é utilizado utilizado para esta finalidade.
+O símbolo **\|\>** é utilizado para esta finalidade.
 
 **Exemplo**: x \|\> f(y), é o mesmo que f(x,y)
 
-::: callout-note
-O símbolo **%\>%** do pacote magrittr também faz a função similar de pipe como o \|\> do R basico, porém com algumas vantagens. Como não precisamos utilizar nada além do pipe básico, a maioria do código deste conteúdo utiliza o \|\>.
-:::
-
 ## Resumindo Observações
 
-**Funções de resumo** recebem vetores como entrada e retornam um único valor.
+O pacote dplyr possui uma série de funções que nos permitem condesar (resumir) os dados de uma tabela (data frame).
+
+As **Funções de resumo** **recebem** **vetores** como entrada e **retornam** um **único valor**. Vejamos algumas delas:
 
 #### summarise
 
@@ -111,15 +103,32 @@ mtcars |>
   count (cyl) 
 ```
 
-No exemplo acima, contamos os valores únicos da variável **cyl** e mostramos na variável **n**. Um equivalente seria utilizar o summarise com o grupo criado na variável cyl: *mtcars \|\> group_by(cyl) \|\> summarise(n = n())*.
+No exemplo acima, contamos os valores únicos da variável **cyl** e mostramos na variável **n**.
 
-Mais sobre a função group_by na seção [Agrupando Observações].
+Um equivalente seria utilizar o **summarise** com o **grupo** criado na variável cyl:
+
+```{r}
+#| eval: false
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(n = n())
+```
+
+::: callout-note
+O pacote dyplr possui algumas "**expressões de contexto**" que retornam informações sobre o **grupo** ou **variável corrente**, mas só funcionam em contextos específicos como **summarise**() ou **mutate**(). No caso acima, a função **n()** é uma destas expressões, é por isso que criamos o grupo com a função group_by().
+
+Mais sobre a função **group_by** na seção [Agrupando Observações].
+:::
 
 ## Agrupando Observações
 
 #### group_by
 
-Use **group_by** (.data, ..., .add = FALSE, .drop = TRUE) para criar uma cópia da tabela agrupada por colunas. As funções do dplyr irão manipular cada grupo separadamente e combinar os resultados.
+Use **group_by** (.data, ..., .add = FALSE, .drop = TRUE) para criar uma cópia da tabela agrupada por colunas.
+
+::: callout-important
+As funções do dplyr irão **manipular** cada **grupo** **separadamente** e **combinar** os **resultados**.
+:::
 
 ::: callout-important
 Se compararmos o resultado de uma tabela antes e depois do agrupamento (group_by), apenas uma informação sobre o grupo será visível.
@@ -148,7 +157,7 @@ Veja que, exceto pela informação :
 
 Todo o restante da saída é o mesmo. Por isso, é importante que utilizemos o contexto do grupo, junto com outra função.
 
-Exemplo: Se quiser criar uma tabela com a função **summarise()** com apenas o grupo de cilindradas, podemos usar:
+**Exemplo**: Se quiser criar uma tabela com a função **summarise()** com apenas o grupo de cilindradas, podemos usar:
 
 ```{r}
 #| message: false
@@ -157,7 +166,7 @@ mtcars |>
   summarise() 
 ```
 
-Supondo que quiséssemos agora, saber o número de carros, agrupados pela variável cyl, podemos utilizar a função summarise, após o agrupamento, criando uma coluna através da função n().
+Supondo que quiséssemos agora, saber o número de carros, agrupados pela variável cyl, podemos utilizar a função summarise, após o agrupamento, criando uma coluna através da função de contexto **n()**.
 
 ```{r}
 mtcars |> 
@@ -173,7 +182,7 @@ mtcars |>
   summarise(consumo_medio = mean(mpg)) 
 ```
 
-O agrupamento pode ser feito por mais de uma variável também. Por exemplo, se quisermos obter o consumo médio (miles/gallon) dos veículos agrupado pelo número de cilindros destes veículos e também por número de marchas, podemos ter:
+O agrupamento pode ser feito para mais de uma variável também. Por exemplo, se quisermos obter o consumo médio (miles/gallon) dos veículos agrupado pelo número de cilindros destes veículos e também pelo número de marchas, podemos ter:
 
 ::: callout-note
 A saída da função summarise, dependendo do caso, irá ser agrupada também automaticamente, se quiser que isto não aconteça, utiliza a opção **.groups="drop"**.
@@ -203,7 +212,7 @@ No caso acima, se não tivessemos utilizado o desagrupamento (**un_group**), o r
 
 Use rowwise(.data, ...) para agrupar dados em linhas individuais. Funções do dyplr irão computar os resultados para cada linha.
 
-No exemplo abaixo, a tabela de dados startwars, possui uma variável (films) que é o tipo lista, ou seja, a coluna contém uma lista de filmes para cada personagem (observação).
+No exemplo abaixo, a tabela de dados **startwars**, possui uma variável (**films**) que é o tipo lista, ou seja, a coluna contém uma lista de filmes para cada personagem (observação).
 
 Supondo que quiséssemos saber em quantos filmes cada personagem aparece:
 
@@ -211,16 +220,10 @@ Supondo que quiséssemos saber em quantos filmes cada personagem aparece:
 starwars |> 
   select(name, films) |>
   rowwise() |>
-  mutate(quantos_filmes = length(films)) |> 
-  head () 
-
+  mutate(quantos_filmes = length(films))
 ```
 
 Em geral, utilizamos a função **rowwise** quando [não temos uma função vetorizada]{.underline}, isto é, que não retorna um vetor e precisamos aplicá-la em cada linha da tabela.
-
-::: callout-note
-*Aqui utilizamos também a função **head ()** que retorna apenas as primeiras linhas de uma tablea e não todo seu conteúdo.*
-:::
 
 Veja a seção de [Funções Vetorizadas]para maiores informações.
 
@@ -236,7 +239,7 @@ Extrai linhas de uma tablea que satisfazem o critério lógico.
 
 filter(.data, ..., .preserve = FALSE)
 
-Exemplo: Para extrair apenas os veículos que possuem consumo (miles/galon) acima de 20, podemos usar:
+**Exemplo**: Para extrair apenas os veículos que possuem consumo (miles/galon) acima de 20, podemos usar:
 
 ```{r}
 filter(mtcars, mpg > 20) 
@@ -339,14 +342,9 @@ slice_head(.data, ..., n, prop) and slice_tail() .
 
 Por exemplo, vamos selecionar as 5 primeiras linhas de mtcars:
 
-::: callout-note
-*Apenas para exemplificar, no código abaixo, deixamos a função gt "mostrar" os nomes das linhas em sua saída. Para maiores informações sobre isso, veja a seção [Nome de Linhas].*
-:::
-
 ```{r}
 mtcars |> 
-  slice_head(n = 5) |> 
-  gt(rownames_to_stub = TRUE)
+  slice_head(n = 5)
 ```
 
 ### Arranjar Observações
@@ -361,8 +359,7 @@ No exemplo abaixo, vamos ordenar a variável mpg, de forma a mostrar primeiro os
 
 ```{r}
 mtcars |> 
-  arrange(mpg) |> 
-  gt(rownames_to_stub = TRUE)
+  arrange(mpg)
 ```
 
 ### Adicionar Observações
