@@ -100,7 +100,11 @@ table4b
 
 ## Table5
 
+```{r}
 table5
+```
+
+
 :::
 
 ::: callout-note

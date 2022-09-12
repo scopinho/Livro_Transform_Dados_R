@@ -1,16 +1,16 @@
 # Bem-Vindo {.unnumbered}
 
-Este livro contém uma série de informações sobre transformação e manipulação de dados utilizando a **linguagem R**, mais especificamente o pacote **tidyverse**.
+Este livro eletrônico contém uma série de informações sobre transformação e manipulação de dados utilizando a **linguagem R**, mais especificamente o pacote **tidyverse**.
 
 Estas são etapas muito importantes para quem trabalha com dados, como por exemplo uma área de negócio de uma organização, buscando tomar decisões com base em seus dados, ou até mesmo no ciclo de vida de um projeto de ciência de dados.
 
 A comunidade R tem produzido ao longo dos anos uma série [Folhas de Referências](https://www.rstudio.com/resources/cheatsheets/) (*cheatsheets*) que fazem parte também da ferramenta de desenvolvimento [RStudio](http://localhost:7802/rstudio.com).
 
-Estas **Folhas de Referências**, são anotações de 2 páginas que visam resumir as principais informações sobre determinado tema ou pacote do R. São uma espécie de "cola" para nos lembrarmos dos comandos e informações mais relevantes.
+Estas **Folhas de Referências**, são anotações de uma ou duas páginas que visam resumir as principais informações sobre determinado tema ou pacote do R. São uma espécie de "cola" para nos lembrarmos dos comandos e informações mais relevantes.
 
 Este livro se baseia nestas folhas de referências, que apesar de extremamente úteis, podem ser de difícil interpretação para usuários iniciantes.
 
-Aleḿ disso, outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.
+Outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.
 
 ::: callout-warning
 Para melhor utilizar o conteúdo deste livro, é importante que você já possua uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Não iremos abortar comandos básicos da linguagem e nem mesmo instalação da ferramenta de desenvolvimento.
@@ -36,7 +36,7 @@ Para mais informações acesse:
 
 -   [Programação Funcional](Funcional/Prog_Funcional_com_purrr.html): Sobre **programação funcional**, **listas** e **funções** com o pacote **purrr**. Ver folha da referência: [purrr cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/purrr_pt_br.pdf).
 
--   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2**. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf).
+-   [Visualização de Dados](./Visualizacao/Visualizacao_de_dados_com_ggplot2.html): Traz uma introdução à criação de gráficos através do pacote **ggplot2** e também uma introdução ao pacote **gt** para criação de tabelas de relatórios. Ver folha da referência: [data visualization cheatsheet](https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-visualization_pt.pdf).
 
 ::: {.callout-note appearance="simple"}
 Este livro é gerado à partir do sitema de publicação [Quarto](https://www.quarto.org).

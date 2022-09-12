@@ -8,9 +8,9 @@ Para saber mais sobre este pacote, acesse:
 
 [https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}
 
-Para os exemplos, estamos assumindo que você já possui o R instalado (e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.
+Para os exemplos, estamos assumindo que você já possui o R instalado e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.
 
-O código a seguir iré carregar inicialmente o seguinte pacote:
+O código a seguir iré carregar inicialmente o seguinte pacote para seguirmos com os exemplos posteriores:
 
 -   **tidyverse**
 
@@ -34,7 +34,7 @@ Ao longo das apresentações das **Folhas de Resumo** e respectivos capítulos s
 
 Apesar de comumente associarmos o termo **variável** à valores do campo da matemática, como álgebra, ela também é usado em muitos outros campos do conhecimento, como o da computação, estatística, etc.
 
-Neste livro utilizaremos o termo "**variável**" no contexto de ciência de dados e estatística. Iremos definí-la como uma característica da populução que pode ser categorizada, medida ou contada .
+Neste livro utilizaremos o termo "**variável**" no contexto de ciência de dados e estatística. Iremos definí-la como uma característica da população que pode ser categorizada, medida ou contada .
 
 Sem entrarmos em maiores detalhes e simplificando para o melhor entendimento deste conteúdo, pense em uma **tabela**, com **colunas** e **linhas**. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as **variáveis são colocadas em colunas**. Já nas **linhas** da tabela, teremos o que é conhecido como casos, ou **observações**.
 
@@ -46,7 +46,7 @@ Entendemos que desta forma, o leitor mais inciantes entenderá o conceito daquil
 
 ## Tipos de Variáveis
 
-Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao **tipo de variável** que ele irá representar, vamos rever de forma resumida os tipos de variáveis aleatórias no contexto de análise de dados.
+Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao **tipo de variável** que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados.
 
 Podemos categorizar as variáveis em **Qualitativas** ou **Quantitativas**. [@favero]
 

@@ -6,19 +6,15 @@ A seguir temos vários exemplos de importação de dados utilizando o pacote TID
 
 [https://cran.r-project.org/package=tidyverse](https://cran.r-project.org/package=tidyr){.uri}.
 
-[https://cran.r-project.org/package=readr](https://cran.r-project.org/package=tidyr){.uri}.
+<https://cran.r-project.org/package=readr>.
 
-[https://cran.r-project.org/package=readxl](https://cran.r-project.org/package=tidyr){.uri}.
+<https://cran.r-project.org/package=readxl>.
 
-[https://cran.r-project.org/package=googlesheets4](https://cran.r-project.org/package=tidyr){.uri}.
+<https://cran.r-project.org/package=googlesheets4>.
 
-::: callout-warning
-Para melhor utilizar este material, é importante que você tenha uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Para mais informações acesse:
+Os pacotes acima, serão utilzados para importação de dados tabulados (ex: .CSV ou TXT), planilhas do Excel e do Google.
 
-<https://education.rstudio.com/learn/beginner/>.
-:::
-
-Caso você precise trabalhar com outras formatos de arquivos que não sejam os vistos neste documento, pode buscar maiores informações sobre os pacotes a seguir:
+Caso você precise trabalhar com outras formatos de arquivos que não sejam os vistos neste capítulo, pode buscar maiores informações sobre os pacotes a seguir:
 
 | Pacote              | Formato                    |
 |---------------------|----------------------------|

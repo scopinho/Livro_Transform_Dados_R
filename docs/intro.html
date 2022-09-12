@@ -264,7 +264,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Parte 4 - Gráficos</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Parte 4 - Gráficos e Tabelas</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -273,6 +273,11 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Visualizacao/Visualizacao_de_dados_com_ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualização de Dados com GGPLOT2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tabelas/Tabelas_com_gt.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Criação de Tabelas com GT</span></a>
   </div>
 </li>
       </ul>
@@ -320,8 +325,8 @@ div.csl-indent {
 <p><img src="images/tidyverse-hex-stiker.jpg" class="img-fluid" width="196"></p>
 <p>Para saber mais sobre este pacote, acesse:</p>
 <p><a href="https://cran.r-project.org/package=tidyr" class="uri">https://cran.r-project.org/package=tidyverse</a></p>
-<p>Para os exemplos, estamos assumindo que você já possui o R instalado (e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.</p>
-<p>O código a seguir iré carregar inicialmente o seguinte pacote:</p>
+<p>Para os exemplos, estamos assumindo que você já possui o R instalado e preferencialmente um ambiente de desenvolvimento para R como RStudio ou VSCode.</p>
+<p>O código a seguir iré carregar inicialmente o seguinte pacote para seguirmos com os exemplos posteriores:</p>
 <ul>
 <li><strong>tidyverse</strong></li>
 </ul>
@@ -338,7 +343,7 @@ div.csl-indent {
 <section id="variáveis-e-observações" class="level2">
 <h2 class="anchored" data-anchor-id="variáveis-e-observações">Variáveis e Observações</h2>
 <p>Apesar de comumente associarmos o termo <strong>variável</strong> à valores do campo da matemática, como álgebra, ela também é usado em muitos outros campos do conhecimento, como o da computação, estatística, etc.</p>
-<p>Neste livro utilizaremos o termo “<strong>variável</strong>” no contexto de ciência de dados e estatística. Iremos definí-la como uma característica da populução que pode ser categorizada, medida ou contada .</p>
+<p>Neste livro utilizaremos o termo “<strong>variável</strong>” no contexto de ciência de dados e estatística. Iremos definí-la como uma característica da população que pode ser categorizada, medida ou contada .</p>
 <p>Sem entrarmos em maiores detalhes e simplificando para o melhor entendimento deste conteúdo, pense em uma <strong>tabela</strong>, com <strong>colunas</strong> e <strong>linhas</strong>. Em geral, quando temos dados organizados (veremos o que caracteriza um dado organizado mais adiante), as <strong>variáveis são colocadas em colunas</strong>. Já nas <strong>linhas</strong> da tabela, teremos o que é conhecido como casos, ou <strong>observações</strong>.</p>
 <p>Apesar de não serem sinônimos, ou não representarem o mesmo objeto, utilizaremos de forma intercambiável e sem o rigor acadêmico, os termos: <strong>coluna</strong> e <strong>variável</strong> assim como <strong>observações</strong> e <strong>linhas</strong>.</p>
 <p>Portanto, quando em alguma parte do texto, você ler algo como “<strong>a variável xyz</strong>”, pode traduzir em sua mente para algo como “<strong>a coluna xyz</strong>”. Quando ler algo como “<strong>as 10 primeiras observações</strong>” , poder traduzir para “<strong>as 10 primeiras linhas</strong>” e assim por diante.</p>
@@ -346,7 +351,7 @@ div.csl-indent {
 </section>
 <section id="tipos-de-variáveis" class="level2">
 <h2 class="anchored" data-anchor-id="tipos-de-variáveis">Tipos de Variáveis</h2>
-<p>Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao <strong>tipo de variável</strong> que ele irá representar, vamos rever de forma resumida os tipos de variáveis aleatórias no contexto de análise de dados.</p>
+<p>Como dito anteriormento, não é intuito deste tópico aprofundar neste tema, porém como a natureza dos dados para manipulação e até mesmo cada gráfico podem estar relacionadas ao <strong>tipo de variável</strong> que ele irá representar, vamos rever de forma resumida os tipos de variáveis no contexto de análise de dados.</p>
 <p>Podemos categorizar as variáveis em <strong>Qualitativas</strong> ou <strong>Quantitativas</strong>. <span class="citation" data-cites="favero">(<a href="#ref-favero" role="doc-biblioref">Fávero 2021</a>)</span></p>
 <section id="qualitativas" class="level4">
 <h4 class="anchored" data-anchor-id="qualitativas">Qualitativas</h4>
