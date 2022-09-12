@@ -10,7 +10,7 @@ Estas **Folhas de Referências**, são anotações de uma ou duas páginas que v
 
 Este livro se baseia nestas folhas de referências, que apesar de extremamente úteis, podem ser de difícil interpretação para usuários iniciantes.
 
-Outro motivador para este livro, foi a escassez de documentação sobre o tema em lingua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.
+Outro motivador para este livro, foi a escassez de documentação sobre o tema em língua Portuguesa, que apesar dos grandes esforços da comunidade brasileira e voluntários, ainda sofre com falta de acesso para quem não domina o idioma inglês.
 
 ::: callout-warning
 Para melhor utilizar o conteúdo deste livro, é importante que você já possua uma introdução à linguagem R e saiba carregar pacotes (packages) no R. Não iremos abortar comandos básicos da linguagem e nem mesmo instalação da ferramenta de desenvolvimento.
