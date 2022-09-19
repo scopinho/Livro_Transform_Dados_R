@@ -1954,6 +1954,8 @@ scale_y_continuous(limits = c(10, 20))
 
 ## Bônus
 
+### Template
+
 Como vimos, há uma infinidade de possibilidades para criação de gráficos com o pacote ggplot, porém seus códigos podem se tornam com muitas linhas dado ao grau de customização que você precisa. Nossa recomendação é criar um gráfico com os ajustes nas principais camadas e depois uma função mais simplificada para chamar este código de forma repetida.
 
 A idéia não é esclarecer os detalhes de criação de funções no R, mas sim, dar um exemplo para otimizar o código criado para o ggplot.
@@ -2046,3 +2048,16 @@ mpg |>
   mutate (year = as_factor(year)) |>  #Alterando a variável year para factor antes para torná-la discreta.
   cria_grafico_barras(class, year)
 ```
+
+### Gráficos Interativos
+
+Apesar de não fazer parte da **Folhe de Resumo** do ggplot2, entendemos que em alguns casos, ter gráficos com certa interatividade ajuda na explicação e visualização. Para isto, iremos apresentar brevemente o pacote **plotly**.
+
+Este pacote, recebe um objeto ggplot e adiciona **interatividade**, permitindo que as valores sejam mostrados, por exemplo, quando o mouse passa por determinada região do gráfico. Obviamente, este pacote, paz muito mais que isso, mas apresentamos com o intuito de mostrar as possibilidades adicionais em termos de visualização.
+
+```{r}
+library (plotly)
+
+ggplotly(g_barras)
+```
+Com a função **ggplotly**() agora temos uma interatividade em nosso objeto gg_barras criado anteriormente.
