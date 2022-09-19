@@ -860,14 +860,17 @@ gt_tbl_extra |> gt_theme_pff()
 ```
 
 ## Excel
+
 ```{r}
 gt_tbl_extra |> gt_theme_excel()
 ```
+
 ## Guardian
 
 ```{r}
 gt_tbl_extra |> gt_theme_guardian()
 ```
+
 ## Dark
 
 ```{r}
@@ -875,26 +878,29 @@ gt_tbl_extra |> gt_theme_dark()
 ```
 
 ## ESPN
+
 ```{r}
 gt_tbl_extra |> gt_theme_espn()
 ```
 
 ## 538
+
 ```{r}
 gt_tbl_extra |> gt_theme_538()
 ```
 
 ## Dot Matrix
+
 ```{r}
 gt_tbl_extra |> gt_theme_dot_matrix()
 ```
 
 ## NY Times
+
 ```{r}
 gt_tbl_extra |> gt_theme_nytimes()
 
 ```
-
 :::
 
 Apresentamos aqui apenas algumas funções básicas deste poderoso pacote da R. Para maiores informações acesse:

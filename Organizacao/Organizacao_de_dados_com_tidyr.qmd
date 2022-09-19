@@ -193,7 +193,7 @@ is_tibble(mtcars)
 
 ## Reformatando Dados
 
-Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira como vimos na seção [Dados Organizados e Canalização]. Para casos onde temos, por exemplo, as variáveis em linhas e/ou observações em colunas, etc, precisamos fazer uma ação conhecida como "pivotagem". Pivotar dados, no contexto do tidyr, significa ajustar linhas em colunas e/ou colunas em linhas, de forma a obtermos nossos dados da maneira organizada (tidy).
+Muitas vezes, os dados que recebemos não estão organizados (tidy) da maneira como vimos na seção \[Dados Organizados e Canalização\]. Para casos onde temos, por exemplo, as variáveis em linhas e/ou observações em colunas, etc, precisamos fazer uma ação conhecida como "pivotagem". Pivotar dados, no contexto do tidyr, significa ajustar linhas em colunas e/ou colunas em linhas, de forma a obtermos nossos dados da maneira organizada (tidy).
 
 Veja, por exemplo, nossa tabela 1 (table1). Ela está em um formato organizado, pois possui cada variável em uma coluna e cada observações em sua linha, com os valores nas células.
 
@@ -609,3 +609,49 @@ Veja o pacote **purrr** para outras funções que manipulam listas em [Programa�
 :::
 
 Observe pelos exemplos anteriores que quando temos uma função que retorna uma lista, devemos usar a função list() para criar uma coluna de lista. Se a função retorna um valor (ex um inteiro), a coluna criada será um coluna "normal", neste caso um coluna de inteiros.
+
+## Bônus
+
+### Combinando dados com fuzzy
+
+Apesar de não fazer parte da Folha de Resumo, iremos mostrar sobre algo que é bastante comum quando não temos dados exatamente iguais para fazermos as uniões de duas ou mais tabelas (joins).
+
+Pense, por exemplo, que em um lado, temos nossa já conhecida tabela **STARWARS**, onde temos uma coluna chamada espécie (*species*). Agora imagine que você tem uma segunda tabela, chamada **EXOPLANETS**, onde tenhamos a localização do planeta em relação à terra e a principal espécie que habita este planeta. Agora, gostaríamos de juntar estas duas tabelas, para sabermos de qual planeta determinado personagem é originário.
+
+Primeiro, vamos mostrar esta tabela fictícia:
+
+```{r}
+exoplanets <- read_csv("exoplanets.csv")
+```
+
+Agora, vamos tentar fazer uma combinação utilizando a função que já conhecemos left_join().
+
+```{r}
+starwars |> select(name, species) |> 
+left_join(exoplanets, by = c("species" = "Especie"))
+```
+Observe que no caso acima, as linhas onde a espécie é igual a "**Droid**" e "**Mon Calamari**" não foram encontradas. Isso ocorreu pois ,na tabela "**exoplanets**", estes registros foram incorretamente cadastrados. Onde deveríamos ter o valor **Droid**, temos **Droids** e onde teveríamos ter a espécie **Mon Calamari**, temos **Mon Calamare**.
+
+Nestes casos, a união exata não irá funcionar. Obviamente, podemos alterar manualmente os valores para que a união funcione. Quando esta possibilidade não existe, podemos utilziar uma **lógica fuzzy** através do pacote **fuzzy_join**.
+Este pacote possui uma série de funções que auxiliam a fazermos uniões não-exatas. Veja como ficaria o exemplo anterior utilizando a função **stringdist_left_join**:
+
+```{r}
+library("fuzzyjoin")
+
+x <- starwars |> 
+  select(name, species) |> 
+  filter(!is.na(species))
+
+y <- drop_na(exoplanets)
+
+stringdist_left_join(x= x,
+                y= y, 
+                by = c("species" = "Especie"),
+                method = "lv",
+                max_dist = 1) |> 
+  select(name, species, Especie, Planet, Distance) 
+
+
+
+```
+No exemplo acima, utilizamos a métrica de distância Levenshtein (lv), mas este pacote possui muitas outros algoritmos, como por exemplo (*Jairo-Wilker* (jw)). Para maiores informações digite ?fuzzyjoin
