@@ -601,3 +601,44 @@ Ver seção [Especificação de celulas]
 O pacote googlesheets4 oferece várias forma de manipular os aspectos da planilha como congelar linhas, definir largura das colunas, etc. Acesse [googlesheets4.tidyverse.org](googlesheets4.tidyverse.org) para mais informações.
 
 Para operções de arquivos (ex: renomear, compartilhar, mover para outra pasta, etc), veja o pacote googledrive no link: [googledrive.tidyverse.org](googledrive.tidyverse.org).
+
+## BÔNUS
+
+### Web Scraping
+
+#### rvest
+
+Apesar de não termos nada a este respeito na **Folha de Referência**, acreditamos ser importante ter uma pequena noção de como carregar dados da web utilizando o pacote RVEST. Esta é uma pequena introduzir a obviamente não visa esgotar este assunto, mas sim, mostra um pouco sobre as possibildiades de importação de dados da Web.
+
+Para este exemplo, iremos utilizar uma tabela disponível no Wikipedia no endereço abaixo.
+
+URL: [Campeonato_Brasileiro_Serie_A](https://en.wikipedia.org/wiki/Campeonato_Brasileiro_S%C3%A9rie_A#Most_appearances)
+
+Esta tabela possui um ranking de pontos dos clubes que jogaram a séria A de futebol brasileiro entre 1959 e 2019.
+
+Após termos definido o endereço da Web que iremos importar, devemos selecionar a tag HTML da tabela em questão. Este é um processo que pode ser bastante complexo, principalmente quando temos sites dinâmicos.
+
+::: callout-tip
+Para facilitar este processo, sugerimos instalar a extensão no navegador Chrome chamada "**SelectorGadget**". Com ele você pode obter o seletor CSS ou string XPATH ao invés de criá-la manualmente. Note que é um facilitador, mas pode não funcionar para todos os casos. Para saber um pouco mais sobre como criar as stirng XPATH para encontrar seu objeto na página, acesse: [XPath para raspagem de dados](https://escoladedados.org/tutoriais/xpath-para-raspagem-de-dados-em-html/) ou [Tutorial XPATH](https://www.dicas-l.com.br/arquivo/tutorial_xpath.php).
+:::
+
+Uma vez identificado o seletor da tabela, iremos utilizar a função **read_html**() para carregar oobjeto através do pacote **rvest**.
+
+Depois, iremos carregar os elementos definidos em nossa string XPATH e então transformá-las em tabelas utilizando a função **html_table**().
+
+```{r}
+library(rvest)
+
+#Define a URL
+
+url <- read_html("https://en.wikipedia.org/wiki/Campeonato_Brasileiro_S%C3%A9rie_A#Most_appearances")
+
+#Pega as tabelas da página (usando xpath)
+tabelas <- url |>  
+  html_elements(xpath = '//*[@id="mw-content-text"]/div/table/tbody') |> 
+  html_table() 
+
+#Pega a quinta tabela que é a de nosso interesse
+tabelas[[5]]
+
+```
