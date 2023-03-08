@@ -1150,7 +1150,7 @@ Para ficar mais claro, vejamos o seguinte caso:
 
 ```{r}
 #| eval: false
-i + stat_density_2d(aes(fill = ..level..),
+l + stat_density_2d(aes(fill = ..level..),
 geom = "polygon")
 ```
 
@@ -2060,4 +2060,5 @@ library (plotly)
 
 ggplotly(g_barras)
 ```
+
 Com a função **ggplotly**() agora temos uma interatividade em nosso objeto gg_barras criado anteriormente.

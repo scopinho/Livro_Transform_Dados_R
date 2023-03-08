@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -65,9 +70,11 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -76,7 +83,7 @@ ul.task-list{list-style: none;}
   <li class="nav-item compact">
     <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -202,12 +209,12 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
   <li><a href="#bem-vindo" id="toc-bem-vindo" class="nav-link active" data-scroll-target="#bem-vindo">Bem-Vindo</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#licença" id="toc-licença" class="nav-link" data-scroll-target="#licença">Licença</a></li>
   </ul></li>
   </ul>
@@ -232,6 +239,7 @@ ul.task-list{list-style: none;}
           </div>
   </div>
     
+  
     
   </div>
   
@@ -267,7 +275,7 @@ Aviso
 <li><p><a href="./Importacao/Importacao_de_dados_com_tidyverse.html">Importação de Dados</a>: Trata sobre <strong>importação de dados</strong> tabulados (.csv, .tsv, .txt), planilhas do Excel e Google Sheets, através do pacote <strong>tidyverse (readr, readxl and googlesheets4).</strong> Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-import_pt_br.pdf">data-import cheatsheet</a>.</p></li>
 <li><p><a href="./Organizacao/Organizacao_de_dados_com_tidyr.html">Organização de Dados</a>: Sobre <strong>organização de dados</strong> com o pacote <strong>tidyr</strong>. Mover colunas e linhas de forma a estruturar seus dados em tabelas organizadas. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/tidyr_pt_br.pdf">tidyr cheatsheet</a>.</p></li>
 <li><p><a href="./Transformacao/Transformacao_de_dados_com_dplyr.html">Transformação de dados</a> : Apresenta a <strong>transformação de dados</strong> com o pacote <strong>dplyr</strong>. Aplicação de filtros, sumarização, criação de colunas calculadas e muitas outras funções de transformação. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/data-transformation_pt_br.pdf">data transformation cheatsheet</a></p></li>
-<li><p><a href="./Manipulacao/Manipulacao%20de%20strings%20com%20stringr.html">Manipulação de strings</a>: Fala sobre <strong>manipulação de strings</strong> (textos) com o pacote <strong>stringr</strong>. Apresenta também um bom conteúdo sobre <strong>expressões</strong> <strong>regulares</strong> (<strong>regex</strong>). Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf">stringr cheatsheet</a></p></li>
+<li><p><a href="./Manipulacao/Manipulacao de strings com stringr.html">Manipulação de strings</a>: Fala sobre <strong>manipulação de strings</strong> (textos) com o pacote <strong>stringr</strong>. Apresenta também um bom conteúdo sobre <strong>expressões</strong> <strong>regulares</strong> (<strong>regex</strong>). Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/strings_pt_br.pdf">stringr cheatsheet</a></p></li>
 <li><p><a href="./Fatores/Fatores_com_forcats.html">Fatores</a>: Fala sobre <strong>manipulação de fatores</strong> (estruturas de dados para variáveis qualitativas) com o pacote <strong>forcats</strong>. Ver folha de referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/factors_pt_br.pdf">factors cheatsheet</a></p></li>
 <li><p><a href="./DataHora/Datas_e_horas_com_lubridate.html">Datas e horas</a>: Sobre a formatação e cálculos de <strong>variáveis</strong> com <strong>datas</strong> e <strong>horas</strong> com o pacote <strong>lubridate</strong>. Ver folha da referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/lubridate_pt_br.pdf">lubridate cheatsheet</a>.</p></li>
 <li><p><a href="Funcional/Prog_Funcional_com_purrr.html">Programação Funcional</a>: Sobre <strong>programação funcional</strong>, <strong>listas</strong> e <strong>funções</strong> com o pacote <strong>purrr</strong>. Ver folha da referência: <a href="https://github.com/scopinho/R-cheatsheets/blob/main/translations/portuguese/purrr_pt_br.pdf">purrr cheatsheet</a>.</p></li>
@@ -343,7 +351,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -371,31 +396,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -403,7 +447,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

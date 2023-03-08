@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -119,14 +124,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
-<script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="../site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.10.1/plotly.js"></script>
 <script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
 <script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="../site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="../site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -139,9 +144,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Transformação e Manipulação de Dados com a linguagem R</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -150,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li class="nav-item compact">
     <a class="nav-link" href="http://github.com/scopinho/Livro_Transform_Dados_R"><i class="bi bi-github" role="img" aria-label="Github">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -276,177 +283,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"> <span class="header-section-number">8.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="toc-section-number">8.1</span>  Introdução</a>
+  <ul>
+  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"><span class="toc-section-number">8.1.1</span>  Exemplos da Folha de Referência</a>
   <ul class="collapse">
-  <li><a href="#exemplos-da-folha-de-referência" id="toc-exemplos-da-folha-de-referência" class="nav-link" data-scroll-target="#exemplos-da-folha-de-referência"> <span class="header-section-number">8.1.1</span> Exemplos da Folha de Referência</a>
-  <ul class="collapse">
-  <li><a href="#variáveis-discretas-e-contínuas-no-ggplot" id="toc-variáveis-discretas-e-contínuas-no-ggplot" class="nav-link" data-scroll-target="#variáveis-discretas-e-contínuas-no-ggplot"> <span class="header-section-number">8.1.1.1</span> Variáveis Discretas e Contínuas no GGPLOT</a></li>
+  <li><a href="#variáveis-discretas-e-contínuas-no-ggplot" id="toc-variáveis-discretas-e-contínuas-no-ggplot" class="nav-link" data-scroll-target="#variáveis-discretas-e-contínuas-no-ggplot"><span class="toc-section-number">8.1.1.1</span>  Variáveis Discretas e Contínuas no GGPLOT</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#gramática-dos-gráficos" id="toc-gramática-dos-gráficos" class="nav-link" data-scroll-target="#gramática-dos-gráficos"> <span class="header-section-number">8.2</span> Gramática dos Gráficos</a></li>
-  <li><a href="#modelo-para-construção-de-um-gráfico" id="toc-modelo-para-construção-de-um-gráfico" class="nav-link" data-scroll-target="#modelo-para-construção-de-um-gráfico"> <span class="header-section-number">8.3</span> Modelo para Construção de um Gráfico</a>
-  <ul class="collapse">
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"> <span class="header-section-number">8.3.0.1</span> ggplot</a></li>
-  <li><a href="#last_plot" id="toc-last_plot" class="nav-link" data-scroll-target="#last_plot"> <span class="header-section-number">8.3.0.2</span> last_plot</a></li>
-  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"> <span class="header-section-number">8.3.0.3</span> ggsave</a></li>
+  <li><a href="#gramática-dos-gráficos" id="toc-gramática-dos-gráficos" class="nav-link" data-scroll-target="#gramática-dos-gráficos"><span class="toc-section-number">8.2</span>  Gramática dos Gráficos</a></li>
+  <li><a href="#modelo-para-construção-de-um-gráfico" id="toc-modelo-para-construção-de-um-gráfico" class="nav-link" data-scroll-target="#modelo-para-construção-de-um-gráfico"><span class="toc-section-number">8.3</span>  Modelo para Construção de um Gráfico</a>
+  <ul>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"><span class="toc-section-number">8.3.0.1</span>  ggplot</a></li>
+  <li><a href="#last_plot" id="toc-last_plot" class="nav-link" data-scroll-target="#last_plot"><span class="toc-section-number">8.3.0.2</span>  last_plot</a></li>
+  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="toc-section-number">8.3.0.3</span>  ggsave</a></li>
   </ul></li>
-  <li><a href="#camadas" id="toc-camadas" class="nav-link" data-scroll-target="#camadas"> <span class="header-section-number">8.4</span> Camadas</a>
+  <li><a href="#camadas" id="toc-camadas" class="nav-link" data-scroll-target="#camadas"><span class="toc-section-number">8.4</span>  Camadas</a>
+  <ul>
+  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"><span class="toc-section-number">8.4.1</span>  Introdução</a></li>
+  <li><a href="#estéticas" id="toc-estéticas" class="nav-link" data-scroll-target="#estéticas"><span class="toc-section-number">8.4.2</span>  Estéticas</a>
   <ul class="collapse">
-  <li><a href="#introdução-1" id="toc-introdução-1" class="nav-link" data-scroll-target="#introdução-1"> <span class="header-section-number">8.4.1</span> Introdução</a></li>
-  <li><a href="#estéticas" id="toc-estéticas" class="nav-link" data-scroll-target="#estéticas"> <span class="header-section-number">8.4.2</span> Estéticas</a>
-  <ul class="collapse">
-  <li><a href="#color-e-fill" id="toc-color-e-fill" class="nav-link" data-scroll-target="#color-e-fill"> <span class="header-section-number">8.4.2.1</span> color e fill</a></li>
-  <li><a href="#linetype" id="toc-linetype" class="nav-link" data-scroll-target="#linetype"> <span class="header-section-number">8.4.2.2</span> linetype</a></li>
-  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"> <span class="header-section-number">8.4.2.3</span> size</a></li>
-  <li><a href="#lineend" id="toc-lineend" class="nav-link" data-scroll-target="#lineend"> <span class="header-section-number">8.4.2.4</span> lineend</a></li>
-  <li><a href="#linejoin" id="toc-linejoin" class="nav-link" data-scroll-target="#linejoin"> <span class="header-section-number">8.4.2.5</span> linejoin</a></li>
-  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"> <span class="header-section-number">8.4.2.6</span> shape</a></li>
+  <li><a href="#color-e-fill" id="toc-color-e-fill" class="nav-link" data-scroll-target="#color-e-fill"><span class="toc-section-number">8.4.2.1</span>  color e fill</a></li>
+  <li><a href="#linetype" id="toc-linetype" class="nav-link" data-scroll-target="#linetype"><span class="toc-section-number">8.4.2.2</span>  linetype</a></li>
+  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="toc-section-number">8.4.2.3</span>  size</a></li>
+  <li><a href="#lineend" id="toc-lineend" class="nav-link" data-scroll-target="#lineend"><span class="toc-section-number">8.4.2.4</span>  lineend</a></li>
+  <li><a href="#linejoin" id="toc-linejoin" class="nav-link" data-scroll-target="#linejoin"><span class="toc-section-number">8.4.2.5</span>  linejoin</a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"><span class="toc-section-number">8.4.2.6</span>  shape</a></li>
   </ul></li>
-  <li><a href="#geometrias-geoms" id="toc-geometrias-geoms" class="nav-link" data-scroll-target="#geometrias-geoms"> <span class="header-section-number">8.4.3</span> Geometrias</a>
+  <li><a href="#geometrias-geoms" id="toc-geometrias-geoms" class="nav-link" data-scroll-target="#geometrias-geoms"><span class="toc-section-number">8.4.3</span>  Geometrias</a>
   <ul class="collapse">
-  <li><a href="#gráficos-primitivos" id="toc-gráficos-primitivos" class="nav-link" data-scroll-target="#gráficos-primitivos"> <span class="header-section-number">8.4.3.1</span> <strong>Gráficos Primitivos</strong></a></li>
-  <li><a href="#geom_blank" id="toc-geom_blank" class="nav-link" data-scroll-target="#geom_blank"> <span class="header-section-number">8.4.3.2</span> geom_blank</a></li>
-  <li><a href="#geom_curve" id="toc-geom_curve" class="nav-link" data-scroll-target="#geom_curve"> <span class="header-section-number">8.4.3.3</span> geom_curve</a></li>
-  <li><a href="#geom_path" id="toc-geom_path" class="nav-link" data-scroll-target="#geom_path"> <span class="header-section-number">8.4.3.4</span> geom_path</a></li>
-  <li><a href="#geom_polygon" id="toc-geom_polygon" class="nav-link" data-scroll-target="#geom_polygon"> <span class="header-section-number">8.4.3.5</span> geom_polygon</a></li>
-  <li><a href="#geom_rect" id="toc-geom_rect" class="nav-link" data-scroll-target="#geom_rect"> <span class="header-section-number">8.4.3.6</span> geom_rect</a></li>
-  <li><a href="#geom_ribbon" id="toc-geom_ribbon" class="nav-link" data-scroll-target="#geom_ribbon"> <span class="header-section-number">8.4.3.7</span> geom_ribbon</a></li>
-  <li><a href="#segmentos-de-linhas" id="toc-segmentos-de-linhas" class="nav-link" data-scroll-target="#segmentos-de-linhas"> <span class="header-section-number">8.4.3.8</span> <strong>Segmentos de Linhas</strong></a></li>
-  <li><a href="#geom_abline" id="toc-geom_abline" class="nav-link" data-scroll-target="#geom_abline"> <span class="header-section-number">8.4.3.9</span> geom_abline</a></li>
-  <li><a href="#geom_hline" id="toc-geom_hline" class="nav-link" data-scroll-target="#geom_hline"> <span class="header-section-number">8.4.3.10</span> geom_hline</a></li>
-  <li><a href="#geom_vline" id="toc-geom_vline" class="nav-link" data-scroll-target="#geom_vline"> <span class="header-section-number">8.4.3.11</span> geom_vline</a></li>
-  <li><a href="#geom_segment" id="toc-geom_segment" class="nav-link" data-scroll-target="#geom_segment"> <span class="header-section-number">8.4.3.12</span> geom_segment</a></li>
-  <li><a href="#geom_spoke" id="toc-geom_spoke" class="nav-link" data-scroll-target="#geom_spoke"> <span class="header-section-number">8.4.3.13</span> geom_spoke</a></li>
-  <li><a href="#uma-variável-contínua" id="toc-uma-variável-contínua" class="nav-link" data-scroll-target="#uma-variável-contínua"> <span class="header-section-number">8.4.3.14</span> <strong>Uma Variável Contínua</strong></a></li>
-  <li><a href="#geom_histogram" id="toc-geom_histogram" class="nav-link" data-scroll-target="#geom_histogram"> <span class="header-section-number">8.4.3.15</span> geom_histogram</a></li>
-  <li><a href="#geom_freqpoly" id="toc-geom_freqpoly" class="nav-link" data-scroll-target="#geom_freqpoly"> <span class="header-section-number">8.4.3.16</span> geom_freqpoly</a></li>
-  <li><a href="#geom_area" id="toc-geom_area" class="nav-link" data-scroll-target="#geom_area"> <span class="header-section-number">8.4.3.17</span> geom_area</a></li>
-  <li><a href="#geom_density" id="toc-geom_density" class="nav-link" data-scroll-target="#geom_density"> <span class="header-section-number">8.4.3.18</span> geom_density</a></li>
-  <li><a href="#geom_dotplot" id="toc-geom_dotplot" class="nav-link" data-scroll-target="#geom_dotplot"> <span class="header-section-number">8.4.3.19</span> geom_dotplot</a></li>
-  <li><a href="#geom_qq" id="toc-geom_qq" class="nav-link" data-scroll-target="#geom_qq"> <span class="header-section-number">8.4.3.20</span> geom_qq</a></li>
-  <li><a href="#uma-variável-discreta" id="toc-uma-variável-discreta" class="nav-link" data-scroll-target="#uma-variável-discreta"> <span class="header-section-number">8.4.3.21</span> <strong>Uma Variável Discreta</strong></a></li>
-  <li><a href="#geom_bar" id="toc-geom_bar" class="nav-link" data-scroll-target="#geom_bar"> <span class="header-section-number">8.4.3.22</span> geom_bar</a></li>
-  <li><a href="#duas-variáveis-discretas" id="toc-duas-variáveis-discretas" class="nav-link" data-scroll-target="#duas-variáveis-discretas"> <span class="header-section-number">8.4.3.23</span> <strong>Duas Variáveis Discretas</strong></a></li>
-  <li><a href="#geom_count" id="toc-geom_count" class="nav-link" data-scroll-target="#geom_count"> <span class="header-section-number">8.4.3.24</span> geom_count</a></li>
-  <li><a href="#geom_jitter" id="toc-geom_jitter" class="nav-link" data-scroll-target="#geom_jitter"> <span class="header-section-number">8.4.3.25</span> geom_jitter</a></li>
-  <li><a href="#uma-variável-contínua-e-outra-discreta" id="toc-uma-variável-contínua-e-outra-discreta" class="nav-link" data-scroll-target="#uma-variável-contínua-e-outra-discreta"> <span class="header-section-number">8.4.3.26</span> <strong>Uma Variável Contínua e Outra Discreta</strong></a></li>
-  <li><a href="#geom_col" id="toc-geom_col" class="nav-link" data-scroll-target="#geom_col"> <span class="header-section-number">8.4.3.27</span> geom_col</a></li>
-  <li><a href="#geom_boxplot" id="toc-geom_boxplot" class="nav-link" data-scroll-target="#geom_boxplot"> <span class="header-section-number">8.4.3.28</span> geom_boxplot</a></li>
-  <li><a href="#geom_dotplot-1" id="toc-geom_dotplot-1" class="nav-link" data-scroll-target="#geom_dotplot-1"> <span class="header-section-number">8.4.3.29</span> geom_dotplot</a></li>
-  <li><a href="#geom_violin" id="toc-geom_violin" class="nav-link" data-scroll-target="#geom_violin"> <span class="header-section-number">8.4.3.30</span> geom_violin</a></li>
-  <li><a href="#duas-variáveis-contínuas" id="toc-duas-variáveis-contínuas" class="nav-link" data-scroll-target="#duas-variáveis-contínuas"> <span class="header-section-number">8.4.3.31</span> <strong>Duas Variáveis Contínuas</strong></a></li>
-  <li><a href="#geom_label" id="toc-geom_label" class="nav-link" data-scroll-target="#geom_label"> <span class="header-section-number">8.4.3.32</span> geom_label</a></li>
-  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point"> <span class="header-section-number">8.4.3.33</span> geom_point</a></li>
-  <li><a href="#geom_quantile" id="toc-geom_quantile" class="nav-link" data-scroll-target="#geom_quantile"> <span class="header-section-number">8.4.3.34</span> geom_quantile</a></li>
-  <li><a href="#geom_rug" id="toc-geom_rug" class="nav-link" data-scroll-target="#geom_rug"> <span class="header-section-number">8.4.3.35</span> geom_rug</a></li>
-  <li><a href="#geom_smooth" id="toc-geom_smooth" class="nav-link" data-scroll-target="#geom_smooth"> <span class="header-section-number">8.4.3.36</span> geom_smooth</a></li>
-  <li><a href="#geom_text" id="toc-geom_text" class="nav-link" data-scroll-target="#geom_text"> <span class="header-section-number">8.4.3.37</span> geom_text</a></li>
-  <li><a href="#mapas-de-calor-e-densidade" id="toc-mapas-de-calor-e-densidade" class="nav-link" data-scroll-target="#mapas-de-calor-e-densidade"> <span class="header-section-number">8.4.3.38</span> <strong>Mapas de Calor e Densidade</strong></a></li>
-  <li><a href="#geom_bind2d" id="toc-geom_bind2d" class="nav-link" data-scroll-target="#geom_bind2d"> <span class="header-section-number">8.4.3.39</span> geom_bind2d</a></li>
-  <li><a href="#geom_density_2d" id="toc-geom_density_2d" class="nav-link" data-scroll-target="#geom_density_2d"> <span class="header-section-number">8.4.3.40</span> geom_density_2d</a></li>
-  <li><a href="#geom_hex" id="toc-geom_hex" class="nav-link" data-scroll-target="#geom_hex"> <span class="header-section-number">8.4.3.41</span> geom_hex</a></li>
-  <li><a href="#duas-variáveis-discretas-1" id="toc-duas-variáveis-discretas-1" class="nav-link" data-scroll-target="#duas-variáveis-discretas-1"> <span class="header-section-number">8.4.3.42</span> <strong>Duas Variáveis Discretas</strong></a></li>
-  <li><a href="#geom_count-1" id="toc-geom_count-1" class="nav-link" data-scroll-target="#geom_count-1"> <span class="header-section-number">8.4.3.43</span> geom_count</a></li>
-  <li><a href="#geom_jitter-1" id="toc-geom_jitter-1" class="nav-link" data-scroll-target="#geom_jitter-1"> <span class="header-section-number">8.4.3.44</span> geom_jitter</a></li>
-  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"> <span class="header-section-number">8.4.3.45</span> <strong>Mapas</strong></a></li>
-  <li><a href="#visualizando-erros" id="toc-visualizando-erros" class="nav-link" data-scroll-target="#visualizando-erros"> <span class="header-section-number">8.4.3.46</span> <strong>Visualizando Erros</strong></a></li>
-  <li><a href="#geom_crossbar" id="toc-geom_crossbar" class="nav-link" data-scroll-target="#geom_crossbar"> <span class="header-section-number">8.4.3.47</span> geom_crossbar</a></li>
-  <li><a href="#geom_errorbar" id="toc-geom_errorbar" class="nav-link" data-scroll-target="#geom_errorbar"> <span class="header-section-number">8.4.3.48</span> geom_errorbar</a></li>
-  <li><a href="#geom_linerange" id="toc-geom_linerange" class="nav-link" data-scroll-target="#geom_linerange"> <span class="header-section-number">8.4.3.49</span> geom_linerange</a></li>
-  <li><a href="#geom_pointrange" id="toc-geom_pointrange" class="nav-link" data-scroll-target="#geom_pointrange"> <span class="header-section-number">8.4.3.50</span> geom_pointrange</a></li>
-  <li><a href="#três-variáveis" id="toc-três-variáveis" class="nav-link" data-scroll-target="#três-variáveis"> <span class="header-section-number">8.4.3.51</span> <strong>Três Variáveis</strong></a></li>
-  <li><a href="#geom_contour" id="toc-geom_contour" class="nav-link" data-scroll-target="#geom_contour"> <span class="header-section-number">8.4.3.52</span> geom_contour</a></li>
-  <li><a href="#geom_contour_filled" id="toc-geom_contour_filled" class="nav-link" data-scroll-target="#geom_contour_filled"> <span class="header-section-number">8.4.3.53</span> geom_contour_filled</a></li>
-  <li><a href="#geom_raster" id="toc-geom_raster" class="nav-link" data-scroll-target="#geom_raster"> <span class="header-section-number">8.4.3.54</span> geom_raster</a></li>
-  <li><a href="#geom_tile" id="toc-geom_tile" class="nav-link" data-scroll-target="#geom_tile"> <span class="header-section-number">8.4.3.55</span> geom_tile</a></li>
+  <li><a href="#gráficos-primitivos" id="toc-gráficos-primitivos" class="nav-link" data-scroll-target="#gráficos-primitivos"><span class="toc-section-number">8.4.3.1</span>  <strong>Gráficos Primitivos</strong></a></li>
+  <li><a href="#geom_blank" id="toc-geom_blank" class="nav-link" data-scroll-target="#geom_blank"><span class="toc-section-number">8.4.3.2</span>  geom_blank</a></li>
+  <li><a href="#geom_curve" id="toc-geom_curve" class="nav-link" data-scroll-target="#geom_curve"><span class="toc-section-number">8.4.3.3</span>  geom_curve</a></li>
+  <li><a href="#geom_path" id="toc-geom_path" class="nav-link" data-scroll-target="#geom_path"><span class="toc-section-number">8.4.3.4</span>  geom_path</a></li>
+  <li><a href="#geom_polygon" id="toc-geom_polygon" class="nav-link" data-scroll-target="#geom_polygon"><span class="toc-section-number">8.4.3.5</span>  geom_polygon</a></li>
+  <li><a href="#geom_rect" id="toc-geom_rect" class="nav-link" data-scroll-target="#geom_rect"><span class="toc-section-number">8.4.3.6</span>  geom_rect</a></li>
+  <li><a href="#geom_ribbon" id="toc-geom_ribbon" class="nav-link" data-scroll-target="#geom_ribbon"><span class="toc-section-number">8.4.3.7</span>  geom_ribbon</a></li>
+  <li><a href="#segmentos-de-linhas" id="toc-segmentos-de-linhas" class="nav-link" data-scroll-target="#segmentos-de-linhas"><span class="toc-section-number">8.4.3.8</span>  <strong>Segmentos de Linhas</strong></a></li>
+  <li><a href="#geom_abline" id="toc-geom_abline" class="nav-link" data-scroll-target="#geom_abline"><span class="toc-section-number">8.4.3.9</span>  geom_abline</a></li>
+  <li><a href="#geom_hline" id="toc-geom_hline" class="nav-link" data-scroll-target="#geom_hline"><span class="toc-section-number">8.4.3.10</span>  geom_hline</a></li>
+  <li><a href="#geom_vline" id="toc-geom_vline" class="nav-link" data-scroll-target="#geom_vline"><span class="toc-section-number">8.4.3.11</span>  geom_vline</a></li>
+  <li><a href="#geom_segment" id="toc-geom_segment" class="nav-link" data-scroll-target="#geom_segment"><span class="toc-section-number">8.4.3.12</span>  geom_segment</a></li>
+  <li><a href="#geom_spoke" id="toc-geom_spoke" class="nav-link" data-scroll-target="#geom_spoke"><span class="toc-section-number">8.4.3.13</span>  geom_spoke</a></li>
+  <li><a href="#uma-variável-contínua" id="toc-uma-variável-contínua" class="nav-link" data-scroll-target="#uma-variável-contínua"><span class="toc-section-number">8.4.3.14</span>  <strong>Uma Variável Contínua</strong></a></li>
+  <li><a href="#geom_histogram" id="toc-geom_histogram" class="nav-link" data-scroll-target="#geom_histogram"><span class="toc-section-number">8.4.3.15</span>  geom_histogram</a></li>
+  <li><a href="#geom_freqpoly" id="toc-geom_freqpoly" class="nav-link" data-scroll-target="#geom_freqpoly"><span class="toc-section-number">8.4.3.16</span>  geom_freqpoly</a></li>
+  <li><a href="#geom_area" id="toc-geom_area" class="nav-link" data-scroll-target="#geom_area"><span class="toc-section-number">8.4.3.17</span>  geom_area</a></li>
+  <li><a href="#geom_density" id="toc-geom_density" class="nav-link" data-scroll-target="#geom_density"><span class="toc-section-number">8.4.3.18</span>  geom_density</a></li>
+  <li><a href="#geom_dotplot" id="toc-geom_dotplot" class="nav-link" data-scroll-target="#geom_dotplot"><span class="toc-section-number">8.4.3.19</span>  geom_dotplot</a></li>
+  <li><a href="#geom_qq" id="toc-geom_qq" class="nav-link" data-scroll-target="#geom_qq"><span class="toc-section-number">8.4.3.20</span>  geom_qq</a></li>
+  <li><a href="#uma-variável-discreta" id="toc-uma-variável-discreta" class="nav-link" data-scroll-target="#uma-variável-discreta"><span class="toc-section-number">8.4.3.21</span>  <strong>Uma Variável Discreta</strong></a></li>
+  <li><a href="#geom_bar" id="toc-geom_bar" class="nav-link" data-scroll-target="#geom_bar"><span class="toc-section-number">8.4.3.22</span>  geom_bar</a></li>
+  <li><a href="#duas-variáveis-discretas" id="toc-duas-variáveis-discretas" class="nav-link" data-scroll-target="#duas-variáveis-discretas"><span class="toc-section-number">8.4.3.23</span>  <strong>Duas Variáveis Discretas</strong></a></li>
+  <li><a href="#geom_count" id="toc-geom_count" class="nav-link" data-scroll-target="#geom_count"><span class="toc-section-number">8.4.3.24</span>  geom_count</a></li>
+  <li><a href="#geom_jitter" id="toc-geom_jitter" class="nav-link" data-scroll-target="#geom_jitter"><span class="toc-section-number">8.4.3.25</span>  geom_jitter</a></li>
+  <li><a href="#uma-variável-contínua-e-outra-discreta" id="toc-uma-variável-contínua-e-outra-discreta" class="nav-link" data-scroll-target="#uma-variável-contínua-e-outra-discreta"><span class="toc-section-number">8.4.3.26</span>  <strong>Uma Variável Contínua e Outra Discreta</strong></a></li>
+  <li><a href="#geom_col" id="toc-geom_col" class="nav-link" data-scroll-target="#geom_col"><span class="toc-section-number">8.4.3.27</span>  geom_col</a></li>
+  <li><a href="#geom_boxplot" id="toc-geom_boxplot" class="nav-link" data-scroll-target="#geom_boxplot"><span class="toc-section-number">8.4.3.28</span>  geom_boxplot</a></li>
+  <li><a href="#geom_dotplot-1" id="toc-geom_dotplot-1" class="nav-link" data-scroll-target="#geom_dotplot-1"><span class="toc-section-number">8.4.3.29</span>  geom_dotplot</a></li>
+  <li><a href="#geom_violin" id="toc-geom_violin" class="nav-link" data-scroll-target="#geom_violin"><span class="toc-section-number">8.4.3.30</span>  geom_violin</a></li>
+  <li><a href="#duas-variáveis-contínuas" id="toc-duas-variáveis-contínuas" class="nav-link" data-scroll-target="#duas-variáveis-contínuas"><span class="toc-section-number">8.4.3.31</span>  <strong>Duas Variáveis Contínuas</strong></a></li>
+  <li><a href="#geom_label" id="toc-geom_label" class="nav-link" data-scroll-target="#geom_label"><span class="toc-section-number">8.4.3.32</span>  geom_label</a></li>
+  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point"><span class="toc-section-number">8.4.3.33</span>  geom_point</a></li>
+  <li><a href="#geom_quantile" id="toc-geom_quantile" class="nav-link" data-scroll-target="#geom_quantile"><span class="toc-section-number">8.4.3.34</span>  geom_quantile</a></li>
+  <li><a href="#geom_rug" id="toc-geom_rug" class="nav-link" data-scroll-target="#geom_rug"><span class="toc-section-number">8.4.3.35</span>  geom_rug</a></li>
+  <li><a href="#geom_smooth" id="toc-geom_smooth" class="nav-link" data-scroll-target="#geom_smooth"><span class="toc-section-number">8.4.3.36</span>  geom_smooth</a></li>
+  <li><a href="#geom_text" id="toc-geom_text" class="nav-link" data-scroll-target="#geom_text"><span class="toc-section-number">8.4.3.37</span>  geom_text</a></li>
+  <li><a href="#mapas-de-calor-e-densidade" id="toc-mapas-de-calor-e-densidade" class="nav-link" data-scroll-target="#mapas-de-calor-e-densidade"><span class="toc-section-number">8.4.3.38</span>  <strong>Mapas de Calor e Densidade</strong></a></li>
+  <li><a href="#geom_bind2d" id="toc-geom_bind2d" class="nav-link" data-scroll-target="#geom_bind2d"><span class="toc-section-number">8.4.3.39</span>  geom_bind2d</a></li>
+  <li><a href="#geom_density_2d" id="toc-geom_density_2d" class="nav-link" data-scroll-target="#geom_density_2d"><span class="toc-section-number">8.4.3.40</span>  geom_density_2d</a></li>
+  <li><a href="#geom_hex" id="toc-geom_hex" class="nav-link" data-scroll-target="#geom_hex"><span class="toc-section-number">8.4.3.41</span>  geom_hex</a></li>
+  <li><a href="#duas-variáveis-discretas-1" id="toc-duas-variáveis-discretas-1" class="nav-link" data-scroll-target="#duas-variáveis-discretas-1"><span class="toc-section-number">8.4.3.42</span>  <strong>Duas Variáveis Discretas</strong></a></li>
+  <li><a href="#geom_count-1" id="toc-geom_count-1" class="nav-link" data-scroll-target="#geom_count-1"><span class="toc-section-number">8.4.3.43</span>  geom_count</a></li>
+  <li><a href="#geom_jitter-1" id="toc-geom_jitter-1" class="nav-link" data-scroll-target="#geom_jitter-1"><span class="toc-section-number">8.4.3.44</span>  geom_jitter</a></li>
+  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"><span class="toc-section-number">8.4.3.45</span>  <strong>Mapas</strong></a></li>
+  <li><a href="#visualizando-erros" id="toc-visualizando-erros" class="nav-link" data-scroll-target="#visualizando-erros"><span class="toc-section-number">8.4.3.46</span>  <strong>Visualizando Erros</strong></a></li>
+  <li><a href="#geom_crossbar" id="toc-geom_crossbar" class="nav-link" data-scroll-target="#geom_crossbar"><span class="toc-section-number">8.4.3.47</span>  geom_crossbar</a></li>
+  <li><a href="#geom_errorbar" id="toc-geom_errorbar" class="nav-link" data-scroll-target="#geom_errorbar"><span class="toc-section-number">8.4.3.48</span>  geom_errorbar</a></li>
+  <li><a href="#geom_linerange" id="toc-geom_linerange" class="nav-link" data-scroll-target="#geom_linerange"><span class="toc-section-number">8.4.3.49</span>  geom_linerange</a></li>
+  <li><a href="#geom_pointrange" id="toc-geom_pointrange" class="nav-link" data-scroll-target="#geom_pointrange"><span class="toc-section-number">8.4.3.50</span>  geom_pointrange</a></li>
+  <li><a href="#três-variáveis" id="toc-três-variáveis" class="nav-link" data-scroll-target="#três-variáveis"><span class="toc-section-number">8.4.3.51</span>  <strong>Três Variáveis</strong></a></li>
+  <li><a href="#geom_contour" id="toc-geom_contour" class="nav-link" data-scroll-target="#geom_contour"><span class="toc-section-number">8.4.3.52</span>  geom_contour</a></li>
+  <li><a href="#geom_contour_filled" id="toc-geom_contour_filled" class="nav-link" data-scroll-target="#geom_contour_filled"><span class="toc-section-number">8.4.3.53</span>  geom_contour_filled</a></li>
+  <li><a href="#geom_raster" id="toc-geom_raster" class="nav-link" data-scroll-target="#geom_raster"><span class="toc-section-number">8.4.3.54</span>  geom_raster</a></li>
+  <li><a href="#geom_tile" id="toc-geom_tile" class="nav-link" data-scroll-target="#geom_tile"><span class="toc-section-number">8.4.3.55</span>  geom_tile</a></li>
   </ul></li>
-  <li><a href="#estatísticas-stats" id="toc-estatísticas-stats" class="nav-link" data-scroll-target="#estatísticas-stats"> <span class="header-section-number">8.4.4</span> Estatísticas</a>
+  <li><a href="#estatísticas-stats" id="toc-estatísticas-stats" class="nav-link" data-scroll-target="#estatísticas-stats"><span class="toc-section-number">8.4.4</span>  Estatísticas</a>
   <ul class="collapse">
-  <li><a href="#stat_bin" id="toc-stat_bin" class="nav-link" data-scroll-target="#stat_bin"> <span class="header-section-number">8.4.4.1</span> stat_bin</a></li>
-  <li><a href="#stat_count" id="toc-stat_count" class="nav-link" data-scroll-target="#stat_count"> <span class="header-section-number">8.4.4.2</span> stat_count</a></li>
-  <li><a href="#stat_density" id="toc-stat_density" class="nav-link" data-scroll-target="#stat_density"> <span class="header-section-number">8.4.4.3</span> stat_density</a></li>
-  <li><a href="#stat_bin_2d" id="toc-stat_bin_2d" class="nav-link" data-scroll-target="#stat_bin_2d"> <span class="header-section-number">8.4.4.4</span> stat_bin_2d</a></li>
-  <li><a href="#stat_hex" id="toc-stat_hex" class="nav-link" data-scroll-target="#stat_hex"> <span class="header-section-number">8.4.4.5</span> stat_hex</a></li>
-  <li><a href="#stat_density_2d" id="toc-stat_density_2d" class="nav-link" data-scroll-target="#stat_density_2d"> <span class="header-section-number">8.4.4.6</span> stat_density_2d</a></li>
-  <li><a href="#stat_ellipse" id="toc-stat_ellipse" class="nav-link" data-scroll-target="#stat_ellipse"> <span class="header-section-number">8.4.4.7</span> stat_ellipse</a></li>
-  <li><a href="#stat_contour" id="toc-stat_contour" class="nav-link" data-scroll-target="#stat_contour"> <span class="header-section-number">8.4.4.8</span> stat_contour</a></li>
-  <li><a href="#stat_summary_hex" id="toc-stat_summary_hex" class="nav-link" data-scroll-target="#stat_summary_hex"> <span class="header-section-number">8.4.4.9</span> stat_summary_hex</a></li>
-  <li><a href="#stat_summary_2d" id="toc-stat_summary_2d" class="nav-link" data-scroll-target="#stat_summary_2d"> <span class="header-section-number">8.4.4.10</span> stat_summary_2d</a></li>
-  <li><a href="#stat_boxplot" id="toc-stat_boxplot" class="nav-link" data-scroll-target="#stat_boxplot"> <span class="header-section-number">8.4.4.11</span> stat_boxplot</a></li>
-  <li><a href="#sta_ydensity" id="toc-sta_ydensity" class="nav-link" data-scroll-target="#sta_ydensity"> <span class="header-section-number">8.4.4.12</span> sta_ydensity</a></li>
-  <li><a href="#stat_ecdf" id="toc-stat_ecdf" class="nav-link" data-scroll-target="#stat_ecdf"> <span class="header-section-number">8.4.4.13</span> stat_ecdf</a></li>
-  <li><a href="#stat_quantile" id="toc-stat_quantile" class="nav-link" data-scroll-target="#stat_quantile"> <span class="header-section-number">8.4.4.14</span> stat_quantile</a></li>
-  <li><a href="#stat_smooth" id="toc-stat_smooth" class="nav-link" data-scroll-target="#stat_smooth"> <span class="header-section-number">8.4.4.15</span> stat_smooth</a></li>
-  <li><a href="#stat_function" id="toc-stat_function" class="nav-link" data-scroll-target="#stat_function"> <span class="header-section-number">8.4.4.16</span> stat_function</a></li>
-  <li><a href="#stat_qq" id="toc-stat_qq" class="nav-link" data-scroll-target="#stat_qq"> <span class="header-section-number">8.4.4.17</span> stat_qq</a></li>
-  <li><a href="#stat_sum" id="toc-stat_sum" class="nav-link" data-scroll-target="#stat_sum"> <span class="header-section-number">8.4.4.18</span> stat_sum</a></li>
-  <li><a href="#stat_summary" id="toc-stat_summary" class="nav-link" data-scroll-target="#stat_summary"> <span class="header-section-number">8.4.4.19</span> stat_summary</a></li>
-  <li><a href="#stat_identity" id="toc-stat_identity" class="nav-link" data-scroll-target="#stat_identity"> <span class="header-section-number">8.4.4.20</span> stat_identity</a></li>
-  <li><a href="#stat_unique" id="toc-stat_unique" class="nav-link" data-scroll-target="#stat_unique"> <span class="header-section-number">8.4.4.21</span> stat_unique</a></li>
+  <li><a href="#stat_bin" id="toc-stat_bin" class="nav-link" data-scroll-target="#stat_bin"><span class="toc-section-number">8.4.4.1</span>  stat_bin</a></li>
+  <li><a href="#stat_count" id="toc-stat_count" class="nav-link" data-scroll-target="#stat_count"><span class="toc-section-number">8.4.4.2</span>  stat_count</a></li>
+  <li><a href="#stat_density" id="toc-stat_density" class="nav-link" data-scroll-target="#stat_density"><span class="toc-section-number">8.4.4.3</span>  stat_density</a></li>
+  <li><a href="#stat_bin_2d" id="toc-stat_bin_2d" class="nav-link" data-scroll-target="#stat_bin_2d"><span class="toc-section-number">8.4.4.4</span>  stat_bin_2d</a></li>
+  <li><a href="#stat_hex" id="toc-stat_hex" class="nav-link" data-scroll-target="#stat_hex"><span class="toc-section-number">8.4.4.5</span>  stat_hex</a></li>
+  <li><a href="#stat_density_2d" id="toc-stat_density_2d" class="nav-link" data-scroll-target="#stat_density_2d"><span class="toc-section-number">8.4.4.6</span>  stat_density_2d</a></li>
+  <li><a href="#stat_ellipse" id="toc-stat_ellipse" class="nav-link" data-scroll-target="#stat_ellipse"><span class="toc-section-number">8.4.4.7</span>  stat_ellipse</a></li>
+  <li><a href="#stat_contour" id="toc-stat_contour" class="nav-link" data-scroll-target="#stat_contour"><span class="toc-section-number">8.4.4.8</span>  stat_contour</a></li>
+  <li><a href="#stat_summary_hex" id="toc-stat_summary_hex" class="nav-link" data-scroll-target="#stat_summary_hex"><span class="toc-section-number">8.4.4.9</span>  stat_summary_hex</a></li>
+  <li><a href="#stat_summary_2d" id="toc-stat_summary_2d" class="nav-link" data-scroll-target="#stat_summary_2d"><span class="toc-section-number">8.4.4.10</span>  stat_summary_2d</a></li>
+  <li><a href="#stat_boxplot" id="toc-stat_boxplot" class="nav-link" data-scroll-target="#stat_boxplot"><span class="toc-section-number">8.4.4.11</span>  stat_boxplot</a></li>
+  <li><a href="#sta_ydensity" id="toc-sta_ydensity" class="nav-link" data-scroll-target="#sta_ydensity"><span class="toc-section-number">8.4.4.12</span>  sta_ydensity</a></li>
+  <li><a href="#stat_ecdf" id="toc-stat_ecdf" class="nav-link" data-scroll-target="#stat_ecdf"><span class="toc-section-number">8.4.4.13</span>  stat_ecdf</a></li>
+  <li><a href="#stat_quantile" id="toc-stat_quantile" class="nav-link" data-scroll-target="#stat_quantile"><span class="toc-section-number">8.4.4.14</span>  stat_quantile</a></li>
+  <li><a href="#stat_smooth" id="toc-stat_smooth" class="nav-link" data-scroll-target="#stat_smooth"><span class="toc-section-number">8.4.4.15</span>  stat_smooth</a></li>
+  <li><a href="#stat_function" id="toc-stat_function" class="nav-link" data-scroll-target="#stat_function"><span class="toc-section-number">8.4.4.16</span>  stat_function</a></li>
+  <li><a href="#stat_qq" id="toc-stat_qq" class="nav-link" data-scroll-target="#stat_qq"><span class="toc-section-number">8.4.4.17</span>  stat_qq</a></li>
+  <li><a href="#stat_sum" id="toc-stat_sum" class="nav-link" data-scroll-target="#stat_sum"><span class="toc-section-number">8.4.4.18</span>  stat_sum</a></li>
+  <li><a href="#stat_summary" id="toc-stat_summary" class="nav-link" data-scroll-target="#stat_summary"><span class="toc-section-number">8.4.4.19</span>  stat_summary</a></li>
+  <li><a href="#stat_identity" id="toc-stat_identity" class="nav-link" data-scroll-target="#stat_identity"><span class="toc-section-number">8.4.4.20</span>  stat_identity</a></li>
+  <li><a href="#stat_unique" id="toc-stat_unique" class="nav-link" data-scroll-target="#stat_unique"><span class="toc-section-number">8.4.4.21</span>  stat_unique</a></li>
   </ul></li>
-  <li><a href="#escalas" id="toc-escalas" class="nav-link" data-scroll-target="#escalas"> <span class="header-section-number">8.4.5</span> Escalas</a>
+  <li><a href="#escalas" id="toc-escalas" class="nav-link" data-scroll-target="#escalas"><span class="toc-section-number">8.4.5</span>  Escalas</a>
   <ul class="collapse">
-  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"> <span class="header-section-number">8.4.5.1</span> <strong>Escalas de Propósito Geral</strong></a></li>
-  <li><a href="#scale__continuous" id="toc-scale__continuous" class="nav-link" data-scroll-target="#scale__continuous"> <span class="header-section-number">8.4.5.2</span> scale_*_continuous</a></li>
-  <li><a href="#scale__discrete" id="toc-scale__discrete" class="nav-link" data-scroll-target="#scale__discrete"> <span class="header-section-number">8.4.5.3</span> scale_*_discrete</a></li>
-  <li><a href="#scale__binned" id="toc-scale__binned" class="nav-link" data-scroll-target="#scale__binned"> <span class="header-section-number">8.4.5.4</span> scale_*_binned</a></li>
-  <li><a href="#scale__identity" id="toc-scale__identity" class="nav-link" data-scroll-target="#scale__identity"> <span class="header-section-number">8.4.5.5</span> scale_*_identity</a></li>
-  <li><a href="#scale__manual" id="toc-scale__manual" class="nav-link" data-scroll-target="#scale__manual"> <span class="header-section-number">8.4.5.6</span> scale_*_manual</a></li>
-  <li><a href="#scale__date" id="toc-scale__date" class="nav-link" data-scroll-target="#scale__date"> <span class="header-section-number">8.4.5.7</span> scale_*_date</a></li>
-  <li><a href="#scale__datetime" id="toc-scale__datetime" class="nav-link" data-scroll-target="#scale__datetime"> <span class="header-section-number">8.4.5.8</span> scale_*_datetime</a></li>
-  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"> <span class="header-section-number">8.4.5.9</span> <strong>Escalas de Localização X &amp; Y</strong></a></li>
-  <li><a href="#scale__log10" id="toc-scale__log10" class="nav-link" data-scroll-target="#scale__log10"> <span class="header-section-number">8.4.5.10</span> scale_*_log10</a></li>
-  <li><a href="#scale__reverse" id="toc-scale__reverse" class="nav-link" data-scroll-target="#scale__reverse"> <span class="header-section-number">8.4.5.11</span> scale_*_reverse</a></li>
-  <li><a href="#scale__sqrt" id="toc-scale__sqrt" class="nav-link" data-scroll-target="#scale__sqrt"> <span class="header-section-number">8.4.5.12</span> scale_*_sqrt</a></li>
-  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"> <span class="header-section-number">8.4.5.13</span> <strong>Escalas de Cor e Preenchimento</strong></a></li>
-  <li><a href="#scale_fill_brewer" id="toc-scale_fill_brewer" class="nav-link" data-scroll-target="#scale_fill_brewer"> <span class="header-section-number">8.4.5.14</span> scale_fill_brewer</a></li>
-  <li><a href="#scale_fill_grey" id="toc-scale_fill_grey" class="nav-link" data-scroll-target="#scale_fill_grey"> <span class="header-section-number">8.4.5.15</span> scale_fill_grey</a></li>
-  <li><a href="#scale_fill_distiller" id="toc-scale_fill_distiller" class="nav-link" data-scroll-target="#scale_fill_distiller"> <span class="header-section-number">8.4.5.16</span> scale_fill_distiller</a></li>
-  <li><a href="#scale_fill_gradient" id="toc-scale_fill_gradient" class="nav-link" data-scroll-target="#scale_fill_gradient"> <span class="header-section-number">8.4.5.17</span> scale_fill_gradient</a></li>
-  <li><a href="#scale_fill_gradient2" id="toc-scale_fill_gradient2" class="nav-link" data-scroll-target="#scale_fill_gradient2"> <span class="header-section-number">8.4.5.18</span> scale_fill_gradient2</a></li>
-  <li><a href="#scale_fill_gradientn" id="toc-scale_fill_gradientn" class="nav-link" data-scroll-target="#scale_fill_gradientn"> <span class="header-section-number">8.4.5.19</span> scale_fill_gradientn</a></li>
-  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"> <span class="header-section-number">8.4.5.20</span> <strong>Escalas de Forma e Tamanho</strong></a></li>
-  <li><a href="#scale_shape" id="toc-scale_shape" class="nav-link" data-scroll-target="#scale_shape"> <span class="header-section-number">8.4.5.21</span> scale_shape</a></li>
-  <li><a href="#scale_size" id="toc-scale_size" class="nav-link" data-scroll-target="#scale_size"> <span class="header-section-number">8.4.5.22</span> scale_size</a></li>
+  <li><a href="#escalas-de-propósito-geral" id="toc-escalas-de-propósito-geral" class="nav-link" data-scroll-target="#escalas-de-propósito-geral"><span class="toc-section-number">8.4.5.1</span>  <strong>Escalas de Propósito Geral</strong></a></li>
+  <li><a href="#scale__continuous" id="toc-scale__continuous" class="nav-link" data-scroll-target="#scale__continuous"><span class="toc-section-number">8.4.5.2</span>  scale_*_continuous</a></li>
+  <li><a href="#scale__discrete" id="toc-scale__discrete" class="nav-link" data-scroll-target="#scale__discrete"><span class="toc-section-number">8.4.5.3</span>  scale_*_discrete</a></li>
+  <li><a href="#scale__binned" id="toc-scale__binned" class="nav-link" data-scroll-target="#scale__binned"><span class="toc-section-number">8.4.5.4</span>  scale_*_binned</a></li>
+  <li><a href="#scale__identity" id="toc-scale__identity" class="nav-link" data-scroll-target="#scale__identity"><span class="toc-section-number">8.4.5.5</span>  scale_*_identity</a></li>
+  <li><a href="#scale__manual" id="toc-scale__manual" class="nav-link" data-scroll-target="#scale__manual"><span class="toc-section-number">8.4.5.6</span>  scale_*_manual</a></li>
+  <li><a href="#scale__date" id="toc-scale__date" class="nav-link" data-scroll-target="#scale__date"><span class="toc-section-number">8.4.5.7</span>  scale_*_date</a></li>
+  <li><a href="#scale__datetime" id="toc-scale__datetime" class="nav-link" data-scroll-target="#scale__datetime"><span class="toc-section-number">8.4.5.8</span>  scale_*_datetime</a></li>
+  <li><a href="#escalas-de-localização-x-y" id="toc-escalas-de-localização-x-y" class="nav-link" data-scroll-target="#escalas-de-localização-x-y"><span class="toc-section-number">8.4.5.9</span>  <strong>Escalas de Localização X &amp; Y</strong></a></li>
+  <li><a href="#scale__log10" id="toc-scale__log10" class="nav-link" data-scroll-target="#scale__log10"><span class="toc-section-number">8.4.5.10</span>  scale_*_log10</a></li>
+  <li><a href="#scale__reverse" id="toc-scale__reverse" class="nav-link" data-scroll-target="#scale__reverse"><span class="toc-section-number">8.4.5.11</span>  scale_*_reverse</a></li>
+  <li><a href="#scale__sqrt" id="toc-scale__sqrt" class="nav-link" data-scroll-target="#scale__sqrt"><span class="toc-section-number">8.4.5.12</span>  scale_*_sqrt</a></li>
+  <li><a href="#escalas-de-cor-e-preenchimento" id="toc-escalas-de-cor-e-preenchimento" class="nav-link" data-scroll-target="#escalas-de-cor-e-preenchimento"><span class="toc-section-number">8.4.5.13</span>  <strong>Escalas de Cor e Preenchimento</strong></a></li>
+  <li><a href="#scale_fill_brewer" id="toc-scale_fill_brewer" class="nav-link" data-scroll-target="#scale_fill_brewer"><span class="toc-section-number">8.4.5.14</span>  scale_fill_brewer</a></li>
+  <li><a href="#scale_fill_grey" id="toc-scale_fill_grey" class="nav-link" data-scroll-target="#scale_fill_grey"><span class="toc-section-number">8.4.5.15</span>  scale_fill_grey</a></li>
+  <li><a href="#scale_fill_distiller" id="toc-scale_fill_distiller" class="nav-link" data-scroll-target="#scale_fill_distiller"><span class="toc-section-number">8.4.5.16</span>  scale_fill_distiller</a></li>
+  <li><a href="#scale_fill_gradient" id="toc-scale_fill_gradient" class="nav-link" data-scroll-target="#scale_fill_gradient"><span class="toc-section-number">8.4.5.17</span>  scale_fill_gradient</a></li>
+  <li><a href="#scale_fill_gradient2" id="toc-scale_fill_gradient2" class="nav-link" data-scroll-target="#scale_fill_gradient2"><span class="toc-section-number">8.4.5.18</span>  scale_fill_gradient2</a></li>
+  <li><a href="#scale_fill_gradientn" id="toc-scale_fill_gradientn" class="nav-link" data-scroll-target="#scale_fill_gradientn"><span class="toc-section-number">8.4.5.19</span>  scale_fill_gradientn</a></li>
+  <li><a href="#escalas-de-forma-e-tamanho" id="toc-escalas-de-forma-e-tamanho" class="nav-link" data-scroll-target="#escalas-de-forma-e-tamanho"><span class="toc-section-number">8.4.5.20</span>  <strong>Escalas de Forma e Tamanho</strong></a></li>
+  <li><a href="#scale_shape" id="toc-scale_shape" class="nav-link" data-scroll-target="#scale_shape"><span class="toc-section-number">8.4.5.21</span>  scale_shape</a></li>
+  <li><a href="#scale_size" id="toc-scale_size" class="nav-link" data-scroll-target="#scale_size"><span class="toc-section-number">8.4.5.22</span>  scale_size</a></li>
   </ul></li>
-  <li><a href="#sistema-de-coordenadas" id="toc-sistema-de-coordenadas" class="nav-link" data-scroll-target="#sistema-de-coordenadas"> <span class="header-section-number">8.4.6</span> Sistema de Coordenadas</a>
+  <li><a href="#sistema-de-coordenadas" id="toc-sistema-de-coordenadas" class="nav-link" data-scroll-target="#sistema-de-coordenadas"><span class="toc-section-number">8.4.6</span>  Sistema de Coordenadas</a>
   <ul class="collapse">
-  <li><a href="#coord_cartesian" id="toc-coord_cartesian" class="nav-link" data-scroll-target="#coord_cartesian"> <span class="header-section-number">8.4.6.1</span> coord_cartesian</a></li>
-  <li><a href="#coord_fixed" id="toc-coord_fixed" class="nav-link" data-scroll-target="#coord_fixed"> <span class="header-section-number">8.4.6.2</span> coord_fixed</a></li>
-  <li><a href="#coord_polar" id="toc-coord_polar" class="nav-link" data-scroll-target="#coord_polar"> <span class="header-section-number">8.4.6.3</span> coord_polar</a></li>
-  <li><a href="#coord_trans" id="toc-coord_trans" class="nav-link" data-scroll-target="#coord_trans"> <span class="header-section-number">8.4.6.4</span> coord_trans</a></li>
+  <li><a href="#coord_cartesian" id="toc-coord_cartesian" class="nav-link" data-scroll-target="#coord_cartesian"><span class="toc-section-number">8.4.6.1</span>  coord_cartesian</a></li>
+  <li><a href="#coord_fixed" id="toc-coord_fixed" class="nav-link" data-scroll-target="#coord_fixed"><span class="toc-section-number">8.4.6.2</span>  coord_fixed</a></li>
+  <li><a href="#coord_polar" id="toc-coord_polar" class="nav-link" data-scroll-target="#coord_polar"><span class="toc-section-number">8.4.6.3</span>  coord_polar</a></li>
+  <li><a href="#coord_trans" id="toc-coord_trans" class="nav-link" data-scroll-target="#coord_trans"><span class="toc-section-number">8.4.6.4</span>  coord_trans</a></li>
   </ul></li>
-  <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"> <span class="header-section-number">8.4.7</span> Facetas</a>
+  <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"><span class="toc-section-number">8.4.7</span>  Facetas</a>
   <ul class="collapse">
-  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid"> <span class="header-section-number">8.4.7.1</span> facet_grid</a></li>
-  <li><a href="#facet_wrap" id="toc-facet_wrap" class="nav-link" data-scroll-target="#facet_wrap"> <span class="header-section-number">8.4.7.2</span> facet_wrap</a></li>
+  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid"><span class="toc-section-number">8.4.7.1</span>  facet_grid</a></li>
+  <li><a href="#facet_wrap" id="toc-facet_wrap" class="nav-link" data-scroll-target="#facet_wrap"><span class="toc-section-number">8.4.7.2</span>  facet_wrap</a></li>
   </ul></li>
-  <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas"> <span class="header-section-number">8.4.8</span> Temas</a></li>
+  <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas"><span class="toc-section-number">8.4.8</span>  Temas</a></li>
   </ul></li>
-  <li><a href="#ajuste-de-posição" id="toc-ajuste-de-posição" class="nav-link" data-scroll-target="#ajuste-de-posição"> <span class="header-section-number">8.5</span> Ajuste de Posição</a>
-  <ul class="collapse">
-  <li><a href="#position-stack" id="toc-position-stack" class="nav-link" data-scroll-target="#position-stack"> <span class="header-section-number">8.5.0.1</span> Position Stack</a></li>
-  <li><a href="#position-dodge" id="toc-position-dodge" class="nav-link" data-scroll-target="#position-dodge"> <span class="header-section-number">8.5.0.2</span> Position Dodge</a></li>
-  <li><a href="#position-fill" id="toc-position-fill" class="nav-link" data-scroll-target="#position-fill"> <span class="header-section-number">8.5.0.3</span> Position Fill</a></li>
-  <li><a href="#position-jitter" id="toc-position-jitter" class="nav-link" data-scroll-target="#position-jitter"> <span class="header-section-number">8.5.0.4</span> Position Jitter</a></li>
-  <li><a href="#position-nudge" id="toc-position-nudge" class="nav-link" data-scroll-target="#position-nudge"> <span class="header-section-number">8.5.0.5</span> Position Nudge</a></li>
+  <li><a href="#ajuste-de-posição" id="toc-ajuste-de-posição" class="nav-link" data-scroll-target="#ajuste-de-posição"><span class="toc-section-number">8.5</span>  Ajuste de Posição</a>
+  <ul>
+  <li><a href="#position-stack" id="toc-position-stack" class="nav-link" data-scroll-target="#position-stack"><span class="toc-section-number">8.5.0.1</span>  Position Stack</a></li>
+  <li><a href="#position-dodge" id="toc-position-dodge" class="nav-link" data-scroll-target="#position-dodge"><span class="toc-section-number">8.5.0.2</span>  Position Dodge</a></li>
+  <li><a href="#position-fill" id="toc-position-fill" class="nav-link" data-scroll-target="#position-fill"><span class="toc-section-number">8.5.0.3</span>  Position Fill</a></li>
+  <li><a href="#position-jitter" id="toc-position-jitter" class="nav-link" data-scroll-target="#position-jitter"><span class="toc-section-number">8.5.0.4</span>  Position Jitter</a></li>
+  <li><a href="#position-nudge" id="toc-position-nudge" class="nav-link" data-scroll-target="#position-nudge"><span class="toc-section-number">8.5.0.5</span>  Position Nudge</a></li>
   </ul></li>
-  <li><a href="#títulos-e-legendas" id="toc-títulos-e-legendas" class="nav-link" data-scroll-target="#títulos-e-legendas"> <span class="header-section-number">8.6</span> Títulos e Legendas</a>
-  <ul class="collapse">
-  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs"> <span class="header-section-number">8.6.0.1</span> labs</a></li>
-  <li><a href="#guides" id="toc-guides" class="nav-link" data-scroll-target="#guides"> <span class="header-section-number">8.6.0.2</span> guides</a></li>
-  <li><a href="#annotate" id="toc-annotate" class="nav-link" data-scroll-target="#annotate"> <span class="header-section-number">8.6.0.3</span> annotate</a></li>
-  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"> <span class="header-section-number">8.6.0.4</span> theme</a></li>
+  <li><a href="#títulos-e-legendas" id="toc-títulos-e-legendas" class="nav-link" data-scroll-target="#títulos-e-legendas"><span class="toc-section-number">8.6</span>  Títulos e Legendas</a>
+  <ul>
+  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs"><span class="toc-section-number">8.6.0.1</span>  labs</a></li>
+  <li><a href="#guides" id="toc-guides" class="nav-link" data-scroll-target="#guides"><span class="toc-section-number">8.6.0.2</span>  guides</a></li>
+  <li><a href="#annotate" id="toc-annotate" class="nav-link" data-scroll-target="#annotate"><span class="toc-section-number">8.6.0.3</span>  annotate</a></li>
+  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="toc-section-number">8.6.0.4</span>  theme</a></li>
   </ul></li>
-  <li><a href="#zoom" id="toc-zoom" class="nav-link" data-scroll-target="#zoom"> <span class="header-section-number">8.7</span> Zoom</a></li>
-  <li><a href="#bônus" id="toc-bônus" class="nav-link" data-scroll-target="#bônus"> <span class="header-section-number">8.8</span> Bônus</a>
-  <ul class="collapse">
-  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template"> <span class="header-section-number">8.8.1</span> Template</a></li>
-  <li><a href="#gráficos-interativos" id="toc-gráficos-interativos" class="nav-link" data-scroll-target="#gráficos-interativos"> <span class="header-section-number">8.8.2</span> Gráficos Interativos</a></li>
+  <li><a href="#zoom" id="toc-zoom" class="nav-link" data-scroll-target="#zoom"><span class="toc-section-number">8.7</span>  Zoom</a></li>
+  <li><a href="#bônus" id="toc-bônus" class="nav-link" data-scroll-target="#bônus"><span class="toc-section-number">8.8</span>  Bônus</a>
+  <ul>
+  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template"><span class="toc-section-number">8.8.1</span>  Template</a></li>
+  <li><a href="#gráficos-interativos" id="toc-gráficos-interativos" class="nav-link" data-scroll-target="#gráficos-interativos"><span class="toc-section-number">8.8.2</span>  Gráficos Interativos</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -464,6 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -1809,7 +1817,7 @@ Dica
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>sp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"shapefile_sp/estado_sp.shp"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `estado_sp' from data source 
-  `/home/scopinho/MyBriefcase/github/Livro_Data_Transf_R/Visualizacao/shapefile_sp/estado_sp.shp' 
+  `/home/scopinho/github/Livro_Transform_Dados_R/Visualizacao/shapefile_sp/estado_sp.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 645 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -1972,7 +1980,7 @@ Nota
 </div>
 <p>Para ficar mais claro, vejamos o seguinte caso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>i <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level..),</span>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>l <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level..),</span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="at">geom =</span> <span class="st">"polygon"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Explicando com mais detalhes o exemplo acima, vemos que estamos uma adicionando uma camada no gráfico representado pela letra “i”.</p>
@@ -3202,8 +3210,8 @@ Dica
 <span id="cb192-2"><a href="#cb192-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb192-3"><a href="#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(g_barras)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-365fa61a3f0c52ae6d3f" style="width:100%;height:464px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-365fa61a3f0c52ae6d3f">{"x":{"data":[{"orientation":"v","width":0.9,"base":14,"x":[2],"y":[5],"text":"count:  5<br />manufacturer: chevrolet<br />class: 2seater","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(166,118,29,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2seater","legendgroup":"2seater","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[3,11,10,22,13],"x":[1,11,13,14,15],"y":[15,2,4,12,14],"text":["count: 15<br />manufacturer: audi<br />class: compact","count:  2<br />manufacturer: nissan<br />class: compact","count:  4<br />manufacturer: subaru<br />class: compact","count: 12<br />manufacturer: toyota<br />class: compact","count: 14<br />manufacturer: volkswagen<br />class: compact"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(230,171,2,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"compact","legendgroup":"compact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[0,9,7,4,0,15,6],"x":[1,2,6,11,12,14,15],"y":[3,5,7,7,5,7,7],"text":["count:  3<br />manufacturer: audi<br />class: midsize","count:  5<br />manufacturer: chevrolet<br />class: midsize","count:  7<br />manufacturer: hyundai<br />class: midsize","count:  7<br />manufacturer: nissan<br />class: midsize","count:  5<br />manufacturer: pontiac<br />class: midsize","count:  7<br />manufacturer: toyota<br />class: midsize","count:  7<br />manufacturer: volkswagen<br />class: midsize"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(102,166,30,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"midsize","legendgroup":"midsize","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":26,"x":[3],"y":[11],"text":"count: 11<br />manufacturer: dodge<br />class: minivan","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(231,41,138,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"minivan","legendgroup":"minivan","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.899999999999999],"base":[7,18,8],"x":[3,4,14],"y":[19,7,7],"text":["count: 19<br />manufacturer: dodge<br />class: pickup","count:  7<br />manufacturer: ford<br />class: pickup","count:  7<br />manufacturer: toyota<br />class: pickup"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(117,112,179,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"pickup","legendgroup":"pickup","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.899999999999999,0.899999999999999],"base":[9,0,0,6,0],"x":[4,5,6,13,15],"y":[9,9,7,4,6],"text":["count:  9<br />manufacturer: ford<br />class: subcompact","count:  9<br />manufacturer: honda<br />class: subcompact","count:  7<br />manufacturer: hyundai<br />class: subcompact","count:  4<br />manufacturer: subaru<br />class: subcompact","count:  6<br />manufacturer: volkswagen<br />class: subcompact"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(217,95,2,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"subcompact","legendgroup":"subcompact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[0,0,0,0,0,0,0,0,0,0],"x":[2,3,4,7,8,9,10,11,13,14],"y":[9,7,9,8,4,3,4,4,6,8],"text":["count:  9<br />manufacturer: chevrolet<br />class: suv","count:  7<br />manufacturer: dodge<br />class: suv","count:  9<br />manufacturer: ford<br />class: suv","count:  8<br />manufacturer: jeep<br />class: suv","count:  4<br />manufacturer: land rover<br />class: suv","count:  3<br />manufacturer: lincoln<br />class: suv","count:  4<br />manufacturer: mercury<br />class: suv","count:  4<br />manufacturer: nissan<br />class: suv","count:  6<br />manufacturer: subaru<br />class: suv","count:  8<br />manufacturer: toyota<br />class: suv"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(27,158,119,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"suv","legendgroup":"suv","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2],"y":[16.5],"text":5,"hovertext":"count: 16.5<br />manufacturer: chevrolet<br />class: 2seater<br />count:  5","textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"2seater","legendgroup":"2seater","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,11,13,14,15],"y":[10.5,12,12,28,20],"text":[15,2,4,12,14],"hovertext":["count: 10.5<br />manufacturer: audi<br />class: compact<br />count: 15","count: 12.0<br />manufacturer: nissan<br />class: compact<br />count:  2","count: 12.0<br />manufacturer: subaru<br />class: compact<br />count:  4","count: 28.0<br />manufacturer: toyota<br />class: compact<br />count: 12","count: 20.0<br />manufacturer: volkswagen<br />class: compact<br />count: 14"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"compact","legendgroup":"compact","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,2,6,11,12,14,15],"y":[1.5,11.5,10.5,7.5,2.5,18.5,9.5],"text":[3,5,7,7,5,7,7],"hovertext":["count:  1.5<br />manufacturer: audi<br />class: midsize<br />count:  3","count: 11.5<br />manufacturer: chevrolet<br />class: midsize<br />count:  5","count: 10.5<br />manufacturer: hyundai<br />class: midsize<br />count:  7","count:  7.5<br />manufacturer: nissan<br />class: midsize<br />count:  7","count:  2.5<br />manufacturer: pontiac<br />class: midsize<br />count:  5","count: 18.5<br />manufacturer: toyota<br />class: midsize<br />count:  7","count:  9.5<br />manufacturer: volkswagen<br />class: midsize<br />count:  7"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"midsize","legendgroup":"midsize","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3],"y":[31.5],"text":11,"hovertext":"count: 31.5<br />manufacturer: dodge<br />class: minivan<br />count: 11","textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"minivan","legendgroup":"minivan","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3,4,14],"y":[16.5,21.5,11.5],"text":[19,7,7],"hovertext":["count: 16.5<br />manufacturer: dodge<br />class: pickup<br />count: 19","count: 21.5<br />manufacturer: ford<br />class: pickup<br />count:  7","count: 11.5<br />manufacturer: toyota<br />class: pickup<br />count:  7"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"pickup","legendgroup":"pickup","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4,5,6,13,15],"y":[13.5,4.5,3.5,8,3],"text":[9,9,7,4,6],"hovertext":["count: 13.5<br />manufacturer: ford<br />class: subcompact<br />count:  9","count:  4.5<br />manufacturer: honda<br />class: subcompact<br />count:  9","count:  3.5<br />manufacturer: hyundai<br />class: subcompact<br />count:  7","count:  8.0<br />manufacturer: subaru<br />class: subcompact<br />count:  4","count:  3.0<br />manufacturer: volkswagen<br />class: subcompact<br />count:  6"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"subcompact","legendgroup":"subcompact","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2,3,4,7,8,9,10,11,13,14],"y":[4.5,3.5,4.5,4,2,1.5,2,2,3,4],"text":[9,7,9,8,4,3,4,4,6,8],"hovertext":["count:  4.5<br />manufacturer: chevrolet<br />class: suv<br />count:  9","count:  3.5<br />manufacturer: dodge<br />class: suv<br />count:  7","count:  4.5<br />manufacturer: ford<br />class: suv<br />count:  9","count:  4.0<br />manufacturer: jeep<br />class: suv<br />count:  8","count:  2.0<br />manufacturer: land rover<br />class: suv<br />count:  4","count:  1.5<br />manufacturer: lincoln<br />class: suv<br />count:  3","count:  2.0<br />manufacturer: mercury<br />class: suv<br />count:  4","count:  2.0<br />manufacturer: nissan<br />class: suv<br />count:  4","count:  3.0<br />manufacturer: subaru<br />class: suv<br />count:  6","count:  4.0<br />manufacturer: toyota<br />class: suv<br />count:  8"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"suv","legendgroup":"suv","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":86.9406392694064,"l":37.2602739726027},"plot_bgcolor":"rgba(229,243,247,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,15.6],"tickmode":"array","ticktext":["audi","chevrolet","dodge","ford","honda","hyundai","jeep","land rover","lincoln","mercury","nissan","pontiac","subaru","toyota","volkswagen"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"categoryorder":"array","categoryarray":["audi","chevrolet","dodge","ford","honda","hyundai","jeep","land rover","lincoln","mercury","nissan","pontiac","subaru","toyota","volkswagen"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"manufacturer","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.85,38.85],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Quantidade","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4477f64776fc9":{"x":{},"fill":{},"type":"bar"},"4477f1bf9a29a":{"x":{},"fill":{},"label":{}}},"cur_data":"4477f64776fc9","visdat":{"4477f64776fc9":["function (y) ","x"],"4477f1bf9a29a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-55ee99aebb6dc3061552" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-55ee99aebb6dc3061552">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[0,0,0,0,0,0,0,0,0,0],"x":[2,3,4,7,8,9,10,11,13,14],"y":[9,7,9,8,4,3,4,4,6,8],"text":["count:  9<br />manufacturer: chevrolet<br />class: suv","count:  7<br />manufacturer: dodge<br />class: suv","count:  9<br />manufacturer: ford<br />class: suv","count:  8<br />manufacturer: jeep<br />class: suv","count:  4<br />manufacturer: land rover<br />class: suv","count:  3<br />manufacturer: lincoln<br />class: suv","count:  4<br />manufacturer: mercury<br />class: suv","count:  4<br />manufacturer: nissan<br />class: suv","count:  6<br />manufacturer: subaru<br />class: suv","count:  8<br />manufacturer: toyota<br />class: suv"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(27,158,119,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[0,9,7,4,0,15,6],"x":[1,2,6,11,12,14,15],"y":[3,5,7,7,5,7,7],"text":["count:  3<br />manufacturer: audi<br />class: midsize","count:  5<br />manufacturer: chevrolet<br />class: midsize","count:  7<br />manufacturer: hyundai<br />class: midsize","count:  7<br />manufacturer: nissan<br />class: midsize","count:  5<br />manufacturer: pontiac<br />class: midsize","count:  7<br />manufacturer: toyota<br />class: midsize","count:  7<br />manufacturer: volkswagen<br />class: midsize"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(102,166,30,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.899999999999999],"base":[7,18,8],"x":[3,4,14],"y":[19,7,7],"text":["count: 19<br />manufacturer: dodge<br />class: pickup","count:  7<br />manufacturer: ford<br />class: pickup","count:  7<br />manufacturer: toyota<br />class: pickup"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(117,112,179,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":14,"x":[2],"y":[5],"text":"count:  5<br />manufacturer: chevrolet<br />class: 2seater","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(166,118,29,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.899999999999999,0.899999999999999],"base":[9,0,0,6,0],"x":[4,5,6,13,15],"y":[9,9,7,4,6],"text":["count:  9<br />manufacturer: ford<br />class: subcompact","count:  9<br />manufacturer: honda<br />class: subcompact","count:  7<br />manufacturer: hyundai<br />class: subcompact","count:  4<br />manufacturer: subaru<br />class: subcompact","count:  6<br />manufacturer: volkswagen<br />class: subcompact"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(217,95,2,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[3,11,10,22,13],"x":[1,11,13,14,15],"y":[15,2,4,12,14],"text":["count: 15<br />manufacturer: audi<br />class: compact","count:  2<br />manufacturer: nissan<br />class: compact","count:  4<br />manufacturer: subaru<br />class: compact","count: 12<br />manufacturer: toyota<br />class: compact","count: 14<br />manufacturer: volkswagen<br />class: compact"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(230,171,2,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":26,"x":[3],"y":[11],"text":"count: 11<br />manufacturer: dodge<br />class: minivan","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(231,41,138,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2,3,4,7,8,9,10,11,13,14],"y":[4.5,3.5,4.5,4,2,1.5,2,2,3,4],"text":[9,7,9,8,4,3,4,4,6,8],"hovertext":["count:  4.5<br />manufacturer: chevrolet<br />class: suv<br />count:  9","count:  3.5<br />manufacturer: dodge<br />class: suv<br />count:  7","count:  4.5<br />manufacturer: ford<br />class: suv<br />count:  9","count:  4.0<br />manufacturer: jeep<br />class: suv<br />count:  8","count:  2.0<br />manufacturer: land rover<br />class: suv<br />count:  4","count:  1.5<br />manufacturer: lincoln<br />class: suv<br />count:  3","count:  2.0<br />manufacturer: mercury<br />class: suv<br />count:  4","count:  2.0<br />manufacturer: nissan<br />class: suv<br />count:  4","count:  3.0<br />manufacturer: subaru<br />class: suv<br />count:  6","count:  4.0<br />manufacturer: toyota<br />class: suv<br />count:  8"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,2,6,11,12,14,15],"y":[1.5,11.5,10.5,7.5,2.5,18.5,9.5],"text":[3,5,7,7,5,7,7],"hovertext":["count:  1.5<br />manufacturer: audi<br />class: midsize<br />count:  3","count: 11.5<br />manufacturer: chevrolet<br />class: midsize<br />count:  5","count: 10.5<br />manufacturer: hyundai<br />class: midsize<br />count:  7","count:  7.5<br />manufacturer: nissan<br />class: midsize<br />count:  7","count:  2.5<br />manufacturer: pontiac<br />class: midsize<br />count:  5","count: 18.5<br />manufacturer: toyota<br />class: midsize<br />count:  7","count:  9.5<br />manufacturer: volkswagen<br />class: midsize<br />count:  7"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3,4,14],"y":[16.5,21.5,11.5],"text":[19,7,7],"hovertext":["count: 16.5<br />manufacturer: dodge<br />class: pickup<br />count: 19","count: 21.5<br />manufacturer: ford<br />class: pickup<br />count:  7","count: 11.5<br />manufacturer: toyota<br />class: pickup<br />count:  7"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2],"y":[16.5],"text":5,"hovertext":"count: 16.5<br />manufacturer: chevrolet<br />class: 2seater<br />count:  5","textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4,5,6,13,15],"y":[13.5,4.5,3.5,8,3],"text":[9,9,7,4,6],"hovertext":["count: 13.5<br />manufacturer: ford<br />class: subcompact<br />count:  9","count:  4.5<br />manufacturer: honda<br />class: subcompact<br />count:  9","count:  3.5<br />manufacturer: hyundai<br />class: subcompact<br />count:  7","count:  8.0<br />manufacturer: subaru<br />class: subcompact<br />count:  4","count:  3.0<br />manufacturer: volkswagen<br />class: subcompact<br />count:  6"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,11,13,14,15],"y":[10.5,12,12,28,20],"text":[15,2,4,12,14],"hovertext":["count: 10.5<br />manufacturer: audi<br />class: compact<br />count: 15","count: 12.0<br />manufacturer: nissan<br />class: compact<br />count:  2","count: 12.0<br />manufacturer: subaru<br />class: compact<br />count:  4","count: 28.0<br />manufacturer: toyota<br />class: compact<br />count: 12","count: 20.0<br />manufacturer: volkswagen<br />class: compact<br />count: 14"],"textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3],"y":[31.5],"text":11,"hovertext":"count: 31.5<br />manufacturer: dodge<br />class: minivan<br />count: 11","textfont":{"size":11.3385826771654,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":86.9406392694064,"l":37.2602739726027},"plot_bgcolor":"rgba(229,243,247,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,15.6],"tickmode":"array","ticktext":["audi","chevrolet","dodge","ford","honda","hyundai","jeep","land rover","lincoln","mercury","nissan","pontiac","subaru","toyota","volkswagen"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"categoryorder":"array","categoryarray":["audi","chevrolet","dodge","ford","honda","hyundai","jeep","land rover","lincoln","mercury","nissan","pontiac","subaru","toyota","volkswagen"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"manufacturer","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.85,38.85],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Quantidade","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2ac61f108b19":{"x":{},"fill":{},"type":"bar"},"2ac67f8e68c5":{"x":{},"fill":{},"label":{}}},"cur_data":"2ac61f108b19","visdat":{"2ac61f108b19":["function (y) ","x"],"2ac67f8e68c5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Com a função <strong>ggplotly</strong>() agora temos uma interatividade em nosso objeto gg_barras criado anteriormente.</p>
@@ -3254,7 +3262,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -3282,31 +3307,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -3314,7 +3358,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
